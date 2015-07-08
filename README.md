@@ -27,7 +27,8 @@
 - top left - click choose database...Then add database, enter `halp`		
 	
 **install composer**		
-`https://getcomposer.org/doc/00-intro.md#globally`
+`curl -sS https://getcomposer.org/installer | php     
+mv composer.phar /usr/local/bin/composer`
 
 **install bower components**		
 `bower install`
