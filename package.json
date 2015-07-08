@@ -1,11 +1,8 @@
 {
-  "name": "LaravelStarterSite",
+  "name": "HALP",
   "version": "1.0.0",
-  "description": "Locals Only",
+  "description": "Halp",
   "main": "Gruntfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Todd Vanderlin",
   "license": "BSD",
   "devDependencies": {

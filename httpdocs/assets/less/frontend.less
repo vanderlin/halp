@@ -1,13 +1,396 @@
 @import 'base.less'; 
-
-
-// ------------------------------------------------------------------------
 @import 'common.less';
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
 
-// ------------------------------------------------------------------------
-// Modules
-// ------------------------------------------------------------------------
+body {
+	background: #f0efee;
+	color: #404d5b;
+	font-weight: 500;
+	font-size: 1.05em;
+	font-family: 'Merriweather', serif;
+	-webkit-font-smoothing: antialiased;
+}
 
-// ------------------------------------------------------------------------
-// Pages
-// ------------------------------------------------------------------------
+a {
+	color: #4FD2C2;
+	text-decoration: none;
+	outline: none;
+}
+
+a:hover, a:focus {
+	color: #404d5b;
+}
+
+.container {
+	margin: 0 auto;
+	text-align: center;
+	overflow: hidden;
+}
+
+.content {
+	font-size: 150%;
+	padding: 1.5em 0 3em 0;
+}
+
+.turtle-break{
+	margin: 50px 0;
+}
+.turtle-break img{
+	vertical-align: middle;
+  	margin: 0 10px;
+}
+.turtle-line{
+  	width: 20%;
+  	height: 2px;
+  	background-color: #E6E6E6;
+  	display: inline-block;
+}
+
+/* ----------------------------------- TOP NAV ----------------------------------- */
+
+.nav{
+	background-color: #1B1B25;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 13px;
+	height: 60px;
+	letter-spacing: 1px;
+}
+
+.user{
+	float: right;
+  	padding: 20px;
+}
+
+.username{
+	padding-right: 20px;
+	color: #fff;
+}
+
+.logo{
+	float: left;
+	padding-left: 10px
+}
+
+.logo-text{
+	padding: 15px;
+	font-family: 'Merriweather', serif;
+	font-weight: 300;
+	font-style: italic;
+	font-size: 32px;
+	color: #404d5b;
+	text-transform: lowercase;
+	position: relative;
+  	bottom: 19px;
+  	letter-spacing: 0px;
+}
+
+/* ----------------------------------- TASK CARDS ----------------------------------- */
+
+.task{
+	width: 250px;
+	height: 320px;
+	background-color: #fff;
+	text-align: center;
+	display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    margin: 1%;
+    padding: 0px;
+}
+
+.task-details{
+	padding: 50px 20px 40px 20px;	
+}
+
+.task-name{
+	display: block;
+	font-style: italic;
+	font-weight: 300;
+}
+
+.project-name{
+	display: block;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 13px;
+	margin-bottom: 8px;
+}
+.date{
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.task hr{
+	border: 1px solid #404D5A;
+  	width: 30px;
+  	margin-bottom: 18px;
+}
+
+.posted-by{
+  	background-color: #F9F7F6;
+  	font-size: 12px;
+  	font-family: Montserrat, sans-serif;
+  	text-transform: uppercase;
+  	font-weight: bold;
+  	padding: 10px 5px;
+  	color: #ccc;
+}
+.claimed-by{
+  	background-color: #fff;
+  	font-size: 12px;
+  	font-family: Montserrat, sans-serif;
+  	text-transform: uppercase;
+  	font-weight: bold;
+  	padding: 10px 5px;
+  	color: #ccc;
+}
+
+.claimed{
+	background-color: #F9F7F6;
+	background-image: url(../img/diagonal-lines.png);
+	height: 230px;
+}
+.claimed .project-name{
+	color: #ccc;
+}
+.claimed .date{
+	color: #ccc;
+}
+.claimed .task-name{
+	color: #ccc;
+}
+.claimed hr{
+	border-color: #ccc;
+}
+.claimed-text{
+	color: #404D5A;
+	font-family: 'Merriweather', serif;
+	font-weight: 300;
+	font-style: italic;
+}
+
+
+
+/* ------------------------------------- FORM ------------------------------------ */
+
+.content h2 {
+  	margin: 0 0 27px;
+  	opacity: 0.1;
+  	font-size: 70px;
+  	font-weight: 300;
+  	letter-spacing: -3px;
+}
+
+.content p {
+	margin: 1em 0;
+	padding: 5em 0 0 0;
+	font-size: 0.65em;
+}
+
+.bgcolor { background: #f9f7f6; }
+
+body .nomargin-bottom {
+	margin-bottom: 0;
+}
+
+.input {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	margin: 1em;
+	max-width: 350px;
+	width: calc(100% - 2em);
+	vertical-align: top;
+}
+
+.input__field {
+	position: relative;
+	display: block;
+	float: right;
+	padding: 0.8em;
+	width: 60%;
+	border: none;
+	border-radius: 0;
+	background: #f0f0f0;
+	color: #aaa;
+	font-family: 'Merriweather', serif;
+	font-weight: 300;
+	font-style: italic;
+	-webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+	outline: none;
+}
+
+.input__label {
+	display: inline-block;
+	float: right;
+	padding: 0 1em;
+	width: 40%;
+	color: #D1D1D1;
+	font-size: 70.25%;
+	font-family: 'Merriweather', serif;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.input__label-content {
+	position: relative;
+	display: block;
+	padding: 1.6em 0;
+	width: 100%;
+}
+
+.graphic {
+	position: absolute;
+	top: 0;
+	left: 0;
+	fill: none;
+}
+
+.icon {
+	color: #ddd;
+	font-size: 150%;
+}
+
+.input--nao {
+	overflow: hidden;
+	padding-top: 1em;
+}
+
+.input__field--nao {
+	padding: 0.5em 0em 0.4em;
+	width: 100%;
+	background: transparent;
+	color: #4FD2C2;
+	font-size: 1.25em;
+}
+
+.input__label--nao {
+	position: absolute;
+	top: 0.95em;
+	font-size: 0.85em;
+	left: 0;
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 0em;
+	pointer-events: none;
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transition: -webkit-transform 0.2s 0.15s, color 1s;
+	transition: transform 0.2s 0.15s, color 1s;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+}
+
+.graphic--nao {
+	stroke: #DCDCDC;
+	pointer-events: none;
+	-webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
+	transition: transform 0.7s, stroke 0.7s;
+	-webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+	transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+} 
+
+.input__field--nao:focus + .input__label--nao,
+.input--filled .input__label--nao {
+	color: #1B1B25;
+	-webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
+	transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
+}
+
+.input__field--nao:focus ~ .graphic--nao,
+.input--filled .graphic--nao {
+	stroke: #1B1B25;
+	-webkit-transform: translate3d(-66.6%, 0, 0);
+	transform: translate3d(-66.6%, 0, 0);
+}
+
+.example-text{
+	font-size: 13px;
+	text-align: left;
+}
+
+/* ------------------------------------- LOGIN ------------------------------------ */
+
+.login{
+	display: block;
+	margin: 0 auto;
+}
+
+.login-button{
+	padding: 10px 0px 70px 0px;
+}
+
+.login-button .progress-button button{
+	width: 260px;
+}
+
+.introduction{
+	background-color: #1B1B25;
+  	font-size: 25px;
+  	font-style: italic;
+  	color: #fff;
+  	font-weight: 300;
+}
+
+.introduction-content{
+  	width: 40%;
+  	margin: 0 auto;
+  	padding: 0px 0px 30px 0px
+}
+
+.introduction img{
+	margin-top: 100px;
+}
+
+.intro-text{
+  	line-height: 46px;
+}
+
+.intro-text strong{
+	color: #4FD2C2;
+	font-weight: 300;
+}
+
+.dark-bg{
+	background: #1B1B25;
+}
+
+[placeholder]::-webkit-input-placeholder {
+  opacity: 0;
+  color: #ccc;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.5s 0.5s ease;
+}
+
+/* ------------------------------------- MEDIA QUERIES ------------------------------------ */
+
+@media screen and (max-width: 50em) {
+	.codrops-header {
+		padding: 3em 10% 4em;
+	}
+}
+
+@media screen and (max-width: 40em) {
+	.codrops-header h1 {
+		font-size: 2.8em;
+	}
+}
