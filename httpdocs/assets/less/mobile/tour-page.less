@@ -1,0 +1,200 @@
+.tour-container {
+
+	background-color: @light-purple;
+    width: 100%;
+    height: 650px;
+	
+
+	#slide-0 {
+		h2 {
+			margin-bottom: 0;
+		}
+		p {
+			.font-gotham-book;
+			font-size: 12px;
+			text-transform: uppercase;
+		}
+	}
+	.swiper-container {
+        width: 100%;
+        height: 100%;
+        background-color: @light-purple;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        background-color: @light-purple;
+    }
+    .swiper-wrapper {
+    	padding-top: 50px;
+    }
+    .swiper-slide {
+    	h2 {
+    		color: @off-white;
+    		margin-top: 20px;
+    		margin-bottom: 62px;
+    	}
+    	.user-image {
+			margin-top: 20px; 
+    	}
+ 		.tour-info {
+ 		
+			padding: 0 21px;
+ 		}   	
+    	p {
+    		color: white;
+    		font-size: 20px;
+    	}
+    	.icon {
+    		margin-bottom: 30px;
+    		opacity: 0.5;
+    	}
+    }
+    .swiper-pagination-tour {
+    	bottom: 130px !important;	
+    }
+    .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        color:#000;
+        opacity: 1;
+        background: fade(@off-white, 20%);
+    }
+    .swiper-pagination-bullet-active {
+        color:#fff;
+        background: @off-white;
+    }
+    .next-container {
+		position: absolute;
+		z-index: 100000;
+		bottom: 80px;
+		margin: 0 auto;
+		width: 100%;
+    }
+	.tour-next-btn {
+		line-height: 23px;
+		font-size: 20px;
+		background-color: transparent;
+		border: 2px solid @off-white;
+		color: @off-white;
+	}
+	.tour-next-btn.done {
+		background-color: @off-white;
+		color: @purple;
+	}
+	#user-info-form {
+		margin-top: 5px;
+		.form-horizontal .control-label {
+			text-align: left;
+		}
+		h5 {
+			color:white;
+			margin: 0;
+		}
+		.form-group {
+			margin-bottom: 10px;
+			text-align: left;
+			select, input {
+				background-color: fade(white, 20%);
+				border: none;
+				color:white;
+				.font-gotham-book;
+				font-size: 12px;
+			}
+			select {
+           		-webkit-appearance:none;
+           		background-image: url('/assets/content/common/icons/select-arrow.svg');
+           		background-repeat: no-repeat;
+				background-position: 93% 50%;
+			}
+		}
+
+	}
+
+
+
+	.swiper-container-spots {
+		width: 280px;
+		height: 375px;
+
+		.spot, .spot-background {
+			width: 280px;
+			height: 240px;
+			overflow: hidden;
+		}
+		.been-here-container {
+			display: flex;
+			position: absolute;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			justify-content: center;
+		}
+		.spot-background {
+			position: absolute;
+			background-color: transparent !important;
+		}
+		.spot-background .active {
+			transition: all 0.2s linear;
+			background: fade(@pink, 50%);
+			.button {
+				opacity: 1;
+			}
+		}
+
+		.been-here-btn {
+			background-color: fade(@purple, 50%);
+		}
+		.been-here-btn .active {
+			background-color: @pink;
+		}
+
+		.been-here-btn {
+			padding: 0 11px;
+			width: 145px;
+			border: solid #fff 3px;
+			color: white;
+			svg {
+				float: left;
+				top: 2px;
+  				position: relative;
+			}
+			path {
+				stroke:#fff !important;
+			}
+			h4 {
+				margin: 5px 0;
+			}
+		}
+		.info {
+			position: absolute;
+			top: 244px;
+			width: 100%;
+			h5 {
+				color: white;
+				margin-bottom: -3px;
+			}
+			small {
+				color: white;
+				font-size: 11px;
+			}
+		}
+
+		.swiper-wrapper {
+	        width: 100%;
+	        height: 100%;
+
+	    }
+	}
+	.swiper-container-spots .swiper-slide {
+		width: 280px;
+		overflow: hidden;
+	}
+	.swiper-pagination-spots {
+		bottom: 42px !important;
+	}
+}
