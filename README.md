@@ -2,7 +2,11 @@
 
 <http://www.sublimetext.com/3>		
 <http://www.sequelpro.com/>		
-<https://www.mamp.info/en/mamp-pro/>		
+<https://www.mamp.info/en/mamp-pro/>			
+
+**You need to have the following installed**			
+<https://nodejs.org/>
+<http://bower.io/>
 
 **Open Terminal:**
 
@@ -24,6 +28,9 @@
 	
 **install composer**		
 `https://getcomposer.org/doc/00-intro.md#globally`
+
+**install bower components**		
+`bower install`
 
 **Run composer (this may take sometime)**		
 `composer install`
