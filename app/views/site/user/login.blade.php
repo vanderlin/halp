@@ -15,7 +15,7 @@
 @section('content')
   
       <section class="introduction">
-        <img src="{{asset('assets/content/img/halp-home.png')}}" width="150px" height="68px"/>
+        <img src="{{asset('assets/img/halp-home.png')}}" width="150px" height="68px"/>
         <div class="logo-text">halp.</div>
         <div class="introduction-content">
           <span class="intro-text">This is a tool for finding help with a task that will take <strong>less than one day</strong> to complete. Login with your <strong>Gmail</strong> username and password.</span>
