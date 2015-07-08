@@ -5,8 +5,8 @@
 <https://www.mamp.info/en/mamp-pro/>			
 
 **You need to have the following installed**			
-<https://nodejs.org/>
-<http://bower.io/>
+<https://nodejs.org/>		
+<http://bower.io/>		
 
 **Open Terminal:**
 
