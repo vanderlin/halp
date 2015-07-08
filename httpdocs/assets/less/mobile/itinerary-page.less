@@ -1,0 +1,114 @@
+
+.itinerary-submenu {
+	background-color: @green;
+}
+
+.location-brick:nth-child(odd) {
+	background-color:@tan;
+}
+
+.location-brick {
+	background-color: #fff;
+	margin-bottom: 3px;
+	.location-image {
+		position: relative;
+		padding-right: 0;
+		margin-right: 10px;
+		border-right: 6px solid @green;
+		.number {
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: table;
+			width: 22px;
+			text-align: center;
+			color:white;
+			z-index: 100;
+		}
+	}
+	.media-body {
+		h4 {
+			margin-bottom: 0;
+		}
+		small {
+			position: relative;
+			top: -3px;
+		}
+	}
+
+}
+
+.itinerary-info {
+	.title {
+		.badge-title;
+		.title-meta {
+			h1 {
+				margin-bottom: 0;
+			}
+			small {
+				.badge-title;
+			}
+		}
+		.count {
+			h4 {
+				border: 3px solid @green;
+				color:@green;
+				border-radius: 50%;
+				width: 45px;
+				height: 45px;
+				text-align: center;
+				line-height: 38px;
+				margin: 11px 0 0;
+			}
+			small {
+				color: @green;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+.itinerary-container {
+	padding-bottom: 30px;
+}
+
+.itinerary-creator {
+	padding-bottom: 10px;
+}
+
+.itinerary-brick {
+	.image-badge {
+		top: 0;
+		left: 0;
+	}
+	.image-container {
+		.title {
+			position: absolute;
+			left: 12px;
+			top: 0;
+			z-index: 111;
+			img {
+				position: relative;
+  				top: -3px;
+			}
+			a {
+				color: white;
+			}
+		}
+	}
+	.more-link {
+		margin-right: 10px;
+		width: 33px;
+		height: 33px;
+		border: 2px solid @purple;
+		color: @purple;
+		border-radius: 50%;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		text-align: center;
+		h5 {
+			width: 100%;
+		}
+	}
+}
