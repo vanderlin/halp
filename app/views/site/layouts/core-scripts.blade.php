@@ -19,6 +19,8 @@
 <!-- <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6915872/755066/css/fonts.css" /> -->
 @endif
 
+<script src="{{asset('assets/js/modernizr.custom.js')}}"></script>
+
 <!-- fontawesome -->
 <link rel="stylesheet" type="text/css" href="{{ bower('fontawesome/css/font-awesome.min.css') }}" />
 
@@ -88,33 +90,3 @@
 
 <!-- bootstrap-hover-dropdown -->
 <script src="{{bower('bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js')}}"></script>
-
-
-<!-- Modules -->
-<script src="{{ asset('assets/js/modules/spotComment.js') }}"></script>
-<script src="{{ asset('assets/js/modules/comment.js') }}"></script>
-<script src="{{ asset('assets/js/modules/spotVisit.js') }}"></script>
-<script src="{{ asset('assets/js/modules/spotItinerary.js') }}"></script>
-<script src="{{ asset('assets/js/modules/spotFavorite.js') }}"></script>
-<script src="{{ asset('assets/js/modules/masonryMore.js') }}"></script>
-<script src="{{ asset('assets/js/modules/searchBar.js') }}"></script>
-<script src="{{ asset('assets/js/modules/googleLocationFinder.js') }}"></script>
-<script src="{{ asset('assets/js/modules/googleMapper.js') }}"></script>
-<script src="{{ asset('assets/js/modules/formStatus.js') }}"></script>
-<script src="{{ asset('assets/js/modules/gotoMapLocation.js') }}"></script>
-<script src="{{ asset('assets/js/modules/bugTracker.js') }}"></script>
-<script src="{{ asset('assets/js/modules/imageUpload.js') }}"></script>
-
-@if (isMobile())
-	<script src="{{ asset('assets/js/modules/mobile.navigation.js') }}"></script>
-	<script src="{{ asset('assets/js/modules/mobile.actions.js') }}"></script>
-	<script src="{{ asset('assets/js/modules/mobile.carousel.js') }}"></script>
-@endif
-
-<script src="{{ asset('assets/js/modules/editable.text.js') }}"></script>
-<script src="{{ asset('assets/js/modules/usersFinder.js') }}"></script>
-<script src="{{ asset('assets/js/modules/userInfoPopover.js') }}"></script>
-
-@if (Auth::check())
-<script src="{{ asset('assets/js/modules/deleteAsset.js') }}"></script>
-@endif

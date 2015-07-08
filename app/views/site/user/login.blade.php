@@ -13,7 +13,34 @@
 
 
 @section('content')
+  
+      <section class="introduction">
+        <img src="{{asset('assets/content/img/halp-home.png')}}" width="150px" height="68px"/>
+        <div class="logo-text">halp.</div>
+        <div class="introduction-content">
+          <span class="intro-text">This is a tool for finding help with a task that will take <strong>less than one day</strong> to complete. Login with your <strong>Gmail</strong> username and password.</span>
+        </div>
+        <div class="box login-button">
+          <!-- progress button -->
+          <div class="progress-button elastic">
+            <a href="{{GoogleSessionController::generateGoogleLoginURL()}}"><button><span>SIGN IN WITH GOOGLE</span></button></a>
+            <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
+            <svg class="checkmark" width="70" height="70"><path d="m31.5,46.5l15.3,-23.2"/><path d="m31.5,46.5l-8.5,-7.1"/></svg>
+            <svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>
+          </div>
+          <!-- /progress-button -->
+          <!-- progress button - FAILURE
+          <div class="progress-button elastic">
+            <button><span>Submit</span></button>
+            <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
+            <svg class="checkmark" width="70" height="70"><path d="m31.5,46.5l15.3,-23.2"/><path d="m31.5,46.5l-8.5,-7.1"/></svg>
+            <svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>
+          </div> -->
+        </div>
+      </section>
+      
 
+  {{--
   <div class="container" style="margin-top:40px">
     <div class="row">
       <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -76,5 +103,6 @@
       </div>
     </div>
   </div>
+  --}}
 @stop
     
