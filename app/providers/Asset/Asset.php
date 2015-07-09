@@ -465,7 +465,7 @@ class Asset extends \Eloquent {
         $this->type = $type;
 
         if(!File::exists($save_path)) {
-           File::makeDirectory($save_path, 0755, true);     
+          File::makeDirectory($save_path, 0755, true, true);     
         }
         $content = @get_remote_file($url);
         if($content) {

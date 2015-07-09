@@ -28,6 +28,8 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Task\Task;
+
 
 class SetupSite extends Command {
 
@@ -62,18 +64,24 @@ class SetupSite extends Command {
 	 */
 	public function fire()
 	{
+	
+
+		
+		
 
 		$options = $this->option();
 		if(is_true($options['reset'])) {
 			if ($this->confirm('Do you really want to delete the tables? [yes|no]'))
 			{
-				$name = $this->call('migrate:rollback');
+				$name = $this->call('migrate:reset');
+				File::deleteDirectory(public_path('assets/content/users'));
 			}
-			return;
+			Auth::logout();
 		}
 
 		
 		$name = $this->call('migrate', array('--path'=>'app/database/migrations/setup/'));
+		$name = $this->call('migrate');
 
 
 		// create the roles
@@ -91,9 +99,59 @@ class SetupSite extends Command {
 		foreach (Role::all() as $r) {
 			$this->info("Role: ".$r->name." Created");
 		}
+
+		if(is_true($options['seed'])) {
+			$this->seed();
+		}
 		
 	}
 
+	public function seed()
+	{
+		$this->info('Seeding...');
+		$r = get_remote_file('http://localhost:8888/seeder/halp');
+		$this->info($r);
+
+		$this->info('--- Done Seeding ---');
+
+		return;
+		// make some fake users
+		if(User::all()->count() < 2) {
+			$seeder = new LOFaker;
+			$n = 2;
+			for ($i=0; $i < $n; $i++) { 
+				$seeder->createFakeUser();
+			}
+		}
+
+		if(Project\Project::all()->count() < 2) {
+			$project_names = ["Bravo", "Tinker", "Pando", "Denso", "Rabbit"];
+			foreach ($project_names as $name) {
+				$prj = new Project\Project(['title'=>$name, 'user_id'=>User::getRandomID()]);
+				$prj->save();
+			}
+		}
+
+
+		$n = 10;
+		$tasks = [];
+		$faker = Faker\Factory::create();
+		for ($i=0; $i < $n; $i++) { 
+			
+			$data = [
+				'title'=>$faker->text(20),
+				'creator_id'=>User::getRandomID(),
+				'claimed_id'=>rand()%10>5?User::getRandomID():null,
+				'project_id'=>Project\Project::getRandomID()
+				];
+			$task = new Task($data);
+			$task->save();
+			array_push($tasks, $task);
+		}
+		return $tasks;
+	}
+
+	// ------------------------------------------------------------------------
 	/**
 	 * Get the console command arguments.
 	 *
@@ -115,6 +173,7 @@ class SetupSite extends Command {
 	{
 		return array(
 			array('reset', null, InputOption::VALUE_OPTIONAL, 'reset database.', null),
+			array('seed', null, InputOption::VALUE_OPTIONAL, 'seed database.', null),
 		);
 	}
 
