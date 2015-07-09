@@ -1,4 +1,4 @@
-@extends('site.layouts.default', ['use_navigation'=>false, 'use_footer'=>false])
+@extends('site.layouts.default', ['use_navigation'=>true, 'use_footer'=>false])
 
 {{-- Web site Title --}}
 @section('title')
@@ -13,7 +13,7 @@
 
 
 @section('content')
-  <div class="container" style="margin-top:40px">
+  <div class="content bgcolor">
     
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2 text-center">
