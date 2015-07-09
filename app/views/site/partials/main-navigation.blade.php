@@ -5,7 +5,7 @@
   </div>
   <div class="user">
 	  @if (Auth::check())
-		<span class="username">{{Auth::user()->getName()}}</span>
+		<span class="username">{{link_to(Auth::user()->getProfileURL(), Auth::user()->getName())}}</span>
     	<span class="logout"><a href="{{URL::to('logout')}}">Log Out</a></span>  
 	  @else
 	  	<span class="username"></span>
