@@ -24,7 +24,7 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 $env = $app->detectEnvironment(function() {
-    return (array_key_exists('SERVER_NAME', $_SERVER) && $_SERVER['SERVER_NAME'] != 'localsonly.ideo.com') ? 'local' : 'production';	
+    return ( (array_key_exists('SERVER_NAME', $_SERVER) && $_SERVER['SERVER_NAME'] != 'localsonly.ideo.com') || (array_key_exists('HTTP_HOST', $_SERVER) && $_SERVER['HTTP_HOST'] != 'localsonly.ideo.com')) ? 'local' : 'production';	
 });
 /*
 |--------------------------------------------------------------------------
