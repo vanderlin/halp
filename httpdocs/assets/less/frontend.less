@@ -1,15 +1,23 @@
 @import 'base.less'; 
 @import 'common.less';
 
-
+/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {    margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertical-align: baseline;}/* HTML5 display-role reset for older browsers */article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {	display: block;}body {	line-height: 1;}ol, ul {	list-style: none;}blockquote, q {	quotes: none;}blockquote:before, blockquote:after,q:before, q:after {	content: '';	content: none;}table {	border-collapse: collapse;	border-spacing: 0;}
 
 *, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
 .clearfix:before, .clearfix:after { content: ''; display: table; }
 .clearfix:after { clear: both; }
 
+.sans-serif{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: 1px;
+}
 body {
 	background: #f0efee;
-	color: #404d5b;
+	color: @purple;
 	font-weight: 500;
 	font-size: 1.05em;
 	font-family: 'Merriweather', serif;
@@ -17,13 +25,13 @@ body {
 }
 
 a {
-	color: #4FD2C2;
+	color: @mint;
 	text-decoration: none;
 	outline: none;
 }
 
 a:hover, a:focus {
-	color: #404d5b;
+	color: @purple;
 }
 
 .container {
@@ -54,18 +62,14 @@ a:hover, a:focus {
 /* ----------------------------------- TOP NAV ----------------------------------- */
 
 .nav{
-	background-color: #1B1B25;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 700;
-	text-transform: uppercase;
-	font-size: 13px;
+	background-color: @dark-purple;
 	height: 60px;
-	letter-spacing: 1px;
+	.sans-serif;
 }
 
 .user{
 	float: right;
-  	padding: 20px;
+  	padding: 23px;
 }
 
 .username{
@@ -84,7 +88,7 @@ a:hover, a:focus {
 	font-weight: 300;
 	font-style: italic;
 	font-size: 32px;
-	color: #404d5b;
+	color: @purple;
 	text-transform: lowercase;
 	position: relative;
   	bottom: 19px;
@@ -106,22 +110,20 @@ a:hover, a:focus {
 }
 
 .task-details{
-	padding: 50px 20px 40px 20px;	
+	padding: 50px 20px 43px 20px;	
 }
 
 .task-name{
 	display: block;
 	font-style: italic;
-	font-weight: 300;
+	font-weight: 500;
+	font-size: 20px;
 }
 
 .project-name{
 	display: block;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 700;
-	text-transform: uppercase;
-	font-size: 13px;
 	margin-bottom: 8px;
+	.sans-serif;
 }
 .date{
 	display: block;
@@ -130,28 +132,23 @@ a:hover, a:focus {
 }
 
 .task hr{
-	border: 1px solid #404D5A;
+	border: 1px solid #e8e6e5;
   	width: 30px;
-  	margin-bottom: 18px;
+  	margin-bottom: 24px;
+  	margin-top: 23px;
 }
 
 .posted-by{
   	background-color: #F9F7F6;
-  	font-size: 12px;
-  	font-family: Montserrat, sans-serif;
-  	text-transform: uppercase;
-  	font-weight: bold;
   	padding: 10px 5px;
-  	color: #ccc;
+  	.sans-serif;
+  	color: @grey;
 }
 .claimed-by{
   	background-color: #fff;
-  	font-size: 12px;
-  	font-family: Montserrat, sans-serif;
-  	text-transform: uppercase;
-  	font-weight: bold;
   	padding: 10px 5px;
-  	color: #ccc;
+  	color: @grey;
+  	.sans-serif;
 }
 
 .claimed{
@@ -160,16 +157,16 @@ a:hover, a:focus {
 	height: 230px;
 }
 .claimed .project-name{
-	color: #ccc;
+	color: @grey;
 }
 .claimed .date{
-	color: #ccc;
+	color: @grey;
 }
 .claimed .task-name{
-	color: #ccc;
+	color: @grey;
 }
 .claimed hr{
-	border-color: #ccc;
+	border-color: @grey;
 }
 .claimed-text{
 	color: #404D5A;
@@ -278,7 +275,7 @@ body .nomargin-bottom {
 	padding: 0.5em 0em 0.4em;
 	width: 100%;
 	background: transparent;
-	color: #4FD2C2;
+	color: @mint;
 	font-size: 1.25em;
 }
 
@@ -311,14 +308,14 @@ body .nomargin-bottom {
 
 .input__field--nao:focus + .input__label--nao,
 .input--filled .input__label--nao {
-	color: #1B1B25;
+	color: @dark-purple;
 	-webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
 	transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
 }
 
 .input__field--nao:focus ~ .graphic--nao,
 .input--filled .graphic--nao {
-	stroke: #1B1B25;
+	stroke: @dark-purple;
 	-webkit-transform: translate3d(-66.6%, 0, 0);
 	transform: translate3d(-66.6%, 0, 0);
 }
@@ -344,7 +341,7 @@ body .nomargin-bottom {
 }
 
 .introduction{
-	background-color: #1B1B25;
+	background-color: @dark-purple;
   	font-size: 25px;
   	font-style: italic;
   	color: #fff;
@@ -366,17 +363,17 @@ body .nomargin-bottom {
 }
 
 .intro-text strong{
-	color: #4FD2C2;
+	color: @mint;
 	font-weight: 300;
 }
 
 .dark-bg{
-	background: #1B1B25;
+	background: @dark-purple;
 }
 
 [placeholder]::-webkit-input-placeholder {
   opacity: 0;
-  color: #ccc;
+  color: @grey;
 }
 
 [placeholder]:focus::-webkit-input-placeholder {
