@@ -37,8 +37,9 @@ class TasksRepository  {
 	}
 
 	// ------------------------------------------------------------------------
-	public function store()
+	public function store($input)
 	{		
+		$task = new Task;
 		return $this->listener->statusResponse(['notice'=>'Task Created', 'task'=>$task]);		
 	}
 

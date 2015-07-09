@@ -20,10 +20,21 @@ Route::group(array('before'=>['siteprotection']), function() {
 
 
 	Route::get('/', ['uses'=>'TasksController@index']);
-	Route::get('projects', ['uses'=>'ProjectsController@index']);
+	
+	Route::group(array('prefix'=>'projects'), function() {
+		Route::get('/', ['uses'=>'ProjectsController@index']);
+		Route::get('search', ['uses'=>'ProjectsController@search']);
+	});
+
 	Route::group(array('before'=>['auth', 'confirmed']), function() {
 		include 'user_routes.php';
 	});
+
+	Route::group(array('before'=>'auth', 'prefix'=>'tasks'), function() {
+		Route::post('/', ['uses'=>'TasksController@store', 'as'=>'tasks.store']);
+	});
+
+
 });
 
 
