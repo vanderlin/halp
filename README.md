@@ -24,6 +24,12 @@ To install:
 	- `curl -sS https://getcomposer.org/installer | php`			     
 	- `mv composer.phar /usr/local/bin/composer`			
 
+- **Grunt**			
+<http://gruntjs.com/>	
+In Terminal type: `grunt -v`		 		
+To Install:			
+	- `npm install -g grunt-cli`			
+
 - **php 5.4.x**		
 In Terminal type: `php -v`		
 
@@ -69,6 +75,10 @@ You should see `mcrypt support => enabled` in the output. You may need to alias 
 - **install bower components**		
 	- `bower install`
 
+- **Setup Grunt**					
+	- `npm install`			
+	- To have grunt running in the background, open another terminal window and cd to the app `cd ~/Sites/halp` now just run `grunt` Leave this window open, it will listen for any changes made to files.
+	
 - **Run composer (this may take sometime)**		
 	- `composer install`
 
