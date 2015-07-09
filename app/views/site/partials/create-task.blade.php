@@ -40,5 +40,8 @@
 {{Form::close()}}
 
 <script type="text/javascript">
-	
+	var projects = {{json_encode(Project\Project::all()->lists('title'))}}
+	$( 'input[name="project"]' ).autocomplete({
+	  source: projects,
+	});
 </script>
