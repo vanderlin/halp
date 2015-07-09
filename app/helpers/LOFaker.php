@@ -484,13 +484,9 @@ class LOFaker {
 		$random_user_data = $random_user_data->results[0]->user;
 		$faker = Faker\Factory::create();
 
-		$office = Office::orderBy(DB::raw('RAND()'))->first();
-		$role = $role = Role::where('name', '=', 'Reader')->first();
-		$isSpotter = rand(0, 8)> 3;
-		$editor_role = Role::where('name', '=', 'Editor')->first();
+		$role = $role = Role::where('name', '=', 'Writer')->first();
 		$joinDate = $faker->dateTimeBetween('-3 years', 'now');
 		
-
 		$user 			  = new User;
 		$user->timestamps = false;
 	    $user->username   = $random_user_data->username;
@@ -500,6 +496,7 @@ class LOFaker {
 		$user->lastname   			 = $random_user_data->name->last;
 		$user->password 			 = $password;
 		$user->password_confirmation = $password;
+		$user->confirmed 			 = 1;
 		$user->confirmation_code 	 = md5($user->username.time('U'));
 		$user->created_at = $user->updated_at = $joinDate;
 		$user->save();
@@ -507,25 +504,13 @@ class LOFaker {
 		$image_url = $random_user_data->picture->large;
 		$userImage = new Asset;
 		$userImage->path = 'assets/content/users';
-		$userImage->saveRemoteImage($image_url,  $user->username.".jpg");
+		$userImage->saveRemoteAsset($image_url,  $user->username.".jpg", Asset::ASSET_TYPE_IMAGE);
 		$userImage->save();
 		$user->profileImage()->save($userImage);
 		$user->profileImage->user()->associate($user);
-
-		
-        if($role) {
-        	$user->attachRole($role);
-        	if($isSpotter) {
-				$user->attachRole($editor_role);
-        	}
-		}
-
-		if($office) {
-			$user->office()->associate($office);
-		}
-
-		$user->fireActivityJoinedEvent();
-
+		$user->save();
+        $user->attachRole($role);
+		$user->save();
 		return $user;
 	}
 
