@@ -5,7 +5,7 @@
     @yield('head')
     @yield('scripts')
   </head>
-  <body class="dark-bg">
+  <body>
    
     <!-- Content -->  
     <div class="container">
