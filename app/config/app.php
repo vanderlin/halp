@@ -129,6 +129,8 @@ return array(
 	    
 	    // namespace in the future
 	    'Asset\AssetsServiceProvider',
+	    'Project\ProjectsServiceProvider',
+	    'Task\TasksServiceProvider',
 	),
 
 	/*

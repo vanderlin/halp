@@ -27,7 +27,7 @@ class UsersController extends BaseController
 
     public function index()
     {
-        return View::make('site.user.index');
+        return View::make('site.user.index', ['users'=>User::all()]);
     }
 
     public function me()

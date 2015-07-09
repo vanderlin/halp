@@ -12,7 +12,7 @@
   
       <!-- Main Navigation -->
       @if (isset($use_navigation)?$use_navigation:true)
-        @include('site.layouts.main-navigation')
+        @include('site.partials.main-navigation')
       @endif
       <!-- Main Navigation -->  
 

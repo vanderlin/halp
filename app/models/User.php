@@ -58,9 +58,9 @@ class User extends BaseModel implements ConfideUserInterface {
         return $this->morphOne('Asset', 'assetable');
     }
 
-    public function moments()
+    public function getTotalTask()
     {
-        return $this->hasMany('Moment');
+        return 10;
     }
 
     public function getProfileImageAttribute() {
@@ -91,8 +91,11 @@ class User extends BaseModel implements ConfideUserInterface {
     public function getName() {
         return (empty($this->firstname)||empty($this->lastname)) ? $this->username : ucfirst($this->firstname)." ".ucfirst($this->lastname);
     }
-
-     public function getFirstName() {
+    public function getShortName()
+    {
+        return $this->firstname.' '.substr($this->lastname, 0, 1).'.';
+    }
+    public function getFirstName() {
         return empty($this->firstname) ? $this->username : $this->firstname;
     }
 
