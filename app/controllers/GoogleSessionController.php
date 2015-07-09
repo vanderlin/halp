@@ -38,6 +38,13 @@ class GoogleSessionController extends BaseController {
 	}
 
 	// ------------------------------------------------------------------------
+	public static function getRedirectURI()
+	{	
+		$creds  = GoogleSessionController::getCreds();
+		return array_key_exists('HTTP_HOST', $_SERVER) ? 'http://'.$_SERVER['HTTP_HOST'].'/oauth2callback' : $creds->redirect_uri;
+	}
+
+	// ------------------------------------------------------------------------
 	public static function getClient() {
 		
 		$creds  = GoogleSessionController::getCreds();
@@ -56,9 +63,10 @@ class GoogleSessionController extends BaseController {
 			$client->setApplicationName($creds->app_name);
 			$client->setClientId($creds->client_id);
 			$client->setClientSecret($creds->client_secret);
-			$client->setRedirectUri($creds->redirect_uri); 	// <--- huh?
 		}
 		
+		$client->setRedirectUri(GoogleSessionController::getRedirectURI()); 	
+
 		$hd = Config::get('config.google.hd');
 		if($hd) $client->setHostedDomain($hd);
 		$client->setAccessType('offline');
