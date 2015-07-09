@@ -18,14 +18,21 @@
 		@include('site.partials.create-task')
 	@endif
 		
-		
-		<section class="content">
-		@forelse ($tasks as $task)
-			@include('site.tasks.card', array('task' => $task))
-		@empty
-			<h3>No Tasks</h3>
-		@endforelse
-		</section>
+	<section class="content">
+	@forelse ($tasks as $task)
+		@include('site.tasks.card', array('task' => $task, 'claimed'=>false))
+	@empty
+		<h3>No Claimed Tasks</h3>
+	@endforelse
+	</section>
+
+	<section class="content">
+	@forelse ($claimed_tasks as $task)
+		@include('site.tasks.card', array('task' => $task, 'claimed'=>true))
+	@empty
+		<h3>No Claimed Tasks</h3>
+	@endforelse
+	</section>
 @stop
     
 {{--
