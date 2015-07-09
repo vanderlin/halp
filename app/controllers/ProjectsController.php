@@ -28,7 +28,7 @@ class ProjectsController extends \BaseController {
 	public function search()
 	{
 		$q = Input::get('q');
-		return Project\Project::where('title', 'LIKE', $q)->get();	
+		return Project\Project::where('title', 'LIKE', "%$q%")->get();	
 	}
 
 	// ------------------------------------------------------------------------
