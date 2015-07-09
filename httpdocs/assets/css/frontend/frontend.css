@@ -116,6 +116,131 @@
 .loading.elastic.progress-button button {
   transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
 }
+/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 *,
 *:after,
 *:before {
@@ -129,6 +254,13 @@
 .clearfix:after {
   clear: both;
 }
+.sans-serif {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
 body {
   background: #f0efee;
   color: #404d5b;
@@ -138,7 +270,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 a {
-  color: #4FD2C2;
+  color: #4fd2c2;
   text-decoration: none;
   outline: none;
 }
@@ -170,17 +302,17 @@ a:focus {
 }
 /* ----------------------------------- TOP NAV ----------------------------------- */
 .nav {
-  background-color: #1B1B25;
+  background-color: #1b1b25;
+  height: 60px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 13px;
-  height: 60px;
+  font-size: 12px;
   letter-spacing: 1px;
 }
 .user {
   float: right;
-  padding: 20px;
+  padding: 23px;
 }
 .username {
   padding-right: 20px;
@@ -215,20 +347,22 @@ a:focus {
   padding: 0px;
 }
 .task-details {
-  padding: 50px 20px 40px 20px;
+  padding: 50px 20px 43px 20px;
 }
 .task-name {
   display: block;
   font-style: italic;
-  font-weight: 300;
+  font-weight: 500;
+  font-size: 20px;
 }
 .project-name {
   display: block;
+  margin-bottom: 8px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 13px;
-  margin-bottom: 8px;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 .date {
   display: block;
@@ -236,27 +370,30 @@ a:focus {
   font-weight: 500;
 }
 .task hr {
-  border: 1px solid #404D5A;
+  border: 1px solid #e8e6e5;
   width: 30px;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
+  margin-top: 23px;
 }
 .posted-by {
   background-color: #F9F7F6;
-  font-size: 12px;
-  font-family: Montserrat, sans-serif;
-  text-transform: uppercase;
-  font-weight: bold;
   padding: 10px 5px;
-  color: #ccc;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #cccccc;
 }
 .claimed-by {
   background-color: #fff;
-  font-size: 12px;
-  font-family: Montserrat, sans-serif;
-  text-transform: uppercase;
-  font-weight: bold;
   padding: 10px 5px;
-  color: #ccc;
+  color: #cccccc;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 .claimed {
   background-color: #F9F7F6;
@@ -264,16 +401,16 @@ a:focus {
   height: 230px;
 }
 .claimed .project-name {
-  color: #ccc;
+  color: #cccccc;
 }
 .claimed .date {
-  color: #ccc;
+  color: #cccccc;
 }
 .claimed .task-name {
-  color: #ccc;
+  color: #cccccc;
 }
 .claimed hr {
-  border-color: #ccc;
+  border-color: #cccccc;
 }
 .claimed-text {
   color: #404D5A;
@@ -369,7 +506,7 @@ body .nomargin-bottom {
   padding: 0.5em 0em 0.4em;
   width: 100%;
   background: transparent;
-  color: #4FD2C2;
+  color: #4fd2c2;
   font-size: 1.25em;
 }
 .input__label--nao {
@@ -397,13 +534,13 @@ body .nomargin-bottom {
 }
 .input__field--nao:focus + .input__label--nao,
 .input--filled .input__label--nao {
-  color: #1B1B25;
+  color: #1b1b25;
   -webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
   transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
 }
 .input__field--nao:focus ~ .graphic--nao,
 .input--filled .graphic--nao {
-  stroke: #1B1B25;
+  stroke: #1b1b25;
   -webkit-transform: translate3d(-66.6%, 0, 0);
   transform: translate3d(-66.6%, 0, 0);
 }
@@ -423,7 +560,7 @@ body .nomargin-bottom {
   width: 260px;
 }
 .introduction {
-  background-color: #1B1B25;
+  background-color: #1b1b25;
   font-size: 25px;
   font-style: italic;
   color: #fff;
@@ -441,15 +578,15 @@ body .nomargin-bottom {
   line-height: 46px;
 }
 .intro-text strong {
-  color: #4FD2C2;
+  color: #4fd2c2;
   font-weight: 300;
 }
 .dark-bg {
-  background: #1B1B25;
+  background: #1b1b25;
 }
 [placeholder]::-webkit-input-placeholder {
   opacity: 0;
-  color: #ccc;
+  color: #cccccc;
 }
 [placeholder]:focus::-webkit-input-placeholder {
   opacity: 1;
