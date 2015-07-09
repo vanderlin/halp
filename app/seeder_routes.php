@@ -26,13 +26,15 @@ Route::get('seeder/halp', function() {
 	$n = 10;
 	$tasks = [];
 	$faker = Faker\Factory::create();
+	$durs = ['a min', 'couple of hours', 'a day', 'few mins'];
 	for ($i=0; $i < $n; $i++) { 
 		
 		$data = [
 			'title'=>$faker->text(20),
 			'creator_id'=>User::getRandomID(),
 			'claimed_id'=>rand()%10>5?User::getRandomID():null,
-			'project_id'=>Project\Project::getRandomID()
+			'project_id'=>Project\Project::getRandomID(),
+			'duration'=>$durs[array_rand($durs)]
 			];
 		$task = new Task($data);
 		$task->save();
