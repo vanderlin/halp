@@ -20,7 +20,7 @@
 
 	<div class="task">
 		<div class="task-details">
-			<span class="task-name">{{$user->getName()}}</span>
+			<span class="task-name">{{link_to($user->getProfileURL(), $user->getName())}}</span>
 			<hr>
 			<img src="{{$user->profileImage->url('s100')}}" class="img-circle">
 			<span class="project-name">Total Tasks: {{$user->getTotalTask()}}</span>
