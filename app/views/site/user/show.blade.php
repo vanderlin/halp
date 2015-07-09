@@ -20,7 +20,7 @@
       
         <img src="{{$user->profileImage->url('s100')}}" class="img-circle">
         <h4>{{$user->getName()}}</h4>  
-      
+      	{{link_to('/', 'home')}}
       </div>
     </div>
 @stop
