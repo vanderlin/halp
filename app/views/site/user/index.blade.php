@@ -28,12 +28,6 @@
 		</div>
 		<div class="posted-by">{{$user->email}}</div>
 	</div>
-
-
-
-    	
-    
-
 @empty
 	<h3>No Users</h3>
 @endforelse
