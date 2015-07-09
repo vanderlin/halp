@@ -87,3 +87,18 @@ You should see `mcrypt support => enabled` in the output. You may need to alias 
 
 - **Open Chrome**			
 	- <http://localhost:8888>
+
+## EndPoints
+
+- **Users Page**		
+<http://localhost:8888/users> 			
+
+- **Profile Page**		
+<http://localhost:8888/users/{id-or-username}> 			
+
+- **Projects List**		
+<http://localhost:8888/projects> 			
+
+- **Debug Info**		
+<http://localhost:8888/env> 			
+<http://localhost:8888/php> 			 			

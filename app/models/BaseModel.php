@@ -16,6 +16,13 @@ class BaseModel extends \Eloquent {
     return with(new static)->getTable();
   }
 
+  public static function getRandomID()
+  {
+    $table = with(new static)->getTable();
+    return DB::table($table)->orderByRaw("RAND()")->take(1)->lists('id')[0];
+    // return $tablewith(new static)->getTable();
+  }  
+
   public function getSafeSlug($name) {
       $name = empty($name) ? uniqid() : $name;
       $table = $this->getTable();
