@@ -603,3 +603,18 @@ body .nomargin-bottom {
     font-size: 2.8em;
   }
 }
+.ui-autocomplete {
+  background: #eee;
+  display: table;
+  z-index: 1000;
+  position: relative;
+}
+.ui-autocomplete li {
+  line-height: 25px;
+  padding: 10px;
+  cursor: pointer;
+}
+.ui-autocomplete li:hover {
+  color: #fff;
+  background: #555;
+}
