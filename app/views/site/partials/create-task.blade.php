@@ -40,8 +40,12 @@
 {{Form::close()}}
 
 <script type="text/javascript">
-	var projects = {{json_encode(Project\Project::all()->lists('title'))}}
+	var data = {{json_encode(Project\Project::all()->lists('title'))}}
 	$( 'input[name="project"]' ).autocomplete({
-	  source: projects,
-	});
+		source: data,
+	 	minLength: 0
+	})
+	.focus(function() {
+    	$(this).autocomplete('search', $(this).val())
+	});;
 </script>
