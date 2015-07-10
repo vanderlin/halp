@@ -26,6 +26,7 @@
   color: #4fd2c2;
   -webkit-tap-highlight-color: transparent;
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  cursor: pointer;
 }
 .small.progress-button {
   min-width: none;
@@ -337,7 +338,7 @@ a:focus {
 /* ----------------------------------- TASK CARDS ----------------------------------- */
 .task {
   width: 250px;
-  height: 320px;
+  height: 318px;
   background-color: #fff;
   text-align: center;
   display: -moz-inline-stack;
@@ -604,17 +605,25 @@ body .nomargin-bottom {
   }
 }
 .ui-autocomplete {
-  background: #eee;
+  background: #fff;
   display: table;
   z-index: 1000;
   position: relative;
+  margin-top: -10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #404d5b;
 }
 .ui-autocomplete li {
   line-height: 25px;
   padding: 10px;
   cursor: pointer;
+  text-align: center;
 }
 .ui-autocomplete li:hover {
   color: #fff;
-  background: #555;
+  background: #404d5b;
 }

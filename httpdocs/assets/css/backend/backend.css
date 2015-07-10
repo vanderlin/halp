@@ -26,6 +26,7 @@
   color: #4fd2c2;
   -webkit-tap-highlight-color: transparent;
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  cursor: pointer;
 }
 .small.progress-button {
   min-width: none;
