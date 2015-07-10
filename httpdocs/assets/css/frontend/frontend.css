@@ -1,3 +1,4 @@
+/* ----------------------------------- MIXINS ----------------------------------- */
 /* Button container */
 .progress-button {
   position: relative;
@@ -17,12 +18,12 @@
   border: 2px solid #4FD2C2;
   border-radius: 40px;
   background: transparent;
-  color: #4FD2C2;
-  letter-spacing: 2px;
-  font-size: 14px;
   font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
   font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #4fd2c2;
   -webkit-tap-highlight-color: transparent;
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
 }
@@ -35,7 +36,11 @@
 .small.progress-button button {
   width: 150px;
   height: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
   font-size: 12px;
+  color: #4fd2c2;
   letter-spacing: 1px;
 }
 .progress-button button:hover {
@@ -254,13 +259,7 @@ table {
 .clearfix:after {
   clear: both;
 }
-.sans-serif {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
+/* ----------------------------------- MISC ----------------------------------- */
 body {
   background: #f0efee;
   color: #404d5b;
@@ -309,6 +308,7 @@ a:focus {
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
+  color: #ffffff;
 }
 .user {
   float: right;
@@ -326,9 +326,9 @@ a:focus {
   padding: 15px;
   font-family: 'Merriweather', serif;
   font-weight: 300;
-  font-style: italic;
   font-size: 32px;
   color: #404d5b;
+  font-style: italic;
   text-transform: lowercase;
   position: relative;
   bottom: 19px;
@@ -351,9 +351,11 @@ a:focus {
 }
 .task-name {
   display: block;
-  font-style: italic;
+  font-family: 'Merriweather', serif;
   font-weight: 500;
   font-size: 20px;
+  color: #404d5b;
+  font-style: italic;
 }
 .project-name {
   display: block;
@@ -363,6 +365,7 @@ a:focus {
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
+  color: #404d5b;
 }
 .date {
   display: block;
@@ -388,12 +391,12 @@ a:focus {
 .claimed-by {
   background-color: #fff;
   padding: 10px 5px;
-  color: #cccccc;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
+  color: #cccccc;
 }
 .claimed {
   background-color: #F9F7F6;
@@ -411,12 +414,6 @@ a:focus {
 }
 .claimed hr {
   border-color: #cccccc;
-}
-.claimed-text {
-  color: #404D5A;
-  font-family: 'Merriweather', serif;
-  font-weight: 300;
-  font-style: italic;
 }
 /* ------------------------------------- FORM ------------------------------------ */
 .content h2 {
@@ -455,9 +452,10 @@ body .nomargin-bottom {
   border: none;
   border-radius: 0;
   background: #f0f0f0;
-  color: #aaa;
   font-family: 'Merriweather', serif;
   font-weight: 300;
+  font-size: 1.05em;
+  color: #aaaaaa;
   font-style: italic;
   -webkit-appearance: none;
   /* for box shadows to show on iOS */
@@ -470,9 +468,11 @@ body .nomargin-bottom {
   float: right;
   padding: 0 1em;
   width: 40%;
-  color: #D1D1D1;
-  font-size: 70.25%;
   font-family: 'Merriweather', serif;
+  font-weight: 500;
+  font-size: 70.25%;
+  color: #d1d1d1;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-touch-callout: none;
