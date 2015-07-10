@@ -30,6 +30,16 @@ class TasksRepository  {
 	}
 
 	// ------------------------------------------------------------------------
+	public function get($id) {
+		
+		if(is_object($id)) {
+			$id = $id->id;
+		}
+		return Task::withTrashed()->whereId($id)->first();
+	}
+
+
+	// ------------------------------------------------------------------------
 	public function find($id) {
 		
 		if(is_object($id)) {

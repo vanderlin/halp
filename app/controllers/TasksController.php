@@ -21,9 +21,15 @@ class TasksController extends \BaseController {
 	// ------------------------------------------------------------------------
 	public function show($id)
 	{
-	
+		return $this->repository->find($id);
 	}
 
+	// ------------------------------------------------------------------------
+	public function showClaimed($id)
+	{
+		$task = $this->repository->get($id);
+		return View::make('site.tasks.claim-popup', ['task'=>$task]);
+	}
 	// ------------------------------------------------------------------------
 	public function create($id)
 	{

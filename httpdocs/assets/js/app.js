@@ -93,9 +93,49 @@ var App = (function() {
 
 
     self.loadModules = function() {
-      $.timeago.settings.cutoff = 0;
-      $(".timeago").timeago();
+        $.timeago.settings.cutoff = 0;
+        $(".timeago").timeago();
       
+        $('.halp-claim-button').each(function(index, el) {
+            var $button = $(el);
+            var id = $button.data('id');
+            
+            $button.magnificPopup({
+                items: {
+                    src: '/tasks/'+id+'/claimed',
+                    type: 'ajax'
+                },
+                callbacks: {
+                    parseAjax: function(mfpResponse) {
+                    // mfpResponse.data is a "data" object from ajax "success" callback
+                    // for simple HTML file, it will be just String
+                    // You may modify it to change contents of the popup
+                    // For example, to show just #some-element:
+                    // mfpResponse.data = $(mfpResponse.data).find('#some-element');
+                    //console.log($(mfpResponse.data));
+                    // mfpResponse.data must be a String or a DOM (jQuery) element
+                    var task = mfpResponse.xhr.responseText;
+                  
+                    mfpResponse.data = $(mfpResponse.xhr.responseText);
+                  },
+                  ajaxContentAdded: function() {
+                    // Ajax content is loaded and appended to DOM
+                    console.log(this.content);
+                   
+                  }
+                }
+            });
+            $button.on('mfpOpen', function(e /*, params */) {
+                console.log('Popup opened',  $.magnificPopup.instance);
+            });
+
+            if(index == 4) {
+                $button.magnificPopup('open'); 
+            }
+        });
+
+
+
     }
 
 	return self;
