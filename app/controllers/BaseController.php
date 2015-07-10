@@ -2,13 +2,12 @@
 
 class BaseController extends Controller {
 
-	/**
-	 * Setup the layout used by the controller.
-	 *
-	 * @return void
-	 */
+	public $wantsjson = false;
+	
 	protected function setupLayout()
-	{
+	{	
+		$this->wantsJson = Request::wantsJson() || (Input::has('json')&&Input::get('json')==true);
+
 		if ( ! is_null($this->layout))
 		{
 			$this->layout = View::make($this->layout);
@@ -26,7 +25,7 @@ class BaseController extends Controller {
 	// ------------------------------------------------------------------------
 	public function statusResponse($message, $status=200, $withInput=true) {
 		$backurl = isset($message['backurl']) ? $message['backurl'] : URL::previous();
-		$wantsJson =isset($message['wantsjson'])? $message['wantsjson'] : Request::wantsJson();
+		$wantsJson = $this->wantsJson;// isset($message['wantsjson'])? $message['wantsjson'] : Request::wantsJson();
 
 		unset($message['wantsjson']);
 		unset($message['backurl']);

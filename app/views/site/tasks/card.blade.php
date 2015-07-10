@@ -7,7 +7,7 @@
 		<span class="date">{{$task->created_at->toFormattedDateString()}}</span>
 		@if (!$claimed)
 			<div class="progress-button small">
-				<button><span>Claim task</span></button>
+				<button class="halp-claim-button" data-id="{{$task->id}}" data-mfp-src="/tasks/{{$task->id}}?json=true"><span>Claim task</span></button>
 			</div>
 		@endif
 	</div>

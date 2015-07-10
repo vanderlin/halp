@@ -620,6 +620,28 @@ body .nomargin-bottom {
     font-size: 2.8em;
   }
 }
+.claimed-popup {
+  position: relative;
+  background: #FFF;
+  padding: 50px;
+  width: auto;
+  max-width: 620px;
+  margin: 20px auto;
+}
+.claimed-popup h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+}
+.claimed-popup .claimed-buttons {
+  width: 100%;
+}
+.claimed-popup .claimed-buttons button {
+  display: inline-block;
+}
+.claimed-popup .mfp-close {
+  font-size: 65px;
+}
 .ui-autocomplete {
   background: #fff;
   display: table;
