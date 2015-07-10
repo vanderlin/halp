@@ -10,8 +10,8 @@
 		</svg>
 	</span>
 	<span class="input input--nao">
-		<input class="input__field input__field--nao" type="text" id="input-2" placeholder="project name" name="project" />
-		<label class="input__label input__label--nao" for="input-2">
+		<input class="input__field input__field--nao" type="text" id="task-project" placeholder="project name" name="project" />
+		<label class="input__label input__label--nao" for="task-project">
 			<span class="input__label-content input__label-content--nao">For:</span>
 		</label>
 		<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
@@ -19,9 +19,9 @@
 		</svg>
 	</span>
 	<span class="input input--nao">
-		<input class="input__field input__field--nao" type="text" id="input-3" placeholder="mm/dd/yy"/>
-		<label class="input__label input__label--nao" for="input-3">
-			<span class="input__label-content input__label-content--nao">On:</span>
+		<input class="input__field input__field--nao" type="text" id="task-duration" name="duration" placeholder="ex: an hour, a day"/>
+		<label class="input__label input__label--nao" for="task-duration">
+			<span class="input__label-content input__label-content--nao">And I think it will take:</span>
 		</label>
 		<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
 			<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
@@ -36,8 +36,11 @@
 			<svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>
 		</div>
 	</div>
+	@include('site.partials.form-errors')
 </section>
 {{Form::close()}}
+
+
 
 <script type="text/javascript">
 	var data = {{json_encode(Project\Project::all()->lists('title'))}}
