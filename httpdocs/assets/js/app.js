@@ -129,9 +129,7 @@ var App = (function() {
                 console.log('Popup opened',  $.magnificPopup.instance);
             });
 
-            if(index == 4) {
-                $button.magnificPopup('open'); 
-            }
+            
         });
 
 
