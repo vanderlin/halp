@@ -2,7 +2,7 @@
 
 {{-- Web site Title --}}
 @section('title')
-	{{Config::get('config.site_name')}} | Users
+	{{Config::get('config.site_name')}} | Leaderboard
 @stop
 
 @section('scripts')
