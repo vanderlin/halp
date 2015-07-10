@@ -22,18 +22,24 @@ Route::group(array('before'=>['siteprotection']), function() {
 	Route::get('/', ['uses'=>'TasksController@index']);
 		
 	Route::get('leaderboard', ['uses'=>'UsersController@index']);
-	
+
+	// projects
 	Route::group(array('prefix'=>'projects'), function() {
 		Route::get('/', ['uses'=>'ProjectsController@index']);
 		Route::get('search', ['uses'=>'ProjectsController@search']);
 	});
 
+	// users
 	Route::group(array('before'=>['auth', 'confirmed']), function() {
 		include 'user_routes.php';
 	});
 
-	Route::group(array('before'=>'auth', 'prefix'=>'tasks'), function() {
+	// tasks
+	Route::group(array('prefix'=>'tasks', 'before'=>'auth'), function() {
 		Route::post('/', ['uses'=>'TasksController@store', 'as'=>'tasks.store']);
+		Route::get('{id}', ['uses'=>'TasksController@show', 'as'=>'tasks.show']);
+		Route::get('{id}/claimed', ['uses'=>'TasksController@showClaimed', 'as'=>'tasks.show.claimed']);
+		
 	});
 
 
