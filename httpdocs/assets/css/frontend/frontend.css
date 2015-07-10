@@ -609,6 +609,10 @@ body .nomargin-bottom {
   opacity: 1;
   transition: opacity 0.5s 0.5s ease;
 }
+.alert {
+  font-style: italic;
+  padding-top: 28px;
+}
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 @media screen and (max-width: 50em) {
   .codrops-header {
