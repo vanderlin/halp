@@ -20,6 +20,8 @@ Route::group(array('before'=>['siteprotection']), function() {
 
 
 	Route::get('/', ['uses'=>'TasksController@index']);
+		
+	Route::get('leaderboard', ['uses'=>'UsersController@index']);
 	
 	Route::group(array('prefix'=>'projects'), function() {
 		Route::get('/', ['uses'=>'ProjectsController@index']);
