@@ -25,13 +25,13 @@ class Task extends BaseModel {
     // ------------------------------------------------------------------------
     public function scopeClaimed($query)
     {
-    	return $query->whereNotNull('claimed_id');
+    	return $query->whereNotNull('claimed_id')->orderBy('created_at', 'DESC');
     }
 
     // ------------------------------------------------------------------------
     public function scopeUnClaimed($query)
     {
-    	return $query->whereNull('claimed_id');
+    	return $query->whereNull('claimed_id')->orderBy('created_at', 'DESC');
     }
 
 	// ------------------------------------------------------------------------

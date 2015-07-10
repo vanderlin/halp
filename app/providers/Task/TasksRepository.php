@@ -47,7 +47,6 @@ class TasksRepository  {
 			return $this->listener->errorResponse($validator->errors()->all());
 		}
 
-		$task = new Task;
 		$project = Project::where('title', '=', $input['project'])->first();
 
 		// if null we need to create the new project
@@ -56,7 +55,10 @@ class TasksRepository  {
 			$project = new Project(['title'=>$input['project'], 'user_id'=>Auth::id()]);
 			$project->save();
 		}
-		dd($task, $input, $project);
+
+		$task = new Task(['title'=>$input['title'], 'duration'=>$input['duration'], 'project_id'=>$project->id, 'creator_id'=>Auth::id()]);
+		$task->save();
+
 		return $this->listener->statusResponse(['notice'=>'Task Created', 'task'=>$task]);		
 	}
 
