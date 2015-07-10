@@ -1,8 +1,8 @@
 {{Form::open(['route'=>'tasks.store'])}}
 <section class="content bgcolor">
 	<span class="input input--nao">
-		<input class="input__field input__field--nao" type="text" id="input-1" placeholder="ex: proofreading" name="title" />
-		<label class="input__label input__label--nao" for="input-1">
+		<input class="input__field input__field--nao" type="text" id="task-title" placeholder="ex: proofreading" autocomplete="off" name="title" />
+		<label class="input__label input__label--nao" for="task-title">
 			<span class="input__label-content input__label-content--nao">I need a hand with:</span>
 		</label>
 		<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
