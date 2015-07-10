@@ -59,7 +59,7 @@ class TasksRepository  {
 		$task = new Task(['title'=>$input['title'], 'duration'=>$input['duration'], 'project_id'=>$project->id, 'creator_id'=>Auth::id()]);
 		$task->save();
 
-		return $this->listener->statusResponse(['notice'=>'Task Created', 'task'=>$task]);		
+		return $this->listener->statusResponse(['notice'=>'Task Created. Help is on the way!', 'task'=>$task]);		
 	}
 
 	// ------------------------------------------------------------------------
