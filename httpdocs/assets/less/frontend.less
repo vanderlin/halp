@@ -8,13 +8,8 @@ html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockqu
 .clearfix:before, .clearfix:after { content: ''; display: table; }
 .clearfix:after { clear: both; }
 
-.sans-serif{
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 700;
-	text-transform: uppercase;
-	font-size: 12px;
-	letter-spacing: 1px;
-}
+/* ----------------------------------- MISC ----------------------------------- */
+
 body {
 	background: #f0efee;
 	color: @purple;
@@ -45,14 +40,14 @@ a:hover, a:focus {
 	padding: 1.5em 0 3em 0;
 }
 
-.turtle-break{
+.turtle-break {
 	margin: 50px 0;
 }
-.turtle-break img{
+.turtle-break img {
 	vertical-align: middle;
   	margin: 0 10px;
 }
-.turtle-line{
+.turtle-line {
   	width: 20%;
   	height: 2px;
   	background-color: #E6E6E6;
@@ -64,7 +59,7 @@ a:hover, a:focus {
 .nav{
 	background-color: @dark-purple;
 	height: 60px;
-	.sans-serif;
+	.sans-serif(12px, #fff);
 }
 
 .user{
@@ -84,11 +79,7 @@ a:hover, a:focus {
 
 .logo-text{
 	padding: 15px;
-	font-family: 'Merriweather', serif;
-	font-weight: 300;
-	font-style: italic;
-	font-size: 32px;
-	color: @purple;
+	.serif(32px, 300, italic, @purple);
 	text-transform: lowercase;
 	position: relative;
   	bottom: 19px;
@@ -115,15 +106,13 @@ a:hover, a:focus {
 
 .task-name{
 	display: block;
-	font-style: italic;
-	font-weight: 500;
-	font-size: 20px;
+	.serif(20px, 500, italic, @purple);
 }
 
 .project-name{
 	display: block;
 	margin-bottom: 8px;
-	.sans-serif;
+	.sans-serif(12px, @purple);
 }
 .date{
 	display: block;
@@ -141,14 +130,12 @@ a:hover, a:focus {
 .posted-by{
   	background-color: #F9F7F6;
   	padding: 10px 5px;
-  	.sans-serif;
-  	color: @grey;
+  	.sans-serif(12px, @grey);
 }
 .claimed-by{
   	background-color: #fff;
   	padding: 10px 5px;
-  	color: @grey;
-  	.sans-serif;
+  	.sans-serif(12px, @grey);
 }
 
 .claimed{
@@ -168,13 +155,6 @@ a:hover, a:focus {
 .claimed hr{
 	border-color: @grey;
 }
-.claimed-text{
-	color: #404D5A;
-	font-family: 'Merriweather', serif;
-	font-weight: 300;
-	font-style: italic;
-}
-
 
 
 /* ------------------------------------- FORM ------------------------------------ */
@@ -218,10 +198,7 @@ body .nomargin-bottom {
 	border: none;
 	border-radius: 0;
 	background: #f0f0f0;
-	color: #aaa;
-	font-family: 'Merriweather', serif;
-	font-weight: 300;
-	font-style: italic;
+	.serif(1.05em, 300, italic, #aaa);
 	-webkit-appearance: none; /* for box shadows to show on iOS */
 }
 
@@ -234,9 +211,7 @@ body .nomargin-bottom {
 	float: right;
 	padding: 0 1em;
 	width: 40%;
-	color: #D1D1D1;
-	font-size: 70.25%;
-	font-family: 'Merriweather', serif;
+	.serif(70.25%, 500, normal, #D1D1D1);
 	-webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	-webkit-touch-callout: none;

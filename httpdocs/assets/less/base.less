@@ -1,5 +1,5 @@
 @import "variables.less";
-@import "fonts.less";
+@import "mixins.less";
 
 /* Button container */
 .progress-button {
@@ -21,12 +21,7 @@
 	border: 2px solid #4FD2C2;
 	border-radius: 40px;
 	background: transparent;
-	color: #4FD2C2;
-	letter-spacing: 2px;
-	font-size: 14px;
-	font-family: 'Montserrat', sans-serif;
-	text-transform: uppercase;
-	font-weight: 700;
+	.sans-serif(14px, @mint);
 	-webkit-tap-highlight-color: transparent;
 	-webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
 	transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
@@ -41,7 +36,7 @@
 .small.progress-button button{
 	width: 150px;
 	height: 50px;
-	font-size: 12px;
+	.sans-serif(12px, @mint);
 	letter-spacing: 1px;
 }
 
