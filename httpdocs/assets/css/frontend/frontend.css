@@ -338,7 +338,7 @@ a:focus {
 /* ----------------------------------- TASK CARDS ----------------------------------- */
 .task {
   width: 250px;
-  height: 318px;
+  height: 342px;
   background-color: #fff;
   text-align: center;
   display: -moz-inline-stack;
@@ -348,7 +348,7 @@ a:focus {
   padding: 0px;
 }
 .task-details {
-  padding: 50px 20px 43px 20px;
+  padding: 50px 20px 33px 20px;
 }
 .task-name {
   display: block;
@@ -360,7 +360,7 @@ a:focus {
 }
 .project-name {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -370,8 +370,21 @@ a:focus {
 }
 .date {
   display: block;
-  font-size: 14px;
+  text-transform: lowercase;
+  font-family: 'Merriweather', serif;
   font-weight: 500;
+  font-size: 14px;
+  color: #a2b7cd;
+  font-style: italic;
+}
+.duration {
+  line-height: 37px;
+  text-transform: lowercase;
+  font-family: 'Merriweather', serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #404d5b;
+  font-style: noraml;
 }
 .task hr {
   border: 1px solid #e8e6e5;
@@ -401,7 +414,7 @@ a:focus {
 }
 .claimed {
   background-color: #F9F7F6;
-  background-image: url("/assets/img/diagonal-lines.png");
+  background-image: url("/assets/content/img/diagonal-lines.png");
   height: 230px;
 }
 .claimed .project-name {
@@ -411,6 +424,9 @@ a:focus {
   color: #cccccc;
 }
 .claimed .task-name {
+  color: #cccccc;
+}
+.claimed .duration {
   color: #cccccc;
 }
 .claimed hr {

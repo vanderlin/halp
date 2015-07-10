@@ -90,7 +90,7 @@ a:hover, a:focus {
 
 .task{
 	width: 250px;
-	height: 318px;
+	height: 342px;
 	background-color: #fff;
 	text-align: center;
 	display: -moz-inline-stack;
@@ -101,7 +101,7 @@ a:hover, a:focus {
 }
 
 .task-details{
-	padding: 50px 20px 43px 20px;	
+	padding: 50px 20px 33px 20px;	
 }
 
 .task-name{
@@ -111,13 +111,18 @@ a:hover, a:focus {
 
 .project-name{
 	display: block;
-	margin-bottom: 8px;
+	margin-bottom: 5px;
 	.sans-serif(12px, @purple);
 }
 .date{
 	display: block;
-	font-size: 14px;
-	font-weight: 500;
+	text-transform: lowercase;
+  	.serif(14px, 500, italic, @light-purple);
+}
+.duration{
+  line-height: 37px;
+  text-transform: lowercase;
+  .serif(16px, 500, noraml, @purple);
 }
 
 .task hr{
@@ -126,7 +131,6 @@ a:hover, a:focus {
   	margin-bottom: 24px;
   	margin-top: 23px;
 }
-
 .posted-by{
   	background-color: #F9F7F6;
   	padding: 10px 5px;
@@ -150,6 +154,9 @@ a:hover, a:focus {
 	color: @grey;
 }
 .claimed .task-name{
+	color: @grey;
+}
+.claimed .duration{
 	color: @grey;
 }
 .claimed hr{
