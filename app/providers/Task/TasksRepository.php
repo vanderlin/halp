@@ -7,6 +7,9 @@ use Input;
 use Paginator;
 use User;
 use Str;
+use Validator;
+use Project\Project;
+use Auth;
 
 /**
 * Tasks Repository
@@ -39,7 +42,21 @@ class TasksRepository  {
 	// ------------------------------------------------------------------------
 	public function store($input)
 	{		
+		$validator = Validator::make($input, Task::$rules);
+		if($validator->fails()) {
+			return $this->listener->errorResponse($validator->errors()->all());
+		}
+
 		$task = new Task;
+		$project = Project::where('title', '=', $input['project'])->first();
+
+		// if null we need to create the new project
+		if($project == NULL)
+		{
+			$project = new Project(['title'=>$input['project'], 'user_id'=>Auth::id()]);
+			$project->save();
+		}
+		dd($task, $input, $project);
 		return $this->listener->statusResponse(['notice'=>'Task Created', 'task'=>$task]);		
 	}
 
