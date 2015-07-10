@@ -1,5 +1,3 @@
-
-
 function prevent_default(e) {
     e.preventDefault();
 }
@@ -9,6 +7,7 @@ function disable_scroll() {
 function enable_scroll() {
     $(document).unbind('touchmove', prevent_default)
 }
+// ------------------------------------------------------------------------
 
 var Utils = {
   stringToBool: function(string){
@@ -94,9 +93,9 @@ var App = (function() {
 
 
     self.loadModules = function() {
-
       $.timeago.settings.cutoff = 0;
       $(".timeago").timeago();
+      
     }
 
 	return self;
