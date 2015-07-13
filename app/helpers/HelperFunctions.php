@@ -25,6 +25,10 @@ function common_asset($file, $relative=false) {
   return $relative ? 'assets/content/common/'.$file : asset('assets/content/common/'.$file);
 }
 
+function img($file, $relative=false) {
+  return $relative ? 'assets/img/'.$file : asset('assets/img/'.$file);
+}
+
 function mobile_asset($file, $relative=false) {
   return $relative ? 'assets/content/mobile/'.$file : asset('assets/content/mobile/'.$file);
 }

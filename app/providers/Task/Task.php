@@ -67,6 +67,12 @@ class Task extends BaseModel {
 	{
 		return $this->claimed_id != NULL;
 	}
+	
+	// ------------------------------------------------------------------------
+	public function getClaimedAtAttribute($val)
+	{
+		return new Carbon\Carbon($val);
+	}
 	// ------------------------------------------------------------------------
 	public function project()
 	{
