@@ -5,6 +5,7 @@ use SoftDeletingTrait;
 use User;
 use Validator;
 use Carbon;
+use DB;
 
 class Task extends BaseModel {
 	
@@ -29,6 +30,15 @@ class Task extends BaseModel {
     }
 
     // ------------------------------------------------------------------------
+    public function scopeMostClaimed($query)
+    {
+    	return $query->whereNotNull('claimed_id')
+                     ->groupBy('claimed_id')
+                     ->select(array('*', DB::raw('count(*) as claimed_count')))
+                     ->orderBy('claimed_count', 'DESC');
+    }
+
+    // ------------------------------------------------------------------------
     public function scopeUnClaimed($query)
     {
     	return $query->whereNull('claimed_id')->orderBy('created_at', 'DESC');
@@ -49,7 +59,7 @@ class Task extends BaseModel {
 	// ------------------------------------------------------------------------
 	public function claimer()
 	{
-		return $this->belongsTo('claimed_id');
+		return $this->belongsTo('User', 'claimed_id');
 	}
 
 	// ------------------------------------------------------------------------

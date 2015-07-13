@@ -4,7 +4,7 @@ use BaseModel;
 use User;
 use Validator;
 use Carbon;
-
+use URL;
 class Project extends BaseModel {
 	
 	protected $fillable  = ['title', 'user_id'];
@@ -23,4 +23,9 @@ class Project extends BaseModel {
   		parent::save();
 	}
 
+	// ------------------------------------------------------------------------
+	public function getURL($relative=true)
+	{
+		return URL::to('projects/'.$this->id);
+	}
 }
