@@ -14,21 +14,24 @@
 
 {{-- Content --}}
 @section('content')
-<section class="content">
-<h1>Users</h1>
-@forelse ($users as $user)
 
-	<div class="task">
-		<div class="task-details">
-			<span class="task-name">{{link_to($user->getProfileURL(), $user->getName())}}</span>
-			<hr>
-			<img src="{{$user->profileImage->url('s100')}}" class="img-circle">
-			<span class="project-name">Total Tasks: {{$user->getTotalTask()}}</span>
-			<span class="date">{{$user->created_at->toFormattedDateString()}}</span>
+<section class="hero">
+	<h3>The most helpful person is:</h3>
+		<div class="user-image">
+			<img src="{{$leader->profileImage->url('s72')}}">
 		</div>
-		<div class="posted-by">{{$user->email}}</div>
-	</div>
-	
+		<div class="user-details">
+			<span class="user-name">{{$leader->getName()}}</span>
+			<span class="total-task">
+				<h3>{{$leader->totalClaimed()}} Completed Tasks!</h3>
+			</span>
+			<hr>
+		</div>
+</section>
+
+<section class="content">
+@forelse ($users as $user)
+	@include('site.user.leaderboard-card', array('user' => $user))
 @empty
 	<h3>No Users</h3>
 @endforelse

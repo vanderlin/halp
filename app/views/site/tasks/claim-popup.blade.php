@@ -3,7 +3,7 @@
 	<div class="task-message">
 		<p>
 			This task is for {{link_to($task->project->getURL(), $task->project->title)}}. 
-			{{ucfirst($task->creator->firstname)}} estimates he will need help for a {{$task->duration}}.
+			{{ucfirst($task->creator->firstname)}} estimates he will need help for {{$task->duration}}.
 		</p>
 	</div>
 	<div class="progress-button small claimed-buttons">

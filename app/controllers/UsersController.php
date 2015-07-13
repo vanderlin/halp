@@ -1,6 +1,6 @@
 <?php
 
-
+use Task\Task;
 
 /**
  * UsersController Class
@@ -27,7 +27,15 @@ class UsersController extends BaseController
 
     public function index()
     {
-        return View::make('site.user.index', ['users'=>User::all()]);
+        
+        $users = User::all();
+        $users->sortByDesc(function($item) {
+            return $item->claimedTasks->count();
+        })->each(function($item) {
+            return $item->totalClaimedTasks =  $item->claimedTasks->count();
+        })->values();
+        
+        return View::make('site.user.index', ['users'=>$users, 'leader'=>$users->shift()]);
     }
 
     public function me()
