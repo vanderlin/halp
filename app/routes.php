@@ -12,6 +12,18 @@ Route::get('env', function() {
 	return [$_SERVER, Config::getEnvironment()];
 });
 
+	Route::get('most-tasks', function() {
+        // $tags = DB::table('taggables')
+        // ->groupBy('tag_id')->orderBy('count', 'DESC')->get(array('tag_id', DB::raw('count(*) as count')));
+
+		return Task::whereNotNull('claimed_id')
+					
+                    ->groupBy('claimed_id')
+                    ->select(array('*', DB::raw('count(*) as claimed_count')))
+                    ->orderBy('claimed_count', 'DESC')
+                    ->get();
+	});
+
 // ------------------------------------------------------------------------
 Route::post('site-login', ['uses'=>'PageController@ChecksiteLogin']);
 
