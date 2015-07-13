@@ -58,9 +58,26 @@ class User extends BaseModel implements ConfideUserInterface {
         return $this->morphOne('Asset', 'assetable');
     }
 
-    public function getTotalTask()
+    public function getTotalCompletedTask()
     {
         return 10;
+    }
+
+    public function totalClaimed()
+    {
+        return $this->hasMany('Task\Task', 'claimed_id')->count();
+    }
+    public function claimedTasks()
+    {
+        return $this->hasMany('Task\Task', 'claimed_id');
+
+            // ->selectRaw('claimed_id, count(*) as total_claimed')->groupBy('claimed_id')
+        // ;
+    }
+
+    public function createdTasks()
+    {
+        return $this->hasMany('Task\Task', 'creator_id');
     }
 
     public function getProfileImageAttribute() {

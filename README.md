@@ -90,8 +90,8 @@ You should see `mcrypt support => enabled` in the output. You may need to alias 
 
 ## EndPoints
 
-- **Users Page**		
-<http://localhost:8888/users> 			
+- **Leaderboard Page**		
+<http://localhost:8888/leaderboard> 			
 
 - **Profile Page**		
 <http://localhost:8888/users/{id-or-username}> 			
