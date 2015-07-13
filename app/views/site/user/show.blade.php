@@ -13,15 +13,22 @@
 
 
 @section('content')
-  <div class="content bgcolor">
-    
-    <div class="row">
-      <div class="col-sm-8 col-sm-offset-2 text-center">
-      
-        <img src="{{$user->profileImage->url('s100')}}" class="img-circle">
-        <h4>{{$user->getName()}}</h4>  
-      	{{link_to('/', 'home')}}
-      </div>
-    </div>
+		
+	<section class="hero">
+		<h3>{{$user->getName()}}</h3>
+		<hr>
+		<p>E-mail me when a new task is added to Halp:</p>
+		<a href="#yes"><img src="{{img('circle_check.svg')}}"></a>
+		<h5>Yes Please</h5>
+	</section>
+
+	<section class="tasks">
+		<h2>{{$user->totalClaimed()}} Completed Tasks!</h2>
+		@forelse ($user->claimedTasks as $task)
+			@include('site.tasks.claimed-task', array('task' => $task))
+		@empty
+			<h5>No Completed Tasks</h5>
+		@endforelse
+	</section>
 @stop
     
