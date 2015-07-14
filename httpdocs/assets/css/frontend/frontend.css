@@ -472,7 +472,7 @@ hr {
 }
 .claimed {
   background-color: #F9F7F6;
-  background-image: url("/assets/content/img/diagonal-lines.png");
+  background-image: url("/assets/img/diagonal-lines.png");
   height: 230px;
 }
 .claimed .project-name {
