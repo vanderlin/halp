@@ -16,6 +16,9 @@
 		
 	<section class="hero">
 		<h3>{{$user->getName()}}</h3>
+		@if($user->hasRole('Admin'))
+			<small>{{link_to('admin', 'Admin')}}</small>
+		@endif
 		<hr>
 		<p>E-mail me when a new task is added to Halp:</p>
 		<a href="#yes"><img class="check-box" src="{{img('circle_check.svg')}}"></a>
