@@ -711,6 +711,9 @@ body .nomargin-bottom {
   opacity: 1;
 }
 /* ------------------------------------- User Card  ------------------------------------ */
+.user-image-most-helpful img:hover {
+  border-color: #a2b7cd;
+}
 .user-image-most-helpful img {
   width: 220px;
   height: 220px;
@@ -718,6 +721,7 @@ body .nomargin-bottom {
   overflow: hidden;
   border: 13px solid white;
   margin: 40px 0px 10px 0px;
+  transition: border .4s;
 }
 .user-card {
   width: 250px;
