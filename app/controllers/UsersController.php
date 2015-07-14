@@ -38,17 +38,6 @@ class UsersController extends BaseController
         return View::make('site.user.index', ['users'=>$users, 'leader'=>$users->shift()]);
     }
 
-    public function me()
-    {
-        $user = Auth::user();
-        $itineraries = $user->getPublishedItineraries()->paginate(55);
-    
-        if(isMobile()) {
-            return View::make('mobile.users.show', ['user'=>$user]);
-        } 
-        return View::make('site.profile.index', ['user'=>$user, 'itineraries'=>$itineraries]);
-    }
-
     // ------------------------------------------------------------------------
     public function show($username)
     {   

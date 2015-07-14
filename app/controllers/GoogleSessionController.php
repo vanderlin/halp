@@ -498,10 +498,10 @@ class GoogleSessionController extends BaseController {
 					}
 
 					Auth::login($u, true);
-					$back_url = URL::to($u->getProfileURL());
+					$back_url = URL::to('/');
 					
 					$resp = ['notice'=>'Welcome '.$u->username, 'back_url'=>$back_url];
-					return $wantsJson ? Response::json($resp) : Redirect::to($back_url)->with(['notice'=>'Welcome '.$u->username]);
+					return $wantsJson ? Response::json($resp) : Redirect::to($back_url)->with(['notice'=>'Welcome '.$u->getName()]);
 				}
 
 				// we need to register this account

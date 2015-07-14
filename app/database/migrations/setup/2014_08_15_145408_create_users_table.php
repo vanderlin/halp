@@ -73,6 +73,7 @@ class CreateUsersTable extends Migration {
 				$table->boolean('confirmed')->default(0);
 				$table->string('google_id');
 				$table->string('google_token');
+				$table->boolean('notifications')->default(1);
 				$table->timestamps();
 			});
 		}
