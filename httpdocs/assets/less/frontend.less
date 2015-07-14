@@ -146,7 +146,7 @@ hr{
 
 .project-name{
 	display: block;
-	margin-bottom: 2px;
+	margin-bottom: 0px;
 	line-height: 20px;
 	.sans-serif(12px, @purple);
 }
@@ -154,7 +154,14 @@ hr{
 	display: block;
 	text-transform: lowercase;
   	.serif(14px, 500, italic, @light-purple);
+
 }
+.date-claimed{
+	display: block;
+	text-transform: lowercase;
+  	.serif(14px, 500, italic, @light-purple);
+  	padding-top:6px;
+ }
 .duration{
   line-height: 37px;
   .sans-serif(12px, @purple);
@@ -180,7 +187,7 @@ hr{
 .claimed{
 	background-color: #F9F7F6;
 	background-image: url("@{img-path}diagonal-lines.png");
-	height: 255px;
+	height: 253px;
 }
 .claimed .project-name{
 	color: @grey;
