@@ -7,7 +7,9 @@
 		</p>
 	</div>
 	<div class="progress-button small claimed-buttons">
-		<button data-id="{{$task->id}}"><span>Send an E-Mail</span></button>
-		<button data-id="{{$task->id}}"><span>Talk IRL</span></button>
+		{{Form::open(['route'=>['tasks.claim', $task->id]])}}
+			<button data-id="{{$task->id}}"><span>Send an E-Mail</span></button>
+			<button data-id="{{$task->id}}"><span>Talk IRL</span></button>
+		{{Form::close()}}
 	</div>
 </div>

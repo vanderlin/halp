@@ -18,7 +18,6 @@ body {
 	font-family: 'Merriweather', serif;
 	-webkit-font-smoothing: antialiased;
 }
-
 a {
 	color: @mint;
 	text-decoration: none;
@@ -377,6 +376,28 @@ body .nomargin-bottom {
   		margin-top: -27px;
   	}
 }
+.claimed-task {
+	position: relative;
+	.return-task {
+		opacity: 0;
+		p {
+			color: white;
+			padding: 20px;
+		}
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-color: #1B1A25;
+		position:absolute;
+	}
+}
+.claimed-task:hover {
+	.return-task {
+		opacity: 1;
+	}
+}
+
 .hero {
 	text-align: center;
 	width: 100%;
@@ -385,6 +406,28 @@ body .nomargin-bottom {
 	background-color: #F9F7F6;
 }
 
+.user-tasks {
+	h2 {
+		padding: 30px;
+	}
+
+	.line-break{ 
+	  display:table;
+	  text-align:center; 
+	  width:100%; 
+	  padding:10px;
+	  margin:0 auto;
+	}
+	.line-break:before, .line-break:after{ 
+	  	content:'';
+		display:table-cell; 
+		width:50%;
+	 	top: -7px;
+  		position: relative;
+  		border-bottom: 1px solid #E0DEDC;
+	}
+	.line-break > h2{ white-space:pre; padding:0 15px; }
+}
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 
 @media screen and (max-width: 50em) {
