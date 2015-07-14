@@ -340,7 +340,7 @@ hr {
 }
 .content {
   font-size: 150%;
-  padding: 3em 0 3em 0;
+  padding: 3em;
 }
 .turtle-break {
   margin: 0;
@@ -471,7 +471,7 @@ hr {
 .claimed {
   background-color: #F9F7F6;
   background-image: url("/assets/img/diagonal-lines.png");
-  height: 230px;
+  height: 255px;
 }
 .claimed .project-name {
   color: #cccccc;
