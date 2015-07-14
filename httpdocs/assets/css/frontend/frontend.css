@@ -399,7 +399,7 @@ hr {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: top;
-  margin: 1%;
+  margin: 20px 16px;
   padding: 0px;
 }
 .task-details {
@@ -793,6 +793,19 @@ body .nomargin-bottom {
   .codrops-header h1 {
     font-size: 2.8em;
   }
+  .input__label {
+    font-size: 18px;
+  }
+  .input__field--nao {
+    font-size: 24px;
+  }
+  .content {
+    padding: 1em;
+  }
+  .input {
+    max-width: 288px;
+    margin: 0.5em;
+  }
 }
 .claimed-popup {
   position: relative;
@@ -825,6 +838,7 @@ body .nomargin-bottom {
 .mfp-close-btn-in .mfp-close {
   margin: 20px;
   color: #4fd2c2 !important;
+  font-size: 48px;
 }
 .mfp-bg {
   background: #4fd2c2 !important;
