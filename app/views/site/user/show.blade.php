@@ -27,7 +27,7 @@
 
 	<section class="tasks user-tasks">
 		<div class="line-break">
-			<h2>{{$user->totalClaimed()}} Completed Tasks!</h2>
+			<h2>{{$user->totalClaimed()}} Claimed Tasks!</h2>
 		</div>
 		@forelse ($user->claimedTasks as $task)
 			@include('site.tasks.claimed-task', array('task' => $task))
