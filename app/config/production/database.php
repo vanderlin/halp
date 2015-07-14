@@ -24,12 +24,12 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'DB',
-			'username'  => 'USER',
-			'password'  => 'PASSWORD',
+			'database'  => 'halp_db',
+			'username'  => 'halp_user',
+			'password'  => '#42BJgyr67',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '_',
+			'prefix'    => '',
 		),
 
 	),
