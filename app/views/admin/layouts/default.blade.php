@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     @include('site.layouts.head')
+    <link rel="stylesheet" type="text/css" href="{{bower('semantic-ui/dist/semantic.min.css')}}">
+    <link href="{{asset('assets/css/backend/backend.css')}}" rel="stylesheet">
     @yield('head')
     @yield('scripts')
-    <link rel="stylesheet" type="text/css" href="{{bower('semantic-ui/dist/semantic.min.css')}}">
     <script src="{{bower('semantic-ui/dist/semantic.min.js')}}"></script>
   </head>
   <body>
    
     <!-- Content -->  
-    <div class="container">
+    <div class="admin container">
   
       <!-- Main Navigation -->
       @if (isset($use_navigation)?$use_navigation:true)
@@ -18,8 +20,12 @@
       @endif
       <!-- Main Navigation -->  
 
+        <div class="admin-nav ui celled horizontal list">
+            <div class="item">{{link_to('admin/users', 'Users')}}</div>
+            <div class="item">{{link_to('admin/notifications', 'Notifications')}}</div>
+        </div>
 
-      @yield('content')
+        @yield('content')
 
 
     </div>

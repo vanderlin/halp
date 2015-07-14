@@ -122,7 +122,7 @@
 .loading.elastic.progress-button button {
   transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
 }
-.admin {
+.admin .admin-nav {
   margin-top: 50px;
 }
 .admin .circle-img {
@@ -131,4 +131,7 @@
 .admin .content {
   font-size: inherit;
   padding: inherit;
+}
+.admin .text-center {
+  text-align: center;
 }

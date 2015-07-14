@@ -1,83 +1,60 @@
-@extends('admin.layouts.default')
-
+@extends('admin.layouts.default', ['use_footer'=>false])
 
 {{-- Web site Title --}}
 @section('title')
-  Admin | Notifications 
+	{{Config::get('config.site_name')}} | Admin | Notifications
 @stop
-
 
 @section('scripts')
 
 @stop
 
+
+
+
 {{-- Content --}}
 @section('content')
-  
-  <h2 class="page-header">Site Notifications</h2>
 
-  <div class="row">
-	<div class="col-md-6">
-			
-		<div class="well">
-	      {{Form::open(['url'=>'/admin/notifications', 'method'=>'POST', 'id'=>'create-form'])}}
-	      
-	       	<input type="hidden" value="{{Auth::user()->id}}" name="from_user_id">
-			<div class="form-group">
-				<input type="text" value="{{Input::old('slug')}}" name="slug" class="form-control" placeholder="Unique slug to reference">
-			</div>
+<section class="content admin">
+	@if ($notifications->count()>0)
+		<table style="width:900px;">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Event</td>
+				<td>Task</td>
+				<td>Sent</td>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach ($notifications as $notice)
+				<tr>
+					<td>{{$notice->id}}</td>
+					<td>{{$notice->event}}</td>
+					<td>{{$notice->task->title}}</td>
+					<td>
+						@if ($notice->task->sent==NULL)
+							<b style="color:red">Not Sent</b>
+						@else
+							Sent on {{$notice->task->sent->toFormattedDateString()}}
+						@endif
+					</td>
+				</tr>
+			@endforeach
+		</tbody>
+	</table>	
+	<br>
+	<div class="progress-button small">
+		{{Form::open(['url'=>'notifications/send'])}}
+		<button><span>Send Notifications</span></button>
+		{{Form::close()}}
+	</div>
+	
+	@include('site.partials.form-errors')
 
-			<div class="form-group">
-				<select class="form-control" name="event">
-		       		<option value="{{Notification::NOTIFICATION_SITE_NOTICE}}">{{Notification::NOTIFICATION_SITE_NOTICE}}</option>
-		       		<option value="{{Notification::NOTIFICATION_SITE_ERROR}}">{{Notification::NOTIFICATION_SITE_ERROR}}</option>
-		       	</select>
-	       	</div>
+	@else
+		<h3>No Notifications</h3>
+	@endif
 
-	        <!-- message -->
-	        <div class="form-group">
-	          	<label for="name">Message</label>
-	        	<textarea class="form-control" name="message"></textarea>
-	        </div>
-
-	        <!-- update -->
-	      	<div class="form-group">
-	        	<button type="submit" form="create-form" class="btn btn-default">Create</button>
-	      	</div>
-	      	{{Form::close()}}
-
-	      	<div class="text-center">
-	        	@include('site.partials.form-errors')
-	    	</div>
-  		</div>
-  	
-
-  	@if ($notifications->count()==0)
-  		<div class="text-center">
-  			<small>No Notifications</small>
-  		</div>
-  	@else
-	    <table class="table table-striped">
-	    
-	    	<thead>
-		        <tr>
-		          <th>#</th>
-		          <th>Name</th>
-		          <th>Slug</th>
-		        </tr>
-	    	</thead>
-
-	      	<tbody>
-		        @foreach ($notifications as $notice)
-		       		<tr>
-			            <td>{{ $notice->id }}</td>
-			            <td>{{ $notice->slug }}</td>
-		          	</tr>
-		        @endforeach
-	      	</tbody>
-	    </table>
-    @endif
-
-  </div>
-</div>
+</section>
 @stop
