@@ -131,6 +131,7 @@ return array(
 	    'Asset\AssetsServiceProvider',
 	    'Project\ProjectsServiceProvider',
 	    'Task\TasksServiceProvider',
+	    'Notification\NotificationsServiceProvider',
 	),
 
 	/*
