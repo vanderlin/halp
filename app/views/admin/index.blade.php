@@ -15,7 +15,8 @@
 {{-- Content --}}
 @section('content')
 
-<section class="content container admin">
+<section class="content container">
+	
 	@if ($users->count()>0)
 		<table class="ui celled table">
   			<thead>
@@ -45,32 +46,10 @@
 			    <td>{{$user->getRoles()}}</td>
 				<td style="text-align:center"><a class="mini ui button" href="/admin/users/{{$user->id}}/roles/edit">Edit</a></td>
     		</tr>
-				{{--<tr>
-					<td>{{$user->id}}</td>
-					<td class="ui relaxed divided list">
-						<div class="item">
-							<div class="middle aligned">
-								<img class="circle-img" src="{{$user->profileImage->url('s30')}}">
-							</div>
-							<div class="content">
-								<a class="header">{{link_to($user->getProfileURL(), $user->getName())}}</a>
-								<div class="description">{{$user->email}}</div>
-							</div>
-						</div>
-					</td>
-					<td>{{$user->email}}</td>
-					<td>{{$user->getRoles()}}</td>
-					<td><a href="/admin/users/{{$user->id}}/roles/edit">Edit</a></td>
-				</tr>--}}
 			@endforeach
 		</tbody>
 	</table>	
 	<br>
-	<div class="progress-button small">
-		{{Form::open(['url'=>'notifications/send'])}}
-		<button><span>Send Notifications</span></button>
-		{{Form::close()}}
-	</div>
 	
 	@include('site.partials.form-errors')
 
