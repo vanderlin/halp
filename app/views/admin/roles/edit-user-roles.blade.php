@@ -29,6 +29,10 @@
     <br>
 
     <div class="ui text container" style="text-align: left">
+        
+        
+        <img class="ui centered circular image" src="{{$user->profileImage->url('s100')}}">
+        
 
         {{Form::open(['url'=>URL::to('admin/users/'.$user->id), 'method'=>'PUT', 'class'=>'ui form'])}}
         <div class="field">
