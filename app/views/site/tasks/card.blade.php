@@ -2,7 +2,7 @@
 	<div class="task-details">
 		<span class="task-name">{{$task->title}}</span>
 		<hr>
-		<span class="project-name">For {{link_to($task->project->getURL(), $task->project->title)}}</span>
+		<span class="project-name">{{link_to($task->project->getURL(), $task->project->title)}}</span>
 		<span class="duration">{{$task->duration}}</span>
 		<span class="date">{{$task->created_at->toFormattedDateString()}}</span>
 		@if (!$claimed)
