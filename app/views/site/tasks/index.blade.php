@@ -26,9 +26,15 @@
 	@forelse ($tasks as $task)
 		@include('site.tasks.card', array('task' => $task, 'claimed'=>false))
 	@empty
-		<h3>No Claimed Tasks</h3>
+		<h3>No Tasks</h3>
 	@endforelse
 	</section>
+
+	<div class="turtle-break">
+		<div class="turtle-line"></div>
+		<img src="{{asset('assets/img/happy-turtle.png')}}" width="111px" height="58px" />
+		<div class="turtle-line"></div>
+	</div>
 
 	<section class="content">
 	@forelse ($claimed_tasks as $task)
