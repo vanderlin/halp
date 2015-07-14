@@ -24,6 +24,7 @@
             <div class="ui celled horizontal list">
                 <div class="item">{{link_to('admin/users', 'Users')}}</div>
                 <div class="item">{{link_to('admin/notifications', 'Notifications')}}</div>
+                <div class="item">{{link_to('admin/projects', 'Projects')}}</div>
             </div>
             <br>
             <br>
