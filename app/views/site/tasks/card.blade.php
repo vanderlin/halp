@@ -2,7 +2,7 @@
 	<div class="task-details">
 		<span class="task-name">{{$task->title}}</span>
 		<hr>
-		<span class="project-name">For {{$task->project->title}}</span>
+		<span class="project-name">For {{link_to($task->project->getURL(), $task->project->title)}}</span>
 		<span class="duration">{{$task->duration}}</span>
 		<span class="date">{{$task->created_at->toFormattedDateString()}}</span>
 		@if (!$claimed)
@@ -11,5 +11,5 @@
 			</div>
 		@endif
 	</div>
-	<div class="{{$claimed?'claimed':'posted'}}-by">{{$claimed?'Claimed':'Posted'}} by {{$task->creator->getShortName()}}</div>
+	<div class="{{$claimed?'claimed':'posted'}}-by">{{$claimed?'Claimed':'Posted'}} by {{link_to($task->creator->getProfileURL(), $task->creator->getShortName())}}</div>
 </div>

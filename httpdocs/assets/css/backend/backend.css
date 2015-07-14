@@ -122,3 +122,24 @@
 .loading.elastic.progress-button button {
   transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
 }
+.admin {
+  margin-top: 50px;
+}
+.admin table {
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 16px;
+}
+.admin table td {
+  padding: 20px;
+}
+.admin table thead tr {
+  border-bottom: 2px solid #ccc;
+}
+.admin table thead td {
+  font-weight: bold;
+}
+.admin .circle-img {
+  border-radius: 50%;
+}

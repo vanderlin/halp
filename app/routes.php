@@ -3,6 +3,7 @@
 
 use Carbon\Carbon;
 use Task\Task;
+use Notification\Notification;
 
 // ------------------------------------------------------------------------
 Route::get('php', function() {
@@ -12,17 +13,46 @@ Route::get('env', function() {
 	return [$_SERVER, Config::getEnvironment()];
 });
 
-	Route::get('most-tasks', function() {
-        // $tags = DB::table('taggables')
-        // ->groupBy('tag_id')->orderBy('count', 'DESC')->get(array('tag_id', DB::raw('count(*) as count')));
+Route::get('most-tasks', function() {
+    // $tags = DB::table('taggables')
+    // ->groupBy('tag_id')->orderBy('count', 'DESC')->get(array('tag_id', DB::raw('count(*) as count')));
 
-		return Task::whereNotNull('claimed_id')
-					
-                    ->groupBy('claimed_id')
-                    ->select(array('*', DB::raw('count(*) as claimed_count')))
-                    ->orderBy('claimed_count', 'DESC')
-                    ->get();
+	return Task::whereNotNull('claimed_id')
+				
+                ->groupBy('claimed_id')
+                ->select(array('*', DB::raw('count(*) as claimed_count')))
+                ->orderBy('claimed_count', 'DESC')
+                ->get();
+});
+
+
+// ------------------------------------------------------------------------
+Route::group(array('prefix'=>'notifications'), function() {
+	
+	Route::get('/', function() {
+		return View::make('site.notifications.index', ['notifications'=>Notification::all()]);
 	});
+
+	Route::any('send', function() {
+		return Redirect::back()->with(['notice'=>'Notifications Sent']);
+	});
+
+	// $preview = Input::get('preview', false);
+
+	// Route::get('newtask', function() use($preview) {
+
+	// 	if($preview) {
+	// 		$task = 
+	// 		return View::make('emails.new-task');
+	// 	}
+
+	// 	Mail::send('emails.new-task', array('key' => 'value'), function($message) {
+ //    		$message->to('vanderlin@gmail.com', 'Todd Vanderlin')->subject('Welcome!');
+	// 	});
+	// 	//return View::make('emails.new-task');	
+
+	// });
+});
 
 // ------------------------------------------------------------------------
 Route::post('site-login', ['uses'=>'PageController@ChecksiteLogin']);

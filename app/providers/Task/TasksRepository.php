@@ -10,6 +10,8 @@ use Str;
 use Validator;
 use Project\Project;
 use Auth;
+use Notification\Notification;
+use Event;
 
 /**
 * Tasks Repository
@@ -103,6 +105,9 @@ class TasksRepository  {
 		$task = new Task(['title'=>$input['title'], 'duration'=>$input['duration'], 'project_id'=>$project->id, 'creator_id'=>Auth::id()]);
 		$task->save();
 
+		// fire a new notification to the system
+		Event::fire(Notification::NOTIFICATION_NEW_TASK, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_NEW_TASK])); 
+   
 		return $this->listener->statusResponse(['notice'=>'Task Created. Help is on the way!', 'task'=>$task]);		
 	}
 

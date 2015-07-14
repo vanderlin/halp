@@ -135,12 +135,7 @@ class User extends BaseModel implements ConfideUserInterface {
 
     public function getRoles() 
     {
-        $list = '';
-        foreach ($this->roles as $role) {
-            $list .= $role->display_name.', ';
-        }
-        return $list;
-        
+        return implode(", ", $this->roles()->lists('display_name'));
     }
 
     public function hasToken() {

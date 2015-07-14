@@ -20,8 +20,7 @@
 <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 
-<!-- Bootstrap
-<link href="{{asset('assets/css/core/bootstrap.css')}}" rel="stylesheet"> -->
+<link href="{{asset('assets/css/backend/backend.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/frontend/frontend.css')}}" rel="stylesheet">
 
 <!-- core scripts -->
