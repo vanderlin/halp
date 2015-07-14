@@ -7,6 +7,9 @@
   </div>
 
   <div class="user">
+    @if (Auth::check() && Auth::user()->isAdmin())
+      <span class="username">{{link_to('admin', 'Admin')}}</span>
+    @endif
 	  <span class="username">{{link_to('leaderboard', 'leaderboard')}}</span>
     @if (Auth::check())
 		  <span class="username">{{link_to(Auth::user()->getProfileURL(), Auth::user()->getName())}}</span>
