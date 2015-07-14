@@ -1,4 +1,4 @@
-<?php
+'<?php
 
 class GoogleSessionController extends BaseController {
 
@@ -421,7 +421,7 @@ class GoogleSessionController extends BaseController {
 			GoogleSessionController::saveGoogleProfileImage($google_user, $user);
 
 			// Default Roles
-        	if($username == 'tvanderlin' || $username == 'Admin') { // <---
+        	if($username == 'tvanderlin' || $username == 'kmiller' || $username == 'Admin') { // <---
 				$adminRole = Role::where('name', '=', 'Admin')->first();
 				$user->attachRole($adminRole);
 			}
