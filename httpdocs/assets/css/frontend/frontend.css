@@ -415,7 +415,7 @@ hr {
 }
 .project-name {
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 0px;
   line-height: 20px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -432,6 +432,16 @@ hr {
   font-size: 14px;
   color: #a2b7cd;
   font-style: italic;
+}
+.date-claimed {
+  display: block;
+  text-transform: lowercase;
+  font-family: 'Merriweather', serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #a2b7cd;
+  font-style: italic;
+  padding-top: 6px;
 }
 .duration {
   line-height: 37px;
@@ -471,7 +481,7 @@ hr {
 .claimed {
   background-color: #F9F7F6;
   background-image: url("/assets/img/diagonal-lines.png");
-  height: 255px;
+  height: 253px;
 }
 .claimed .project-name {
   color: #cccccc;
