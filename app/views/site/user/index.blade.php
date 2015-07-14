@@ -19,7 +19,7 @@
 	<h3>The most helpful person is:</h3>
 		<div class="user-image-most-helpful">
 			<a href="{{$leader->getProfileURL()}}">
-				<img src="{{$leader->profileImage->url('s72')}}">
+				<img src="{{$leader->profileImage->url('s280')}}">
 			</a>
 		</div>
 		<div class="user-details">
