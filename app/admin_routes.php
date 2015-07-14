@@ -20,6 +20,15 @@
 		Route::post('/', ['uses'=>'NotificationsController@store', 'as'=>'admin.notice.store']);
 	});
 
+	// ------------------------------------------------------------------------
+	// Projects
+	// ------------------------------------------------------------------------
+	Route::group(['prefix'=>'projects'], function() {
+		Route::get('/', function() {
+			return View::make('admin.projects.index', ['active_link'=>'projects', 'projects'=>Project\Project::all()]);
+		});
+	});
+
    
 	// ------------------------------------------------------------------------
 	// Tags CMS
