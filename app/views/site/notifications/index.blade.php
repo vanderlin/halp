@@ -1,4 +1,4 @@
-@extends('admin.layouts.default', ['use_footer'=>false])
+@extends('site.layouts.default', ['use_footer'=>false])
 
 {{-- Web site Title --}}
 @section('title')
@@ -16,28 +16,29 @@
 @section('content')
 
 <section class="content admin">
-	@if ($users->count()>0)
+	@if ($notifications->count()>0)
 		<table style="width:900px;">
 		<thead>
 			<tr>
 				<td>#</td>
-				<td>Name</td>
-				<td>Email</td>
-				<td>Role</td>
-				<td></td>
+				<td>Event</td>
+				<td>Task</td>
+				<td>Sent</td>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($users as $user)
+			@foreach ($notifications as $notice)
 				<tr>
-					<td>{{$user->id}}</td>
+					<td>{{$notice->id}}</td>
+					<td>{{$notice->event}}</td>
+					<td>{{$notice->task->title}}</td>
 					<td>
-					<img class="circle-img" src="{{$user->profileImage->url('s30')}}">
-					{{$user->getName()}}
+						@if ($notice->task->sent==NULL)
+							<b style="color:red">Not Sent</b>
+						@else
+							Sent on {{$notice->task->sent->toFormattedDateString()}}
+						@endif
 					</td>
-					<td>{{$user->email}}</td>
-					<td>{{$user->getRoles()}}</td>
-					<td><a href="/admin/users/{{$user->id}}/roles/edit">Edit</a></td>
 				</tr>
 			@endforeach
 		</tbody>
@@ -52,7 +53,7 @@
 	@include('site.partials.form-errors')
 
 	@else
-		<h3>No Users</h3>
+		<h3>No Notifications</h3>
 	@endif
 
 </section>

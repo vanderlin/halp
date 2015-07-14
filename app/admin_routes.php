@@ -7,53 +7,7 @@
 	
 	
 	Route::get('/', function() {
-		return View::make('admin.profile', ['user'=>Auth::user(), 'active_link'=>'index']);
-	});
-
-	Route::get('profile', function() {
-		return View::make('admin.profile', ['user'=>Auth::user(), 'active_link'=>'index']);
-	});
-
-	Route::get('data', function() {
-		if (Auth::user()->hasRole('Editor')) {
-			
-			$date = Input::get('date', date('2000-1-1')); // ---> launch day date('2015-1-23');
-			
-			$visits = Visit::where('created_at', '>=', $date)->get();
-			$users = User::where('created_at', '>=', $date)->get();
-			$spots = Spot::where('created_at', '>=', $date)->get();
-			$itineraries = Itinerary::where('created_at', '>=', $date)->get();
-			$with_data = Input::get('data', false);
-			$data = [
-				'itineraries' => ['total'=>count($itineraries), 'data'=>$with_data?$itineraries:null],
-				'spots' => ['total'=>count($spots), 'data'=>$with_data?$spots:null],
-				'users' => ['total'=>count($users), 'data'=>$with_data?$users:null],
-				'visits' => ['total'=>count($visits), 'data'=>$with_data?$visits:null],
-				'total_spots'=>Spot::all()->count(),
-				'total_users'=>User::all()->count(),
-				'total_itineraries'=>Itinerary::all()->count(),
-				];
-			return View::make('admin.data', ['data'=>$data]);
-		}
-	});
-	
-	// ------------------------------------------------------------------------
-	// Blog
-	// ------------------------------------------------------------------------
-	Route::group(['prefix'=>'blog'], function() {
-		Route::get('/', ['uses'=>'BlogController@adminIndex']);
-
-		Route::get('post', ['uses'=>'BlogController@createBlogPost']);
-		Route::post('post', ['uses'=>'BlogController@storeBlogPost', 'as'=>'admin.blog.store']);
-		Route::put('post/{id}', ['uses'=>'BlogController@updateBlogPost', 'as'=>'admin.blog.update']);
-		Route::delete('post/{id}', ['uses'=>'BlogController@deleteBlogPost', 'as'=>'admin.blog.delete']);
-		Route::get('post/{id}', ['uses'=>'BlogController@editPost']);
-
-		
-		Route::get('types', ['uses'=>'BlogController@showPostTypes']);
-		Route::post('types', ['uses'=>'BlogController@storePostType']);
-		Route::put('types/{id}', ['uses'=>'BlogController@updatePostType']);
-			
+		return View::make('admin.index', ['users'=>User::all(), 'active_link'=>'index']);
 	});
 
 	// ------------------------------------------------------------------------
@@ -66,19 +20,7 @@
 		Route::post('/', ['uses'=>'NotificationsController@store', 'as'=>'admin.notice.store']);
 	});
 
-    // ------------------------------------------------------------------------
-	// Debug CMS
-	// ------------------------------------------------------------------------
-	Route::group(['prefix'=>'debug'], function() {
-		Route::get('/', function() {
-			return View::make('admin.debug.index', ['active_link'=>'debug']);
-		});
-	});
-	Route::get('locations', function() {
-		$locations = Location::paginate(10);
-		return View::make('admin.locations.index', ['active_link'=>'locations', 'locations'=>$locations]);
-	});
-
+   
 	// ------------------------------------------------------------------------
 	// Tags CMS
 	// ------------------------------------------------------------------------
@@ -94,76 +36,11 @@
 		Route::delete('{id}', ['uses'=>'TagsController@destroy']);
 	});
 
-
-	// ------------------------------------------------------------------------
-	// FAQs CMS
-	// ------------------------------------------------------------------------
-	Route::group(['prefix'=>'faqs'], function() {
-		Route::get('/', function() {
-			return View::make('admin.faq.index', ['active_link'=>'faq']);
-		});
-		Route::get('{id}', function($id) {
-			return View::make('admin.faq.edit', ['active_link'=>'faq', 'faq'=>FAQ::find($id)]);
-		});
-		Route::post('/', ['uses'=>'FAQsController@store']);
-		Route::put('{id}', ['uses'=>'FAQsController@update']);
-		Route::delete('{id}', ['uses'=>'FAQsController@destroy']);
-	});
-
-
-	// ------------------------------------------------------------------------
-	// Locations CMS
-	// ------------------------------------------------------------------------
-	Route::group(['prefix'=>'locations'], function() {
-
-		Route::post('/', ['uses'=>'LocationsController@store', 'before'=>'auth']);
-		Route::put('{id}/details', ['uses'=>'LocationsController@reloadDetails', 'before'=>'auth']);
-
-	});
-
-	// ------------------------------------------------------------------------
-	// Spots CMS
-	// ------------------------------------------------------------------------
-	Route::group(['prefix'=>'spots', 'before'=>'auth'], function() {
-		
-		Route::put('{id}', 'SpotsController@update');
-		Route::delete('{id}', 'SpotsController@destroy');
-		Route::post('/', 'SpotsController@store');
-		Route::post('{id}/photos/upload', ['uses'=>'SpotsController@uploadPhoto']);
-
-		// spots
-		Route::get('{id}/edit', ['uses'=>'SpotsController@edit']);
-		Route::get('create', ['uses'=>'SpotsController@create']);
-		Route::get('/', ['uses'=>'SpotsController@adminIndex']);
-	
-	});
-
-	// ------------------------------------------------------------------------
-	// Itinerary CMS
-	// ------------------------------------------------------------------------
-	Route::get('itinerary/', ['uses'=>'ItineraryController@adminIndex']);
-	Route::get('itinerary/{id}/edit', ['uses'=>'ItineraryController@adminShow']);
-	Route::get('itinerary/create', ['uses'=>'ItineraryController@create']);
-	
 	// ------------------------------------------------------------------------
 	// Users Roles & Permissions CMS
 	// ------------------------------------------------------------------------
 	Route::get('users', function() {
-
-		$users = User::where(function($q) {
-			if(Input::has('office')) {
-				$ids = explode(",", Input::get('office'));
-				$q->whereIn('office_id', $ids);
-			}
-			if(Input::has('roles')) {
-				$ids = explode(",", Input::get('roles'));
-				$q->whereHas('roles', function($q) use($ids) {
-					$q->whereIn('roles.id', $ids);
-				});
-			}
-		})->get();
-
-		return View::make('admin.users', ['active_link'=>'users', 'users'=>$users]);
+		return View::make('admin.index', ['users'=>User::all(), 'active_link'=>'index']);
 	});
 
 	Route::get('users/{id}', function($id) {
@@ -171,10 +48,10 @@
 	});
 
 	// edit a profile (*** ADMIN ONLY ***)
-	Route::get('users/{id}/edit', function($id) {
+	Route::get('users/{id}/roles/edit', function($id) {
 		$user = User::find($id);
-		if (Auth::user()->id == $user || Auth::user()->hasRole('Admin')) {
-			return View::make('admin.profile', ['user'=>$user, 'active_link'=>'index']);
+		if (Auth::user()->hasRole('Admin')) {
+			return View::make('admin.roles.edit-user-roles', ['user'=>$user, 'active_link'=>'index']);
 		}
 		return 'You do not have permissions to do this...';
 	});

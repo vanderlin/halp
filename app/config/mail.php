@@ -53,7 +53,7 @@ return array(
 	| used globally for all e-mails that are sent by your application.
 	|
 	*/
-    'from' => array('address' => 'localsonly@ideo.com', 'name' => 'Localsonly'),
+    'from' => array('address' => 'halp@ideo.com', 'name' => 'Halp at IDEO'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return array(
 	|
 	*/
 
-	'username' => 'localsonly@ideo.com',
+	'username' => 'tvanderlin@ideo.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ return array(
 	|
 	*/
 
-	'password' => 'bostonlocal',
+	'password' => 'younger33',
 
 	/*
 	|--------------------------------------------------------------------------
