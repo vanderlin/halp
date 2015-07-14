@@ -15,30 +15,53 @@
 {{-- Content --}}
 @section('content')
 
-<section class="content admin">
+<section class="content container admin">
 	@if ($users->count()>0)
-		<table style="width:900px;">
-		<thead>
-			<tr>
-				<td>#</td>
-				<td>Name</td>
-				<td>Email</td>
-				<td>Role</td>
-				<td></td>
-			</tr>
-		</thead>
+		<table class="ui celled table">
+  			<thead>
+    			<tr>
+    				<th>User</th>
+    				<th>Created Tasks</th>
+    				<th>Claimed Tasks</th>
+    				<th>Roles</th>
+    				<th></th>
+  				</tr>
+  			</thead>
 		<tbody>
 			@foreach ($users as $user)
-				<tr>
+			<tr>
+		      	<td>
+			        <h4 class="ui image header">
+			        	<img src="{{$user->profileImage->url('s30')}}" class="ui mini circular image">
+			        	<div class="content">
+			            	{{link_to($user->getProfileURL(), $user->getName())}}
+			            	<div class="sub header">{{$user->email}}</div>
+			        	</div>
+			      	</h4>
+		      	</td>
+				
+				<td>{{$user->createdTasks->count()}}</td>
+				<td>{{$user->claimedTasks->count()}}</td>
+			    <td>{{$user->getRoles()}}</td>
+				<td style="text-align:center"><a class="mini ui button" href="/admin/users/{{$user->id}}/roles/edit">Edit</a></td>
+    		</tr>
+				{{--<tr>
 					<td>{{$user->id}}</td>
-					<td>
-					<img class="circle-img" src="{{$user->profileImage->url('s30')}}">
-					{{$user->getName()}}
+					<td class="ui relaxed divided list">
+						<div class="item">
+							<div class="middle aligned">
+								<img class="circle-img" src="{{$user->profileImage->url('s30')}}">
+							</div>
+							<div class="content">
+								<a class="header">{{link_to($user->getProfileURL(), $user->getName())}}</a>
+								<div class="description">{{$user->email}}</div>
+							</div>
+						</div>
 					</td>
 					<td>{{$user->email}}</td>
 					<td>{{$user->getRoles()}}</td>
 					<td><a href="/admin/users/{{$user->id}}/roles/edit">Edit</a></td>
-				</tr>
+				</tr>--}}
 			@endforeach
 		</tbody>
 	</table>	
