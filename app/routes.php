@@ -84,7 +84,7 @@ Route::group(array('prefix'=>'notifications'), function() {
 Route::post('site-login', ['uses'=>'PageController@ChecksiteLogin']);
 
 // ------------------------------------------------------------------------
-Route::group(array('before'=>['siteprotection']), function() {
+Route::group(array('before'=>['siteprotection', 'auth']), function() {
 
 
 	Route::get('/', ['uses'=>'TasksController@index']);
