@@ -397,7 +397,7 @@ hr {
 }
 .project-name {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -671,7 +671,7 @@ body .nomargin-bottom {
   display: table;
   text-align: center;
   width: 100%;
-  padding: 10px;
+  padding: 10px 10px 40px 10px;
   margin: 0 auto;
 }
 .user-tasks .line-break:before,
@@ -685,7 +685,7 @@ body .nomargin-bottom {
 }
 .user-tasks .line-break > h2 {
   white-space: pre;
-  padding: 0 15px;
+  padding: 0 30px;
 }
 /* ------------------------------------- User Card  ------------------------------------ */
 .user-card .user-image img {
@@ -695,6 +695,7 @@ body .nomargin-bottom {
   margin-top: -27px;
 }
 .claimed-task {
+  height: 210px;
   position: relative;
 }
 .claimed-task .return-task {
@@ -703,12 +704,18 @@ body .nomargin-bottom {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #1B1A25;
+  background-color: #1b1b25;
   position: absolute;
+  transition: opacity .2s;
 }
 .claimed-task .return-task p {
-  color: white;
-  padding: 20px;
+  padding: 38px 30px 0px 30px;
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #a2b7cd;
+  font-style: italic;
+  line-height: 26px;
 }
 .claimed-task:hover .return-task {
   opacity: 1;
@@ -755,6 +762,9 @@ body .nomargin-bottom {
 .mfp-close-btn-in .mfp-close {
   margin: 20px;
   color: #4fd2c2 !important;
+}
+.mfp-bg {
+  background: #4fd2c2 !important;
 }
 .ui-autocomplete {
   background: #fff;
