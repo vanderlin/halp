@@ -42,6 +42,7 @@ h2{
 
 h3{
 	.serif(50px, 300, italic, @dark-purple);
+	line-height: 68px;
 }
 
 h4{
@@ -124,7 +125,7 @@ hr{
 
 .task {
 	width: 250px;
-	height: 342px;
+	height: 337px;
 	background-color: #fff;
 	text-align: center;
 	display: -moz-inline-stack;
@@ -135,7 +136,7 @@ hr{
 }
 
 .task-details{
-	padding: 50px 20px 33px 20px;	
+	padding: 46px 20px 35px 20px;
 }
 
 .task-name{
@@ -145,7 +146,8 @@ hr{
 
 .project-name{
 	display: block;
-	margin-bottom: 7px;
+	margin-bottom: 2px;
+	line-height: 20px;
 	.sans-serif(12px, @purple);
 }
 .date{
@@ -155,8 +157,7 @@ hr{
 }
 .duration{
   line-height: 37px;
-  text-transform: lowercase;
-  .serif(16px, 500, noraml, @purple);
+  .sans-serif(12px, @purple);
 }
 
 .task hr{
@@ -435,9 +436,9 @@ body .nomargin-bottom {
 	  	content:'';
 		display:table-cell; 
 		width:50%;
-	 	top: -15px;
+	 	top: -16px;
   		position: relative;
-  		border-bottom: 1px solid #E0DEDC;
+  		border-bottom: 2px solid #E0DEDC;
 	}
 	.line-break > h2{ white-space:pre; padding:0 30px; }
 }
@@ -512,6 +513,12 @@ body .nomargin-bottom {
 	}
 }
 
+/* ------------------------------------- ADMIN ADDITIONS  ------------------------------------ */
+
+.table {
+	text-align: left;
+	font-size: 18px
+}
 
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 
