@@ -11,7 +11,7 @@
 		<hr>
 		<span class="total-task">
 		<h2>{{$user->totalClaimed()}}</h2>
-		<h6>Completed Tasks</h6>
+		<h6>Claimed Tasks</h6>
 		</span>
 	</div>
 </div>
