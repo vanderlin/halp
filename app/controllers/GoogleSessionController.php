@@ -1,4 +1,4 @@
-'<?php
+<?php
 
 class GoogleSessionController extends BaseController {
 
