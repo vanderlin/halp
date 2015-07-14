@@ -49,6 +49,40 @@ class TasksRepository  {
 		return $this->listener->statusResponse(['task'=>$task]);		
 	}
 
+
+	// ------------------------------------------------------------------------
+	public function claim($id) {
+		
+		if(is_object($id)) {
+			$id = $id->id;
+		}
+		$task = Task::withTrashed()->whereId($id)->first();
+		if($task) 
+		{
+			$task->claimed_id = Auth::id();
+			$task->claimed_at = Carbon::now();
+			$task->save();
+		}
+		return $this->listener->statusResponse(['task'=>$task]);		
+	}
+
+	// ------------------------------------------------------------------------
+	public function unclaim($id) {
+		
+		if(is_object($id)) {
+			$id = $id->id;
+		}
+		$task = Task::withTrashed()->whereId($id)->first();
+		if($task) 
+		{
+			$task->claimed_id = NULL;
+			$task->claimed_at = NULL;
+			$task->save();
+		}
+		return $this->listener->statusResponse(['task'=>$task]);		
+	}
+
+
 	// ------------------------------------------------------------------------
 	public function store($input)
 	{		

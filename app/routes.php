@@ -51,7 +51,8 @@ Route::group(array('before'=>['siteprotection']), function() {
 		Route::post('/', ['uses'=>'TasksController@store', 'as'=>'tasks.store']);
 		Route::get('{id}', ['uses'=>'TasksController@show', 'as'=>'tasks.show']);
 		Route::get('{id}/claimed', ['uses'=>'TasksController@showClaimed', 'as'=>'tasks.show.claimed']);
-		
+		Route::post('{id}/claim', ['uses'=>'TasksController@claim', 'as'=>'tasks.claim']);
+		Route::post('{id}/unclaim', ['uses'=>'TasksController@unclaim', 'as'=>'tasks.unclaim']);
 	});
 
 
