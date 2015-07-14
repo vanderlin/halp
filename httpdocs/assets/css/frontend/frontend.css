@@ -273,6 +273,7 @@ a {
   color: #4fd2c2;
   text-decoration: none;
   outline: none;
+  transition: color .2s;
 }
 a:hover,
 a:focus {
@@ -298,7 +299,14 @@ h3 {
   font-family: 'Merriweather', serif;
   font-weight: 300;
   font-size: 50px;
-  color: #404d5b;
+  color: #1b1b25;
+  font-style: italic;
+}
+h4 {
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #a2b7cd;
   font-style: italic;
 }
 h5 {
@@ -308,6 +316,16 @@ h5 {
   font-size: 14px;
   letter-spacing: 1px;
   color: #404d5b;
+  line-height: 37px;
+}
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #a2b7cd;
+  line-height: 37px;
 }
 hr {
   width: 60px;
@@ -321,7 +339,7 @@ hr {
 }
 .content {
   font-size: 150%;
-  padding: 1.5em 0 3em 0;
+  padding: 3em 0 3em 0;
 }
 .turtle-break {
   margin: 50px 0;
@@ -372,8 +390,7 @@ hr {
   letter-spacing: 0px;
 }
 /* ----------------------------------- TASK CARDS ----------------------------------- */
-.task,
-.user-card {
+.task {
   width: 250px;
   height: 342px;
   background-color: #fff;
@@ -687,11 +704,36 @@ body .nomargin-bottom {
   white-space: pre;
   padding: 0 30px;
 }
+.total-task h2 {
+  font-size: 80px;
+  color: #404d5b;
+  font-style: normal;
+  opacity: 1;
+}
 /* ------------------------------------- User Card  ------------------------------------ */
+.user-image-most-helpful img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 13px solid white;
+  margin: 40px 0px 10px 0px;
+}
+.user-card {
+  width: 250px;
+  height: 290px;
+  background-color: #fff;
+  text-align: center;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  margin: 1%;
+  padding: 0px;
+}
 .user-card .user-image img {
   border-radius: 50%;
   overflow: hidden;
-  border: 7px solid white;
+  border: 10px solid white;
   margin-top: -27px;
 }
 .claimed-task {

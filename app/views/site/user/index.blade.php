@@ -17,15 +17,17 @@
 
 <section class="hero">
 	<h3>The most helpful person is:</h3>
-		<div class="user-image">
+		<div class="user-image-most-helpful">
 			<a href="{{$leader->getProfileURL()}}">
 				<img src="{{$leader->profileImage->url('s72')}}">
 			</a>
 		</div>
 		<div class="user-details">
-			<span class="user-name">{{$leader->getName()}}</span>
+			<span class="user-name">
+				<h5>{{$leader->getName()}}</h5>
+			</span>
 			<span class="total-task">
-				<h3>{{$leader->totalClaimed()}} Completed Tasks!</h3>
+				<h4>{{$leader->totalClaimed()}} Completed Tasks!</h4>
 			</span>
 			<hr>
 		</div>
