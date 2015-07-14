@@ -41,9 +41,16 @@ Route::group(array('prefix'=>'notifications'), function() {
 		// get all notifications that have not been sent out
 		$notifications = Notification::whereNull('sent_at')->get();
 		$results = [];
-
+		
+		$preview = Input::get('preview', false);
+		if($preview)
+		{
+			return View::make('emails.new-task', ['user'=>Auth::user()]);
+		}
 		foreach ($notifications as $notice) {
 			
+
+
 			Mail::send('emails.new-task', array('key' => 'value'), function($message) use($users, $results, $notice) {
 				foreach ($users as $user) {
 					$subject = $notice->task->creator->getShortName().' Needs Help';
