@@ -27,7 +27,7 @@
 				<h5>{{$leader->getName()}}</h5>
 			</span>
 			<span class="total-task">
-				<h4>{{$leader->totalClaimed()}} Completed Tasks!</h4>
+				<h4>{{$leader->totalClaimed()}} Claimed Tasks!</h4>
 			</span>
 			<hr>
 		</div>

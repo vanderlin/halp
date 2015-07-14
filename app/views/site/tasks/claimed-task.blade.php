@@ -3,7 +3,7 @@
 		<span class="task-name">{{$task->title}}</span>
 		<hr>
 		<span class="project-name">For {{$task->project->title}}</span>
-		<span class="claimed-by">{{$task->claimed_at->toFormattedDateString()}}</span>
+		<span class="date-claimed">{{$task->claimed_at->toFormattedDateString()}}</span>
 	</div>
 	<div class="return-task">
 		<p>Return to the task board if you can’t complete this.</p>
