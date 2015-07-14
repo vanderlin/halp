@@ -33,6 +33,7 @@
     "fontawesome": "~4.3.0",
     "swiper": "~3.0.5",
     "jquery-ui": "~1.11.4",
-    "classie": "~1.0.1"
+    "classie": "~1.0.1",
+    "semantic-ui": "~2.0.3"
   }
 }
