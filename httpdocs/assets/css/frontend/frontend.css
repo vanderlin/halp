@@ -389,6 +389,10 @@ hr {
   bottom: 19px;
   letter-spacing: 0px;
 }
+.dark-bg {
+  height: 100vh;
+  background-color: #1b1b25;
+}
 /* ----------------------------------- TASK CARDS ----------------------------------- */
 .task {
   width: 250px;
@@ -649,7 +653,7 @@ body .nomargin-bottom {
   line-height: 46px;
 }
 .intro-text strong {
-  color: #4fd2c2;
+  color: #a2b7cd;
   font-weight: 300;
 }
 .dark-bg {
