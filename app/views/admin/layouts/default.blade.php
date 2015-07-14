@@ -12,21 +12,23 @@
   <body>
    
     <!-- Content -->  
-    <div class="admin container">
+    <div class="container">
   
-      <!-- Main Navigation -->
-      @if (isset($use_navigation)?$use_navigation:true)
+        <!-- Main Navigation -->
+        @if (isset($use_navigation)?$use_navigation:true)
         @include('site.partials.main-navigation')
-      @endif
-      <!-- Main Navigation -->  
-
-        <div class="admin-nav ui celled horizontal list">
-            <div class="item">{{link_to('admin/users', 'Users')}}</div>
-            <div class="item">{{link_to('admin/notifications', 'Notifications')}}</div>
-        </div>
-
-        @yield('content')
-
+        @endif
+        <!-- Main Navigation -->  
+        
+        <div class="admin">
+            <div class="ui celled horizontal list">
+                <div class="item">{{link_to('admin/users', 'Users')}}</div>
+                <div class="item">{{link_to('admin/notifications', 'Notifications')}}</div>
+            </div>
+            <br>
+            <br>
+            @yield('content')
+        </div>   
 
     </div>
   

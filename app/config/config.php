@@ -11,7 +11,7 @@ return array(
 	'google' => array(
 	    'oauth_options'      => array('access_type'=>'offline', 'display'=>'popup'),
 	    'oauth_local_path'   => 'assets/google/client_secret_386187553837-0jfjomr9dh4lfcp9gu6t0m6trhnu75st.apps.googleusercontent.com.json',
-	    'oauth_remote_path'  => '',
+	    'oauth_remote_path'  => 'client_secret_386187553837-r8nkcvifv9ckeeiml0gmdq1r646u4v03.apps.googleusercontent.com.json',
 	    'api_key'            => "AIzaSyA_TYdDVr4vK84L7ixNncKz4t8HypMn2GY",
 	    'server_key'		 => "AIzaSyA_TYdDVr4vK84L7ixNncKz4t8HypMn2GY",
 	    'hd'                 => 'ideo.com',

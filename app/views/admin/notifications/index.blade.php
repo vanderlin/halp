@@ -10,29 +10,27 @@
 @stop
 
 
-
-
 {{-- Content --}}
 @section('content')
 
 <section class="content admin">
 	@if ($notifications->count()>0)
-		<table style="width:900px;">
+		<table class="ui celled table">
 		<thead>
 			<tr>
-				<td>#</td>
-				<td>Event</td>
-				<td>Task</td>
-				<td>Sent</td>
+				<th>#</th>
+				<th>Event</th>
+				<th>Task</th>
+				<th>Sent</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach ($notifications as $notice)
 				<tr>
 					<td>{{$notice->id}}</td>
-					<td>{{$notice->event}}</td>
-					<td>{{$notice->task->title}}</td>
-					<td>
+					<td><code>{{$notice->event}}</code></td>
+					<td>{{link_to($notice->task->getURL(), $notice->task->title)}}</td>
+					<td style="text-align:center">
 						@if ($notice->task->sent==NULL)
 							<b style="color:red">Not Sent</b>
 						@else
