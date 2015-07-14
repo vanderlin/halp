@@ -24,7 +24,7 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 $env = $app->detectEnvironment(function() {
-    return ($_SERVER['SERVER_NAME'] != 'halp.ideo.com') ? 'local' : 'production';	
+    return ($_SERVER['SERVER_NAME'] != 'halp.ideo.com' || $_SERVER['PWD']!='/var/www/vhosts/halp.ideo.com') ? 'local' : 'production';	
 });
 /*
 |--------------------------------------------------------------------------
