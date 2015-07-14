@@ -34,6 +34,25 @@ Route::group(array('prefix'=>'notifications'), function() {
 	});
 
 	Route::any('send', function() {
+
+		// first get all users that want to receive notifications
+		$users = User::where('notifications', '=', 1)->get();
+
+		// get all notifications that have not been sent out
+		$notifications = Notification::whereNull('sent_at')->get();
+		$results = [];
+
+		foreach ($notifications as $notice) {
+			
+			Mail::send('emails.new-task', array('key' => 'value'), function($message) use($users, $results, $notice) {
+				foreach ($users as $user) {
+					$subject = $notice->task->creator->getShortName().' Needs Help';
+					$message->to($user->email, $user->getName())->subject($subject);
+				}
+			});
+
+		}
+		
 		return Redirect::back()->with(['notice'=>'Notifications Sent']);
 	});
 

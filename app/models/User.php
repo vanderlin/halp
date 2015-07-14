@@ -122,6 +122,11 @@ class User extends BaseModel implements ConfideUserInterface {
         if($this->hasRole('Editor')) return 'Editor';
         return $this->isSpotter() ? 'Spotter' : 'Local';
     }
+    
+    public function isAdmin() 
+    {
+        return $this->hasRole('Admin');
+    }
 
     public function isEditor() 
     {
