@@ -28,6 +28,30 @@ a:hover, a:focus {
 	color: @purple;
 }
 
+p{
+	.serif(20px, 400, normal, @purple);
+	line-height: 32px;
+}
+
+h2{
+	.serif(32px, 300, italic, @purple);
+	line-height: 40px;
+}
+
+h3{
+	.serif(50px, 300, italic, @purple);
+}
+
+h5{
+	.sans-serif(14px, @purple);
+}
+
+hr{
+	width: 60px;
+  	border: 1px solid;
+  	margin: 30px auto;
+}
+
 .container {
 	margin: 0 auto;
 	text-align: center;
@@ -367,6 +391,45 @@ body .nomargin-bottom {
   	padding-top: 28px;
 }
 
+/* ------------------------------------- User Profile Page  ------------------------------------ */
+
+.check-box{
+	padding: 30px 0px 10px 0px;
+}
+
+.hero {
+	text-align: center;
+	width: 100%;
+  	display: table;
+	background-color: #F9F7F6;
+	padding: 80px 0px;
+}
+
+.user-tasks {
+	padding: 80px 60px;
+
+	h2 {
+		padding: 30px;
+	}
+
+	.line-break{ 
+	  display:table;
+	  text-align:center; 
+	  width:100%; 
+	  padding:10px;
+	  margin:0 auto;
+	}
+	.line-break:before, .line-break:after{ 
+	  	content:'';
+		display:table-cell; 
+		width:50%;
+	 	top: -15px;
+  		position: relative;
+  		border-bottom: 1px solid #E0DEDC;
+	}
+	.line-break > h2{ white-space:pre; padding:0 15px; }
+}
+
 /* ------------------------------------- User Card  ------------------------------------ */
 .user-card {
 	.user-image img {
@@ -398,36 +461,7 @@ body .nomargin-bottom {
 	}
 }
 
-.hero {
-	text-align: center;
-	width: 100%;
-  	display: table;
-	height: 30vh;
-	background-color: #F9F7F6;
-}
 
-.user-tasks {
-	h2 {
-		padding: 30px;
-	}
-
-	.line-break{ 
-	  display:table;
-	  text-align:center; 
-	  width:100%; 
-	  padding:10px;
-	  margin:0 auto;
-	}
-	.line-break:before, .line-break:after{ 
-	  	content:'';
-		display:table-cell; 
-		width:50%;
-	 	top: -7px;
-  		position: relative;
-  		border-bottom: 1px solid #E0DEDC;
-	}
-	.line-break > h2{ white-space:pre; padding:0 15px; }
-}
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 
 @media screen and (max-width: 50em) {
