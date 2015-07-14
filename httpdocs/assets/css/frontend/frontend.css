@@ -301,6 +301,7 @@ h3 {
   font-size: 50px;
   color: #1b1b25;
   font-style: italic;
+  line-height: 68px;
 }
 h4 {
   font-family: 'Merriweather', serif;
@@ -339,7 +340,7 @@ hr {
 }
 .content {
   font-size: 150%;
-  padding: 3em 0 3em 0;
+  padding: 3em;
 }
 .turtle-break {
   margin: 0;
@@ -392,7 +393,7 @@ hr {
 /* ----------------------------------- TASK CARDS ----------------------------------- */
 .task {
   width: 250px;
-  height: 342px;
+  height: 337px;
   background-color: #fff;
   text-align: center;
   display: -moz-inline-stack;
@@ -402,7 +403,7 @@ hr {
   padding: 0px;
 }
 .task-details {
-  padding: 50px 20px 33px 20px;
+  padding: 46px 20px 35px 20px;
 }
 .task-name {
   display: block;
@@ -414,7 +415,8 @@ hr {
 }
 .project-name {
   display: block;
-  margin-bottom: 7px;
+  margin-bottom: 0px;
+  line-height: 20px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -431,14 +433,24 @@ hr {
   color: #a2b7cd;
   font-style: italic;
 }
-.duration {
-  line-height: 37px;
+.date-claimed {
+  display: block;
   text-transform: lowercase;
   font-family: 'Merriweather', serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
+  color: #a2b7cd;
+  font-style: italic;
+  padding-top: 6px;
+}
+.duration {
+  line-height: 37px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
   color: #404d5b;
-  font-style: noraml;
 }
 .task hr {
   border: 1px solid #e8e6e5;
@@ -469,7 +481,7 @@ hr {
 .claimed {
   background-color: #F9F7F6;
   background-image: url("/assets/img/diagonal-lines.png");
-  height: 230px;
+  height: 253px;
 }
 .claimed .project-name {
   color: #cccccc;
@@ -696,9 +708,9 @@ body .nomargin-bottom {
   content: '';
   display: table-cell;
   width: 50%;
-  top: -15px;
+  top: -16px;
   position: relative;
-  border-bottom: 1px solid #E0DEDC;
+  border-bottom: 2px solid #E0DEDC;
 }
 .user-tasks .line-break > h2 {
   white-space: pre;
@@ -765,6 +777,11 @@ body .nomargin-bottom {
 }
 .claimed-task:hover .return-task {
   opacity: 1;
+}
+/* ------------------------------------- ADMIN ADDITIONS  ------------------------------------ */
+.table {
+  text-align: left;
+  font-size: 18px;
 }
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 @media screen and (max-width: 50em) {
