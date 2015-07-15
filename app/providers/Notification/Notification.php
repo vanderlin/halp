@@ -15,6 +15,33 @@ class Notification extends BaseModel {
 	const NOTIFICATION_NEW_TASK = "notification.new.task";
 	const NOTIFICATION_TASK_CLAIMED = "notification.task.claimed";
 	
+	// ------------------------------------------------------------------------
+	public static function checkForNotifications()
+	{
+		// first get all users that want to receive notifications
+		$users = User::where('notifications', '=', 1)->get();
+
+		// get all notifications that have not been sent out
+		$notifications = Notification::whereNull('sent_at')->get();
+		$results = [];
+		foreach ($notifications as $notice) {
+			
+			// New Task - send to all users that want to be notified
+			if($notice->event == Notification::NOTIFICATION_NEW_TASK)
+			{
+				foreach ($users as $user) {
+					$notice->sendEmailToUser($user);
+				}
+			}
+
+			// someone claimed your task
+			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
+				$notice->sendEmailToUser($notice->task->creator);
+			}
+		}
+		return  $results;
+	}
+
     // ------------------------------------------------------------------------
     public function toArray() 
     {
