@@ -154,6 +154,7 @@ h1 {
   color: #4fd2c2;
   font-size: 45px;
   font-weight: 100;
+  line-height: 46px;
 }
 h2 {
   font-family: Georgia, serif;
@@ -214,6 +215,7 @@ a {
   }
   h1 {
     font-size: 35px;
+    line-height: 38px;
   }
   h2 {
     font-size: 18px;
@@ -228,10 +230,12 @@ a {
   .email-content {
     padding: 30px 30px 10px 30px;
     margin: 20px auto;
+    border-bottom: none;
   }
   h1 {
     font-size: 25px;
     margin: 20px 0px;
+    line-height: 31px;
   }
   .rounded-button {
     width: 120px;
