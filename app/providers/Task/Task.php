@@ -6,6 +6,7 @@ use User;
 use Validator;
 use Carbon;
 use DB;
+use URL;
 
 class Task extends BaseModel {
 	
@@ -48,6 +49,12 @@ class Task extends BaseModel {
 	public function save(array $options = array()) 
 	{
   		parent::save();
+	}
+
+	// ------------------------------------------------------------------------
+	public function getURL($relative=true) 
+	{
+		return URL::to('tasks/'.$this->id); 
 	}
 
 	// ------------------------------------------------------------------------

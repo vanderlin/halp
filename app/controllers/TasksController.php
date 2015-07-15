@@ -21,7 +21,9 @@ class TasksController extends \BaseController {
 	// ------------------------------------------------------------------------
 	public function show($id)
 	{
-		return $this->repository->find($id);
+		$task = $this->repository->get($id);
+
+		return $task;
 	}
 
 	// ------------------------------------------------------------------------
