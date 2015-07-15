@@ -33,7 +33,7 @@ Route::get('testemail', function() {
 	];
 
 
-	$view = View::make('emails.new-task', $data)->render();
+	$view = View::make('emails.test', $data)->render();
 	$premailer = new ScottRobertson\Premailer\Request();
 	$response = $premailer->convert($view);
 	$email = Input::get('email', 'vanderlin@gmail.com');
@@ -44,12 +44,7 @@ Route::get('testemail', function() {
 		});
 		return 'sent';
 	}
-
-	// Download the generated HTML file from Premailer
-	return $view;//$response->downloadHtml();
-
-	
-	
+	return $view;
 });
 
 // ------------------------------------------------------------------------
@@ -73,14 +68,30 @@ Route::group(array('prefix'=>'notifications'), function() {
 		{
 			return View::make('emails.new-task', ['task'=>Task::first()]);
 		}
+
+
 		foreach ($notifications as $notice) {
-			foreach ($users as $user) {
-				Mail::send('emails.new-task', array('task'=>$notice->task), function($message) use($user, $results, $notice) {
+			
+			// New Task - send to all users that want to be notified
+			if($notice->event == Notification::NOTIFICATION_NEW_TASK)
+			{
+				foreach ($users as $user) {
+					$notice->sendEmailToUser($user);
+				}
+			}
+
+			// someone claimed your task
+			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
+				$notice->sendEmailToUser($notice->task->creator);
+			}
+
+			/*foreach ($users as $user) {
+				Mail::send($notice->getViewPath(), array('task'=>$notice->task), function($message) use($user, $results, $notice) {
 					$subject = $notice->task->creator->getShortName().' Needs Help';
 					$message->to($user->email, $user->getName())->subject($subject);
 					array_push($results, ['email_sent'=>$user->email, 'task'=>$notice->task->title]);
 				});
-			}
+			}*/
 		}
 		return  $results;
 		
