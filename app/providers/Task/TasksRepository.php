@@ -64,6 +64,10 @@ class TasksRepository  {
 			$task->claimed_id = Auth::id();
 			$task->claimed_at = Carbon::now();
 			$task->save();
+
+			// fire a new notification to the system
+			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 
+   
 		}
 		return $this->listener->statusResponse(['task'=>$task]);		
 	}
