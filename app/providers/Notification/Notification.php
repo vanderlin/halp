@@ -6,6 +6,7 @@ use Validator;
 use Carbon;
 use Mail;
 use View;
+use ScottRobertson\Premailer\Request as Premailer;
 
 class Notification extends BaseModel {
 	
@@ -98,7 +99,7 @@ class Notification extends BaseModel {
 	{	
 
 		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
-		$premailer = new \ScottRobertson\Premailer\Request();
+		$premailer = new Premailer();
 		$response = $premailer->convert($view);
 
 		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($user) {
