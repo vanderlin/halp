@@ -63,6 +63,17 @@ grunt.initConfig({
           }
 
         },
+        email: {
+          options: {
+            paths: ["<%= paths.css %>"],
+            cleancss: true,
+            modifyVars: {
+            }
+          },
+          files: {
+            "<%= paths.css %>core/email.css": "<%= paths.assets.less %>email.less",
+          }
+        },
         bootstrap: {
           options: {
             paths: ["<%= paths.css %>"],
@@ -116,6 +127,13 @@ grunt.initConfig({
       less_bootstrap: {
         files: ['<%= paths.assets.less %>bootstrap.less'],  
         tasks: ['less:bootstrap'], 
+        options: {
+          livereload: true              
+        }
+      },
+      less_bootstrap: {
+        files: ['<%= paths.assets.less %>email.less'],  
+        tasks: ['less:email'], 
         options: {
           livereload: true              
         }
