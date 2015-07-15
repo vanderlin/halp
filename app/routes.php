@@ -84,14 +84,6 @@ Route::group(array('prefix'=>'notifications'), function() {
 			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
 				$notice->sendEmailToUser($notice->task->creator);
 			}
-
-			/*foreach ($users as $user) {
-				Mail::send($notice->getViewPath(), array('task'=>$notice->task), function($message) use($user, $results, $notice) {
-					$subject = $notice->task->creator->getShortName().' Needs Help';
-					$message->to($user->email, $user->getName())->subject($subject);
-					array_push($results, ['email_sent'=>$user->email, 'task'=>$notice->task->title]);
-				});
-			}*/
 		}
 		return  $results;
 		
