@@ -18,3 +18,13 @@ Thumbs.db
 .config/
 .mysql_history
 .npm/
+.cache/
+.composer/
+conf/
+.ssh/
+
+
+# temp
+bootstrap/boot.php
+httpdocs/vars.php
+sub.php
