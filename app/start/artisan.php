@@ -12,3 +12,4 @@
 */
 
 Artisan::add(new SetupSite);
+Artisan::add(new CronCommand);
