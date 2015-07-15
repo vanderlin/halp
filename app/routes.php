@@ -25,6 +25,32 @@ Route::get('most-tasks', function() {
                 ->get();
 });
 
+Route::get('testemail', function() {
+
+	
+	$data = [
+		'task'=>Task::first(),
+	];
+
+
+	$view = View::make('emails.new-task', $data)->render();
+	$premailer = new ScottRobertson\Premailer\Request();
+	$response = $premailer->convert($view);
+	$email = Input::get('email', 'vanderlin@gmail.com');
+
+	if(Input::has('send')) {
+		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($email) {
+			$message->to($email, 'Halp')->subject(Auth::user()->getName()."Halp Email Test ".uniqid());
+		});
+		return 'sent';
+	}
+
+	// Download the generated HTML file from Premailer
+	return $view;//$response->downloadHtml();
+
+	
+	
+});
 
 // ------------------------------------------------------------------------
 Route::group(array('prefix'=>'notifications'), function() {
@@ -45,20 +71,18 @@ Route::group(array('prefix'=>'notifications'), function() {
 		$preview = Input::get('preview', false);
 		if($preview)
 		{
-			return View::make('emails.new-task', ['user'=>Auth::user()]);
+			return View::make('emails.new-task', ['task'=>Task::first()]);
 		}
 		foreach ($notifications as $notice) {
-			
-
-
-			Mail::send('emails.new-task', array('key' => 'value'), function($message) use($users, $results, $notice) {
-				foreach ($users as $user) {
+			foreach ($users as $user) {
+				Mail::send('emails.new-task', array('task'=>$notice->task), function($message) use($user, $results, $notice) {
 					$subject = $notice->task->creator->getShortName().' Needs Help';
 					$message->to($user->email, $user->getName())->subject($subject);
-				}
-			});
-
+					array_push($results, ['email_sent'=>$user->email, 'task'=>$notice->task->title]);
+				});
+			}
 		}
+		return  $results;
 		
 		return Redirect::back()->with(['notice'=>'Notifications Sent']);
 	});
