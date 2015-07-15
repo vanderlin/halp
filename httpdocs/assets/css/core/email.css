@@ -1,5 +1,246 @@
+/* ----------------------------------- MIXINS ----------------------------------- */
+/* Button container */
+.progress-button {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 45%;
+  min-width: 250px;
+  margin: 15px 0 10px 0;
+}
+/* Button style */
+.progress-button button {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 180px;
+  height: 70px;
+  border: 2px solid #4FD2C2;
+  border-radius: 40px;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #4fd2c2;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+.small.progress-button {
+  min-width: none;
+  width: initial;
+  min-width: initial;
+  margin-top: 30px;
+}
+.small.progress-button button {
+  width: 150px;
+  height: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #4fd2c2;
+  letter-spacing: 1px;
+}
+.progress-button button:hover {
+  background-color: #4FD2C2;
+  color: #fff;
+}
+.progress-button button:focus {
+  outline: none;
+}
+/* Text (transition for when returning to initial state) */
+.progress-button button span {
+  -webkit-transition: opacity 0.3s 0.1s;
+  transition: opacity 0.3s 0.1s;
+}
+/* Common style of SVGs */
+.progress-button svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.progress-button svg path {
+  opacity: 0;
+  fill: none;
+}
+.progress-button svg.progress-circle path {
+  stroke: #4FD2C2;
+  stroke-width: 5;
+}
+.progress-button svg.checkmark path,
+.progress-button svg.cross path {
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-width: 4;
+  -webkit-transition: opacity 0.1s;
+  transition: opacity 0.1s;
+}
+/* Loading, success and error effects */
+.loading.progress-button button {
+  width: 70px;
+  /* make a circle */
+  border-width: 5px;
+  border-color: #ddd;
+  background-color: transparent;
+  color: #fff;
+}
+.loading.progress-button span {
+  -webkit-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+}
+.loading.progress-button span,
+.success.progress-button span,
+.error.progress-button span {
+  opacity: 0;
+  /* keep it hidden in all states */
+}
+.success.progress-button button,
+.error.progress-button button {
+  -webkit-transition: background-color 0.3s, width 0.3s, border-width 0.3s;
+  transition: background-color 0.3s, width 0.3s, border-width 0.3s;
+}
+.success.progress-button button {
+  border-color: #4FD2C2;
+  background-color: #4FD2C2;
+}
+.error.progress-button button {
+  border-color: #FB797E;
+  background-color: #FB797E;
+}
+.loading.progress-button svg.progress-circle path,
+.success.progress-button svg.checkmark path,
+.error.progress-button svg.cross path {
+  opacity: 1;
+  -webkit-transition: stroke-dashoffset 0.3s;
+  transition: stroke-dashoffset 0.3s;
+}
+/* Optional elastic effect for the width of the button */
+.elastic.progress-button button {
+  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1), border-width 0.3s, border-color 0.3s;
+  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1.6), border-width 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1.6), border-width 0.3s, border-color 0.3s;
+}
+.loading.elastic.progress-button button {
+  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, 0, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
+  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
+}
 body {
   margin: 0;
   padding: 0;
   background-color: #f0efee;
+}
+.container {
+  text-align: center;
+}
+.email-content {
+  width: 600px;
+  padding: 100px;
+  background-color: #fff;
+  margin: 40px auto;
+  border-bottom: 6px solid #404d5b;
+}
+h1 {
+  font-family: Georgia, serif;
+  color: #4fd2c2;
+  font-size: 45px;
+  font-weight: 100;
+}
+h2 {
+  font-family: Georgia, serif;
+  color: #404d5b;
+  font-style: italic;
+  font-size: 26px;
+  font-weight: 100;
+  line-height: 28px;
+}
+h3 {
+  color: #404d5b;
+  text-transform: uppercase;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 13px;
+}
+hr {
+  border: 0;
+  width: 10%;
+  border-bottom: 2px solid #404d5b;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+p {
+  font-family: Georgia, serif;
+  color: #cccccc;
+  font-size: 17px;
+  font-weight: 100;
+  line-height: 26px;
+  padding: 0px 90px;
+}
+a {
+  color: #4fd2c2;
+  text-decoration: none;
+}
+.rounded-button {
+  padding: 20px;
+  border: 2px solid #4fd2c2;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-family: Arial;
+  font-size: 13px;
+  font-weight: bold;
+  width: 200px;
+  margin: 40px auto;
+}
+@media screen and (max-width: 930px) {
+  .email-content {
+    width: 400px;
+    padding: 80px;
+  }
+  p {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .email-content {
+    width: 300px;
+    padding: 50px;
+  }
+  h1 {
+    font-size: 35px;
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  hr {
+    margin-top: 20px;
+    margin-bottom: 23px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .email-content {
+    width: 220px;
+    padding: 30px 30px 10px 30px;
+    margin: 20px auto;
+  }
+  h1 {
+    font-size: 25px;
+    margin: 20px 0px;
+  }
+  .rounded-button {
+    width: 120px;
+  }
+  h3 {
+    font-size: 11px;
+  }
+  p {
+    font-size: 15px;
+  }
 }
