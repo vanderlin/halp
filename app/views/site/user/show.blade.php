@@ -15,14 +15,23 @@
 @section('content')
 		
 	<section class="hero">
-		<h3>{{$user->getName()}}</h3>
-		@if($user->hasRole('Admin'))
-			<small>{{link_to('admin', 'Admin')}}</small>
+		@if (Auth::check() && Auth::id() == $user->id)
+			<h3>{{$user->getName()}}</h3>
+			@if($user->hasRole('Admin'))
+				<small>{{link_to('admin', 'Admin')}}</small>
+			@endif
+			<hr>
+			<p>E-mail me when a new task is added to Halp:</p>
+			<a href="#yes"><img class="check-box" src="{{img('circle_check.svg')}}"></a>
+			<h5>Yes Please</h5>
+		@else
+			<div class="user-image-most-helpful">
+				<a href="{{$user->getProfileURL()}}">
+					<img src="{{$user->profileImage->url('s280')}}">
+				</a>
+			</div>
+			<h3>{{$user->getName()}}</h3>
 		@endif
-		<hr>
-		<p>E-mail me when a new task is added to Halp:</p>
-		<a href="#yes"><img class="check-box" src="{{img('circle_check.svg')}}"></a>
-		<h5>Yes Please</h5>
 	</section>
 
 	<section class="tasks user-tasks">
@@ -32,7 +41,7 @@
 		@forelse ($user->claimedTasks as $task)
 			@include('site.tasks.claimed-task', array('task' => $task))
 		@empty
-			<br /><h5>It's time to start helping.</h5>
+			<br/><h5>It's time to start helping.</h5>
 		@endforelse
 	</section>
 @stop

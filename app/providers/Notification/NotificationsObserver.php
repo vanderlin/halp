@@ -31,7 +31,9 @@ class NotificationObserver {
 	public function registerListeners()
 	{
 		Event::listen(Notification::NOTIFICATION_NEW_TASK, function($e) {
-
+			$this->createNotification($e);
+		});
+		Event::listen(Notification::NOTIFICATION_TASK_CLAIMED, function($e) {
 			$this->createNotification($e);
 		});
 	}
