@@ -15,7 +15,6 @@
 @section('content')
 	
 	<div id="test-popup" class="white-popup mfp-hide">
-  		Popup content
 	</div>
 
 	@if (Auth::check() && isset($tasks))
