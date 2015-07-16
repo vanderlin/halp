@@ -401,6 +401,47 @@ hr {
   vertical-align: top;
   margin: 20px 16px;
   padding: 0px;
+  position: relative;
+}
+.task .edit-bar {
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+}
+.task .edit-bar a {
+  padding: 10px;
+  display: table;
+}
+.task .edit-bar .fa:hover {
+  color: #404d5b;
+}
+.task .edit-bar .fa {
+  color: #cccccc;
+  font-size: 16px;
+  top: 2px;
+  position: relative;
+}
+.new-task {
+  background-color: #4fd2c2;
+}
+.new-task .project-name a {
+  color: white;
+}
+.new-task .date {
+  color: white;
+}
+.new-task hr {
+  border-color: #404d5b !important;
+}
+.new-task .small.progress-button button {
+  color: white;
+}
+.new-task .progress-button button {
+  border-color: white !important;
+}
+.new-task .progress-button button:hover {
+  background-color: #404d5b !important;
+  border-color: #404d5b !important;
 }
 .task-details {
   padding: 46px 20px 35px 20px;
@@ -864,4 +905,7 @@ body .nomargin-bottom {
 .ui-autocomplete li:hover {
   color: #fff;
   background: #404d5b;
+}
+.ui-autocomplete .ui-state-focus {
+  background-color: rgba(64, 77, 91, 0.5);
 }

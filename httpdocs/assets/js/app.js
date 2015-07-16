@@ -91,11 +91,46 @@ var App = (function() {
   
     }
 
+    // -------------------------------------
+    self.addDeleteTaskEvent = function($item) {
+        $item.click(function(e) {
+            e.preventDefault();
+             var id = $(this).data('id');
+            var c = confirm("Are you sure you want to delete this task?");
+            var $target = $($(this).data('target'));
+            if(c)
+            {
+                $.ajax({
+                    url: '/tasks/'+id,
+                    type: 'POST',
+                    dataType:'json',
+                    data: {_method: 'DELETE'},
+                })
+                .done(function(e) {
+                    $target.fadeOut(200, function() {
+                        $(this).remove();
+                    });
+                });
+                 
+            } 
+        });
+    }
+    // -------------------------------------
+
 
     self.loadModules = function() {
+
+        var self = this;
+
         $.timeago.settings.cutoff = 0;
         $(".timeago").timeago();
-      
+        
+
+        $('.halp-delete-task-button').each(function(index, el) {
+            self.addDeleteTaskEvent($(el));
+        });
+
+        // -------------------------------------
         $('.halp-claim-button').each(function(index, el) {
             var $button = $(el);
             var id = $button.data('id');

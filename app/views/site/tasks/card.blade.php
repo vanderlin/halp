@@ -1,5 +1,7 @@
-<div class="task {{$claimed?'claimed':''}}">
+<?php $claimed = isset($claimed) ? $claimed : false; ?>
+<div class="task {{$claimed?'claimed':''}} task-card-{{$task->id}}">
 	<div class="task-details">
+	
 		<span class="task-name">{{$task->title}}</span>
 		<hr>
 		<span class="project-name">{{link_to($task->project->getURL(), $task->project->title)}}</span>
@@ -11,5 +13,12 @@
 			</div>
 		@endif
 	</div>
-	<div class="{{$claimed?'claimed':'posted'}}-by">{{$claimed?'Claimed':'Posted'}} by {{link_to($task->creator->getProfileURL(), $task->creator->getShortName())}}</div>
+	<div class="{{$claimed?'claimed':'posted'}}-by">
+	{{$claimed?'Claimed':'Posted'}} by {{link_to($task->creator->getProfileURL(), $task->creator->getShortName())}}
+	@if ($task->isMine())
+		<div class="edit-bar">
+			<a class="halp-delete-task-button" href="#delete-task" data-id="{{$task->id}}" data-target=".task-card-{{$task->id}}"><i class="fa fa-trash-o"></i></a>
+		</div>
+	@endif
+	</div>
 </div>
