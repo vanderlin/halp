@@ -94,25 +94,29 @@ class TasksRepository  {
 	{		
 		$validator = Validator::make($input, Task::$rules);
 		if($validator->fails()) {
-			return $this->listener->errorResponse($validator->errors()->all());
+			dd($validator->errors()->all());
+			return $this->listener ? $this->listener->errorResponse($validator->errors()->all()) : $validator->errors()->all();
 		}
 
+		$creator_id = isset($input['creator_id'])?$input['creator_id']:Auth::id();
+		$claimed_id = isset($input['claimed_id'])?$input['claimed_id']:NULL;
 		$project = Project::where('title', '=', $input['project'])->first();
 
 		// if null we need to create the new project
 		if($project == NULL)
 		{
-			$project = new Project(['title'=>$input['project'], 'user_id'=>Auth::id()]);
+			$project = new Project(['title'=>$input['project'], 'creator_id'=>$creator_id]);
 			$project->save();
 		}
 
-		$task = new Task(['title'=>$input['title'], 'duration'=>$input['duration'], 'project_id'=>$project->id, 'creator_id'=>Auth::id()]);
+		$task = new Task(['title'=>$input['title'], 'duration'=>$input['duration'], 'claimed_id'=>$claimed_id, 'project_id'=>$project->id, 'creator_id'=>$creator_id]);
 		$task->save();
 
 		// fire a new notification to the system
 		Event::fire(Notification::NOTIFICATION_NEW_TASK, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_NEW_TASK])); 
-   
-		return $this->listener->statusResponse(['notice'=>'Task Created. Help is on the way!', 'task'=>$task]);		
+ 
+
+		return $this->listener ? $this->listener->statusResponse(['notice'=>'Task Created. Help is on the way!', 'task'=>$task]) : $task;		
 	}
 
 	// ------------------------------------------------------------------------
