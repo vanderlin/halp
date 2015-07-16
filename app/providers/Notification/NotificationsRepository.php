@@ -27,12 +27,21 @@ class NotificationsRepository  {
 	}
 
 	// ------------------------------------------------------------------------
+	public function get($id) {
+		
+		if(is_object($id)) {
+			$id = $id->id;
+		}
+		return Notification::whereId($id)->first();
+	}
+
+	// ------------------------------------------------------------------------
 	public function find($id) {
 		
 		if(is_object($id)) {
 			$id = $id->id;
 		}
-		$notification = Notification::withTrashed()->whereId($id)->first();
+		$notification = Notification::whereId($id)->first();
 		return $this->listener->statusResponse(['notification'=>$notification]);		
 	}
 
@@ -48,7 +57,7 @@ class NotificationsRepository  {
 		if(is_object($id)) {
 			$id = $id->id;
 		}
-		$notification = Notification::withTrashed()->whereId($id)->first();
+		$notification = Notification::whereId($id)->first();
 		if($notification) 
 		{
 			$notification->delete();

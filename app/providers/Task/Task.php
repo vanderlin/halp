@@ -14,7 +14,7 @@ class Task extends BaseModel {
 
 	protected $fillable  = ['title', 'project_id', 'creator_id', 'claimed_id', 'duration'];
 	protected $dates     = ['deleted_at'];
-	public static $rules = ['title'=>'required', 'duration'=>'required', 'project'=>'required'];
+	public static $rules = ['title'=>'required', 'duration'=>'required', 'project'=>'required', 'creator_id'=>'required'];
 	
 
     // ------------------------------------------------------------------------
