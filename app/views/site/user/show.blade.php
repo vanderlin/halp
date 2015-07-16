@@ -49,7 +49,7 @@
 
 	<section class="tasks user-tasks">
 		<div class="line-break">
-			<h2>You have created {{$user->totalCreated()}} Tasks!</h2>
+			<h2>You have created {{$user->totalCreated()}} Task{{$user->totalCreated()>1?'s':''}}!</h2>
 		</div>
 		@forelse ($user->createdTasks as $task)
 			@include('site.tasks.claimed-task', array('task' => $task))
