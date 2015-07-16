@@ -1,7 +1,7 @@
-{{Form::open(['route'=>'tasks.store'])}}
+{{Form::open(['route'=>'tasks.store', 'id'=>'create-task-form'])}}
 <section class="content bgcolor">
 	<span class="input input--nao">
-		<input class="input__field input__field--nao" type="text" id="task-title" placeholder="ex: proofreading" autocomplete="off" name="title" />
+		<input class="input__field input__field--nao" type="text" id="task-title" placeholder="ex: proofreading" autocomplete="off" name="title" value="{{Input::old('title')}}"/>
 		<label class="input__label input__label--nao" for="task-title">
 			<span class="input__label-content input__label-content--nao">I need a hand with:</span>
 		</label>
@@ -10,7 +10,7 @@
 		</svg>
 	</span>
 	<span class="input input--nao">
-		<input class="input__field input__field--nao" type="text" id="task-project" placeholder="project name" name="project" />
+		<input class="input__field input__field--nao" type="text" id="task-project" placeholder="project name" name="project" value="{{Input::old('project')}}"/>
 		<label class="input__label input__label--nao" for="task-project">
 			<span class="input__label-content input__label-content--nao">For:</span>
 		</label>
@@ -19,7 +19,7 @@
 		</svg>
 	</span>
 	<span class="input input--nao">
-		<input class="input__field input__field--nao" type="text" id="task-duration" name="duration" placeholder="ex: an hour, a day"/>
+		<input class="input__field input__field--nao" type="text" id="task-duration" name="duration" autocomplete="off" placeholder="ex: an hour, a day" value="{{Input::old('duration')}}" />
 		<label class="input__label input__label--nao" for="task-duration">
 			<span class="input__label-content input__label-content--nao">And I think it will take:</span>
 		</label>
@@ -30,13 +30,13 @@
 	<div class="box">
 		<!-- progress button -->
 		<div class="progress-button elastic">
-			<button><span>Help Me</span></button>
+			<button type="submit"><span>Help Me</span></button>
 			<svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
 			<svg class="checkmark" width="70" height="70"><path d="m31.5,46.5l15.3,-23.2"/><path d="m31.5,46.5l-8.5,-7.1"/></svg>
 			<svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>
 		</div>
 	</div>
-	@include('site.partials.form-errors')
+	<div class="error-container">@include('site.partials.form-errors')</div>
 </section>
 {{Form::close()}}
 
