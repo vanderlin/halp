@@ -421,6 +421,9 @@ hr {
   top: 2px;
   position: relative;
 }
+.user-created-task {
+  height: 343px !important;
+}
 .task-focused {
   background-color: #4fd2c2;
 }
