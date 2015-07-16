@@ -1,35 +1,11 @@
 <?php
-/*2014_08_15_145408_create_assigned_roles_table.php
-2014_08_15_145408_create_categories_table.php
-2014_08_15_145408_create_locations_table.php
-2014_08_15_145408_create_password_reminders_table.php
-2014_08_15_145408_create_permission_role_table.php
-2014_08_15_145408_create_permissions_table.php
-2014_08_15_145408_create_roles_table.php
-2014_08_15_145408_create_users_table.php
-2014_08_15_145409_add_foreign_keys_to_assigned_roles_table.php
-2014_08_15_145409_add_foreign_keys_to_permission_role_table.php
-2014_08_18_150958_create_assets_table.php
-2014_08_19_152715_create_categorizable_table.php
-2014_12_04_163029_create_spots_table.php
-2014_12_10_004659_create_assetables_table.php
-2014_12_11_194153_create_offices_table.php
-2014_12_16_205125_create_comments_table.php
-2014_12_18_165627_create_itineraries_table.php
-2014_12_19_021613_create_spotables_table.php
-2014_12_22_163319_create_faqs_table.php
-2014_12_30_160547_create_userable_table.php
-2015_01_06_182732_create_tags_table.php
-2015_01_06_182828_create_taggables_table.php
-2015_01_08_182954_create_visits_table.php
-2015_01_29_202529_create_activities_table.php
-2015_02_09_154251_create_posts_table.php
-2015_02_24_210512_create_locationables_table.php*/
+
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Task\Task;
-
+use Project\Project;
+use Notification\Notification;
 
 class SetupSite extends Command {
 
@@ -66,9 +42,6 @@ class SetupSite extends Command {
 	{
 	
 
-		
-		
-
 		$options = $this->option();
 		if(is_true($options['reset'])) {
 			if ($this->confirm('Do you really want to delete the tables? [yes|no]'))
@@ -77,6 +50,14 @@ class SetupSite extends Command {
 				File::deleteDirectory(public_path('assets/content/users'));
 			}
 			Auth::logout();
+		}
+
+		if(Project::all()->count() == 0) {
+			$project_names = ["Bravo", "Tinker", "Pando", "Denso", "Rabbit", "Personal", "IDEO", "Groover", "Nutcracker"];
+			foreach ($project_names as $name) {
+				$prj = new Project(['title'=>$name, 'user_id'=>User::getRandomID()]);
+				$prj->save();
+			}
 		}
 
 		
@@ -100,12 +81,72 @@ class SetupSite extends Command {
 			$this->info("Role: ".$r->name." Created");
 		}
 
-		if(is_true($options['seed'])) {
+		if($options['seed']=='all') {
 			$this->seed();
+		}
+
+		if($options['seed']=='users') {
+			$this->seedUsers();
+		}
+
+		if($options['seed']=='tasks') {
+			$this->seedTasks();
 		}
 		
 	}
 
+	// ------------------------------------------------------------------------
+	public function seedTasks()
+	{
+		
+		Notification::truncate();
+		Task::truncate();
+
+		$task_repo = App::make('TasksRepository');
+
+		$task_titles = ["Draw me a picture",
+						"Proof-read a email",
+						"Using the espresso machine",
+						"Render a building",
+						"Take a picture",
+						"Use the 3D printer",
+						"Setup a wordpress site",
+						"Make a ios prototype",
+						"Finding a place to eat",
+						"Move a couch",
+						"Chop veggies",
+						"Talk about life..."];
+
+
+		$durs = ['a min', 'couple of hours', 'a day', 'few mins', "10 minutes"];
+
+		$n = 10;
+		$faker = Faker\Factory::create();
+		
+		for ($i=0; $i < $n; $i++) { 
+			
+			$data = ['title'=>array_random_item($task_titles),
+					 'project'=>Project::getRandom()->title,
+					 'creator_id'=>User::getRandomID(),
+					 'duration'=>array_random_item($durs)];
+			
+			$task = $task_repo->store($data);
+			$this->info("$task->id Creating Task:$task->title");
+		}
+
+		$this->info("----- Seed Claiming -----");
+
+		// now claime some randomly
+		foreach (Task::orderByRaw("RAND()")->take(Task::count()/2)->get() as $task) {
+			$task->claimed_id = User::getRandomID([$task->creator_id]);
+			$task->claimed_at = $task->created_at->addDays($faker->randomDigit);
+			$task->save();
+			$this->info("$task->title Claimed at: ".$task->claimed_at->diffForHumans($task->created_at) );
+			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 
+		}
+	}
+
+	// ------------------------------------------------------------------------
 	public function seed()
 	{
 		$this->info('Seeding...');
@@ -152,11 +193,62 @@ class SetupSite extends Command {
 	}
 
 	// ------------------------------------------------------------------------
-	/**
-	 * Get the console command arguments.
-	 *
-	 * @return array
-	 */
+	public function seedUsers()
+	{
+
+		foreach (User::all() as $user) {
+			
+			if($user->isAdmin()==false) {
+				$user->delete();	
+			}
+		}
+
+		$seeder = new LOFaker;
+		$n = 30;
+		$faker = Faker\Factory::create();
+
+		for ($i=0; $i < $n; $i++) { 
+			
+			$gender = array_random_item(['men', 'women']);
+			$photo_n = rand()%40;
+			$user_photo_url = "http://api.randomuser.me/portraits/$gender/$photo_n.jpg";
+			
+			$role = $role = Role::where('name', '=', 'Writer')->first();
+			$joinDate = $faker->dateTimeBetween('-3 years', 'now');
+		
+			$user 			  = new User;
+			$user->timestamps = false;
+		    $user->email 	  = 'fake_'.$faker->email;
+		    $user->firstname  = $faker->firstname;
+		    $user->lastname   = $faker->lastname;
+
+		    $user->username   = strtolower($user->firstname[0].$user->lastname)."$faker->randomDigit";
+
+			$password 		  			 = Hash::make($user->username);
+			$user->password 			 = $password;
+			$user->password_confirmation = $password;
+			$user->confirmed 			 = 1;
+			$user->confirmation_code 	 = md5($user->username.time('U'));
+			$user->created_at = $user->updated_at = $joinDate;
+			$user->save();
+
+			$userImage = new Asset;
+			$userImage->path = public_path('assets/content/users');
+			$userImage->saveRemoteAsset($user_photo_url,  $user->username.".jpg", Asset::ASSET_TYPE_IMAGE);
+			$userImage->save();
+
+			$user->profileImage()->save($userImage);
+			$user->profileImage->user()->associate($user);
+			
+	        $user->save();
+
+	        $this->info('Creating User: '.$user->getName()." [$user->username, $user->email]");
+			// $this->info("\t$user_photo_url");
+
+		}
+	}
+	
+	// ------------------------------------------------------------------------
 	protected function getArguments()
 	{
 		return array(
@@ -164,11 +256,7 @@ class SetupSite extends Command {
 		);
 	}
 
-	/**
-	 * Get the console command options.
-	 *
-	 * @return array
-	 */
+	// ------------------------------------------------------------------------
 	protected function getOptions()
 	{
 		return array(

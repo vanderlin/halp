@@ -6,7 +6,6 @@ use Validator;
 use Carbon;
 use Mail;
 use View;
-use ScottRobertson\Premailer\Request as Premailer;
 
 class Notification extends BaseModel {
 	
@@ -95,16 +94,38 @@ class Notification extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
+	public function send()
+	{
+
+		if($this->event == Notification::NOTIFICATION_NEW_TASK)
+		{
+			$users = User::where('notifications', '=', 1)->get();
+			foreach ($users as $user) {
+				$this->sendEmailToUser($user);
+			}
+		}
+
+
+		// someone claimed your task
+		else if($this->event == Notification::NOTIFICATION_TASK_CLAIMED) {
+			$this->sendEmailToUser($this->task->creator);
+		}
+		return true;
+	}
+
+	// ------------------------------------------------------------------------
 	public function sendEmailToUser($user)
 	{	
 
 		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
-		$premailer = new Premailer();
+		$premailer = new \ScottRobertson\Premailer\Request();
 		$response = $premailer->convert($view);
 
-		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($user) {
-			$message->to($user->email, 'Halp')->subject($this->getSubject());
-		});
+		if(substr($user->email, 0, strlen('fake_')) !== 'fake_') {
+			Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($user) {
+				$message->to($user->email, 'Halp')->subject($this->getSubject());
+			});
+		}
 		// Mail::send($this->getViewPath(), array('task'=>$this->task), function($message) use($user) {
 		// 	$message->to($user->email, $user->getName())->subject($this->getSubject());
 		// });
