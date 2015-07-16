@@ -121,7 +121,7 @@ Route::group(array('prefix'=>'notifications'), function() {
 Route::post('site-login', ['uses'=>'PageController@ChecksiteLogin']);
 
 // ------------------------------------------------------------------------
-Route::group(array('before'=>['siteprotection', 'auth']), function() {
+Route::group(array('before'=>['auth']), function() {
 
 
 	Route::get('/', ['uses'=>'TasksController@index']);
@@ -131,7 +131,7 @@ Route::group(array('before'=>['siteprotection', 'auth']), function() {
 	// projects
 	Route::group(array('prefix'=>'projects'), function() {
 		Route::get('/', ['uses'=>'ProjectsController@index']);
-		Route::get('{id}', ['uses'=>'ProjectsController@index']);
+		Route::get('{id}', ['uses'=>'ProjectsController@show']);
 		Route::get('search', ['uses'=>'ProjectsController@search']);
 	});
 

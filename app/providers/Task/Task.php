@@ -56,7 +56,7 @@ class Task extends BaseModel {
 	// ------------------------------------------------------------------------
 	public function getURL($relative=true) 
 	{
-		return URL::to('tasks/'.$this->id); 
+		return URL::to('/?claim_task='.$this->id); 
 	}
 
 	// ------------------------------------------------------------------------
