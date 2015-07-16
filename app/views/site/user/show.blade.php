@@ -34,7 +34,7 @@
 		@endif
 	</section>
 
-	<section class="tasks user-tasks">
+	<section class="tasks user-tasks claimed-task">
 		<div class="line-break">
 			<h2>{{$user->totalClaimed()}} Claimed Tasks!</h2>
 		</div>
@@ -42,6 +42,19 @@
 			@include('site.tasks.claimed-task', array('task' => $task))
 		@empty
 			<br/><h5>It's time to start helping.</h5>
+		@endforelse
+	</section>
+	
+	<br><br>
+
+	<section class="tasks user-tasks">
+		<div class="line-break">
+			<h2>You have created {{$user->totalCreated()}} Tasks!</h2>
+		</div>
+		@forelse ($user->createdTasks as $task)
+			@include('site.tasks.claimed-task', array('task' => $task))
+		@empty
+			<br/><h5>Go make some {{link_to('/', 'tasks')}}</h5>
 		@endforelse
 	</section>
 @stop
