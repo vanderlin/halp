@@ -12,6 +12,13 @@ Route::get('php', function() {
 Route::get('env', function() {
 	return [$_SERVER, Config::getEnvironment()];
 });
+Route::get('test', function() {
+
+	$email = "faka_adams.jeanne@dicki.org";
+	return strbool(substr($email, 0, strlen('fake_')) === 'fake_');
+	
+
+});
 
 Route::get('most-tasks', function() {
     // $tags = DB::table('taggables')
@@ -33,7 +40,7 @@ Route::get('testemail', function() {
 	];
 
 
-	$view = View::make('emails.test', $data)->render();
+	$view = View::make('emails.new-task', $data)->render();
 	$premailer = new ScottRobertson\Premailer\Request();
 	$response = $premailer->convert($view);
 	$email = Input::get('email', 'vanderlin@gmail.com');
@@ -53,7 +60,9 @@ Route::group(array('prefix'=>'notifications'), function() {
 	Route::get('/', function() {
 		return View::make('site.notifications.index', ['notifications'=>Notification::all()]);
 	});
-
+	
+	Route::any('send/{id}', ['uses'=>'NotificationsController@send']);
+	
 	Route::any('send', function() {
 
 		// first get all users that want to receive notifications
@@ -83,7 +92,7 @@ Route::group(array('prefix'=>'notifications'), function() {
 			// someone claimed your task
 			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
 				$notice->sendEmailToUser($notice->task->creator);
-			}
+		}
 		}
 		return  $results;
 		

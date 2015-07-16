@@ -61,6 +61,10 @@ function detect_links($str) {
   return $str;;
 }
 
+function array_random_item($arr) {
+  return $arr[array_rand($arr)];
+}
+
 function strbool($value) {
     return $value ? 'true' : 'false';
 }
