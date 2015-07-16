@@ -7,6 +7,8 @@ use Validator;
 use Carbon;
 use DB;
 use URL;
+use Notification\Notification;
+use Auth;
 
 class Task extends BaseModel {
 	
@@ -14,7 +16,7 @@ class Task extends BaseModel {
 
 	protected $fillable  = ['title', 'project_id', 'creator_id', 'claimed_id', 'duration'];
 	protected $dates     = ['deleted_at'];
-	public static $rules = ['title'=>'required', 'duration'=>'required', 'project'=>'required', 'creator_id'=>'required'];
+	public static $rules = ['title'=>'required', 'duration'=>'required', 'project'=>'required'];
 	
 
     // ------------------------------------------------------------------------
@@ -58,15 +60,27 @@ class Task extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
+	public function isMine()
+	{
+		return Auth::check() && Auth::id() == $this->creator_id;
+	}
+	// ------------------------------------------------------------------------
 	public function creator()
 	{
 		return $this->belongsTo('User');
 	}
 
-	// ------------------------------------------------------------------------
+		// ------------------------------------------------------------------------
 	public function claimer()
 	{
 		return $this->belongsTo('User', 'claimed_id');
+	}
+
+
+	// ------------------------------------------------------------------------
+	public function notification()
+	{
+		return $this->belongsTo('Notification\Notification', 'task_id');
 	}
 
 	// ------------------------------------------------------------------------
@@ -85,4 +99,17 @@ class Task extends BaseModel {
 	{
 		return $this->belongsTo('Project\Project');
 	}
+
+	// ------------------------------------------------------------------------
+	public function delete() {
+     
+
+      	$notification = $this->notification;
+      	if($notification)
+      	{
+      		$notification->delete();
+      	}
+    	parent::delete();
+    }
+
 }	

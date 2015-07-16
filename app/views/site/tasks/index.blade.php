@@ -9,6 +9,58 @@
 @stop
 
 @section('scripts')
+<script type="text/javascript">
+	$(document).ready(function($) {
+		$('#create-task-form button[type="submit"]').click(function(e) {
+			e.preventDefault();
+			
+			var $form = $('#create-task-form');
+			var url = $form.prop('action')+'?view=true';
+			var fd = new FormData($form[0]);    
+
+			
+			$.ajax({
+				url: url,
+				data: fd,
+  				processData: false,
+  				contentType: false,
+				type: 'POST',
+				dataType: 'json',
+			})
+			.always(function(e) {
+				if(e.status == 400)
+				{
+					var data = e.responseJSON;
+					var $errorcontainer = $form.find('.error-container');
+					$errorcontainer.html('');
+					var str = '<ul class="alert alert-error alert-danger">';
+					for(var i=0; i<data.errors.length; i++){
+						str += '<li>'+data.errors[i]+'</li>';
+					}
+					str += '</ul>';
+					var $message = $(str);
+					$message.hide().fadeIn(300).delay(3000).slideUp(200);
+					$errorcontainer.append($message);
+				}
+				else if(e.status == 200)
+				{
+					var $content = $('#tasks-content');
+					var $view = $(e.view);
+					$content.prepend($view);
+					$view.addClass('new-task');
+					$view.hide().fadeIn(300);
+
+					$form.find('.input').removeClass('input--filled');
+					$form[0].reset();
+
+					var $delbtn = $view.find('.halp-delete-task-button');
+					App.addDeleteTaskEvent($delbtn);
+				}
+			});
+			
+		});	
+	});
+</script>
 @stop
 
 
@@ -21,7 +73,7 @@
 		@include('site.partials.create-task')
 	@endif
 		
-	<section class="content">
+	<section class="content" id="tasks-content">
 	@forelse ($tasks as $task)
 		@include('site.tasks.card', array('task' => $task, 'claimed'=>false))
 	@empty
