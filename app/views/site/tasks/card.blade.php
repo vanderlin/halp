@@ -14,7 +14,12 @@
 		@endif
 	</div>
 	<div class="{{$claimed?'claimed':'posted'}}-by">
-	{{$claimed?'Claimed':'Posted'}} by {{link_to($task->creator->getProfileURL(), $task->creator->getShortName())}}
+	@if ($claimed)
+		Claimed by {{link_to($task->claimer->getProfileURL(), $task->claimer->getShortName())}}
+	@else
+		Posted by {{link_to($task->creator->getProfileURL(), $task->creator->getShortName())}}
+	@endif
+	
 	@if ($task->isMine())
 		<div class="edit-bar">
 			<a class="halp-delete-task-button" href="#delete-task" data-id="{{$task->id}}" data-target=".task-card-{{$task->id}}"><i class="fa fa-trash-o"></i></a>

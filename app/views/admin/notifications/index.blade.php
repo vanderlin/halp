@@ -67,12 +67,11 @@
 						@endif
 						</div>
 					</td>
-					<td class="center aligned {{$notice->task->sent==NULL?'negative':''}}">
-						@if ($notice->task->sent==NULL)
-							{{-- <b class="status">Not Sent</b> --}}
-							<a data-id="{{$notice->id}}" class="send-notification ui mini button" href="#send">Send</a>
+					<td class="center aligned {{$notice->isSent?'positive':'negative'}}">
+						@if ($notice->isSent)
+							Sent on {{$notice->sent_at->diffForHumans()}}
 						@else
-							Sent on {{$notice->task->sent->toFormattedDateString()}}
+							<a data-id="{{$notice->id}}" class="send-notification ui mini button" href="#send">Send</a>
 						@endif
 					</td>
 				</tr>
