@@ -34,7 +34,7 @@
 		@endif
 	</section>
 
-	<section class="tasks user-tasks claimed-task">
+	<section class="tasks user-tasks claimed-task-section">
 		<div class="line-break">
 			<h2>{{$user->totalClaimed()}} Claimed Tasks!</h2>
 		</div>
