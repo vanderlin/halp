@@ -14,14 +14,23 @@ class ProjectsController extends \BaseController {
 
 	// ------------------------------------------------------------------------
 	public function index()
-	{
-		return Project\Project::all();
+	{	
+		return Redirect::to('/');
 	}
 	
 	// ------------------------------------------------------------------------
 	public function show($id)
 	{
-	
+		$tasks = Task\Task::unClaimed()->whereHas('Project', function($q) use($id) {
+			$q->where('id', '=', $id);
+		})->get();
+
+		$claimed_tasks = Task\Task::claimed()->whereHas('Project', function($q) use($id) {
+			$q->where('id', '=', $id);
+		})->get();
+
+		return View::make('site.tasks.index', ['tasks'=>$tasks, 'claimed_tasks'=>$claimed_tasks]);	
+
 	}
 	
 	// ------------------------------------------------------------------------
