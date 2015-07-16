@@ -131,6 +131,7 @@ Route::group(array('before'=>['siteprotection', 'auth']), function() {
 	// projects
 	Route::group(array('prefix'=>'projects'), function() {
 		Route::get('/', ['uses'=>'ProjectsController@index']);
+		Route::get('{id}', ['uses'=>'ProjectsController@index']);
 		Route::get('search', ['uses'=>'ProjectsController@search']);
 	});
 

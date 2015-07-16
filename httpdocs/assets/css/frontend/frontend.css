@@ -421,25 +421,25 @@ hr {
   top: 2px;
   position: relative;
 }
-.new-task {
+.task-focused {
   background-color: #4fd2c2;
 }
-.new-task .project-name a {
+.task-focused .project-name a {
   color: white;
 }
-.new-task .date {
+.task-focused .date {
   color: white;
 }
-.new-task hr {
+.task-focused hr {
   border-color: #404d5b !important;
 }
-.new-task .small.progress-button button {
+.task-focused .small.progress-button button {
   color: white;
 }
-.new-task .progress-button button {
+.task-focused .progress-button button {
   border-color: white !important;
 }
-.new-task .progress-button button:hover {
+.task-focused .progress-button button:hover {
   background-color: #404d5b !important;
   border-color: #404d5b !important;
 }
@@ -883,6 +883,32 @@ body .nomargin-bottom {
 }
 .mfp-bg {
   background: #4fd2c2 !important;
+}
+/* overlay at start */
+.mfp-fade.mfp-bg {
+  opacity: 0;
+  transition: all 0.15s ease-out;
+}
+/* overlay animate in */
+.mfp-fade.mfp-bg.mfp-ready {
+  opacity: 0.8;
+}
+/* overlay animate out */
+.mfp-fade.mfp-bg.mfp-removing {
+  opacity: 0;
+}
+/* content at start */
+.mfp-fade.mfp-wrap .mfp-content {
+  opacity: 0;
+  transition: all 0.15s ease-out;
+}
+/* content animate it */
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+}
+/* content animate out */
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
 }
 .ui-autocomplete {
   background: #fff;
