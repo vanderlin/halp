@@ -133,7 +133,52 @@ hr{
     vertical-align: top;
     margin: 20px 16px;
     padding: 0px;
+	position: relative;
+
+    .edit-bar {
+	  position: absolute;
+	  right: 0;
+	  bottom: -6px;
+	  a {
+	  	padding: 10px;
+	  	display: table;
+	  
+	  }
+	  .fa:hover {
+		color: @purple;
+	  }
+	  .fa {
+	  	color:@grey;
+	  	font-size: 16px;
+  		top: 2px;
+  		position: relative;
+	  }
+    }
 }
+
+.new-task {
+	background-color: @mint;
+	.project-name a {
+		color:white;
+	}
+	.date {
+		color:white;	
+	}
+	hr {
+		border-color: @purple !important;
+	}
+	.small.progress-button button {
+		color:white;
+	}
+	.progress-button button {
+		border-color: white !important;
+	}
+	.progress-button button:hover {
+		background-color: @purple !important;
+		border-color: @purple !important;	
+	}
+}
+
 
 .task-details{
 	padding: 46px 20px 35px 20px;

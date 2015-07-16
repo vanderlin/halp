@@ -12,6 +12,7 @@ use Project\Project;
 use Auth;
 use Notification\Notification;
 use Event;
+use View;
 
 /**
 * Tasks Repository
@@ -94,7 +95,6 @@ class TasksRepository  {
 	{		
 		$validator = Validator::make($input, Task::$rules);
 		if($validator->fails()) {
-			dd($validator->errors()->all());
 			return $this->listener ? $this->listener->errorResponse($validator->errors()->all()) : $validator->errors()->all();
 		}
 
@@ -111,12 +111,17 @@ class TasksRepository  {
 
 		$task = new Task(['title'=>$input['title'], 'duration'=>$input['duration'], 'claimed_id'=>$claimed_id, 'project_id'=>$project->id, 'creator_id'=>$creator_id]);
 		$task->save();
+		$view = NULL;
 
 		// fire a new notification to the system
 		Event::fire(Notification::NOTIFICATION_NEW_TASK, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_NEW_TASK])); 
  
+		if(Input::has('view')&&Input::get('view')==true)
+		{
+			$view = View::make('site.tasks.card', array('task' => $task, 'claimed'=>false))->render();
 
-		return $this->listener ? $this->listener->statusResponse(['notice'=>'Task Created. Help is on the way!', 'task'=>$task]) : $task;		
+		}
+		return $this->listener ? $this->listener->statusResponse(['notice'=>'Task Created. Help is on the way!', 'task'=>$task, 'view'=>$view]) : $task;		
 	}
 
 	// ------------------------------------------------------------------------
