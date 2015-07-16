@@ -11,6 +11,16 @@
 @section('scripts')
 <script type="text/javascript">
 	$(document).ready(function($) {
+
+		// task-claim-popup
+		var task_param = getURLParameters('claim_task');
+		
+		if(task_param !== undefined)
+		{
+			App.openClaimPopup(task_param);
+			$('.task-card-'+task_param).addClass('task-focused')
+		}
+		// -------------------------------------
 		$('#create-task-form button[type="submit"]').click(function(e) {
 			e.preventDefault();
 			
@@ -47,7 +57,7 @@
 					var $content = $('#tasks-content');
 					var $view = $(e.view);
 					$content.prepend($view);
-					$view.addClass('new-task');
+					$view.addClass('task-focused');
 					$view.hide().fadeIn(300);
 
 					$form.find('.input').removeClass('input--filled');
@@ -66,7 +76,7 @@
 
 @section('content')
 	
-	<div id="test-popup" class="white-popup mfp-hide">
+	<div id="task-claim-popup" class="white-popup mfp-hide">
 	</div>
 
 	@if (Auth::check() && isset($tasks))

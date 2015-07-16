@@ -22,8 +22,7 @@ class TasksController extends \BaseController {
 	public function show($id)
 	{
 		$task = $this->repository->get($id);
-
-		return $task;
+		return View::make('site.tasks.show', ['task'=>$task]);
 	}
 
 	// ------------------------------------------------------------------------

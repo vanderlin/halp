@@ -49,6 +49,18 @@ class Notification extends BaseModel {
      	return $array;
     }
 
+    // ------------------------------------------------------------------------
+    public function getIsSentAttribute($val)
+    {
+    	return $this->sent_at != NULL;
+    }
+    
+    // ------------------------------------------------------------------------
+	public function getSentAtAttribute($val)
+	{
+		return $val ? new Carbon\Carbon($val) : NULL;
+	}
+
 	// ------------------------------------------------------------------------
 	public function save(array $options = array()) 
 	{
@@ -95,8 +107,10 @@ class Notification extends BaseModel {
 
 	// ------------------------------------------------------------------------
 	public function send()
-	{
-
+	{	
+		$this->sent_at = Carbon\Carbon::now();
+		$this->save();
+		
 		if($this->event == Notification::NOTIFICATION_NEW_TASK)
 		{
 			$users = User::where('notifications', '=', 1)->get();
@@ -110,6 +124,8 @@ class Notification extends BaseModel {
 		else if($this->event == Notification::NOTIFICATION_TASK_CLAIMED) {
 			$this->sendEmailToUser($this->task->creator);
 		}
+
+
 		return true;
 	}
 

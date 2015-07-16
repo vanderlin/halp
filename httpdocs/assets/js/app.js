@@ -7,6 +7,40 @@ function disable_scroll() {
 function enable_scroll() {
     $(document).unbind('touchmove', prevent_default)
 }
+
+function getURLParameters(paramName)
+{
+    var sURL = window.document.URL.toString();
+    if (sURL.indexOf("?") > 0)
+    {
+        var arrParams = sURL.split("?");
+        var arrURLParams = arrParams[1].split("&");
+        var arrParamNames = new Array(arrURLParams.length);
+        var arrParamValues = new Array(arrURLParams.length);
+
+        var i = 0;
+        for (i = 0; i<arrURLParams.length; i++)
+        {
+            var sParam =  arrURLParams[i].split("=");
+            arrParamNames[i] = sParam[0];
+            if (sParam[1] != "")
+                arrParamValues[i] = unescape(sParam[1]);
+            else
+                arrParamValues[i] = "No Value";
+        }
+
+        for (i=0; i<arrURLParams.length; i++)
+        {
+            if (arrParamNames[i] == paramName)
+            {
+                //alert("Parameter:" + arrParamValues[i]);
+                return arrParamValues[i];
+            }
+        }
+        return null;
+    }
+}
+
 // ------------------------------------------------------------------------
 
 var Utils = {
@@ -55,35 +89,71 @@ var App = (function() {
 
 
     // ------------------------------------------------------------------------
-		self.init = function() {
+	self.init = function() {
       
-      console.log("App Init");
+        console.log("App Init");
       
-      // init window resize 
-      self.windowResize();
+        // init window resize 
+        self.windowResize();
 
-      // scroll
-      // ------------------------------
-			$('.scroll-to-anchor').each(function(i, e) {
-				var target = $(e).attr('data-scroll-to');
-				$(e).click(function(event) {
-					self.scrollTo(target);
-				});
-			});
+        // scroll
+        // ------------------------------
+        $('.scroll-to-anchor').each(function(i, e) {
+    		var target = $(e).attr('data-scroll-to');
+    		$(e).click(function(event) {
+    			self.scrollTo(target);
+    		});
+    	});
 
+        $(document).on('click', '.close-popup', function(e) {
+            App.closeClaimPopup();
+        });
 
-		}
+        $(document).on('click', '#claim-task-form button', function(e) {
+            e.preventDefault();
+            
+            var $form = $('#claim-task-form'); 
+            var fd = new FormData($form[0]);               
+            $.ajax({
+                url: $form.attr('action'),
+                data: fd,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                dataType: 'json',
+            })
+            .always(function(e) {
+                if(e.status == 400)
+                {
+                    console.log(e);
+                }
+            });
+
+            $('.white-popup .task-message p').fadeTo(200, 0);
+            $('.white-popup .claimed-buttons').fadeTo(200, 0, function() {
+                $('#claim-task-form button').prop( "disabled", true );
+            });
+            $('.white-popup h2').fadeTo(200, 0, function() {
+                $(this).html('Thanks for helping!').fadeTo(200, 1, function() {
+                    $('.front-facing-turtle').animate({'margin-bottom':-80})
+                    setTimeout(function() {
+                        App.closeClaimPopup();
+                    }, 1000);
+                });
+            });
+        })
+	}
 		
 
     // ------------------------------------------------------------------------
-		self.scrollTo = function(target, speed, callback) {
-			target = $(target);
-      $('body').animate({ scrollTop: target.offset().top - 100 }, speed||500, function(e) {
-        if(callback) {
-          callback(e)
-        }
-      });
-		}
+	self.scrollTo = function(target, speed, callback) {
+    	target = $(target);
+        $('body').animate({ scrollTop: target.offset().top - 100 }, speed||500, function(e) {
+            if(callback) {
+                callback(e)
+            }
+        });
+	}
 
 
     // ------------------------------------------------------------------------
@@ -95,7 +165,7 @@ var App = (function() {
     self.addDeleteTaskEvent = function($item) {
         $item.click(function(e) {
             e.preventDefault();
-             var id = $(this).data('id');
+            var id = $(this).data('id');
             var c = confirm("Are you sure you want to delete this task?");
             var $target = $($(this).data('target'));
             if(c)
@@ -115,9 +185,40 @@ var App = (function() {
             } 
         });
     }
+    
     // -------------------------------------
+    self.closeClaimPopup = function(id) 
+    {
+        $('.white-popup').fadeOut(200, function() {
+            $.magnificPopup.close();    
+        })
+    }
 
+    // -------------------------------------
+    self.openClaimPopup = function(id) 
+    {
+        $.magnificPopup.open({
+            tLoading: 'Loading some halp!...',
+            closeOnContentClick: false,
+            closeOnBgClick:false,
+            mainClass: 'mfp-fade',
+            items: {
+                src: '/tasks/'+id+'/claimed',
+                type: 'ajax',
+            },
+            callbacks: {
+                parseAjax: function(mfpResponse) {
+                    var task = mfpResponse.xhr.responseText;
+                    mfpResponse.data = $(mfpResponse.xhr.responseText);
+                },
+                ajaxContentAdded: function() {
+                    console.log(this.content);                   
+                }
+            }
+        });
+    }
 
+    // -------------------------------------
     self.loadModules = function() {
 
         var self = this;
@@ -132,41 +233,14 @@ var App = (function() {
 
         // -------------------------------------
         $('.halp-claim-button').each(function(index, el) {
-            var $button = $(el);
-            var id = $button.data('id');
-            
-            $button.magnificPopup({
-                items: {
-                    src: '/tasks/'+id+'/claimed',
-                    type: 'ajax'
-                },
-                callbacks: {
-                    parseAjax: function(mfpResponse) {
-                    // mfpResponse.data is a "data" object from ajax "success" callback
-                    // for simple HTML file, it will be just String
-                    // You may modify it to change contents of the popup
-                    // For example, to show just #some-element:
-                    // mfpResponse.data = $(mfpResponse.data).find('#some-element');
-                    //console.log($(mfpResponse.data));
-                    // mfpResponse.data must be a String or a DOM (jQuery) element
-                    var task = mfpResponse.xhr.responseText;
-                  
-                    mfpResponse.data = $(mfpResponse.xhr.responseText);
-                  },
-                  ajaxContentAdded: function() {
-                    // Ajax content is loaded and appended to DOM
-                    console.log(this.content);
-                   
-                  }
-                }
+            $(el).click(function(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                App.openClaimPopup(id);
             });
-            $button.on('mfpOpen', function(e /*, params */) {
-                console.log('Popup opened',  $.magnificPopup.instance);
-            });
-
-            
         });
-
+    
+        
 
 
     }
@@ -176,7 +250,7 @@ var App = (function() {
 
 
 
-
+// ------------------------------------------------------------------------
 $(document).ready(function($) {
   App.init();	
   $(window).resize(function(event) {
@@ -184,4 +258,4 @@ $(document).ready(function($) {
   });
   App.loadModules();
 });
-
+// ------------------------------------------------------------------------
