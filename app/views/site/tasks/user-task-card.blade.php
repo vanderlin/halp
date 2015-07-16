@@ -1,4 +1,4 @@
-<div class="task {{$task->isClaimed?'claimed':''}}">
+<div class="task {{$task->isClaimed?'claimed':''}} user-created-task">
 	<div class="task-details">
 		<span class="task-name">{{$task->title}}</span>
 		<hr>
