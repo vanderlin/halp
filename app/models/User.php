@@ -67,6 +67,13 @@ class User extends BaseModel implements ConfideUserInterface {
     {
         return $this->hasMany('Task\Task', 'claimed_id')->count();
     }
+
+    public function totalCreated()
+    {
+        return $this->hasMany('Task\Task', 'creator_id')->count();
+    }
+    
+
     public function claimedTasks()
     {
         return $this->hasMany('Task\Task', 'claimed_id');

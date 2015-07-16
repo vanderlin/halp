@@ -144,6 +144,7 @@ class SetupSite extends Command {
 			$this->info("$task->title Claimed at: ".$task->claimed_at->diffForHumans($task->created_at) );
 			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 
 		}
+
 	}
 
 	// ------------------------------------------------------------------------
