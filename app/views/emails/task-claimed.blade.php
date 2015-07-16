@@ -12,7 +12,7 @@
 		<div class="container">
 			<div class="email-content">
 				<img src="http://vanderlin.cc/deliver/ideo/temp/unhappy-turtle.png" />
-				<h2>{{$task->claimer->getShortName()}} has claimed one of your tasks!</h2>
+				<h2>{{link_to($task->claimer->getProfileURL(), $task->claimer->getShortName())}} has claimed one of your tasks!</h2>
 				<hr>
 				<h3>You asked for help with:</h3>
 				<h1>{{link_to($task->getURL(), $task->title)}} for {{link_to($task->project->getURL(), $task->project->title)}}</h1>

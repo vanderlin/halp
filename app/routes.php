@@ -41,6 +41,7 @@ Route::get('testemail', function() {
 
 
 	$view = View::make('emails.new-task', $data)->render();
+
 	$premailer = new ScottRobertson\Premailer\Request();
 	$response = $premailer->convert($view);
 	$email = Input::get('email', 'vanderlin@gmail.com');
