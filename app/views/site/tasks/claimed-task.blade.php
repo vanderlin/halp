@@ -5,7 +5,7 @@
 		<span class="project-name">For {{$task->project->title}}</span>
 		<span class="date-claimed">{{$task->claimed_at->toFormattedDateString()}}</span>
 	</div>
-	@if (Auth::check() && Auth::id() == $task->creator->id)
+	@if (Auth::check() && Auth::id() == $task->claimer->id)
 	<div class="return-task">
 		<p>Return to the task board if you can’t complete this.</p>
 		{{Form::open(['route'=>['tasks.unclaim', $task->id]])}}
