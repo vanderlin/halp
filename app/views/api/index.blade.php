@@ -22,6 +22,10 @@
 		font-weight: 300;
 		font-style: italic;
 	}
+	.ui.divider {
+		margin-top: 60px;
+  		margin-bottom: 60px;
+  	}
     </style>
 @stop
 
@@ -116,6 +120,7 @@
   		</div>
 	</section>
 </div>
-
+<br>
+<br>
 @stop
   

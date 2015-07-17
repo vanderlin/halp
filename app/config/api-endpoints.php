@@ -9,7 +9,7 @@ return array(
 array(
 'name'=>'get_all_users',
 'description'=>"Get a array of users using the Halp Application",
-'method'=>'POST',
+'method'=>'GET',
 'url'=>'/users',
 'example'=>'
 [
@@ -39,7 +39,7 @@ array(
 array(
 'name'=>'get_user',
 'description'=>"Get information about a user",
-'method'=>'POST',
+'method'=>'GET',
 'url'=>'/users/{id}',
 'example'=>'
 {
@@ -68,7 +68,7 @@ array(
 array(
 'name'=>'get_users_created_tasks',
 'description'=>"Get users created tasks",
-'method'=>'POST',
+'method'=>'GET',
 'url'=>'/users/{id}/created_task',
 'example'=>'
 [
@@ -98,7 +98,7 @@ array(
 array(
 'name'=>'get_users_claimed_tasks',
 'description'=>"Get tasks claimed by user",
-'method'=>'POST',
+'method'=>'GET',
 'url'=>'/users/{id}/claimed_task',
 'example'=>'
 [
