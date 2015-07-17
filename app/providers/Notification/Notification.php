@@ -143,7 +143,7 @@ class Notification extends BaseModel {
 		
 		if($this->event == Notification::NOTIFICATION_NEW_TASK)
 		{
-			$users = User::where('notifications', '=', 1)->get();
+			$users = User::where('notifications', '=', 1)->where('id', '<>', $this->task->creator_id)->get();
 			$emails = [];
 			foreach ($users as $user) {
 				if(substr($user->email, 0, strlen('fake_')) !== 'fake_') {
