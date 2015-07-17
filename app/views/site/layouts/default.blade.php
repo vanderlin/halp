@@ -24,8 +24,8 @@
   
     <!-- Retina JS -->
     <script src="{{bower('retinajs/dist/retina.min.js') }}"></script>
-  
-    <script src="assets/js/classie.js"></script>
+
+    
     <script>
       (function() {
         // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim

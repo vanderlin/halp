@@ -44,8 +44,6 @@
 			<br/><h5>It's time to start helping.</h5>
 		@endforelse
 	</section>
-	
-	<br><br>
 
 	<section class="tasks user-tasks">
 		<div class="line-break">
