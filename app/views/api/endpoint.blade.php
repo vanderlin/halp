@@ -13,7 +13,7 @@
   	
   	<tr>
 	  	<td colspan="3">
-			<pre><code class="json"></code></pre>
+			<pre><code class="json">{{$data->example}}</code></pre>
 		</td>
 	</tr>
 			    <tr>
