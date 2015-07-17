@@ -126,6 +126,7 @@ return array(
 		'Zizaco\Entrust\EntrustServiceProvider',
 	    'Intervention\Image\ImageServiceProvider',
 	    'Jenssegers\Agent\AgentServiceProvider',
+	   
 	    
 	    // namespace in the future
 	    'Asset\AssetsServiceProvider',

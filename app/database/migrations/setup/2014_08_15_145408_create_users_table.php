@@ -71,6 +71,7 @@ class CreateUsersTable extends Migration {
 				$table->string('lastname');
 				$table->string('remember_token')->nullable();
 				$table->boolean('confirmed')->default(0);
+				$table->boolean('set_password')->default(0);
 				$table->string('google_id');
 				$table->string('google_token');
 				$table->boolean('notifications')->default(1);

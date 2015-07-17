@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
     @include('site.layouts.head')
     <link rel="stylesheet" type="text/css" href="{{bower('semantic-ui/dist/semantic.min.css')}}">
     <link href="{{asset('assets/css/backend/backend.css')}}" rel="stylesheet">

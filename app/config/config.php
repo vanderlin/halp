@@ -6,7 +6,7 @@ return array(
 	'site_name'			     =>'Halp',
 	'site_password'			 =>'ideobos',
 	'carousel' 				 => array('interval'=>5000),		
-
+	'api_base'			     => 'http://halp.ideo.com/api',
 
 	'google' => array(
 	    'oauth_options'      => array('access_type'=>'offline', 'display'=>'popup'),

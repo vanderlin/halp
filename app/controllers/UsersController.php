@@ -46,6 +46,28 @@ class UsersController extends BaseController
     }
 
     // ------------------------------------------------------------------------
+    public function update($username)
+    {   
+        $message = "";
+        $user = User::findFromData($username);
+        if($user === null) return $this->statusResponse(['errors'=>'No User found']);
+
+        if(Input::has('password') && Input::has('password_confirmation'))
+        {
+            $user->password = Input::get('password');
+            $user->password_confirmation = Input::get('password_confirmation');
+            $user->set_password = true;
+            if($user->save() == false) 
+            {
+                return $this->statusResponse(['error'=>$user->errors()->all()]);
+            }
+            $message .= "Password Updated";
+        }
+
+        return $this->statusResponse(['notice'=>$message, 'user'=>$user]);;
+    }
+
+    // ------------------------------------------------------------------------
     public function editUserRoles($id) {
 
         $user = User::findOrFail($id);

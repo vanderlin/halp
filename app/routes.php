@@ -20,6 +20,7 @@ Route::get('test', function() {
 
 });
 
+// ------------------------------------------------------------------------
 Route::get('testemail', function() {
 
 	
@@ -92,21 +93,6 @@ Route::group(array('prefix'=>'notifications'), function() {
 		return Redirect::back()->with(['notice'=>'Notifications Sent']);
 	});
 
-	// $preview = Input::get('preview', false);
-
-	// Route::get('newtask', function() use($preview) {
-
-	// 	if($preview) {
-	// 		$task = 
-	// 		return View::make('emails.new-task');
-	// 	}
-
-	// 	Mail::send('emails.new-task', array('key' => 'value'), function($message) {
- //    		$message->to('vanderlin@gmail.com', 'Todd Vanderlin')->subject('Welcome!');
-	// 	});
-	// 	//return View::make('emails.new-task');	
-
-	// });
 });
 
 // ------------------------------------------------------------------------
@@ -141,10 +127,29 @@ Route::group(array('before'=>['auth']), function() {
 		Route::post('{id}/unclaim', ['uses'=>'TasksController@unclaim', 'as'=>'tasks.unclaim']);
 		Route::delete('{id}', ['uses'=>'TasksController@delete', 'as'=>'tasks.delete']);
 	});
-
-
 });
 
+// ------------------------------------------------------------------------
+
+
+
+
+
+Route::group(['prefix'=>'api', 'before'=>['auth']], function() {
+	Route::get('/', function() {
+		return View::make('api.index', ['user'=>Auth::user(), 'endpoints'=>Config::get('api-endpoints')]);
+	});
+	Route::get('authtest', array('before' => 'auth.basic', function()
+	{
+    	return "Yes!";
+	}));
+	
+});
+
+Route::get('s', function() {
+    return Project\Project::all();;
+});
+	
 
 
 // ------------------------------------------------------------------------
