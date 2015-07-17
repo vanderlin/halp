@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => 'smtp.gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,8 +53,7 @@ return array(
 	| used globally for all e-mails that are sent by your application.
 	|
 	*/
-
-	'from' => array('address' => null, 'name' => null),
+    'from' => array('address' => 'halp@ideo.com', 'name' => 'Halp at IDEO'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +79,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => 'halp@ideo.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +92,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => '?#8ksQ2k~c',
 
 	/*
 	|--------------------------------------------------------------------------
