@@ -1,4 +1,6 @@
 <?php $data = (object)$data; ?>
+<br>
+<h2 id="{{$data->name}}">{{$data->name}}</h2>
 <table class="ui celled striped table">
 	<thead>
     	<tr>
@@ -8,12 +10,12 @@
   	</thead>
   	<tbody>
   	<tr>
-  		<td colspan="3">{{Config::get('config.api_base')}}/projects</td>
+  		<td colspan="3">{{Config::get('config.api_base')}}{{$data->url}}</td>
   	</tr>
   	
   	<tr>
 	  	<td colspan="3">
-			<pre><code class="json">{{$data->example}}</code></pre>
+			<pre><code class="json">{{trim($data->example)}}</code></pre>
 		</td>
 	</tr>
 			    <tr>

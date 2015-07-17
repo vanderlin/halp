@@ -147,7 +147,7 @@ Route::group(['prefix'=>'api', 'before'=>['auth']], function() {
 });
 
 Route::get('s', function() {
-    return Project\Project::all();;
+    return Auth::user()->createdTasks;
 });
 	
 

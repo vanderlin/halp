@@ -24,6 +24,12 @@ class Project extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
+	public function user() 
+	{
+  		return $this->belongsTo('User');
+	}
+
+	// ------------------------------------------------------------------------
 	public function getURL($relative=true)
 	{
 		return URL::to('projects/'.$this->id);

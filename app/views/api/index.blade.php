@@ -17,6 +17,11 @@
 	.text-center {
 		text-align: center;
 	}
+	.api-logo {
+		font-family: 'Merriweather', serif;
+		font-weight: 300;
+		font-style: italic;
+	}
     </style>
 @stop
 
@@ -42,13 +47,18 @@
 <div class="ui container">
 
 	<section>
-			<h1>Halp API</h1>	
-			<h3>{{$user->getName()}}</h3>
+				
+			<img src="{{img('turtle-lines.jpg')}}">
+			<h1 class="api-logo">Halp. API</h1>
 			<div class="ui divider"></div>
 			@if ($user->set_password == 0 || Input::get('reset_password', false)==true)
-				<p>You need to set a password to access the Halp API.</p>
+				
 				<div class="ui centered grid">
+					
 					<div class="six wide tablet eight wide computer column">
+					
+					<p>You need to set a password to access the Halp API.</p>
+
 					{{Form::open(['route'=>array('user.update', $user->id), 'class'=>'ui form text-left'])}}
 						<div class="field">
 							<label>Username</label>
@@ -83,9 +93,21 @@
 		<div class="row">
       		<div class="seven wide column">
         	<h2 class="ui header">Endpoints</h2>
-        		<p>Semantic uses simple phrases called behaviors that trigger functionality.</p>
+        		<p>All endpoints require basic.auth</p>
       		</div>
       		<br>
+
+			<div class="ui divided selection list">
+
+				@foreach ($endpoints as $ep)
+			  		<?php $ep=(object)$ep ?>
+				    <a href="#{{$ep->name}}" class="item">
+				    	<div class="ui horizontal label">{{$ep->method}}</div>{{$ep->url}}
+				    </a>
+				@endforeach
+			</div>			
+			
+
       		<div class="nine wide column">
       		@foreach ($endpoints as $ep)
       			@include('api.endpoint', ['data'=>$ep])
