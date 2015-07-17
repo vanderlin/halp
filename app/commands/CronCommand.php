@@ -36,12 +36,6 @@ class CronCommand extends Command {
 	public function fire()
 	{
 
-		Mail::send('emails.render', ['html'=>"Hey Todd this is the cron saying hi"], function($message) {
-			$message->to('tvanderlin@ideo.com', 'Halp Cron Test')->subject("Halp Cront Test ".uniqid());
-		});
-		$this->comment('Mail sent from cron');
-
-		return;
 		// first get all users that want to receive notifications
 		$users = User::where('notifications', '=', 1)->get();
 
