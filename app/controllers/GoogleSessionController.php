@@ -373,6 +373,7 @@ class GoogleSessionController extends BaseController {
 			    	$user->profileImage->user()->associate($user);
 		    	}
 			}
+
 		//}
 
 	}
@@ -480,7 +481,7 @@ class GoogleSessionController extends BaseController {
 				if($u != null) {
 
 					// if(Input::has('state') && Input::get('state') == 'updated_profile') {
-						$this->saveGoogleProfileImage($google_user, $u);						
+					$this->saveGoogleProfileImage($google_user, $u);						
 					// }
 
 					if(empty($u->google_token) && isset($refreshToken) ) {
