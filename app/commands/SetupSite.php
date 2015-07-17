@@ -236,19 +236,22 @@ class SetupSite extends Command {
 		
 			$user 			  = new User;
 			$user->timestamps = false;
-		    $user->email 	  = 'fake_'.$faker->email;
+		    $user->email 	  = 'fake_'.$faker->unique()->email;
 		    $user->firstname  = $faker->firstname;
 		    $user->lastname   = $faker->lastname;
 
-		    $user->username   = strtolower(Str::slug($user->firstname[0].$user->lastname, ''))."$faker->randomDigit";
+		    $user->username   = preg_replace("/[^A-Za-z0-9 ]/", '', $faker->unique()->userName);
 
-			$password 		  			 = Hash::make($user->username);
+			$password 		  			 = Hash::make($faker->password);
 			$user->password 			 = $password;
 			$user->password_confirmation = $password;
 			$user->confirmed 			 = 1;
 			$user->confirmation_code 	 = md5($user->username.time('U'));
 			$user->created_at = $user->updated_at = $joinDate;
-			$user->save();
+			
+			if($user->save() == false) {
+				$this->error($user->errors()." ".$user->username);
+			}
 
 			$userImage = new Asset;
 			$userImage->path = public_path('assets/content/users');
@@ -262,7 +265,7 @@ class SetupSite extends Command {
 	        $user->attachRole($role);
         	$user->save();
 
-	        $this->info('Creating User: '.$user->getName()." [$user->username, $user->email]");
+	        $this->info($user->id.' Creating User: '.$user->getName()." [$user->username, $user->email]");
 			// $this->info("\t$user_photo_url");
 
 		}
