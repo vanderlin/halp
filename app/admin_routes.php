@@ -15,7 +15,7 @@
 	// ------------------------------------------------------------------------
 	Route::group(['prefix'=>'notifications'], function() {
 		Route::get('/', function() {
-			return View::make('admin.notifications.index', ['active_link'=>'notifications', 'notifications'=>Notification\Notification::all()]);
+			return View::make('admin.notifications.index', ['active_link'=>'notifications', 'notifications'=>Notification::orderBy('created_at', 'DESC')->get()]);
 		});
 		Route::post('/', ['uses'=>'NotificationsController@store', 'as'=>'admin.notice.store']);
 	});
