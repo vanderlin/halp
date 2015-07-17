@@ -30,13 +30,13 @@ class Notification extends BaseModel {
 			if($notice->event == Notification::NOTIFICATION_NEW_TASK)
 			{
 				foreach ($users as $user) {
-					$notice->sendEmailToUser($user);
+					// $notice->sendEmailToUser($user);
 				}
 			}
 
 			// someone claimed your task
 			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
-				$notice->sendEmailToUser($notice->task->creator);
+				// $notice->sendEmailToUser($notice->task->creator);
 			}
 		}
 		return  $results;
@@ -49,6 +49,21 @@ class Notification extends BaseModel {
      	return $array;
     }
 
+    // ------------------------------------------------------------------------
+    public function contextUser()
+    {
+    	switch ($this->event) {
+			case Notification::NOTIFICATION_NEW_TASK:
+				return $this->task->creator;
+				break;
+			case Notification::NOTIFICATION_TASK_CLAIMED:
+				return $this->task->claimer;
+				break;
+			default:
+				return $this->creator;
+				break;
+		}
+    }
     // ------------------------------------------------------------------------
     public function getIsSentAttribute($val)
     {
@@ -90,6 +105,21 @@ class Notification extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
+	public function getAction()
+	{
+		switch ($this->event) {
+			case Notification::NOTIFICATION_NEW_TASK:
+				return 'Created';
+				break;
+			case Notification::NOTIFICATION_TASK_CLAIMED:
+				return 'Claimed';
+			default:
+				return 'unkown';
+				break;
+		}
+	}
+
+	// ------------------------------------------------------------------------
 	public function getSubject()
 	{
 		switch ($this->event) {
@@ -114,9 +144,13 @@ class Notification extends BaseModel {
 		if($this->event == Notification::NOTIFICATION_NEW_TASK)
 		{
 			$users = User::where('notifications', '=', 1)->get();
+			$emails = [];
 			foreach ($users as $user) {
-				$this->sendEmailToUser($user);
+				if(substr($user->email, 0, strlen('fake_')) !== 'fake_') {
+					array_push($emails, $user->email);
+				}
 			}
+			$this->sendEmailToGroup($emails);
 		}
 
 
@@ -130,6 +164,17 @@ class Notification extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
+	public function sendEmailToGroup($group)
+	{	
+		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
+		$premailer = new \ScottRobertson\Premailer\Request();
+		$response = $premailer->convert($view);
+
+		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($group) {			
+			$message->bcc($group, 'Halp')->subject($this->getSubject());
+		});
+	}
+	// ------------------------------------------------------------------------
 	public function sendEmailToUser($user)
 	{	
 
@@ -138,8 +183,11 @@ class Notification extends BaseModel {
 		$response = $premailer->convert($view);
 
 		if(substr($user->email, 0, strlen('fake_')) !== 'fake_') {
+
 			Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($user) {
+				
 				$message->to($user->email, 'Halp')->subject($this->getSubject());
+
 			});
 		}
 		// Mail::send($this->getViewPath(), array('task'=>$this->task), function($message) use($user) {

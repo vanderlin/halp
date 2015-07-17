@@ -45,31 +45,55 @@
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Event</th>
 				<th>Task</th>
+				<th>Event</th>
+				
 				<th>Sent</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach ($notifications as $notice)
 				<tr data-id="{{$notice->id}}">
-					<td>{{$notice->id}}</td>
-					<td><code>{{$notice->event}}</code></td>
+					<td class="center aligned">{{$notice->id}}</td>
 					<td>
+						<div class="ui list">
+							<div class="item">
+								<img class="ui avatar image" src="{{$notice->contextUser()->profileImage->url('s30')}}">
+							<div class="content">
+							<a class="header">
+								{{link_to($notice->task->getURL(), $notice->task->title)}}								
+							</a>
+							<div class="description">
+								<small>{{$notice->created_at->diffForHumans()}}</small>
+								@if ($notice->event == Notification::NOTIFICATION_TASK_CLAIMED)
+									<div class="sub header">
+										<small>Claimed by: {{link_to($notice->task->claimer->getProfileURL(), $notice->task->claimer->getName())}}</small>
+									</div>
+								@endif
+							</div>
+							</div>
+							</div>
+						</div>
+						{{--
 						<div class="content">
 						<b>{{link_to($notice->task->getURL(), $notice->task->title)}}</b>
+						<small>Event {{$notice->created_at->diffForHumans()}}</small>
 						<small>Created by: {{link_to($notice->task->creator->getProfileURL(), $notice->task->creator->getName())}}</small>
 						
-						@if ($notice->event == Notification\Notification::NOTIFICATION_TASK_CLAIMED)
+						@if ($notice->event == Notification::NOTIFICATION_TASK_CLAIMED)
 							<div class="sub header">
 								<small>Claimed by: {{link_to($notice->task->claimer->getProfileURL(), $notice->task->claimer->getName())}}</small>
 							</div>
 						@endif
 						</div>
+						--}}
 					</td>
+										<td><code>{{$notice->event}}</code></td>
+
 					<td class="center aligned {{$notice->isSent?'positive':'negative'}}">
 						@if ($notice->isSent)
-							Sent on {{$notice->sent_at->diffForHumans()}}
+							Sent {{$notice->sent_at->diffForHumans()}}
+							<div><small><a data-id="{{$notice->id}}" class="send-notification" href="#re-send">Re-Send</a></small></div>
 						@else
 							<a data-id="{{$notice->id}}" class="send-notification ui mini button" href="#send">Send</a>
 						@endif

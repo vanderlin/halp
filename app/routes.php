@@ -20,18 +20,6 @@ Route::get('test', function() {
 
 });
 
-Route::get('most-tasks', function() {
-    // $tags = DB::table('taggables')
-    // ->groupBy('tag_id')->orderBy('count', 'DESC')->get(array('tag_id', DB::raw('count(*) as count')));
-
-	return Task::whereNotNull('claimed_id')
-				
-                ->groupBy('claimed_id')
-                ->select(array('*', DB::raw('count(*) as claimed_count')))
-                ->orderBy('claimed_count', 'DESC')
-                ->get();
-});
-
 Route::get('testemail', function() {
 
 	
@@ -44,8 +32,12 @@ Route::get('testemail', function() {
 
 	$premailer = new ScottRobertson\Premailer\Request();
 	$response = $premailer->convert($view);
-	$email = Input::get('email', 'vanderlin@gmail.com');
-
+	// $email = Input::get('email', 'vanderlin@gmail.com');
+	$emails = ['vanderlin@gmail.com', 'tvanderlin@ideo.com'];
+	Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($emails) {
+		$message->bcc($emails, 'Halp')->subject('From '.Auth::user()->getName()." Halp Email Test ".uniqid());
+	});
+	return $emails;
 	if(Input::has('send')) {
 		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($email) {
 			$message->to($email, 'Halp')->subject(Auth::user()->getName()."Halp Email Test ".uniqid());
