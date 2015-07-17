@@ -22,7 +22,8 @@ Thumbs.db
 .composer/
 conf/
 .ssh/
-
+.bash_profile
+.bash_history
 
 # temp
 bootstrap/boot.php
@@ -34,3 +35,5 @@ app/config/local/database.php
 app/config/production/database.php
 app/config/local/mail.php
 app/config/production/mail.php
+
+
