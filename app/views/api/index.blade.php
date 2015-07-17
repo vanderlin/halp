@@ -11,6 +11,12 @@
     <link rel="stylesheet" type="text/css" href="{{bower('semantic-ui/dist/semantic.min.css')}}">
     <script src="{{bower('semantic-ui/dist/semantic.min.js')}}"></script>
     <style type="text/css">
+    a {
+		color: #4fd2c2;
+		text-decoration: none;
+		outline: none;
+	 	transition: color .2s;
+	}
 	.text-left {
 		text-align: left;
 	}
@@ -25,6 +31,15 @@
 	.ui.divider {
 		margin-top: 60px;
   		margin-bottom: 60px;
+  	}
+  	.api-container {
+  		margin:0 auto;
+  		max-width: 1200px;
+  		padding: 50px;
+  	}
+  	.api-container section {
+  		display: table;
+  		width: 100%;
   	}
     </style>
 @stop
@@ -48,7 +63,7 @@
 
 @section('content')
 	
-<div class="ui container">
+<div class="api-container">
 
 	<section>
 				
