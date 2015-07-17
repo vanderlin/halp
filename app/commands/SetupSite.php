@@ -14,7 +14,7 @@ class SetupSite extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'site:setup';
+	protected $name = 'halp';
 
 	/**
 	 * The console command description.
@@ -43,43 +43,48 @@ class SetupSite extends Command {
 	
 
 		$options = $this->option();
+
+		// -------------------------------------
 		if(is_true($options['reset'])) {
 			if ($this->confirm('Do you really want to delete the tables? [yes|no]'))
 			{
 				$name = $this->call('migrate:reset');
 				File::deleteDirectory(public_path('assets/content/users'));
+				$this->info('--- Halp has been reset ---');
 			}
 			Auth::logout();
+			return;
 		}
 
-		if(Project::all()->count() == 0) {
-			$project_names = ["Bravo", "Tinker", "Pando", "Denso", "Rabbit", "Personal", "IDEO", "Groover", "Nutcracker"];
-			foreach ($project_names as $name) {
-				$prj = new Project(['title'=>$name, 'user_id'=>User::getRandomID()]);
-				$prj->save();
+		// -------------------------------------
+		if(is_true($options['setup'])) {
+			$name = $this->call('migrate', array('--path'=>'app/database/migrations/setup/'));
+			$name = $this->call('migrate');
+
+			// create the roles
+			$roles = ['Admin', 'Writer', 'Reader'];
+			foreach ($roles as $r) {
+				$role = Role::whereName($r)->first();
+				if($role == null) {
+					$role = new Role;
+					$role->name = $r;
+					$role->display_name = $r;
+					$role->save();
+					$this->info("$role->id Creating Role:$r");
+				}
 			}
-		}
+			foreach (User::all() as $u) {
+				$this->info("$u->id : user: $u->username");
+			}
 
+			$this->seed();
+
+			$this->comment("****\tHalp has been setup :-) \t****");
+			return;
+		}
 		
-		$name = $this->call('migrate', array('--path'=>'app/database/migrations/setup/'));
-		$name = $this->call('migrate');
-
-
-		// create the roles
-		$roles = ['Admin', 'Writer', 'Reader'];
-		foreach ($roles as $r) {
-			$role = Role::whereName($r)->first();
-			if($role == null) {
-				$role = new Role;
-				$role->name = $r;
-				$role->display_name = $r;
-				$role->save();
-			}
-		}
-
-		foreach (Role::all() as $r) {
-			$this->info("Role: ".$r->name." Created");
-		}
+		// -------------------------------------
+		
 
 		if($options['seed']=='all') {
 			$this->seed();
@@ -92,7 +97,24 @@ class SetupSite extends Command {
 		if($options['seed']=='tasks') {
 			$this->seedTasks();
 		}
+
+		if($options['seed']=='projects') {
+			$this->seedProjects();
+		}
 		
+	}
+
+	// ------------------------------------------------------------------------
+	public function seedProjects()
+	{
+		if(Project::all()->count() == 0) {
+			$project_names = ["Bravo", "Tinker", "Pando", "Denso", "Rabbit", "Personal", "IDEO", "Groover", "Nutcracker"];
+			foreach ($project_names as $name) {
+				$prj = new Project(['title'=>$name, 'user_id'=>User::getRandomID()]);
+				$prj->save();
+				$this->info("$prj->id Creating Project:$prj->title");
+			}
+		}
 	}
 
 	// ------------------------------------------------------------------------
@@ -150,63 +172,58 @@ class SetupSite extends Command {
 	// ------------------------------------------------------------------------
 	public function seed()
 	{
-		$this->info('Seeding...');
-		$r = get_remote_file('http://localhost:8888/seeder/halp');
-		$this->info($r);
 
-		$this->info('--- Done Seeding ---');
+		$this->comment("------- Seeding Users ------- ");
+		$this->seedUsers();
 
-		return;
-		// make some fake users
-		if(User::all()->count() < 2) {
-			$seeder = new LOFaker;
-			$n = 2;
-			for ($i=0; $i < $n; $i++) { 
-				$seeder->createFakeUser();
-			}
-		}
-
-		if(Project\Project::all()->count() < 2) {
-			$project_names = ["Bravo", "Tinker", "Pando", "Denso", "Rabbit"];
-			foreach ($project_names as $name) {
-				$prj = new Project\Project(['title'=>$name, 'user_id'=>User::getRandomID()]);
-				$prj->save();
-			}
-		}
-
-
-		$n = 10;
-		$tasks = [];
-		$faker = Faker\Factory::create();
-		for ($i=0; $i < $n; $i++) { 
-			
-			$data = [
-				'title'=>$faker->text(20),
-				'creator_id'=>User::getRandomID(),
-				'claimed_id'=>rand()%10>5?User::getRandomID():null,
-				'project_id'=>Project\Project::getRandomID()
-				];
-			$task = new Task($data);
-			$task->save();
-			array_push($tasks, $task);
-		}
-		return $tasks;
+		$this->comment("------- Seeding Projects ------- ");
+		$this->seedProjects();
+		
+		$this->comment("------- Seeding Tasks ------- ");
+		$this->seedTasks();
+	
 	}
 
 	// ------------------------------------------------------------------------
 	public function seedUsers()
 	{
-
 		foreach (User::all() as $user) {
-			
-			if($user->isAdmin()==false) {
-				$user->delete();	
-			}
+			$user->delete();		
 		}
 
+		$faker = Faker\Factory::create();
 		$seeder = new LOFaker;
 		$n = 30;
-		$faker = Faker\Factory::create();
+
+		// also creat admin users (kim & I)
+		$admins = array(['username'=>'tvanderlin', 'email'=>'tvanderlin@ideo.com'],
+						['username'=>'kmiller', 'email'=>'kmiller@ideo.com']);
+		foreach ($admins as $data) {
+			$data = (object)$data;
+
+			$user 			  			 = new User;
+			$user->timestamps 		     = false;
+		    $user->email 	  			 = $data->email;
+		    $user->username   			 = $data->username;
+			$password 		  			 = Hash::make($user->username);
+
+			$user->password 			 = $password;
+			$user->password_confirmation = $password;
+			$user->confirmed 			 = 1;
+			$user->confirmation_code 	 = md5($user->username.time('U'));
+			$user->created_at 			 = $user->updated_at = $faker->dateTimeBetween('-3 years', 'now');
+	        $user->save();
+
+			$role = Role::where('name', '=', 'Admin')->first();
+
+ 		    $user->save();
+	        $user->attachRole($role);
+        	$user->save();
+
+	        $this->info('Creating *** Admin *** User: '.$user->getName()." [$user->username, $user->email]");
+		}
+		
+		$this->info("\t");
 
 		for ($i=0; $i < $n; $i++) { 
 			
@@ -214,7 +231,7 @@ class SetupSite extends Command {
 			$photo_n = rand()%40;
 			$user_photo_url = "http://api.randomuser.me/portraits/$gender/$photo_n.jpg";
 			
-			$role = $role = Role::where('name', '=', 'Writer')->first();
+			$role = Role::where('name', '=', 'Writer')->first();
 			$joinDate = $faker->dateTimeBetween('-3 years', 'now');
 		
 			$user 			  = new User;
@@ -223,7 +240,7 @@ class SetupSite extends Command {
 		    $user->firstname  = $faker->firstname;
 		    $user->lastname   = $faker->lastname;
 
-		    $user->username   = strtolower($user->firstname[0].$user->lastname)."$faker->randomDigit";
+		    $user->username   = strtolower(Str::slug($user->firstname[0].$user->lastname, ''))."$faker->randomDigit";
 
 			$password 		  			 = Hash::make($user->username);
 			$user->password 			 = $password;
@@ -242,11 +259,16 @@ class SetupSite extends Command {
 			$user->profileImage->user()->associate($user);
 			
 	        $user->save();
+	        $user->attachRole($role);
+        	$user->save();
 
 	        $this->info('Creating User: '.$user->getName()." [$user->username, $user->email]");
 			// $this->info("\t$user_photo_url");
 
 		}
+
+		
+
 	}
 	
 	// ------------------------------------------------------------------------
@@ -261,6 +283,7 @@ class SetupSite extends Command {
 	protected function getOptions()
 	{
 		return array(
+			array('setup', null, InputOption::VALUE_OPTIONAL, 'setup the site and migrate all tables', null),
 			array('reset', null, InputOption::VALUE_OPTIONAL, 'reset database.', null),
 			array('seed', null, InputOption::VALUE_OPTIONAL, 'seed database.', null),
 		);

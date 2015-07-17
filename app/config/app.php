@@ -204,6 +204,7 @@ return array(
 		'Image' 	      => 'Intervention\Image\Facades\Image',
 		'Agent'           => 'Jenssegers\Agent\Facades\Agent',
 		'Asset' 		  => 'Asset\Asset',
+		'Notification'	  => 'Notification\Notification',
 	),
 
 );
