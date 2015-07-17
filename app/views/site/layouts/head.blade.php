@@ -22,6 +22,8 @@
 
 <link href="{{asset('assets/css/frontend/frontend.css')}}" rel="stylesheet">
 
+<script src="{{asset('assets/js/snap.svg-min.js')}}"></script>
+
 <!-- core scripts -->
 @include('site.layouts.core-scripts')
 <script src="{{asset('assets/js/app.js')}}"></script>

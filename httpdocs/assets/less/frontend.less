@@ -11,7 +11,7 @@ html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockqu
 /* ----------------------------------- MISC ----------------------------------- */
 
 body {
-	background: #f0efee;
+	background: @dark-purple;
 	color: @purple;
 	font-weight: 500;
 	font-size: 1.05em;
@@ -50,7 +50,7 @@ h4{
 }
 
 h5{
-	.sans-serif(14px, @purple);
+	.sans-serif(13px, @purple);
 	line-height: 37px;
 }
 h6{
@@ -73,10 +73,12 @@ hr{
 .content {
 	font-size: 150%;
 	padding: 3em;
+	background-color: #f0efee;
 }
 
 .turtle-break {
 	margin: 0;
+	background-color: #f0efee;
 }
 .turtle-break img {
 	vertical-align: middle;
@@ -109,7 +111,8 @@ hr{
 
 .logo{
 	float: left;
-	padding-left: 10px
+	padding-left: 10px;
+	height: 60px;
 }
 
 .logo-text{
@@ -193,7 +196,7 @@ hr{
 
 .project-name{
 	display: block;
-	margin-bottom: 0px;
+	margin-bottom: -1px;
 	line-height: 20px;
 	.sans-serif(12px, @purple);
 }
@@ -455,6 +458,7 @@ body .nomargin-bottom {
 .alert{
 	font-style: italic;
   	padding-top: 28px;
+  	line-height: 40px;
 }
 
 /* ------------------------------------- User Profile Page  ------------------------------------ */
@@ -472,7 +476,7 @@ body .nomargin-bottom {
 }
 
 .user-tasks {
-
+	background-color: #f0efee;
 	padding: 80px 60px;
 
 	h2 {
@@ -530,7 +534,7 @@ body .nomargin-bottom {
 	display: -moz-inline-stack;
     display: inline-block;
     vertical-align: top;
-    margin: 1%;
+    margin: 18px 1%;
     padding: 0px;
 
 	.user-image img {
@@ -574,15 +578,147 @@ body .nomargin-bottom {
 	font-size: 18px
 }
 
-/* ------------------------------------- MEDIA QUERIES ------------------------------------ */
+/* ------------------------------------- IMPORTS  ------------------------------------ */
+@import 'popup.less';
+@import 'ui.less';
 
-@media screen and (max-width: 50em) {
-	.codrops-header {
-		padding: 3em 10% 4em;
-	}
+/* ------------------------------------- MOBILE MENU ------------------------------------ */
+
+.menu-wrap a {
+	color: @dark-purple;
 }
 
-@media screen and (max-width: 40em) {
+.menu-wrap a:hover,
+.menu-wrap a:focus {
+	color: white;
+}
+
+.content {
+	position: relative;
+}
+
+/* Menu Button */
+#open-button{
+	float: right;
+  	margin: 23px;
+  	cursor: pointer;
+}
+
+.open-menu{
+	display: none;
+}
+
+
+/* Close Button */
+.close-button {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	right: 1em;
+	top: 1em;
+	overflow: hidden;
+	text-indent: 16px;
+	border: none;
+	z-index: 1001;
+	background: transparent;
+	color: transparent;
+}
+
+.close-button::before,
+.close-button::after {
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 100%;
+	top: 0;
+	left: 50%;
+	background: white;
+}
+
+.close-button::before {
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.close-button::after {
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+/* Menu */
+.menu-wrap {
+	position: absolute;
+	z-index: 1001;
+	width: 240px;
+	height: 100%;
+	font-size: 1.15em;
+	-webkit-transform: translate3d(-300px,0,0);
+	transform: translate3d(-300px,0,0);
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	text-align: left;
+}
+
+.mobile-menu {
+	background: @mint;
+	width: 180px;
+	height: 100%;
+	padding: 2em 1em;
+}
+
+.icon-list {
+	width: 280px;
+}
+
+.icon-list a {
+	display: table;
+	width: 100%;
+	padding: 0.8em;
+	padding: 13px 15px;
+	margin-left: 10px;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0px;
+}
+
+/* Morph Shape */
+.morph-shape {
+	position: absolute;
+	width: 60px;
+	height: 100%;
+	top: 0;
+	right: 0;
+	fill: @mint;
+	z-index: 1000;
+}
+
+/* Shown menu */
+.show-menu .menu-wrap {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.show-menu .content-wrap {
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+	-webkit-transform: translate3d(100px,0,0);
+	transform: translate3d(100px,0,0);
+}
+
+.show-menu .content::before {
+	opacity: 1;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+
+
+/* ------------------------------------- MEDIA QUERIES ------------------------------------ */
+
+
+@media screen and (max-width: 650px) {
 	.codrops-header h1 {
 		font-size: 2.8em;
 	}
@@ -596,12 +732,95 @@ body .nomargin-bottom {
 		padding: 1em;
 	}
 	.input{
-		max-width: 288px;
+		max-width: 246px;
 		margin: 0.5em;
 	}
+
+	.hero{
+		  padding: 30px 30px;
+	}
+	.total-task h2{
+		font-size: 38px;
+	}
+	.content h2{
+		margin: 0;
+	}
+	hr{
+		margin: 20px auto;
+	}
+	.user-card{
+		height: 235px;
+		margin: 20px 1%;
+	}
+	h2{
+		font-size: 18px;
+	}
+	h3{
+		font-size: 30px;
+		line-height: 38px;
+	}
+	h4{
+		font-size: 16px;
+	}
+	h5{
+		font-size:12px;
+	}
+	h6{
+		font-size: 12px;
+	}
+	.user-image-most-helpful img{
+		margin: 15px 0px 10px 0px;
+	}
+	.user-tasks{
+		padding: 10px 0px 10px 0px;
+	}
+	.user-tasks .line-break{
+		padding: 10px 10px 0px 10px;
+	}
+	.task{
+		margin: 20px 0px;
+	}
+	.claimed-popup{
+		padding: 40px;
+	}
+	.claimed-popup h2 {
+  		font-size: 22px;
+  		margin-bottom: 0px;
+  		line-height: 36px;
+	}
+	p{
+		font-size: 14px;
+		line-height: 25px;
+	}
+	.small.progress-button{
+		margin-top: 10px;
+	}
+	.small.progress-button button{
+		margin-top: 15px;
+	}
+	.user-created-task {
+  		height: 338px !important;
+	}
+	.user{
+		display: none;
+	}
+	.open-menu{
+		display: inline;
+	}
+	.logo-text{
+		padding: 0px 10px 0px 10px;
+		bottom: 23px;
+		font-size: 25px;
+	}
+	.introduction-content{
+		width: 80%;
+	}
+	.intro-text {
+  		line-height: 38px;
+  		font-size: 20px;
+	}
+	.introduction img{
+		margin-top: 50px;
+		margin-bottom: 30px;
+	}
 }
-
-
-// ------------------------------------------------------------------------
-@import 'popup.less';
-@import 'ui.less';
