@@ -28,7 +28,3 @@ conf/
 bootstrap/boot.php
 httpdocs/vars.php
 sub.php
-
-
-app/config/local/database.php
-app/config/production/database.php
