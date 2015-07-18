@@ -58,7 +58,12 @@
 					<td>
 						<div class="ui list">
 							<div class="item">
-								<img class="ui avatar image" src="{{$notice->contextUser()->profileImage->url('s30')}}">
+								@if ($notice->contextUser())
+									<img class="ui avatar image" src="{{$notice->contextUser()->profileImage->url('s30')}}">	
+								@else
+									<small>Missing User</small>
+								@endif
+								
 							<div class="content">
 							<a class="header">
 								{{link_to($notice->task->getURL(), $notice->task->title)}}								
@@ -69,26 +74,19 @@
 									<div class="sub header">
 										<small>Claimed by: {{link_to($notice->task->claimer->getProfileURL(), $notice->task->claimer->getName())}}</small>
 									</div>
+								@elseif ($notice->event == Notification::NOTIFICATION_TASK_DELETED)
+									<div class="sub header">
+										<small>Claimed by: {{link_to($notice->task->claimer->getProfileURL(), $notice->task->claimer->getName())}}</small>
+									</div>
 								@endif
 							</div>
 							</div>
 							</div>
 						</div>
-						{{--
-						<div class="content">
-						<b>{{link_to($notice->task->getURL(), $notice->task->title)}}</b>
-						<small>Event {{$notice->created_at->diffForHumans()}}</small>
-						<small>Created by: {{link_to($notice->task->creator->getProfileURL(), $notice->task->creator->getName())}}</small>
 						
-						@if ($notice->event == Notification::NOTIFICATION_TASK_CLAIMED)
-							<div class="sub header">
-								<small>Claimed by: {{link_to($notice->task->claimer->getProfileURL(), $notice->task->claimer->getName())}}</small>
-							</div>
-						@endif
-						</div>
-						--}}
 					</td>
-										<td><code>{{$notice->event}}</code></td>
+					
+					<td><code>{{$notice->event}}</code></td>
 
 					<td class="center aligned {{$notice->isSent?'positive':'negative'}}">
 						@if ($notice->isSent)

@@ -133,7 +133,14 @@ class TasksRepository  {
 		$task = Task::withTrashed()->whereId($id)->first();
 		if($task) 
 		{
+			if($task->isClaimed)
+			{
+				// fire a new notification to the system
+				Event::fire(Notification::NOTIFICATION_NEW_TASK, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_TASK_DELETED])); 
+				
+			}
 			$task->delete();
+			
 		}
 		return $this->listener->statusResponse(['task'=>$task]);
 	}

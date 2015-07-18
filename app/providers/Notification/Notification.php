@@ -14,34 +14,8 @@ class Notification extends BaseModel {
 
 	const NOTIFICATION_NEW_TASK = "notification.new.task";
 	const NOTIFICATION_TASK_CLAIMED = "notification.task.claimed";
+	const NOTIFICATION_TASK_DELETED = "notification.task.deleted";
 	
-	// ------------------------------------------------------------------------
-	public static function checkForNotifications()
-	{
-		// first get all users that want to receive notifications
-		$users = User::where('notifications', '=', 1)->get();
-
-		// get all notifications that have not been sent out
-		$notifications = Notification::whereNull('sent_at')->get();
-		$results = [];
-		foreach ($notifications as $notice) {
-			
-			// New Task - send to all users that want to be notified
-			if($notice->event == Notification::NOTIFICATION_NEW_TASK)
-			{
-				foreach ($users as $user) {
-					// $notice->sendEmailToUser($user);
-				}
-			}
-
-			// someone claimed your task
-			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
-				// $notice->sendEmailToUser($notice->task->creator);
-			}
-		}
-		return  $results;
-	}
-
     // ------------------------------------------------------------------------
     public function toArray() 
     {
@@ -58,6 +32,9 @@ class Notification extends BaseModel {
 				break;
 			case Notification::NOTIFICATION_TASK_CLAIMED:
 				return $this->task->claimer;
+				break;
+			case Notification::NOTIFICATION_TASK_DELETED:
+				return $this->task->creator;
 				break;
 			default:
 				return $this->creator;
@@ -85,7 +62,7 @@ class Notification extends BaseModel {
 	// ------------------------------------------------------------------------
 	public function task()
 	{
-		return $this->belongsTo('Task\Task');
+		return $this->belongsTo('Task\Task')->withTrashed();
 	}
 
 	// ------------------------------------------------------------------------
@@ -97,6 +74,9 @@ class Notification extends BaseModel {
 				break;
 			case Notification::NOTIFICATION_TASK_CLAIMED:
 				return 'emails.task-claimed';
+				break;
+			case Notification::NOTIFICATION_TASK_DELETED:
+				return 'emails.task-deleted';
 				break;
 			default:
 				return 'emails.new-task';
@@ -113,6 +93,8 @@ class Notification extends BaseModel {
 				break;
 			case Notification::NOTIFICATION_TASK_CLAIMED:
 				return 'Claimed';
+			case Notification::NOTIFICATION_TASK_DELETED:
+				return 'Deleted';
 			default:
 				return 'unkown';
 				break;
@@ -128,6 +110,9 @@ class Notification extends BaseModel {
 				break;
 			case Notification::NOTIFICATION_TASK_CLAIMED:
 				return $this->task->claimer->getShortName().' has claimed one of your tasks!';
+				break;
+			case Notification::NOTIFICATION_TASK_DELETED:
+				return $this->task->creator->getShortName().' has removed a task you claimed!';
 				break;
 			default:
 				return 'Halp';
@@ -151,6 +136,12 @@ class Notification extends BaseModel {
 				}
 			}
 			$this->sendEmailToGroup($emails);
+		}
+
+		// someone deleted a task - you need to check if
+		// this task has been claimed
+		else if($this->event == Notification::NOTIFICATION_TASK_DELETED) {
+			$this->sendEmailToUser($this->task->claimer);
 		}
 
 
@@ -183,16 +174,9 @@ class Notification extends BaseModel {
 		$response = $premailer->convert($view);
 
 		if(substr($user->email, 0, strlen('fake_')) !== 'fake_') {
-
 			Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($user) {
-				
 				$message->to($user->email, 'Halp')->subject($this->getSubject());
-
 			});
 		}
-		// Mail::send($this->getViewPath(), array('task'=>$this->task), function($message) use($user) {
-		// 	$message->to($user->email, $user->getName())->subject($this->getSubject());
-		// });
-
 	}
 }
