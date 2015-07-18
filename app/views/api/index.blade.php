@@ -29,8 +29,9 @@
   		$('#run-console').click(function(e) {
   			e.preventDefault();
   			var ep = $('#console-form select').val();
-  			var url = ep.replace('{id}', '20');
-  			console.log(url);
+  			var param = $('#param-field input').val();
+  			param = param!=""?param:20;
+  			var url = ep.replace('{id}', param);
   			$.ajax({
   				url: url,
   				type: 'GET',
@@ -43,8 +44,17 @@
 
 				hljs.highlightBlock($('.console-results')[0]);
   			});
-  			
+  		});
 
+  		$('#param-field').hide();
+  		$('#console-form select').change(function(e) {
+  			var val = $(this).val();
+  			if(val.includes('{id}')) {
+  				$('#param-field').fadeIn(200);
+  			}
+  			else {
+  				$('#param-field').fadeOut(200);
+  			}
   		});
 
 
@@ -135,14 +145,20 @@
 				
 				<div class="text-left">
 					<form action="" class="ui form" id="console-form">
-						<div class="six wide field">
-							<label>Gender</label>
-							<select class="ui dropdown" name="endpoint">
-								@foreach ($endpoints as $ep)
-			  						<?php $ep=(object)$ep ?>
-									<option value="{{$ep->url}}">{{$ep->url}}</option>
-								@endforeach
-							</select>
+						<div class="three fields">
+							<div class="field">
+								<label>Gender</label>
+								<select class="ui dropdown" name="endpoint">
+									@foreach ($endpoints as $ep)
+				  						<?php $ep=(object)$ep ?>
+										<option value="{{$ep->url}}">{{$ep->url}}</option>
+									@endforeach
+								</select>
+							</div>
+							<div class="field" id="param-field">
+								<label>Param</label>
+								<input type="text" name="param" placeholder="parameter {id} ie: 22">
+							</div>
 						</div>
 					</form>
 					<pre><code class="console-results code json"></code></pre>
