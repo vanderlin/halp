@@ -47,7 +47,7 @@ grunt.initConfig({
       }
     },  
 
-
+    // ------------------------------------------------------------------------
     less: {
         core: {
           options: {
@@ -60,6 +60,7 @@ grunt.initConfig({
           files: {
             "<%= paths.css %>frontend/frontend.css": "<%= paths.assets.less %>frontend.less",
             "<%= paths.css %>backend/backend.css": "<%= paths.assets.less %>backend.less",
+            "<%= paths.css %>core/api.css": "<%= paths.assets.less %>api.less",
           }
 
         },
@@ -72,6 +73,17 @@ grunt.initConfig({
           },
           files: {
             "<%= paths.css %>core/email.css": "<%= paths.assets.less %>email.less",
+          }
+        },
+        api: {
+          options: {
+            paths: ["<%= api.css %>"],
+            cleancss: true,
+            modifyVars: {
+            }
+          },
+          files: {
+            "<%= paths.css %>core/api.css": "<%= paths.assets.less %>api.less",
           }
         },
         bootstrap: {
@@ -119,30 +131,9 @@ grunt.initConfig({
     watch: {
       less: {
         files: ['<%= paths.assets.less %>*.less', '<%= paths.assets.less %>/mobile/*.less'],       //watched files
-        tasks: ['less:core'],                            //tasks to run
+        tasks: ['less:core'],                            
         options: {
-          livereload: true                               //reloads the browser
-        }
-      },
-      less_bootstrap: {
-        files: ['<%= paths.assets.less %>bootstrap.less'],  
-        tasks: ['less:bootstrap'], 
-        options: {
-          livereload: true              
-        }
-      },
-      less_bootstrap: {
-        files: ['<%= paths.assets.less %>email.less'],  
-        tasks: ['less:email'], 
-        options: {
-          livereload: true              
-        }
-      },
-      less_bootstrap_2: {
-        files: ['<%= paths.assets.less %>/bootstrap/*.less'],  
-        tasks: ['less:bootstrap_2'], 
-        options: {
-          livereload: true              
+          livereload: true                               
         }
       }
     }  

@@ -122,6 +122,12 @@
 .loading.elastic.progress-button button {
   transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
 }
+.halp-list-menu li {
+  padding: 10px;
+}
+.list-inline li {
+  display: inline-table;
+}
 /** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
 html,
 body,

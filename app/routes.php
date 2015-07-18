@@ -130,26 +130,12 @@ Route::group(array('before'=>['auth']), function() {
 });
 
 // ------------------------------------------------------------------------
-
-
-
-
-
-Route::group(['prefix'=>'api', 'before'=>['auth']], function() {
+Route::group(['prefix'=>'developer', 'before'=>['auth']], function() {
 	Route::get('/', function() {
 		return View::make('api.index', ['user'=>Auth::user(), 'endpoints'=>Config::get('api-endpoints')]);
 	});
-	Route::get('authtest', array('before' => 'auth.basic', function()
-	{
-    	return "Yes!";
-	}));
-	
 });
 
-Route::get('s', function() {
-    return Auth::user()->createdTasks;
-});
-	
 
 
 // ------------------------------------------------------------------------
@@ -157,4 +143,4 @@ include 'seeder_routes.php';
 include 'assets_routes.php';
 include 'auth_routes.php';
 include 'admin_routes.php';
-
+include 'api_routes.php';

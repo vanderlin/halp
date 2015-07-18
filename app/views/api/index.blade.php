@@ -10,38 +10,7 @@
 	
     <link rel="stylesheet" type="text/css" href="{{bower('semantic-ui/dist/semantic.min.css')}}">
     <script src="{{bower('semantic-ui/dist/semantic.min.js')}}"></script>
-    <style type="text/css">
-    a {
-		color: #4fd2c2;
-		text-decoration: none;
-		outline: none;
-	 	transition: color .2s;
-	}
-	.text-left {
-		text-align: left;
-	}
-	.text-center {
-		text-align: center;
-	}
-	.api-logo {
-		font-family: 'Merriweather', serif;
-		font-weight: 300;
-		font-style: italic;
-	}
-	.ui.divider {
-		margin-top: 60px;
-  		margin-bottom: 60px;
-  	}
-  	.api-container {
-  		margin:0 auto;
-  		max-width: 1200px;
-  		padding: 50px;
-  	}
-  	.api-container section {
-  		display: table;
-  		width: 100%;
-  	}
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{css('core/api.css')}}">
 @stop
 
 @section('scripts')
@@ -51,11 +20,34 @@
 	$(document).ready(function() {
 		hljs.configure({
 			tabReplace: '  ', // 4 spaces
-			classPrefix: ''
+			// classPrefix: ''
 		})
   		$('pre code').each(function(i, block) {
     		hljs.highlightBlock(block);
   		});
+
+  		$('#run-console').click(function(e) {
+  			e.preventDefault();
+  			var ep = $('#console-form select').val();
+  			var url = ep.replace('{id}', '20');
+  			console.log(url);
+  			$.ajax({
+  				url: url,
+  				type: 'GET',
+  				dataType: 'text',
+  				data: {pretty:true}
+  			})
+  			.always(function(e) {
+				hljs.fixMarkup(e);
+				$('.console-results').html($.trim(e));
+
+				hljs.highlightBlock($('.console-results')[0]);
+  			});
+  			
+
+  		});
+
+
 	});
 	</script>
 @stop
@@ -71,11 +63,8 @@
 			<h1 class="api-logo">Halp. API</h1>
 			<div class="ui divider"></div>
 			@if ($user->set_password == 0 || Input::get('reset_password', false)==true)
-				
 				<div class="ui centered grid">
-					
 					<div class="six wide tablet eight wide computer column">
-					
 					<p>You need to set a password to access the Halp API.</p>
 
 					{{Form::open(['route'=>array('user.update', $user->id), 'class'=>'ui form text-left'])}}
@@ -101,6 +90,8 @@
 					</div>
 				</div>
 			@else
+				<h2 class="ui header">You have access to the Halp. API</h2>
+				<p>{{Auth::user()->email}}</p> 
 				<a href="/api/?reset_password=true" class="ui button">Reset Password</a> 
 			@endif
 			
@@ -124,14 +115,44 @@
 				    	<div class="ui horizontal label">{{$ep->method}}</div>{{$ep->url}}
 				    </a>
 				@endforeach
+				<a href="#console" class="item">
+					<div class="ui horizontal label"><i class="lab icon"></i></div>Console
+				</a>
 			</div>			
-			
+			<br>
+			<br>	
 
       		<div class="nine wide column">
       		@foreach ($endpoints as $ep)
       			@include('api.endpoint', ['data'=>$ep])
       		@endforeach
         	</div>	
+
+        	
+			<div class="ui container endpoint">
+				
+				<h2 class="name" id="console"><a href="#console"><i class="icon lab"></i>Console</a></h2>
+				
+				<div class="text-left">
+					<form action="" class="ui form" id="console-form">
+						<div class="six wide field">
+							<label>Gender</label>
+							<select class="ui dropdown" name="endpoint">
+								@foreach ($endpoints as $ep)
+			  						<?php $ep=(object)$ep ?>
+									<option value="{{$ep->url}}">{{$ep->url}}</option>
+								@endforeach
+							</select>
+						</div>
+					</form>
+					<pre><code class="console-results code json"></code></pre>
+					<a href="#run-console" class="ui button pull-right" id="run-console">Run</a>
+				</div> 
+			
+
+			</div>
+
+
   		</div>
 	</section>
 </div>

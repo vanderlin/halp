@@ -29,6 +29,10 @@ function img($file, $relative=false) {
   return $relative ? 'assets/img/'.$file : asset('assets/img/'.$file);
 }
 
+function css($file, $relative=false) {
+  return $relative ? 'assets/css/'.$file : asset('assets/css/'.$file);
+}
+
 function mobile_asset($file, $relative=false) {
   return $relative ? 'assets/content/mobile/'.$file : asset('assets/content/mobile/'.$file);
 }
@@ -101,10 +105,9 @@ function array_to_object($array) {
 function get_site_map() {
     $map = array(
         ['name'=>'Home', 'url'=>URL::to('/')],
-        ['name'=>'Tour', 'url'=>URL::to('welcome')],
-        ['name'=>'About Us', 'url'=>URL::to('about')],
-        ['name'=>'Become a spotter', 'url'=>URL::to('become-a-spotter')],
-        ['name'=>'FAQs', 'url'=>URL::to('faqs')],
+        ['name'=>'Leaderboard', 'url'=>URL::to('leaderboard')],
+        ['name'=>'Admin', 'url'=>URL::to('admin'), 'require'=>'admin'],
+        ['name'=>'Developer', 'url'=>URL::to('developer')],
     );
     return array_to_object($map);
 }

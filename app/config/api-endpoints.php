@@ -10,7 +10,7 @@ array(
 'name'=>'get_all_users',
 'description'=>"Get a array of users using the Halp Application",
 'method'=>'GET',
-'url'=>'/users',
+'url'=>'/api/users',
 'example'=>'
 [
    {
@@ -40,7 +40,7 @@ array(
 'name'=>'get_user',
 'description'=>"Get information about a user",
 'method'=>'GET',
-'url'=>'/users/{id}',
+'url'=>'/api/users/{id}',
 'example'=>'
 {
   id:1,
@@ -69,25 +69,34 @@ array(
 'name'=>'get_users_created_tasks',
 'description'=>"Get users created tasks",
 'method'=>'GET',
-'url'=>'/users/{id}/created_task',
+'url'=>'/api/users/{id}/created_tasks',
 'example'=>'
 [
-   {
-      id:19,
-      title:"Flying in space",
-      project_id:5,
-      creator_id:1,
-      duration:"10 minutes",
-      claimed_id:22,
-      claimed_at:{
-         date:"-0001-11-30 00:00:00.000000",
-         timezone_type:3,
-         timezone:"UTC"
-      },
-      deleted_at:null,
-      created_at:"2015-07-17 18:00:19",
-      updated_at:"2015-07-17 18:00:19"
-   }
+	{
+	   id:2,
+	   title:"Setup a wordpress site",
+	   project_id:5,
+	   creator_id:2,
+	   duration:"few mins",
+	   claimed_id:20,
+	   claimed_at:{
+	      date:"2015-07-21 17:32:16.000000",
+	      timezone_type:3,
+	      timezone:"UTC"
+	   },
+	   deleted_at:null,
+	   created_at:"2015-07-17 17:32:16",
+	   updated_at:"2015-07-17 17:32:16",
+	   project:{
+	      id:5,
+	      title:"Rabbit",
+	      user_id:12,
+	      created_at:"2015-07-17 17:32:16",
+	      updated_at:"2015-07-17 17:32:16"
+	   },
+	   claimer:null
+	},
+	...
 ]
 '),
 
@@ -99,25 +108,89 @@ array(
 'name'=>'get_users_claimed_tasks',
 'description'=>"Get tasks claimed by user",
 'method'=>'GET',
-'url'=>'/users/{id}/claimed_task',
+'url'=>'/api/users/{id}/claimed_tasks',
 'example'=>'
 [
-   {
-      id:19,
-      title:"Flying in space",
-      project_id:5,
-      creator_id:1,
-      duration:"10 minutes",
-      claimed_id:22,
-      claimed_at:{
-         date:"-0001-11-30 00:00:00.000000",
-         timezone_type:3,
-         timezone:"UTC"
-      },
-      deleted_at:null,
-      created_at:"2015-07-17 18:00:19",
-      updated_at:"2015-07-17 18:00:19"
-   }
+	{
+	   id:2,
+	   title:"Setup a wordpress site",
+	   project_id:5,
+	   creator_id:2,
+	   duration:"few mins",
+	   claimed_id:20,
+	   claimed_at:{
+	      date:"2015-07-21 17:32:16.000000",
+	      timezone_type:3,
+	      timezone:"UTC"
+	   },
+	   deleted_at:null,
+	   created_at:"2015-07-17 17:32:16",
+	   updated_at:"2015-07-17 17:32:16",
+	   project:{
+	      id:5,
+	      title:"Rabbit",
+	      user_id:12,
+	      created_at:"2015-07-17 17:32:16",
+	      updated_at:"2015-07-17 17:32:16"
+	   },
+	   claimer:{
+	      id:20,
+	      username:"barryfranecki",
+	      email:"fake_tlabadie@hermiston.com",
+	      firstname:"Raquel",
+	      lastname:"Bosco",
+	      google_id:"",
+	      created_at:"2013-06-20 18:58:24",
+	      updated_at:"2013-06-20 18:58:24",
+	      name:"Raquel Bosco",
+	      profile_image:"http://localhost:8888/images/18.jpg",
+	      profile_image_base:"http://localhost:8888/images/18",
+	      roles:[
+	         "Writer"
+	      ],
+	      url:"http://localhost:8888/users/barryfranecki"
+	   }
+	},
+	...
+]
+'),
+
+
+// ------------------------------------------------------------------------
+// User/ unClaimed Taks
+// ------------------------------------------------------------------------
+array(
+'name'=>'get_users_un_claimed_tasks',
+'description'=>"Get un claimed tasks creted by user",
+'method'=>'GET',
+'url'=>'/api/users/{id}/un_claimed_tasks',
+'example'=>'
+[
+	{
+	   id:2,
+	   title:"Setup a wordpress site",
+	   project_id:5,
+	   creator_id:2,
+	   duration:"few mins",
+	   claimed_id:20,
+	   claimed_at:{
+	      date:"2015-07-21 17:32:16.000000",
+	      timezone_type:3,
+	      timezone:"UTC"
+	   },
+	   deleted_at:null,
+	   created_at:"2015-07-17 17:32:16",
+	   updated_at:"2015-07-17 17:32:16",
+	   project:{
+	      id:5,
+	      title:"Rabbit",
+	      user_id:12,
+	      created_at:"2015-07-17 17:32:16",
+	      updated_at:"2015-07-17 17:32:16"
+	   },
+	   claimer:null
+	},
+	...
 ]
 '),
 

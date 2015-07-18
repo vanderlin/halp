@@ -1,4 +1,4 @@
-@extends('site.layouts.default', ['use_footer'=>false])
+@extends('site.layouts.default', ['use_footer'=>true])
 
 {{-- Web site Title --}}
 @section('title')
