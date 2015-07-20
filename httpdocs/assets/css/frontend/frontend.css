@@ -363,6 +363,9 @@ hr {
   background-color: #E6E6E6;
   display: inline-block;
 }
+.ui-helper-hidden-accessible {
+  display: none;
+}
 /* ----------------------------------- TOP NAV ----------------------------------- */
 .nav {
   background-color: #1b1b25;
