@@ -419,19 +419,19 @@ hr {
   padding: 0px;
   position: relative;
 }
-.task .edit-bar {
+.task .posted-by .edit-bar {
   position: absolute;
   right: 0;
   bottom: -6px;
 }
-.task .edit-bar a {
+.task .posted-by .edit-bar a {
   padding: 10px;
   display: table;
 }
-.task .edit-bar .fa:hover {
+.task .posted-by .edit-bar .fa:hover {
   color: #404d5b;
 }
-.task .edit-bar .fa {
+.task .posted-by .edit-bar .fa {
   color: #cccccc;
   font-size: 18px;
   top: -2px;
