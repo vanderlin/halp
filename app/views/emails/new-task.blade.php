@@ -18,6 +18,8 @@
 				<h1>{{link_to($task->getClaimURL(), $task->title.' for '.$task->project->title)}}</h1>
 				<p>This task will take {{$task->duration}} to complete. If you think you can help, claim the task on Halp.</p>
 				<a href="{{URL::to($task->getClaimURL())}}"><div class="rounded-button">Go to Halp</div></a>
+				<br>
+				<a href="{{URL::to('unsubscribe')}}">unsubscribe me</a>
 			</div>
 		</div>
 	</body>

@@ -39,6 +39,15 @@ class UsersController extends BaseController
     }
 
     // ------------------------------------------------------------------------
+    public function unsubscribe()
+    {
+        $user = Auth::user();
+        $user->notifications = false;
+        $user->save();
+        return Redirect::to($user->getProfileURL());
+    }
+
+    // ------------------------------------------------------------------------
     public function show($username)
     {   
         $user = User::findFromData($username);

@@ -86,7 +86,7 @@ Route::group(array('prefix'=>'notifications'), function() {
 			// someone claimed your task
 			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
 				$notice->sendEmailToUser($notice->task->creator);
-		}
+			}
 		}
 		return  $results;
 		
@@ -101,6 +101,7 @@ Route::post('site-login', ['uses'=>'PageController@ChecksiteLogin']);
 // ------------------------------------------------------------------------
 Route::group(array('before'=>['auth']), function() {
 
+	Route::get('unsubscribe', ['uses'=>'UsersController@unsubscribe']);
 	Route::get('/', ['uses'=>'TasksController@index']);
 		
 	Route::get('leaderboard', ['uses'=>'UsersController@index']);
