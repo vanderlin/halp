@@ -11,7 +11,7 @@
 	<body>
 		<div class="container">
 			<div class="email-content">
-				<img src="http://vanderlin.cc/deliver/ideo/temp/unhappy-turtle.png" />
+				<img src="http://halp.ideo.com/assets/img/happy-turtle.png" />
 				<h2>{{link_to($task->claimer->getProfileURL(), $task->claimer->getShortName())}} has claimed one of your tasks!</h2>
 				<hr>
 				<h3>You asked for help with:</h3>

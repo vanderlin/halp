@@ -14,5 +14,5 @@ return array(
 	*/
 
 	'debug' => true,
-
+	'url' => 'http://halp.ideo.com',
 );
