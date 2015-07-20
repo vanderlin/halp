@@ -7,7 +7,6 @@ use Validator;
 use Carbon;
 use DB;
 use URL;
-use Notification\Notification;
 use Auth;
 
 class Task extends BaseModel {
@@ -80,7 +79,7 @@ class Task extends BaseModel {
 	// ------------------------------------------------------------------------
 	public function notification()
 	{
-		return $this->belongsTo('Notification\Notification', 'task_id');
+		return $this->hasOne('Notification');
 	}
 
 	// ------------------------------------------------------------------------
@@ -102,8 +101,6 @@ class Task extends BaseModel {
 
 	// ------------------------------------------------------------------------
 	public function delete() {
-     
-
       	$notification = $this->notification;
       	if($notification)
       	{

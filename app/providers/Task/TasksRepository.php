@@ -83,7 +83,17 @@ class TasksRepository  {
 		}
 		$task = Task::withTrashed()->whereId($id)->first();
 		if($task) 
-		{
+		{	
+			
+			
+			
+			// we may need to send an email here...
+			if($task->notification)
+			{
+
+				$task->notification->delete();	
+			}
+
 			$task->claimed_id = NULL;
 			$task->claimed_at = NULL;
 			$task->save();

@@ -72,7 +72,12 @@
 								<small>{{$notice->created_at->diffForHumans()}}</small>
 								@if ($notice->event == Notification::NOTIFICATION_TASK_CLAIMED)
 									<div class="sub header">
-										<small>Claimed by: {{link_to($notice->task->claimer->getProfileURL(), $notice->task->claimer->getName())}}</small>
+										@if ($notice->task->claimer==NULL)
+											<small>Missing calimer Task:{{$notice->task->id}} Notification:{{$notice->id}}</small>
+										@else
+											<small>Claimed by: {{link_to($notice->task->claimer->getProfileURL(), $notice->task->claimer->getName())}}</small>
+										@endif
+										
 									</div>
 								@elseif ($notice->event == Notification::NOTIFICATION_TASK_DELETED)
 									<div class="sub header">
