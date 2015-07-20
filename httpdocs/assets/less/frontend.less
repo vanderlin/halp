@@ -756,7 +756,7 @@ body .nomargin-bottom {
 	background-color: #fff;
 	padding: 100px;
 	margin: 95px 120px;
-
+	position: relative;
 	h2{
 		font-size: 25px;
 	}
@@ -774,7 +774,14 @@ body .nomargin-bottom {
 		line-height: 37px;
  		padding: 15px;
 	}
-
+	.task-status {
+		position: absolute;
+		top:0;
+		left: 0;
+		width: 100%;
+		background-color: @mint;
+		text-align:left;
+	}
 }
 
 .task-show{
@@ -926,7 +933,14 @@ body .nomargin-bottom {
   		background-color: transparent;
 	}	
 }
-
+.small.progress-button .halp-edit-button {
+	border-color: @dark-purple;
+	color:@dark-purple;
+}
+.progress-button .halp-edit-button:hover {
+	background-color: @dark-purple;
+	color:white;	
+}
 .edit-card {
 	.task-details.edit {
 		display: none;

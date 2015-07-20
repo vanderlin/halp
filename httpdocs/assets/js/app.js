@@ -168,7 +168,7 @@ var App = (function() {
                             $('.front-facing-turtle').animate({'margin-bottom':-80})
                             setTimeout(function() {
                                 App.closeClaimPopup();
-                                window.location.reload();
+                                window.location = window.location.origin;
                             }, 500);
                         });
                     });

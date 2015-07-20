@@ -1067,6 +1067,7 @@ body .nomargin-bottom {
   background-color: #fff;
   padding: 100px;
   margin: 95px 120px;
+  position: relative;
 }
 .email-content h2 {
   font-size: 25px;
@@ -1093,6 +1094,14 @@ body .nomargin-bottom {
 .email-content p {
   line-height: 37px;
   padding: 15px;
+}
+.email-content .task-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #4fd2c2;
+  text-align: left;
 }
 .task-show {
   background-color: #2A293A;
@@ -1234,6 +1243,14 @@ body .nomargin-bottom {
 .notifications-setting-form button[type="submit"] {
   border: none;
   background-color: transparent;
+}
+.small.progress-button .halp-edit-button {
+  border-color: #1b1b25;
+  color: #1b1b25;
+}
+.progress-button .halp-edit-button:hover {
+  background-color: #1b1b25;
+  color: white;
 }
 .edit-card .task-details.edit {
   display: none;

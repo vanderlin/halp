@@ -3,7 +3,7 @@
 <div class="white-popup claimed-popup animated fadeIn">
 	@if ($task->isClaimed)
 		<h2>sorry...</h2>
-		<p>This task has already been claimed by {{link_to($task->claimer->getProfileURL(), $task->claimer->getName())}}</p>
+		<p>This {{link_to($task->getURL(), 'task')}} has already been claimed by {{link_to($task->claimer->getProfileURL(), $task->claimer->getName())}}</p>
 		<hr>
 		<div class="progress-button small">
 			<button class="close-popup"><span>Close</span></button>
