@@ -206,6 +206,7 @@ return array(
 		'Agent'           => 'Jenssegers\Agent\Facades\Agent',
 		'Asset' 		  => 'Asset\Asset',
 		'Notification'	  => 'Notification\Notification',
+		'APIClient'	      => 'APIClient\APIClient',
 	),
 
 );

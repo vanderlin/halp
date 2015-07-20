@@ -32,25 +32,6 @@ Route::filter('siteprotection', function() {
 
 /*
 |--------------------------------------------------------------------------
-| Mobile Block
-|--------------------------------------------------------------------------
-*/
-Route::filter('blockmobile', function() {
-	
-	
-	if ((Auth::check() && Auth::user()->hasRole('Beta Tester')) || (Input::has('beta')&&Input::get('beta')==true)) {
-		return;
-	}
-
-	if(Agent::isMobile() || Agent::isTablet()) {
-		return View::make('site.messages.no-mobile');
-	}
-	
-});
-
-
-/*
-|--------------------------------------------------------------------------
 | Authentication Filters
 |--------------------------------------------------------------------------
 |
@@ -77,7 +58,9 @@ Route::filter('auth', function()
 });
 
 
-Route::filter('auth.basic', function() {
+Route::filter('auth.api', 'APIClient\ApiFilter');
+Route::filter('auth.basic', function()
+{
 	return Auth::basic('username');
 });
 

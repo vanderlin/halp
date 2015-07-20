@@ -49,9 +49,15 @@ class UsersController extends BaseController
     public function update($username)
     {   
         $message = "";
-        $user = User::findFromData($username);
+        $user = \User::findFromData($username);
         if($user === null) return $this->statusResponse(['errors'=>'No User found']);
 
+        if(Input::has('notifications') && Input::get('notifications')!== $user->notification)
+        {
+            $user->notifications = Input::get('notifications');
+            $user->save();
+        }
+        
         if(Input::has('password') && Input::has('password_confirmation'))
         {
             $user->password = Input::get('password');

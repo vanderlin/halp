@@ -101,7 +101,6 @@ Route::post('site-login', ['uses'=>'PageController@ChecksiteLogin']);
 // ------------------------------------------------------------------------
 Route::group(array('before'=>['auth']), function() {
 
-
 	Route::get('/', ['uses'=>'TasksController@index']);
 		
 	Route::get('leaderboard', ['uses'=>'UsersController@index']);
@@ -128,15 +127,6 @@ Route::group(array('before'=>['auth']), function() {
 		Route::delete('{id}', ['uses'=>'TasksController@delete', 'as'=>'tasks.delete']);
 	});
 });
-
-// ------------------------------------------------------------------------
-Route::group(['prefix'=>'developer', 'before'=>['auth']], function() {
-	Route::get('/', function() {
-		return View::make('api.index', ['user'=>Auth::user(), 'endpoints'=>Config::get('api-endpoints')]);
-	});
-});
-
-
 
 // ------------------------------------------------------------------------
 include 'seeder_routes.php';

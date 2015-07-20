@@ -106,6 +106,66 @@
 			@endif
 			
 	</section>
+	
+	<div class="ui divider"></div>
+
+	<section class="text-left">
+		
+		<div class="ui grid">
+      		<div class="eight wide column">
+      			<h2>API Apps</h2>
+				<table class="ui celled striped table">
+					<thead>
+				    	<tr>
+				    	<th><code>ID</code></th>
+				    	<th><code>Project Name</code></th>
+				    	<th colspan="3"><code>API Key</code></th>
+				    	
+				  		</tr>
+				  	</thead>
+				  	<tbody>
+					  	@forelse ($clients as $client)
+					  		<tr data-id="{{$client->id}}">
+						  		<td>{{$client->id}}</td>
+						  	  	<td>{{$client->name}}</td>
+							  	<td>{{$client->api_key}}</td>
+								<td>
+									<button data-id="{{$client->id}}" class="ui button mini">Delete</button>
+								</td>
+							</tr>
+					  	@empty
+					  		<tr class="text-center"><td colspan="3"><h4>No Clients Registered</h4></td></tr>
+					  	@endforelse
+					</tbody>
+				</table>
+      		</div>
+
+      		<div class="eight wide column">
+      			<h2 class="ui header">Create New API Client</h2>
+        		{{Form::open(['route'=>array('api.create.client'), 'class'=>'ui form text-left'])}}
+					<div class="field">
+						<label>Project Name</label>
+						<input type="text" name="name" placeholder="ie: my_api_app" value="{{Input::old('name')}}">
+					</div>
+					<div class="field">
+						<label>Project URL</label>
+						<input type="text" name="project_url" placeholder="ie: http://halp-app.com" value="{{Input::old('project_url')}}">
+					</div>
+					<div class="field">
+						<label>Description</label>
+						<textarea name="description">{{Input::old('description')}}</textarea>
+					</div>
+					<button class="ui button" type="submit">Submit</button>
+				{{Form::close()}}
+      		</div>
+      		<br>
+      	</div>
+
+      	<div class="text-center">
+      		@include('site.partials.form-errors')
+      	</div>
+
+	</section>
 
 	<div class="ui divider"></div>
 	

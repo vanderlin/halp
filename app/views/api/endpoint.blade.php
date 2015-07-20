@@ -10,7 +10,9 @@
 	  	</thead>
 	  	<tbody>
 	  	<tr>
-	  		<td colspan="3">{{Config::get('config.api_base')}}{{$data->url}}</td>
+	  		<td colspan="3">
+	  		{{Config::get('config.api_base')}}{{$data->url}}
+	  		</td>
 	  	</tr>
 	  	
 	  	<tr>

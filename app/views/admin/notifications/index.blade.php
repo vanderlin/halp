@@ -107,11 +107,11 @@
 		{{Form::close()}}
 	</div>
 	
-	@include('site.partials.form-errors')
-
 	@else
 		<h3>No Notifications</h3>
 	@endif
+
+	@include('site.partials.form-errors')
 
 </section>
 @stop
