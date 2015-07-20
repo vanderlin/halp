@@ -21,7 +21,7 @@
 			
 		@endif
 	</div>
-	<div class="{{$claimed?'claimed':'posted'}}-by">
+	<div class="card-footer {{$claimed?'claimed':'posted'}}-by">
 	@if ($claimed)
 		Claimed by {{link_to($task->claimer->getProfileURL(), $task->claimer->getShortName())}}
 	@else

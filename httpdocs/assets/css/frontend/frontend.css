@@ -419,26 +419,28 @@ hr {
   padding: 0px;
   position: relative;
 }
-.task .posted-by .edit-bar {
+.task .card-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.task .edit-bar {
   position: absolute;
   right: 0;
   bottom: -6px;
 }
-.task .posted-by .edit-bar a {
+.task .edit-bar a {
   padding: 10px;
   display: table;
 }
-.task .posted-by .edit-bar .fa:hover {
+.task .edit-bar .fa:hover {
   color: #404d5b;
 }
-.task .posted-by .edit-bar .fa {
+.task .edit-bar .fa {
   color: #cccccc;
   font-size: 18px;
   top: -2px;
   position: relative;
-}
-.claimed .edit-bar {
-  bottom: 0px;
 }
 .user-created-task {
   height: 343px !important;
@@ -522,9 +524,6 @@ hr {
   margin-top: 23px;
 }
 .posted-by {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
   background-color: #F9F7F6;
   padding: 10px 5px;
   font-family: 'Montserrat', sans-serif;

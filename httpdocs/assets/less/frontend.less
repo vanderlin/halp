@@ -147,34 +147,33 @@ hr{
     padding: 0px;
 	position: relative;
 
-    .posted-by {
-	    .edit-bar {
-		  position: absolute;
-		  right: 0;
-		  bottom: -6px;
-		  a {
-		  	padding: 10px;
-		  	display: table;
-		  
-		  }
-		  .fa:hover {
-			color: @purple;
-		  }
-		  .fa {
-		  	color:@grey;
-		  	font-size: 18px;
-	  		top: -2px;
-	  		position: relative;
-		  }
-	    }
-	}
+   	.card-footer {
+		position: absolute;
+	  	width: 100%;
+	  	bottom: 0;
+   	} 
+    .edit-bar {
+	  position: absolute;
+	  right: 0;
+	  bottom: -6px;
+	  a {
+	  	padding: 10px;
+	  	display: table;
+	  
+	  }
+	  .fa:hover {
+		color: @purple;
+	  }
+	  .fa {
+	  	color:@grey;
+	  	font-size: 18px;
+  		top: -2px;
+  		position: relative;
+	  }
+    }
+
 }
 
-.claimed{
-	.edit-bar{
-		bottom: 0px;
-	}
-}
 .user-created-task {
 	height: 343px !important;
 }
@@ -241,10 +240,7 @@ hr{
   	margin-top: 23px;
 }
 .posted-by{
-	position: absolute;
-  	width: 100%;
-  	bottom: 0;
-  	background-color: #F9F7F6;
+	background-color: #F9F7F6;
   	padding: 10px 5px;
   	.sans-serif(12px, @grey);
 }
