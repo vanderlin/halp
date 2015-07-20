@@ -91,6 +91,10 @@ hr{
   	background-color: #E6E6E6;
   	display: inline-block;
 }
+.ui-helper-hidden-accessible{
+	display: none;
+}
+
 
 /* ----------------------------------- TOP NAV ----------------------------------- */
 
@@ -153,11 +157,17 @@ hr{
 	  }
 	  .fa {
 	  	color:@grey;
-	  	font-size: 16px;
+	  	font-size: 18px;
   		top: 2px;
   		position: relative;
 	  }
     }
+}
+
+.claimed{
+	.edit-bar{
+		bottom: 0px;
+	}
 }
 .user-created-task {
 	height: 343px !important;
@@ -582,6 +592,7 @@ body .nomargin-bottom {
 /* ------------------------------------- IMPORTS  ------------------------------------ */
 @import 'popup.less';
 @import 'ui.less';
+
 
 /* ------------------------------------- MOBILE MENU ------------------------------------ */
 
