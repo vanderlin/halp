@@ -34,15 +34,22 @@
 			<p>This task will take {{$task->duration}} to complete. If you think you can help, claim this task!</p>
 			
 			@if ($task->isClaimed == false)
-			<div class="progress-button small">
-				<button class="halp-claim-button" data-id="{{$task->id}}" data-mfp-src="/tasks/{{$task->id}}?json=true"><span>Claim task</span></button>
-			</div>
+				<div class="progress-button small">
+					<button class="halp-claim-button" data-id="{{$task->id}}" data-mfp-src="/tasks/{{$task->id}}?json=true"><span>Claim task</span></button>
+				</div>
 			@elseif ($task->claimed_id == Auth::id())
 				{{Form::open(['route'=>['tasks.unclaim', $task->id]])}}
 				<div class="progress-button small">
 					<button data-id="{{$task->id}}" href="#return-task"><span>Return Task</span></button>
 				</div>
 				{{Form::close()}}
+			@else
+				<div class="claimer">
+					Claimed by: {{link_to($task->claimer->getProfileURL(), $task->claimer->getShortName())}}
+					<div class="date">
+						{{$task->claimed_at->diffForHumans()}}
+					</div>
+				</div>	
 			@endif
 
 		</div>
