@@ -14,14 +14,14 @@
 	
 		$('.notifications-setting-form button[type="submit"]').hover(function() {
 			var val = $('.notifications-setting-form input[name="notifications"]').val();
-			var notifications = val==0?'/assets/img/x.svg':'/assets/img/check-mark.svg';
+			var notifications = val==0?'/assets/img/x-hover.svg':'/assets/img/check-mark-hover.svg';
 			$(this).find('img').attr('src', notifications);
-			$('.notifications-message').html(val==1?'Yes Please':'No');
+			$('.notifications-message').html(val==1?'Enable E-mails':'Disable E-mails');
 		}, function() {
 			var val = $('.notifications-setting-form input[name="notifications"]').val();
 			var notifications = val==1?'/assets/img/x.svg':'/assets/img/check-mark.svg';
 			$(this).find('img').attr('src', notifications);
-			$('.notifications-message').html(val==0?'Yes Please':'No');
+			$('.notifications-message').html(val==0?'E-mails Are Enabled':'E-mails Are Disabled');
 		});
 	});
 </script>
@@ -42,7 +42,7 @@
 			<input type="hidden" name="notifications" value="{{$user->notifications?0:1}}">
 			<button type="submit"><img class="check-box" src="{{img($user->notifications?'check-mark.svg':'x.svg')}}"></button>
 			{{Form::close()}}
-			<h5 class="notifications-message">{{$user->notifications?'Yes Please':'No'}}</h5>
+			<h5 class="notifications-message">{{$user->notifications?'E-mails Are Enabled':'E-mails Are Disabled'}}</h5>
 		@else
 			<div class="user-image-most-helpful">
 				<a href="{{$user->getProfileURL()}}">
