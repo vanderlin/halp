@@ -18,11 +18,10 @@
 		<div class="email-content">
 			
 			<div class="task-status {{$task->isClaimed?'claimed':''}}">
-			Status: 
 			@if ($task->isClaimed)
-				<h2>Claimed</h2>
+				<h3>Status: Claimed</h3>
 			@else
-				<h2>Not Claimed</h2>
+				<h3>Status: Not Claimed</h3>
 			@endif
 			</div>
 			
@@ -44,6 +43,7 @@
 				</div>
 				{{Form::close()}}
 			@else
+			<hr>
 				<div class="claimer">
 					Claimed by: {{link_to($task->claimer->getProfileURL(), $task->claimer->getShortName())}}
 					<div class="date">
