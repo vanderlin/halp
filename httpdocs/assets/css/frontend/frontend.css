@@ -1036,7 +1036,25 @@ body .nomargin-bottom {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
+/* ------------------------------------- FOOTER ------------------------------------ */
+.footer {
+  background-image: url("/assets/img/footer.svg");
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+}
+.footer-info {
+  padding-top: 12px;
+}
+.footer-info h5:hover {
+  color: #4fd2c2;
+}
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
+@media screen and (max-width: 900px) {
+  .footer {
+    height: 360px;
+  }
+}
 @media screen and (max-width: 650px) {
   .codrops-header h1 {
     font-size: 2.8em;
@@ -1140,5 +1158,8 @@ body .nomargin-bottom {
   .introduction img {
     margin-top: 50px;
     margin-bottom: 30px;
+  }
+  .footer {
+    height: 220px;
   }
 }

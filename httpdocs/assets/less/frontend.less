@@ -714,10 +714,30 @@ body .nomargin-bottom {
 	transform: translate3d(0,0,0);
 }
 
+/* ------------------------------------- FOOTER ------------------------------------ */
 
+.footer{
+	background-image: url("@{img-path}footer.svg");
+	height: 500px;
+	background-size: cover;
+	background-position: center;
+}
+
+.footer-info{
+	padding-top: 12px;
+}
+
+.footer-info h5:hover{
+	color: @mint;
+}
 
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 
+@media screen and (max-width: 900px) {
+	.footer{
+		height: 360px;
+	}
+}
 
 @media screen and (max-width: 650px) {
 	.codrops-header h1 {
@@ -823,5 +843,8 @@ body .nomargin-bottom {
 	.introduction img{
 		margin-top: 50px;
 		margin-bottom: 30px;
+	}
+	.footer{
+		height: 220px;
 	}
 }
