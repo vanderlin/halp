@@ -95,7 +95,10 @@
 		<div class="turtle-line"></div>
 		<img src="{{asset('assets/img/happy-turtle.png')}}" width="111px" height="58px" />
 		<div class="turtle-line"></div>
+		<h3 class="smaller-h3">Claimed Tasks:</h3>
 	</div>
+
+
 
 	<section class="content">
 	@forelse ($claimed_tasks as $task)

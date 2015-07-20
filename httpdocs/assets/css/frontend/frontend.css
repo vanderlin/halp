@@ -1114,6 +1114,10 @@ body .nomargin-bottom {
   h6 {
     font-size: 12px;
   }
+  .smaller-h3 {
+    font-size: 38px;
+    padding-top: 12px;
+  }
   .user-image-most-helpful img {
     margin: 15px 0px 10px 0px;
   }
