@@ -105,13 +105,17 @@ var App = (function() {
     		});
     	});
 
+        $(document).on('click', '.halp-edit-button', function(e) {
+            alert("Still working on this...");
+        });
+
         $(document).on('click', '.close-popup', function(e) {
             App.closeClaimPopup();
         });
 
         $(document).on('click', '#claim-task-form button', function(e) {
             e.preventDefault();
-            var isEmail = $(this).data('email')===true;
+            var isEmail = $(this).attr('id')==='email-task';
             
             var $form = $('#claim-task-form'); 
             var fd = new FormData($form[0]);               
@@ -140,7 +144,7 @@ var App = (function() {
                                 App.closeClaimPopup();
                                 if(isEmail) {
                                     var sendTo = e.task.creator.email;
-                                    window.open("mailto:"+sendTo+"?subject=I'm here to Help!&body=I would like to help you with "+e.task.name);
+                                    window.open("mailto:"+sendTo+"?subject=I'm here to Help!&body=I would like to help you with "+e.task.title);
                                 }
                                 console.log(isEmail, e);
                             }, 1000);

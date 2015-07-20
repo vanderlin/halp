@@ -8,9 +8,17 @@
 		<span class="duration">{{$task->duration}}</span>
 		<span class="date">{{$task->created_at->toFormattedDateString()}}</span>
 		@if (!$claimed)
-			<div class="progress-button small">
-				<button class="halp-claim-button" data-id="{{$task->id}}" data-mfp-src="/tasks/{{$task->id}}?json=true"><span>Claim task</span></button>
-			</div>
+	
+			@if ($task->isMine())
+				<div class="progress-button small">
+					<button class="halp-edit-button" data-id="{{$task->id}}"><span>Edit task</span></button>
+				</div>
+			@else
+				<div class="progress-button small">
+					<button class="halp-claim-button" data-id="{{$task->id}}" data-mfp-src="/tasks/{{$task->id}}?json=true"><span>Claim task</span></button>
+				</div>
+			@endif
+			
 		@endif
 	</div>
 	<div class="{{$claimed?'claimed':'posted'}}-by">
