@@ -106,7 +106,24 @@ var App = (function() {
     	});
 
         $(document).on('click', '.halp-edit-button', function(e) {
-            alert("Still working on this...");
+            // alert("Still working on this...");
+            e.preventDefault();
+            var $card = $('.task-card-'+$(this).data('id'));
+                $card.addClass('edit-card');
+
+            var $taskdetails = $card.find('.task-details');
+                $taskdetails.addClass('edit');
+
+            var $title = $card.find('.task-name');
+            var $input = $('\<div class="task-edit">\
+                <input autocomplete="off" type="text" name="title" value="'+$title.data('value')+'">\
+                <input autocomplete="off" type="text" name="duration" value="'+$title.data('value')+'">\
+                <input autocomplete="off" type="text" name="project" value="'+$title.data('value')+'"></div>').insertAfter($taskdetails);
+                    
+
+            // change edit button
+            $(this).find('span').html('Save');
+            $('<a href="#cancel" class="cancel-edit">Cancel</a>').insertAfter($(this).parent());
         });
 
         $(document).on('click', '.close-popup', function(e) {

@@ -1177,3 +1177,23 @@ body .nomargin-bottom {
   border: none;
   background-color: transparent;
 }
+.edit-card .task-details.edit {
+  display: none;
+}
+.edit-card .task-edit {
+  padding: 25px;
+}
+.edit-card input[type=text] {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: #404d5b;
+  margin-bottom: 10px;
+}
+.edit-card .cancel-edit {
+  font-size: 12px;
+  display: table;
+  text-align: center;
+  width: 100%;
+}

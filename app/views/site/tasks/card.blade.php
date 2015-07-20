@@ -2,7 +2,7 @@
 <div class="task {{$claimed?'claimed':''}} task-card-{{$task->id}}">
 	<div class="task-details">
 	
-		<span class="task-name">{{$task->title}}</span>
+		<span class="task-name" data-value="{{$task->title}}">{{$task->title}}</span>
 		<hr>
 		<span class="project-name">{{link_to($task->project->getURL(), $task->project->title)}}</span>
 		<span class="duration">{{$task->duration}}</span>

@@ -865,10 +865,33 @@ body .nomargin-bottom {
 	}
 }
 
-
+// ------------------------------------------------------------------------
 .notifications-setting-form {
 	button[type="submit"] {
 		border: none;
   		background-color: transparent;
+	}	
+}
+
+.edit-card {
+	.task-details.edit {
+		display: none;
+	}
+	.task-edit {
+		padding: 25px;
+	}
+	input[type=text] {
+		padding: 10px;
+		border:1px solid @grey;
+		border-radius: 8px;
+		font-family: 'Montserrat', sans-serif;
+		color: @purple;
+		margin-bottom: 10px;
+	}
+	.cancel-edit {
+		font-size: 12px;
+		display: table;
+		text-align: center;
+		width: 100%;
 	}	
 }

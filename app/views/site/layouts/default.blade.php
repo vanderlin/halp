@@ -8,7 +8,7 @@
   <body>
    
     <!-- Content -->  
-    <div class="container">
+    <div class="container {{isset($container_class)?$container_class:''}}">
   
       <!-- Main Navigation -->
       @if (isset($use_navigation)?$use_navigation:true)
