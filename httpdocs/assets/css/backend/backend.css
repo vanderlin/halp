@@ -133,6 +133,7 @@
 .admin .content {
   font-size: inherit;
   padding: inherit;
+  background-color: transparent;
 }
 .admin .text-center {
   text-align: center;
