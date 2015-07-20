@@ -111,6 +111,7 @@ var App = (function() {
 
         $(document).on('click', '#claim-task-form button', function(e) {
             e.preventDefault();
+            var isEmail = $(this).data('email')===true;
             
             var $form = $('#claim-task-form'); 
             var fd = new FormData($form[0]);               
@@ -123,24 +124,32 @@ var App = (function() {
                 dataType: 'json',
             })
             .always(function(e) {
-                if(e.status == 400)
+                console.log(e);
+                if(e.status == 200)
                 {
                     console.log(e);
+               
+                    $('.white-popup .task-message p').fadeTo(200, 0);
+                    $('.white-popup .claimed-buttons').fadeTo(200, 0, function() {
+                        $('#claim-task-form button').prop( "disabled", true );
+                    });
+                    $('.white-popup h2').fadeTo(200, 0, function() {
+                        $(this).html('Thanks for helping!').fadeTo(200, 1, function() {
+                            $('.front-facing-turtle').animate({'margin-bottom':-80})
+                            setTimeout(function() {
+                                App.closeClaimPopup();
+                                if(isEmail) {
+                                    var sendTo = e.task.creator.email;
+                                    window.open("mailto:"+sendTo+"?subject=I'm here to Help!&body=I would like to help you with "+e.task.title);
+                                }
+                            }, 1000);
+                        });
+                    });
                 }
-            });
-
-            $('.white-popup .task-message p').fadeTo(200, 0);
-            $('.white-popup .claimed-buttons').fadeTo(200, 0, function() {
-                $('#claim-task-form button').prop( "disabled", true );
-            });
-            $('.white-popup h2').fadeTo(200, 0, function() {
-                $(this).html('Thanks for helping!').fadeTo(200, 1, function() {
-                    $('.front-facing-turtle').animate({'margin-bottom':-80})
-                    setTimeout(function() {
-                        App.closeClaimPopup();
-                    }, 1000);
-                });
-            });
+                else {
+                    console.log("Some error during task claim");
+                }
+            });    
         })
 	}
 		

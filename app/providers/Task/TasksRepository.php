@@ -70,6 +70,8 @@ class TasksRepository  {
 			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 
    
 		}
+		
+		$task = Task::withTrashed()->whereId($id)->with('Claimer')->with('Creator')->first();
 		return $this->listener->statusResponse(['task'=>$task]);		
 	}
 
