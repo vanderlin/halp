@@ -518,6 +518,9 @@ hr {
   margin-top: 23px;
 }
 .posted-by {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   background-color: #F9F7F6;
   padding: 10px 5px;
   font-family: 'Montserrat', sans-serif;
@@ -1189,13 +1192,14 @@ body .nomargin-bottom {
 }
 .edit-card input[type=text] {
   padding: 10px;
-  border: 1px solid #cccccc;
-  border-radius: 8px;
+  border: none;
+  border-bottom: 1px solid #cccccc;
   font-family: 'Montserrat', sans-serif;
   color: #404d5b;
   margin-bottom: 10px;
 }
 .edit-card .cancel-edit {
+  margin-top: 10px;
   font-size: 12px;
   display: table;
   text-align: center;

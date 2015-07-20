@@ -235,6 +235,9 @@ hr{
   	margin-top: 23px;
 }
 .posted-by{
+	position: absolute;
+  	width: 100%;
+  	bottom: 0;
   	background-color: #F9F7F6;
   	padding: 10px 5px;
   	.sans-serif(12px, @grey);
@@ -886,13 +889,14 @@ body .nomargin-bottom {
 	}
 	input[type=text] {
 		padding: 10px;
-		border:1px solid @grey;
-		border-radius: 8px;
+		border:none;
+		border-bottom:1px solid @grey;
 		font-family: 'Montserrat', sans-serif;
 		color: @purple;
 		margin-bottom: 10px;
 	}
 	.cancel-edit {
+		margin-top: 10px;
 		font-size: 12px;
 		display: table;
 		text-align: center;

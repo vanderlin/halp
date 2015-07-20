@@ -110,20 +110,27 @@ var App = (function() {
             e.preventDefault();
             var $card = $('.task-card-'+$(this).data('id'));
                 $card.addClass('edit-card');
-
+            var self = this;    
             var $taskdetails = $card.find('.task-details');
-                $taskdetails.addClass('edit');
+            $taskdetails.fadeToggle(200, function() {
+                $(this).addClass('edit');   
+                
+                var $title = $card.find('.task-name');
+                var $input = $('\<div class="task-edit">\
+                    <input autocomplete="off" type="text" name="title" value="'+$title.data('value')+'">\
+                    <input autocomplete="off" type="text" name="duration" value="'+$title.data('value')+'">\
+                    <input autocomplete="off" type="text" name="project" value="'+$title.data('value')+'">\
+                    <a href="#cancel" class="cancel-edit">Cancel</a>\
+                    <div>').insertAfter($taskdetails);
 
-            var $title = $card.find('.task-name');
-            var $input = $('\<div class="task-edit">\
-                <input autocomplete="off" type="text" name="title" value="'+$title.data('value')+'">\
-                <input autocomplete="off" type="text" name="duration" value="'+$title.data('value')+'">\
-                <input autocomplete="off" type="text" name="project" value="'+$title.data('value')+'"></div>').insertAfter($taskdetails);
-                    
+                // change edit button
+                $(self).find('span').html('Save');
+                        
+                $input.hide();
+                $input.fadeIn(200);
 
-            // change edit button
-            $(this).find('span').html('Save');
-            $('<a href="#cancel" class="cancel-edit">Cancel</a>').insertAfter($(this).parent());
+            });
+            
         });
 
         $(document).on('click', '.close-popup', function(e) {
