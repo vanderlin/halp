@@ -16,7 +16,7 @@
 				<hr>
 				<h3>You asked for help with:</h3>
 				<h1>{{link_to($task->getURL(), $task->title)}} for {{link_to($task->project->getURL(), $task->project->title)}}</h1>
-				<p>You estimated this task would take {{$task->duration}}. Go talk to {{link_to($task->creator->getURL(), $task->creator->firstname)}} or reply direclty to this e-mail, and happy task-ing!</p>
+				<p>You estimated this task would take {{$task->duration}}. Go talk to {{link_to($task->claimer->getURL(), $task->claimer->firstname)}} and happy task-ing!</p>
 			</div>
 		</div>
 	</body>
