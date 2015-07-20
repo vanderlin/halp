@@ -19,7 +19,7 @@
 		</div>
 		<div class="progress-button small claimed-buttons">
 			{{Form::open(['route'=>['tasks.claim', $task->id], 'id'=>'claim-task-form'])}}
-				<button type="submit" data-id="{{$task->id}}"><span>Talk IRL</span></button>
+				<button type="submit" data-id="{{$task->id}}"><span>Claim Task</span></button>
 			{{Form::close()}}
 		</div>
 
