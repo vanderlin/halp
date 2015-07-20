@@ -106,7 +106,8 @@ var App = (function() {
     	});
 
         $(document).on('click', '.halp-edit-button', function(e) {
-            // alert("Still working on this...");
+            alert("Still working on this...");
+            return;
             e.preventDefault();
             var $card = $('.task-card-'+$(this).data('id'));
                 $card.addClass('edit-card');
