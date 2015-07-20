@@ -7,18 +7,25 @@
 <body>
 
 <form accept="/api-test.php" method="POST">
-	<input type="text" name="username" placeholder="username" value="<?php echo $_POST['username'] ?>">
-	<input type="password" name="password" placeholder="password" value="<?php echo $_POST['password'] ?>">
-	<input type="text" name="access_token" placeholder="access_token" value="<?php echo $_POST['access_token'] ?>">
+	<input type="text" name="username" placeholder="username" value="<?php echo isset($_POST['username'])?$_POST['username']:'' ?>">
+	<input type="password" name="password" placeholder="password" value="<?php echo isset($_POST['password'])?$_POST['password']:'' ?>">
+	<input type="text" name="access_token" placeholder="access_token" value="<?php echo isset($_POST['access_token'])?$_POST['access_token']:'' ?>">
 	<button type="submit">Submit</button>
 </form>
 
 <div class="response">
 	<pre><code></code></pre>
 </div>
+<a href="mailto:kmiller@ideo.com" id="mymailto">test mailto</a>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		document.getElementById('mymailto').click();
+	});
+</script>
 <?php if (isset($_POST['username'])): ?>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
+
 		$.ajax({
 			type: "GET",
 		  	url: "http://localhost:8888/api",
