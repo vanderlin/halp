@@ -747,6 +747,38 @@ body .nomargin-bottom {
 	color: @mint;
 }
 
+/* ------------------------------------- EMAIL CONTENT ------------------------------------ */
+
+.email-content{
+	background-color: #fff;
+	padding: 100px;
+	margin: 95px 120px;
+
+	h2{
+		font-size: 25px;
+	}
+	h3{
+		.sans-serif(13px, @purple);
+		font-style: normal;
+		line-height: 22px;
+	}
+	h1{
+		.serif(40px, 300, italic, @purple);
+		padding: 34px 0px 24px 0px;
+		line-height: 50px;
+	}
+	p{
+		line-height: 37px;
+ 		padding: 15px;
+	}
+
+}
+
+.task-show{
+	background-color: #2A293A;
+}
+
+
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 
 @media screen and (max-width: 900px) {
@@ -867,6 +899,21 @@ body .nomargin-bottom {
 	.footer{
 		height: 220px;
 	}
+	.email-content{
+		padding: 50px;
+		margin: 20px;
+
+		h2{
+			font-size: 20px;
+			line-height: 32px;
+		}
+		h1{
+			.serif(25px, 300, italic, @purple);
+			line-height: 35px;
+		}
+
+}
+
 }
 
 // ------------------------------------------------------------------------

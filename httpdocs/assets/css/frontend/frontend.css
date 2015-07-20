@@ -1059,6 +1059,41 @@ body .nomargin-bottom {
 .footer-info h5:hover {
   color: #4fd2c2;
 }
+/* ------------------------------------- EMAIL CONTENT ------------------------------------ */
+.email-content {
+  background-color: #fff;
+  padding: 100px;
+  margin: 95px 120px;
+}
+.email-content h2 {
+  font-size: 25px;
+}
+.email-content h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #404d5b;
+  font-style: normal;
+  line-height: 22px;
+}
+.email-content h1 {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-size: 40px;
+  color: #404d5b;
+  font-style: italic;
+  padding: 34px 0px 24px 0px;
+  line-height: 50px;
+}
+.email-content p {
+  line-height: 37px;
+  padding: 15px;
+}
+.task-show {
+  background-color: #2A293A;
+}
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 @media screen and (max-width: 900px) {
   .footer {
@@ -1175,6 +1210,22 @@ body .nomargin-bottom {
   }
   .footer {
     height: 220px;
+  }
+  .email-content {
+    padding: 50px;
+    margin: 20px;
+  }
+  .email-content h2 {
+    font-size: 20px;
+    line-height: 32px;
+  }
+  .email-content h1 {
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+    font-size: 25px;
+    color: #404d5b;
+    font-style: italic;
+    line-height: 35px;
   }
 }
 .notifications-setting-form button[type="submit"] {
