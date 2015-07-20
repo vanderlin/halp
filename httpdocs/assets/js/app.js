@@ -131,23 +131,21 @@ var App = (function() {
                 console.log(e);
                 if(e.status == 200)
                 {
-                    console.log(e);
-               
+                    
+                    
+                    $('.task-card-'+e.task.id).hide();
+
                     $('.white-popup .task-message p').fadeTo(200, 0);
                     $('.white-popup .claimed-buttons').fadeTo(200, 0, function() {
                         $('#claim-task-form button').prop( "disabled", true );
                     });
-                    $('.white-popup h2').fadeTo(200, 0, function() {
-                        $(this).html('Thanks for helping!').fadeTo(200, 1, function() {
+                    $('.white-popup h2').fadeTo(100, 0, function() {
+                        $(this).html('Thanks for helping!').fadeTo(100, 1, function() {
                             $('.front-facing-turtle').animate({'margin-bottom':-80})
                             setTimeout(function() {
                                 App.closeClaimPopup();
-                                if(isEmail) {
-                                    var sendTo = e.task.creator.email;
-                                    window.open("mailto:"+sendTo+"?subject=I'm here to Help!&body=I would like to help you with "+e.task.title);
-                                }
-                                console.log(isEmail, e);
-                            }, 1000);
+                                window.location.reload();
+                            }, 500);
                         });
                     });
                 }
