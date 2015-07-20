@@ -116,10 +116,13 @@ var App = (function() {
                 $(this).addClass('edit');   
                 
                 var $title = $card.find('.task-name');
+                var $project = $card.find('.project-name');
+                var $duration = $card.find('.duration');
+
                 var $input = $('\<div class="task-edit">\
                     <input autocomplete="off" type="text" name="title" value="'+$title.data('value')+'">\
-                    <input autocomplete="off" type="text" name="duration" value="'+$title.data('value')+'">\
-                    <input autocomplete="off" type="text" name="project" value="'+$title.data('value')+'">\
+                    <input autocomplete="off" type="text" name="duration" value="'+$project.data('value')+'">\
+                    <input autocomplete="off" type="text" name="project" value="'+$duration.data('value')+'">\
                     <a href="#cancel" class="cancel-edit">Cancel</a>\
                     <div>').insertAfter($taskdetails);
 

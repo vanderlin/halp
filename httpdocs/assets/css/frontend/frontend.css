@@ -430,7 +430,7 @@ hr {
 .task .edit-bar .fa {
   color: #cccccc;
   font-size: 18px;
-  top: 2px;
+  top: -2px;
   position: relative;
 }
 .claimed .edit-bar {
