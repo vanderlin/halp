@@ -106,10 +106,10 @@ class Notification extends BaseModel {
 	{
 		switch ($this->event) {
 			case Notification::NOTIFICATION_NEW_TASK:
-				return $this->task->creator->getShortName().' Needs Help';
+				return $this->task->creator->getShortName().' Needs Help with '.$this->task->title;
 				break;
 			case Notification::NOTIFICATION_TASK_CLAIMED:
-				return $this->task->claimer->getShortName().' has claimed one of your tasks!';
+				return $this->task->claimer->getShortName().' has claimed your task - '.$this->task->title;
 				break;
 			case Notification::NOTIFICATION_TASK_DELETED:
 				return $this->task->creator->getShortName().' has removed a task you claimed!';
