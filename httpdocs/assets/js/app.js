@@ -140,8 +140,9 @@ var App = (function() {
                                 App.closeClaimPopup();
                                 if(isEmail) {
                                     var sendTo = e.task.creator.email;
-                                    window.open("mailto:"+sendTo+"?subject=I'm here to Help!&body=I would like to help you with "+e.task.title);
+                                    window.open("mailto:"+sendTo+"?subject=I'm here to Help!&body=I would like to help you with "+e.task.name);
                                 }
+                                console.log(isEmail, e);
                             }, 1000);
                         });
                     });
