@@ -30,6 +30,11 @@ class Project extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
+	public function tasks() 
+	{
+  		return $this->hasMany('Task\Task');
+	}
+	// ------------------------------------------------------------------------
 	public function getURL($relative=true)
 	{
 		return URL::to('projects/'.$this->id);
