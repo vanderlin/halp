@@ -29,7 +29,7 @@
 			<h2>Alert! Alert! {{$task->creator->getShortName()}} needs help.</h2>
 			<hr>
 			<h3>{{link_to($task->creator->getProfileURL(), $task->creator->firstname)}} is looking for help with:</h3>
-			<h1>{{link_to($task->getURL(), $task->title)}} for {{link_to($task->project->getURL(), $task->project->title)}}</h1>
+			<h1>{{$task->title}} for {{link_to($task->project->getURL(), $task->project->title)}}</h1>
 			<p>This task will take {{$task->duration}} to complete. If you think you can help, claim this task!</p>
 			
 			@if ($task->isClaimed == false)
