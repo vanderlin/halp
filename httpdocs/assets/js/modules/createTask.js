@@ -28,6 +28,15 @@
     	},
 
     	// -------------------------------------
+    	_addErrorToInput: function($input)
+    	{
+			$input.parent().parent().append($(	'<div class="input-error">\
+													<span>Missing Title</span>\
+			  									</div>'));
+
+    	},
+
+    	// -------------------------------------
     	_validate: function($form)
     	{
     		var $title = $form.find('input[name="title"]');
@@ -36,10 +45,7 @@
 
     		if($title.val() == "") 
     		{
-    			$title.parent().parent().append($(	'<div class="input-error">\
-    													<span>Missing Title</span>\
-    			  									</div>'));
-
+    			this._addErrorToInput($title);
     			console.log("Title Invalid");
     		}
     	},
