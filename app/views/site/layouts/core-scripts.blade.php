@@ -35,3 +35,6 @@
 <!-- select 2 -->
 <link href="{{bower('select2/select2-bootstrap.css')}}" rel="stylesheet"/>   
 <script src="{{bower('select2/select2.js')}}"></script>
+
+<!-- modules -->
+<script src="{{js('modules/createTask.js')}}"></script>

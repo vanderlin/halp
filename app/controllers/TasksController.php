@@ -28,7 +28,6 @@ class TasksController extends \BaseController {
 	// ------------------------------------------------------------------------
 	public function create()
 	{
-
 		return View::make('site.tasks.create-task-popup', ['data'=>Input::all()]);
 	}
 

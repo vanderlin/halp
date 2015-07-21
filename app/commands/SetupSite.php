@@ -142,7 +142,7 @@ class SetupSite extends Command {
 
 		$durs = ['a min', 'couple of hours', 'a day', 'few mins', "10 minutes"];
 
-		$n = 10;
+		$n = 40;
 		$faker = Faker\Factory::create();
 		
 		for ($i=0; $i < $n; $i++) { 
@@ -152,6 +152,16 @@ class SetupSite extends Command {
 					 'creator_id'=>User::getRandomID(),
 					 'duration'=>array_random_item($durs)];
 			
+			if($faker->boolean(10))
+			{
+				$data['detail'] = $faker->sentences(4); 
+			}
+
+			if($faker->boolean(10))
+			{
+				$data['task_date'] = $faker->dateTimeBetween('now', '3 days'); 
+			}
+
 			$task = $task_repo->store($data);
 			$this->info("$task->id Creating Task:$task->title");
 		}

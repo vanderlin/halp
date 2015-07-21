@@ -21,44 +21,25 @@
 			$('.task-card-'+task_param).addClass('task-focused')
 		}
 		
+		if(params.title!==undefined&&params.project!==undefined&&params.duration!==undefined)
+		{
+			$(this).createTask({
+				data:params
+			});
+		}
 
 		// -------------------------------------
-		$('#create-task-form button[type="submit"]').click(function(e) {
+		$('#init-create-task button[type="submit"]').click(function(e) {
 			e.preventDefault();
-			var $form = $('#create-task-form');
+			var $form = $('#init-create-task');
 			var data = {
 				title:$form.find('input[name="title"]').val(),
 				project:$form.find('input[name="project"]').val(),
 				duration:$form.find('input[name="duration"]').val(),
 			};
-			$.magnificPopup.open({
-	            tLoading: 'Loading some halp!...',
-	            closeOnContentClick: false,
-	            closeOnBgClick:false,
-	            mainClass: 'mfp-fade',
-	            ajax: {
-                	settings: {
-                		data:data
-                	}
-                },
-	            items: {
-	                src: '/tasks/create',
-	                type: 'ajax',
-	            },
-	            callbacks: {
-	                parseAjax: function(mfpResponse) {
-	                    var task = mfpResponse.xhr.responseText;
-	                    mfpResponse.data = $(mfpResponse.xhr.responseText);
-	                },
-	                ajaxContentAdded: function() {
-	                     console.log("ajaxContentAdded", this.content);  
-	                    $(function() {
-    						$( "#datepicker" ).datepicker();
-  						});                   
-	                }
-	            }
-	        });	
-
+			$(this).createTask({
+				data:data
+			});
 			return;
 			
 			var url = $form.prop('action')+'?view=true';

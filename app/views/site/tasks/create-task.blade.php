@@ -1,5 +1,4 @@
-{{Form::open(['route'=>'tasks.store', 'id'=>'create-task-form'])}}
-<section class="content bgcolor">
+<section class="content bgcolor" id="init-create-task">
 	<span class="input input--nao">
 		<input class="input__field input__field--nao" type="text" id="task-title" placeholder="ex: proofreading" autocomplete="off" name="title" value="{{Input::old('title')}}"/>
 		<label class="input__label input__label--nao" for="task-title">
@@ -38,8 +37,6 @@
 	</div>
 	<div class="error-container">@include('site.partials.form-errors')</div>
 </section>
-{{Form::close()}}
-
 
 <script type="text/javascript">
 	var data = {{json_encode(Project\Project::all()->lists('title'))}}

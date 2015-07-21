@@ -22,6 +22,8 @@ class CreateTasksTable extends Migration {
 			$table->string('duration');
 			$table->integer('claimed_id')->nullable()->default(NULL);
 			$table->timestamp('claimed_at')->nullable()->default(NULL);
+			$table->timestamp('task_date')->nullable()->default(NULL);
+			$table->text('details')->nullable()->default(NULL);
 			$table->softDeletes();
 			$table->timestamps();
 		});
