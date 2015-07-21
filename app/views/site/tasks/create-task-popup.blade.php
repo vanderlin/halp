@@ -9,7 +9,7 @@
 		<h2>Add a few more details (optional):</h2>	
 		<hr>
 		<div class="form-field">
-			<label for="task_date">Any more details you want to add?</label>
+			<label for="task_date">When do you need help?</label>
 			<input type="text" id="datepicker" value="{{Input::old('task_date')}}">
 		</div>
 		<div class="form-field">

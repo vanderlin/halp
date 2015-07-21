@@ -30,9 +30,7 @@
 .ui-widget{
 	.sans-serif(12px, @purple);
 	display: block;
-	width: 350px;
 }
-
 
 @media screen and (max-width: 1390px) {
 	.ui-autocomplete {
@@ -52,4 +50,54 @@
 
 ::-webkit-scrollbar-thumb {
   background: @mint;
+}
+
+.ui-datepicker td a{
+	padding: 14px;
+}
+
+.ui-datepicker td{
+	padding: 2px;
+}
+
+.ui-corner-all{
+	background-color: @dark-purple;
+	border-radius: 0;
+	border: 0;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default{
+	border: 0;
+	background-color: @purple;
+	text-align: center;
+	color: white;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight{
+	background-color: white;
+	color: @purple;
+}
+
+.ui-state-default:hover{
+	background-color: @mint;
+	color: @purple;
+}
+
+#ui-datepicker-div{
+	width: 480px;
+}
+
+.ui-datepicker .ui-datepicker-header{
+  position: relative;
+  padding: 3px 0;
+  margin: 2px 2px 4px 2px;
+  .serif(16px, 400, italic, #fff);
+  text-transform: none;
+}
+
+.ui-widget-header .ui-icon {
+	background-image: url("@{img-path}ui-icons_ffffff_256x240.png");
+}
+.ui-state-hover{
+	background-color: @dark-purple;
 }
