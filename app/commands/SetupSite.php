@@ -53,34 +53,13 @@ class SetupSite extends Command {
 				$this->info('--- Halp has been reset ---');
 			}
 			Auth::logout();
+			$this->setupAll();
 			return;
 		}
 
 		// -------------------------------------
 		if(is_true($options['setup'])) {
-			$name = $this->call('migrate', array('--path'=>'app/database/migrations/setup/'));
-			$name = $this->call('migrate');
-
-			// create the roles
-			$roles = ['Admin', 'Writer', 'Reader'];
-			foreach ($roles as $r) {
-				$role = Role::whereName($r)->first();
-				if($role == null) {
-					$role = new Role;
-					$role->name = $r;
-					$role->display_name = $r;
-					$role->save();
-					$this->info("$role->id Creating Role:$r");
-				}
-			}
-			foreach (User::all() as $u) {
-				$this->info("$u->id : user: $u->username");
-			}
-
-			$this->seed();
-
-			$this->comment("****\tHalp has been setup :-) \t****");
-			return;
+			$this->setupAll();
 		}
 		
 		// -------------------------------------
@@ -101,7 +80,34 @@ class SetupSite extends Command {
 		if($options['seed']=='projects') {
 			$this->seedProjects();
 		}
-		
+	}
+
+	// ------------------------------------------------------------------------
+	public function setupAll()
+	{
+		$name = $this->call('migrate', array('--path'=>'app/database/migrations/setup/'));
+		$name = $this->call('migrate');
+
+		// create the roles
+		$roles = ['Admin', 'Writer', 'Reader'];
+		foreach ($roles as $r) {
+			$role = Role::whereName($r)->first();
+			if($role == null) {
+				$role = new Role;
+				$role->name = $r;
+				$role->display_name = $r;
+				$role->save();
+				$this->info("$role->id Creating Role:$r");
+			}
+		}
+		foreach (User::all() as $u) {
+			$this->info("$u->id : user: $u->username");
+		}
+
+		$this->seed();
+
+		$this->comment("****\tHalp has been setup :-) \t****");
+		return;
 	}
 
 	// ------------------------------------------------------------------------
@@ -142,7 +148,7 @@ class SetupSite extends Command {
 
 		$durs = ['a min', 'couple of hours', 'a day', 'few mins', "10 minutes"];
 
-		$n = 40;
+		$n = 100;
 		$faker = Faker\Factory::create();
 		
 		for ($i=0; $i < $n; $i++) { 
@@ -152,12 +158,12 @@ class SetupSite extends Command {
 					 'creator_id'=>User::getRandomID(),
 					 'duration'=>array_random_item($durs)];
 			
-			if($faker->boolean(10))
+			if($faker->boolean(80))
 			{
-				$data['detail'] = $faker->sentences(4); 
+				$data['details'] = implode("\n", $faker->sentences(4));
 			}
 
-			if($faker->boolean(10))
+			if($faker->boolean(80))
 			{
 				$data['task_date'] = $faker->dateTimeBetween('now', '3 days'); 
 			}
@@ -171,7 +177,7 @@ class SetupSite extends Command {
 		// now claime some randomly
 		foreach (Task::orderByRaw("RAND()")->take(Task::count()/2)->get() as $task) {
 			$task->claimed_id = User::getRandomID([$task->creator_id]);
-			$task->claimed_at = $task->created_at->addDays($faker->randomDigit);
+			$task->claimed_at = $task->created_at->subDays($faker->randomDigit);
 			$task->save();
 			$this->info("$task->title Claimed at: ".$task->claimed_at->diffForHumans($task->created_at) );
 			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 

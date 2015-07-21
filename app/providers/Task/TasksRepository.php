@@ -112,6 +112,7 @@ class TasksRepository  {
 
 		$creator_id = isset($input['creator_id'])?$input['creator_id']:Auth::id();
 		$claimed_id = isset($input['claimed_id'])?$input['claimed_id']:NULL;
+
 		$project = Project::where('title', '=', $input['project'])->first();
 
 		// if null we need to create the new project
@@ -120,8 +121,22 @@ class TasksRepository  {
 			$project = new Project(['title'=>$input['project'], 'creator_id'=>$creator_id]);
 			$project->save();
 		}
+	
 
-		$task = new Task(['title'=>$input['title'], 'duration'=>$input['duration'], 'claimed_id'=>$claimed_id, 'project_id'=>$project->id, 'creator_id'=>$creator_id]);
+		
+
+		$data = [
+			'title'=>$input['title'], 
+			'duration'=>$input['duration'], 
+			'claimed_id'=>$claimed_id, 
+			'project_id'=>$project->id, 
+			'creator_id'=>$creator_id,
+			'details'=>isset($input['details'])?$input['details']:NULL,
+			'task_date'=>isset($input['task_date'])?$input['task_date']:NULL,
+			];
+		
+		
+		$task = new Task($data);
 		$task->save();
 		$view = NULL;
 

@@ -6,7 +6,7 @@
 		<hr>
 		<span class="project-name">{{link_to($task->project->getURL(), $task->project->title)}}</span>
 		<span class="duration">{{$task->duration}}</span>
-		<span class="date">{{$task->created_at->toFormattedDateString()}}</span>
+		<span class="date">{{$task->date->format('F j, Y')}}</span>
 		@if (!$claimed)
 	
 			@if ($task->isMine())

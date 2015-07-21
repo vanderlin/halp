@@ -17,8 +17,8 @@
 		
 		if(params.claim_task !== undefined)
 		{
-			App.openClaimPopup(params);
-			$('.task-card-'+task_param).addClass('task-focused')
+			App.openClaimPopup(params.claim_task);
+			$('.task-card-'+params.claim_task).addClass('task-focused')
 		}
 		
 		if(params.title!==undefined&&params.project!==undefined&&params.duration!==undefined)

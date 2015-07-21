@@ -99,6 +99,13 @@ class Task extends BaseModel {
 	{
 		return new Carbon\Carbon($val);
 	}
+
+	// ------------------------------------------------------------------------
+	public function getDateAttribute()
+	{
+		return $this->task_date==NULL ? $this->created_at : new Carbon\Carbon($this->task_date);
+	}
+
 	// ------------------------------------------------------------------------
 	public function project()
 	{

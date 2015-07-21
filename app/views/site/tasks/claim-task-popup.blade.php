@@ -15,6 +15,10 @@
 			<p>
 				This task is for {{link_to($task->project->getURL(), $task->project->title)}}. 
 				{{ucfirst($task->creator->firstname)}} estimates this task will take about {{$task->duration}}.
+				on {{$task->date->format('F j, Y')}}
+			</p>
+			<p class="details">
+				{{$task->details}}
 			</p>
 		</div>
 		<div class="progress-button small claimed-buttons">
@@ -22,6 +26,5 @@
 				<button type="submit" data-id="{{$task->id}}"><span>Claim Task</span></button>
 			{{Form::close()}}
 		</div>
-
 	@endif
 </div>
