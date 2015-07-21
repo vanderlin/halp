@@ -21,15 +21,18 @@
 			$('.task-card-'+params.claim_task).addClass('task-focused')
 		}
 		
+		@if(Auth::user()->isAdmin())
 		if(params.title!==undefined&&params.project!==undefined&&params.duration!==undefined)
 		{	
 			var $form = $('#init-create-task');
 			$form.find('input[name="title"]').val(params.title);
     		$form.find('input[name="project"]').val(params.project);
     		$form.find('input[name="duration"]').val(params.duration);
+			$form.find('.input').addClass('input--filled');
 
 			$('#init-create-task').validateTask();
 		}
+		@endif
 
 		// -------------------------------------
 		$('#init-create-task button[type="submit"]').click(function(e) {

@@ -133,9 +133,12 @@
     			_addErrorToInput: function($input)
     			{
     				var message = $input.data('error-message') || "Input Error";
-					$input.parent().parent().append($(	'<div class="input-error">\
-													<span>'+message+'</span>\
-			  									</div>'));
+					var $error = $(	'<div class="input-error">\
+										<span>'+message+'</span>\
+  									</div>');
+
+					$input.parent().parent().append($error);
+					$error.hide().fadeIn(200);
     			},
 		
 				// -------------------------------------

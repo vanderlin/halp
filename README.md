@@ -102,3 +102,7 @@ You should see `mcrypt support => enabled` in the output. You may need to alias 
 - **Debug Info**		
 <http://localhost:8888/env> 			
 <http://localhost:8888/php> 			 			
+
+## Testing *(For Admins only)*
+- **Auto fill the form**			
+<http://localhost:8888/?title={title-of-task}&project={project}&duration={how-long-will-it-taks}>

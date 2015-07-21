@@ -3,6 +3,18 @@
 
 <div class="white-popup claimed-popup animated fadeIn">
 	<div class="popup-content">
+		
+		<div class="task-info">
+			<h2>
+			<span class="title">{{isset($data['title'])?ucfirst($data['title']):''}}</span>
+			for
+			<span class="project">{{isset($data['project'])?$data['project']:''}}</span>
+			</h2>
+			<p class="duration">{{isset($data['duration'])?$data['duration']:''}}</p>
+		</div>
+		<hr>
+		
+
 		{{Form::open(['route'=>'tasks.store', 'id'=>'create-task-form'])}}
 		<input type="hidden" name="title" value="{{isset($data['title'])?$data['title']:''}}">
 		<input type="hidden" name="project" value="{{isset($data['project'])?$data['project']:''}}">
