@@ -21,7 +21,7 @@
 <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 
 <link href="{{asset('assets/css/frontend/frontend.css')}}" rel="stylesheet">
-
+<script src="{{bower('underscore/underscore-min.js')}}"></script>
 <script src="{{asset('assets/js/snap.svg-min.js')}}"></script>
 
 <!-- core scripts -->

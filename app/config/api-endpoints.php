@@ -10,7 +10,7 @@ array(
 'name'=>'get_all_users',
 'description'=>"Get a array of users using the Halp Application",
 'method'=>'GET',
-'url'=>'/api/users?access_token=ACCESS-TOKEN',
+'url'=>'/users?access_token=ACCESS_TOKEN',
 'example'=>'
 [
    {
@@ -40,7 +40,7 @@ array(
 'name'=>'get_user',
 'description'=>"Get information about a user",
 'method'=>'GET',
-'url'=>'/api/users/{id}?access_token=ACCESS-TOKEN',
+'url'=>'/users/{id}?access_token=ACCESS_TOKEN',
 'example'=>'
 {
   id:1,
@@ -69,7 +69,7 @@ array(
 'name'=>'get_users_created_tasks',
 'description'=>"Get users created tasks",
 'method'=>'GET',
-'url'=>'/api/users/{id}/created_tasks?access_token=ACCESS-TOKEN',
+'url'=>'/users/{id}/created_tasks?access_token=ACCESS_TOKEN',
 'example'=>'
 [
 	{
@@ -108,7 +108,7 @@ array(
 'name'=>'get_users_claimed_tasks',
 'description'=>"Get tasks claimed by user",
 'method'=>'GET',
-'url'=>'/api/users/{id}/claimed_tasks?access_token=ACCESS-TOKEN',
+'url'=>'/users/{id}/claimed_tasks?access_token=ACCESS_TOKEN',
 'example'=>'
 [
 	{
@@ -163,7 +163,7 @@ array(
 'name'=>'get_users_un_claimed_tasks',
 'description'=>"Get un claimed tasks creted by user",
 'method'=>'GET',
-'url'=>'/api/users/{id}/un_claimed_tasks?access_token=ACCESS-TOKEN',
+'url'=>'/users/{id}/un_claimed_tasks?access_token=ACCESS_TOKEN',
 'example'=>'
 [
 	{
@@ -193,49 +193,5 @@ array(
 	...
 ]
 '),
-
-
-
-/*
-array(
-'description'=>"Get a list of all projects generated from tasks",
-'method'=>'POST',
-'url'=>'/projects',
-'example'=>'
-[
-	{
-		id: 1,
-		title: "Bravo",
-		user_id: 3,
-		created_at: "2015-07-17 17:32:16",
-		updated_at: "2015-07-17 17:32:16"
-	},
-]'),
-
-
-array(
-'description'=>"Get a list of all tasks",
-'method'=>'POST',
-'url'=>'/tasks',
-'example'=>'
-[
-	{
-		id: 1,
-		title: "Bravo",
-		user_id: 3,
-		created_at: "2015-07-17 17:32:16",
-		updated_at: "2015-07-17 17:32:16"
-	},
-]'),
-*/
-
-
-
-
-
-
-
-
-
 
 );

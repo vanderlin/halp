@@ -49,6 +49,12 @@ class APIController extends \BaseController {
 	// ------------------------------------------------------------------------
 	
 	// ------------------------------------------------------------------------
+	public function demo()
+	{
+		return View::make('api.demo');
+	}
+
+	// ------------------------------------------------------------------------
 	public function developer_page()
 	{
 		$clients = APIClient::where('user_id', '=', Auth::id())->get();

@@ -6,8 +6,6 @@
 @stop
 
 @section('head')
-	
-	
     <link rel="stylesheet" type="text/css" href="{{bower('semantic-ui/dist/semantic.min.css')}}">
     <script src="{{bower('semantic-ui/dist/semantic.min.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{css('core/api.css')}}">
@@ -75,7 +73,7 @@
 			@if ($user->set_password == 0 || Input::get('reset_password', false)==true)
 				<div class="ui centered grid">
 					<div class="six wide tablet eight wide computer column">
-					<p>You need to set a password to access the Halp API.</p>
+					<p id="reset_password">You need to set a password to access the Halp API.</p>
 
 					{{Form::open(['route'=>array('user.update', $user->id), 'class'=>'ui form text-left'])}}
 						<div class="field">
@@ -102,7 +100,7 @@
 			@else
 				<h2 class="ui header">You have access to the Halp. API</h2>
 				<p>{{Auth::user()->email}}</p> 
-				<a href="/api/?reset_password=true" class="ui button">Reset Password</a> 
+				<a href="/developer/?reset_password=true#reset_password" class="ui button">Reset Password</a> 
 			@endif
 			
 	</section>

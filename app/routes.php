@@ -48,6 +48,8 @@ Route::get('testemail', function() {
 	return $view;
 });
 
+
+// notifications
 // ------------------------------------------------------------------------
 Route::group(array('prefix'=>'notifications'), function() {
 	
@@ -95,6 +97,7 @@ Route::group(array('prefix'=>'notifications'), function() {
 
 });
 
+// site login
 // ------------------------------------------------------------------------
 Route::post('site-login', ['uses'=>'PageController@ChecksiteLogin']);
 
@@ -121,6 +124,7 @@ Route::group(array('before'=>['auth']), function() {
 	// tasks
 	Route::group(array('prefix'=>'tasks', 'before'=>'auth'), function() {
 		Route::post('/', ['uses'=>'TasksController@store', 'as'=>'tasks.store']);
+		Route::get('create', ['uses'=>'TasksController@create', 'as'=>'tasks.create']);
 		Route::get('{id}', ['uses'=>'TasksController@show', 'as'=>'tasks.show']);
 		Route::get('{id}/claimed', ['uses'=>'TasksController@showClaimed', 'as'=>'tasks.show.claimed']);
 		Route::post('{id}/claim', ['uses'=>'TasksController@claim', 'as'=>'tasks.claim']);

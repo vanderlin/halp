@@ -13,18 +13,54 @@
 	$(document).ready(function($) {
 
 		// task-claim-popup
-		var task_param = getURLParameters('claim_task');
+		var params = getQueryParams();
 		
-		if(task_param !== undefined)
+		if(params.claim_task !== undefined)
 		{
-			App.openClaimPopup(task_param);
+			App.openClaimPopup(params);
 			$('.task-card-'+task_param).addClass('task-focused')
 		}
+		
+
 		// -------------------------------------
 		$('#create-task-form button[type="submit"]').click(function(e) {
 			e.preventDefault();
-			
 			var $form = $('#create-task-form');
+			var data = {
+				title:$form.find('input[name="title"]').val(),
+				project:$form.find('input[name="project"]').val(),
+				duration:$form.find('input[name="duration"]').val(),
+			};
+			$.magnificPopup.open({
+	            tLoading: 'Loading some halp!...',
+	            closeOnContentClick: false,
+	            closeOnBgClick:false,
+	            mainClass: 'mfp-fade',
+	            ajax: {
+                	settings: {
+                		data:data
+                	}
+                },
+	            items: {
+	                src: '/tasks/create',
+	                type: 'ajax',
+	            },
+	            callbacks: {
+	                parseAjax: function(mfpResponse) {
+	                    var task = mfpResponse.xhr.responseText;
+	                    mfpResponse.data = $(mfpResponse.xhr.responseText);
+	                },
+	                ajaxContentAdded: function() {
+	                     console.log("ajaxContentAdded", this.content);  
+	                    $(function() {
+    						$( "#datepicker" ).datepicker();
+  						});                   
+	                }
+	            }
+	        });	
+
+			return;
+			
 			var url = $form.prop('action')+'?view=true';
 			var fd = new FormData($form[0]);    
 
@@ -80,7 +116,7 @@
 	</div>
 
 	@if (Auth::check() && isset($tasks))
-		@include('site.partials.create-task')
+		@include('site.tasks.create-task')
 	@endif
 		
 	<section class="content" id="tasks-content">

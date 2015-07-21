@@ -1,6 +1,8 @@
 <?php 
 
+
 // ------------------------------------------------------------------------
+Route::get('developer/demo', ['uses'=>'APIController@demo']);	
 Route::group(['prefix'=>'developer', 'before'=>['auth']], function() {
 	Route::get('/', ['uses'=>'APIController@developer_page']);
 	Route::post('create', ['uses'=>'APIController@create_client', 'as'=>'api.create.client']);

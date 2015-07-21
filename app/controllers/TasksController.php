@@ -26,10 +26,17 @@ class TasksController extends \BaseController {
 	}
 
 	// ------------------------------------------------------------------------
+	public function create()
+	{
+
+		return View::make('site.tasks.create-task-popup', ['data'=>Input::all()]);
+	}
+
+	// ------------------------------------------------------------------------
 	public function showClaimed($id)
 	{
 		$task = $this->repository->get($id);
-		return View::make('site.tasks.claim-popup', ['task'=>$task]);
+		return View::make('site.tasks.claim-task-popup', ['task'=>$task]);
 	}
 
 	// ------------------------------------------------------------------------
@@ -42,12 +49,6 @@ class TasksController extends \BaseController {
 	public function unclaim($id)
 	{
 		return $this->repository->unclaim($id);
-	}
-
-	// ------------------------------------------------------------------------
-	public function create($id)
-	{
-	
 	}
 
 	// ------------------------------------------------------------------------
