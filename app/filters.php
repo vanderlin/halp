@@ -38,7 +38,6 @@ Route::filter('siteprotection', function() {
 | integrates HTTP Basic authentication for quick, simple checking.
 |
 */
-
 Route::filter('auth', function()
 {
 	
