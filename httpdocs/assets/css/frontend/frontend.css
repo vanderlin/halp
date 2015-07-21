@@ -919,9 +919,13 @@ body .nomargin-bottom {
 }
 .ui-autocomplete {
   background: #fff;
-  display: table;
+  display: block;
+  height: 250px;
+  max-height: 250px;
+  overflow: auto;
   z-index: 1000;
   position: relative;
+  width: 350px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -941,6 +945,21 @@ body .nomargin-bottom {
 }
 .ui-autocomplete .ui-state-focus {
   background-color: rgba(64, 77, 91, 0.5);
+}
+@media screen and (max-width: 1390px) {
+  .ui-autocomplete {
+    max-width: 246px;
+  }
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #1b1b25;
+}
+::-webkit-scrollbar-thumb {
+  background: #4fd2c2;
 }
 /* ------------------------------------- MOBILE MENU ------------------------------------ */
 .menu-wrap a {

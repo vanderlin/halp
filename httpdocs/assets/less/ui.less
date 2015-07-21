@@ -1,9 +1,13 @@
 // ------------------------------------------------------------------------
 .ui-autocomplete {
 	background: #fff;
-	display: table;
+	display: block;
+	height: 250px;
+	max-height: 250px;
+	overflow: auto;
 	z-index: 1000;
 	position: relative;
+	width: 350px;
 	.sans-serif(12px, @purple);
 	li {
 		line-height: 25px;
@@ -18,5 +22,26 @@
 	.ui-state-focus {
 		background-color: fade(@purple, 50%);
 	}
+
+}
+
+
+@media screen and (max-width: 1390px) {
+	.ui-autocomplete {
+		max-width: 246px;
+	}
 }
 // ------------------------------------------------------------------------
+
+::-webkit-scrollbar {
+  width: 5px; 
+  height: 5px; 
+}
+
+::-webkit-scrollbar-track {
+  background: @dark-purple;
+}
+
+::-webkit-scrollbar-thumb {
+  background: @mint;
+}
