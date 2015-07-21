@@ -21,7 +21,6 @@
 <link rel="stylesheet" href="{{bower('jquery-ui/themes/base/jquery-ui.min.css')}}">
 <script src="{{ bower('jquery-ui/jquery-ui.min.js') }}"></script>
 
-
 <!-- Scroll To -->
 <script type="text/javascript" src="{{ bower('jquery.scrollTo/jquery.scrollTo.min.js') }}"></script>
 

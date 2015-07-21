@@ -20,13 +20,14 @@
 <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 
-<link href="{{asset('assets/css/frontend/frontend.css')}}" rel="stylesheet">
 <script src="{{bower('underscore/underscore-min.js')}}"></script>
 <script src="{{asset('assets/js/snap.svg-min.js')}}"></script>
 
 <!-- core scripts -->
 @include('site.layouts.core-scripts')
 <script src="{{asset('assets/js/app.js')}}"></script>
+
+<link href="{{asset('assets/css/frontend/frontend.css')}}" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
