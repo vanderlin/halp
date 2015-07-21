@@ -1,19 +1,22 @@
 // ------------------------------------------------------------------------
 .ui-autocomplete {
 	background: #fff;
-	display: block;
 	height: 250px;
 	max-height: 250px;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	z-index: 1000;
 	position: relative;
 	width: 350px;
-	.sans-serif(12px, @purple);
 	li {
 		line-height: 25px;
-		padding: 10px;
+		padding: 10px !important;
 		cursor: pointer;
 		text-align: center;
+	}
+	.ui-state-focus{
+		color:#fff;
+		background-color: @purple !important;	
 	}
 	li:hover {
 		color:#fff;
@@ -22,7 +25,12 @@
 	.ui-state-focus {
 		background-color: fade(@purple, 50%);
 	}
+}
 
+.ui-widget{
+	.sans-serif(12px, @purple);
+	display: block;
+	width: 350px;
 }
 
 
