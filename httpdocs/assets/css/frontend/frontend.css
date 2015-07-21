@@ -312,7 +312,7 @@
   background-color: #4fd2c2;
   color: #404d5b;
 }
-#ui-datepicker-div {
+.ui-datepicker {
   width: 480px;
 }
 .ui-datepicker .ui-datepicker-header {
@@ -329,8 +329,22 @@
 .ui-widget-header .ui-icon {
   background-image: url("/assets/img/ui-icons_ffffff_256x240.png");
 }
-.ui-state-hover {
+.ui-widget-header .ui-state-hover {
   background-color: #1b1b25;
+  border: 0px;
+}
+.ui-datepicker-next:hover {
+  right: 2px;
+  cursor: pointer;
+  top: 2px;
+}
+.ui-datepicker-prev:hover {
+  left: 2px;
+  cursor: pointer;
+  top: 2px;
+}
+.ui-datepicker table {
+  margin: 0 0 2px;
 }
 .task {
   width: 250px;
@@ -1350,6 +1364,15 @@ body .nomargin-bottom {
     color: #404d5b;
     font-style: italic;
     line-height: 35px;
+  }
+  .ui-datepicker {
+    width: 280px;
+  }
+  .ui-datepicker td a {
+    padding: 12px 7px;
+  }
+  .form-field input {
+    width: 280px;
   }
 }
 .notifications-setting-form button[type="submit"] {

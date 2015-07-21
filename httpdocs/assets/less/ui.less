@@ -83,7 +83,7 @@
 	color: @purple;
 }
 
-#ui-datepicker-div{
+.ui-datepicker{
 	width: 480px;
 }
 
@@ -98,6 +98,20 @@
 .ui-widget-header .ui-icon {
 	background-image: url("@{img-path}ui-icons_ffffff_256x240.png");
 }
-.ui-state-hover{
+.ui-widget-header .ui-state-hover{
 	background-color: @dark-purple;
+	border: 0px;
+}
+.ui-datepicker-next:hover{
+	right: 2px;
+	cursor: pointer;
+	top: 2px;
+}
+.ui-datepicker-prev:hover{
+	left: 2px;
+	cursor: pointer;
+	top: 2px;
+}
+.ui-datepicker table{
+	margin: 0 0 2px;
 }
