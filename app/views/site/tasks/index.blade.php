@@ -125,7 +125,7 @@
 
 
 
-	<section class="content">
+	<section class="content" id="claimed-tasks-content">
 	@forelse ($claimed_tasks as $task)
 		@include('site.tasks.card', array('task' => $task, 'claimed'=>true))
 	@empty

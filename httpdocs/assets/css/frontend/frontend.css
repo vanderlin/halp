@@ -390,7 +390,7 @@
   height: 343px !important;
 }
 .task-focused {
-  background-color: #4fd2c2;
+  background-color: #4fd2c2 !important;
 }
 .task-focused .project-name a {
   color: white;
@@ -410,6 +410,11 @@
 .task-focused .progress-button button:hover {
   background-color: #404d5b !important;
   border-color: #404d5b !important;
+}
+.task.claimed.task-focused .task-name,
+.task.claimed.task-focused .date,
+.task.claimed.task-focused .duration {
+  color: #404d5b;
 }
 .task-details {
   padding: 46px 20px 35px 20px;

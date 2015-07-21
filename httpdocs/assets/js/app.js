@@ -129,7 +129,7 @@ var App = (function() {
             var $form = $('#claim-task-form'); 
             var fd = new FormData($form[0]);               
             $.ajax({
-                url: $form.attr('action'),
+                url: $form.attr('action')+'?view=true',
                 data: fd,
                 processData: false,
                 contentType: false,
@@ -142,7 +142,9 @@ var App = (function() {
                 {
                     
                     
-                    $('.task-card-'+e.task.id).hide();
+                    $('.task-card-'+e.task.id).fadeOut(200, function() {
+                       $(this).remove(); 
+                    });
 
                     $('.white-popup .task-message p').fadeTo(200, 0);
                     $('.white-popup .claimed-buttons').fadeTo(200, 0, function() {
@@ -153,8 +155,14 @@ var App = (function() {
                             $('.front-facing-turtle').animate({'margin-bottom':-80})
                             setTimeout(function() {
                                 App.closeClaimPopup();
-                                window.location = window.location.origin;
-                            }, 500);
+                                App.scrollTo('#claimed-tasks-content', 500, function() {
+                                    var $view = $(e.view);
+                                    $('#claimed-tasks-content').prepend($view);
+                                    $view.addClass('task-focused');
+                                    $view.hide().delay(200).fadeIn(300);
+                                });
+
+                            }, 1000);
                         });
                     });
                 }

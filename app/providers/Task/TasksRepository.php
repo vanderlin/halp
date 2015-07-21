@@ -72,7 +72,13 @@ class TasksRepository  {
 		}
 		
 		$task = Task::withTrashed()->whereId($id)->with('Claimer')->with('Creator')->first();
-		return $this->listener->statusResponse(['task'=>$task]);		
+
+		$view = null;
+		if(Input::has('view')&&Input::get('view'))
+		{
+			$view = View::make('site.tasks.card', array('task' => $task, 'claimed'=>true))->render();
+		}
+		return $this->listener->statusResponse(['task'=>$task, 'view'=>$view]);		
 	}
 
 	// ------------------------------------------------------------------------

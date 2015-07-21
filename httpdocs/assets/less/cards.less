@@ -42,7 +42,7 @@
 	height: 343px !important;
 }
 .task-focused {
-	background-color: @mint;
+	background-color: @mint !important;
 	.project-name a {
 		color:white;
 	}
@@ -63,7 +63,11 @@
 		border-color: @purple !important;	
 	}
 }
-
+.task.claimed.task-focused {
+	.task-name, .date, .duration {
+		color: @purple;
+	}
+}
 .task-details{
 	padding: 46px 20px 35px 20px;
 }
