@@ -1,6 +1,12 @@
 @import 'base.less'; 
 @import 'common.less';
 @import 'helpers.less';
+@import 'popup.less';
+@import 'ui.less';
+@import 'cards.less';
+@import 'login.less';
+@import 'taskdetail.less';
+@import 'mobilemenu.less';
 
 /** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
 html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {    margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertical-align: baseline;}/* HTML5 display-role reset for older browsers */article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {	display: block;}body {	line-height: 1;}ol, ul {	list-style: none;}blockquote, q {	quotes: none;}blockquote:before, blockquote:after,q:before, q:after {	content: '';	content: none;}table {	border-collapse: collapse;	border-spacing: 0;}
@@ -131,144 +137,6 @@ hr{
 	position: relative;
   	bottom: 19px;
   	letter-spacing: 0px;
-}
-
-/* ----------------------------------- TASK CARDS ----------------------------------- */
-
-.task {
-	width: 250px;
-	height: 337px;
-	background-color: #fff;
-	text-align: center;
-	display: -moz-inline-stack;
-    display: inline-block;
-    vertical-align: top;
-    margin: 20px 16px;
-    padding: 0px;
-	position: relative;
-
-   	.card-footer {
-		position: absolute;
-	  	width: 100%;
-	  	bottom: 0;
-   	} 
-    .edit-bar {
-	  position: absolute;
-	  right: 0;
-	  bottom: -6px;
-	  a {
-	  	padding: 10px;
-	  	display: table;
-	  
-	  }
-	  .fa:hover {
-		color: @purple;
-	  }
-	  .fa {
-	  	color:@grey;
-	  	font-size: 18px;
-  		top: -2px;
-  		position: relative;
-	  }
-    }
-
-}
-
-.user-created-task {
-	height: 343px !important;
-}
-.task-focused {
-	background-color: @mint;
-	.project-name a {
-		color:white;
-	}
-	.date {
-		color:white;	
-	}
-	hr {
-		border-color: @purple !important;
-	}
-	.small.progress-button button {
-		color:white;
-	}
-	.progress-button button {
-		border-color: white !important;
-	}
-	.progress-button button:hover {
-		background-color: @purple !important;
-		border-color: @purple !important;	
-	}
-}
-
-
-.task-details{
-	padding: 46px 20px 35px 20px;
-}
-
-.task-name{
-	display: block;
-	.serif(20px, 500, italic, @purple);
-}
-
-.project-name{
-	display: block;
-	margin-bottom: -1px;
-	line-height: 20px;
-	.sans-serif(12px, @purple);
-}
-.date{
-	display: block;
-	text-transform: lowercase;
-  	.serif(14px, 500, italic, @light-purple);
-
-}
-.date-claimed{
-	display: block;
-	text-transform: lowercase;
-  	.serif(14px, 500, italic, @light-purple);
-  	padding-top:6px;
- }
-.duration{
-  line-height: 37px;
-  .sans-serif(12px, @purple);
-}
-
-.task hr{
-	border: 1px solid #e8e6e5;
-  	width: 30px;
-  	margin-bottom: 24px;
-  	margin-top: 23px;
-}
-.posted-by{
-	background-color: #F9F7F6;
-  	padding: 10px 5px;
-  	.sans-serif(12px, @grey);
-}
-.claimed-by{
-  	background-color: #fff;
-  	padding: 10px 5px;
-  	.sans-serif(12px, @grey);
-}
-
-.claimed{
-	background-color: #F9F7F6;
-	background-image: url("@{img-path}diagonal-lines.png");
-	height: 253px;
-}
-.claimed .project-name{
-	color: @grey;
-}
-.claimed .date{
-	color: @grey;
-}
-.claimed .task-name{
-	color: @grey;
-}
-.claimed .duration{
-	color: @grey;
-}
-.claimed hr{
-	border-color: @grey;
 }
 
 
@@ -415,52 +283,6 @@ body .nomargin-bottom {
 	text-align: left;
 }
 
-/* ------------------------------------- LOGIN ------------------------------------ */
-
-.login{
-	display: block;
-	margin: 0 auto;
-}
-
-.login-button{
-	padding: 10px 0px 70px 0px;
-}
-
-.login-button .progress-button button{
-	width: 260px;
-}
-
-.introduction{
-	background-color: @dark-purple;
-  	font-size: 25px;
-  	font-style: italic;
-  	color: #fff;
-  	font-weight: 300;
-}
-
-.introduction-content{
-  	width: 40%;
-  	margin: 0 auto;
-  	padding: 0px 0px 30px 0px
-}
-
-.introduction img{
-	margin-top: 100px;
-}
-
-.intro-text{
-  	line-height: 46px;
-}
-
-.intro-text strong{
-	color: @light-purple;
-	font-weight: 300;
-}
-
-.dark-bg{
-	background: @dark-purple;
-}
-
 [placeholder]::-webkit-input-placeholder {
   opacity: 0;
   color: @grey;
@@ -531,7 +353,7 @@ body .nomargin-bottom {
 	}
 }
 
-/* ------------------------------------- User Card  ------------------------------------ */
+/* ------------------------------------- LEADERBOARD  ------------------------------------ */
 
 .user-image-most-helpful img:hover{
 	border-color: @light-purple;
@@ -547,193 +369,6 @@ body .nomargin-bottom {
    	transition: border .4s;
 }
 
-.user-card {
-	width: 250px;
-	height: 290px;
-	background-color: #fff;
-	text-align: center;
-	display: -moz-inline-stack;
-    display: inline-block;
-    vertical-align: top;
-    margin: 18px 1%;
-    padding: 0px;
-
-	.user-image img {
-		border-radius: 50%;
-		overflow: hidden;	
-		border: 10px solid white;
-  		margin-top: -27px;
-  	}
-}
-.claimed-task {
-	height: 210px;
-	position: relative;
-
-	.return-task {
-		opacity: 0;
-		p {
-			padding: 38px 30px 0px 30px;
-			.serif(15px, 400, italic, @light-purple);
-			line-height: 26px;
-		}
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		background-color: @dark-purple;
-		position:absolute;
-		-webkit-transition: opacity .2s;
-    	transition: opacity .2s;
-	}
-}
-.claimed-task:hover {
-	.return-task {
-		opacity: 1;
-	}
-}
-
-/* ------------------------------------- ADMIN ADDITIONS  ------------------------------------ */
-
-.table {
-	text-align: left;
-	font-size: 18px
-}
-
-/* ------------------------------------- IMPORTS  ------------------------------------ */
-@import 'popup.less';
-@import 'ui.less';
-
-
-/* ------------------------------------- MOBILE MENU ------------------------------------ */
-
-.menu-wrap a {
-	color: @dark-purple;
-}
-
-.menu-wrap a:hover,
-.menu-wrap a:focus {
-	color: white;
-}
-
-.content {
-	position: relative;
-}
-
-/* Menu Button */
-#open-button{
-	float: right;
-  	margin: 23px;
-  	cursor: pointer;
-}
-
-.open-menu{
-	display: none;
-}
-
-
-/* Close Button */
-.close-button {
-	width: 25px;
-	height: 25px;
-	position: absolute;
-	right: 1em;
-	top: 1em;
-	overflow: hidden;
-	text-indent: 16px;
-	border: none;
-	z-index: 1001;
-	background: transparent;
-	color: transparent;
-}
-
-.close-button::before,
-.close-button::after {
-	content: '';
-	position: absolute;
-	width: 2px;
-	height: 100%;
-	top: 0;
-	left: 50%;
-	background: white;
-}
-
-.close-button::before {
-	-webkit-transform: rotate(45deg);
-	transform: rotate(45deg);
-}
-
-.close-button::after {
-	-webkit-transform: rotate(-45deg);
-	transform: rotate(-45deg);
-}
-
-/* Menu */
-.menu-wrap {
-	position: absolute;
-	z-index: 1001;
-	width: 240px;
-	height: 100%;
-	font-size: 1.15em;
-	-webkit-transform: translate3d(-300px,0,0);
-	transform: translate3d(-300px,0,0);
-	-webkit-transition: -webkit-transform 0.3s;
-	transition: transform 0.3s;
-	text-align: left;
-}
-
-.mobile-menu {
-	background: @mint;
-	width: 180px;
-	height: 100%;
-	padding: 2em 1em;
-}
-
-.icon-list {
-	width: 280px;
-}
-
-.icon-list a {
-	display: table;
-	width: 100%;
-	padding: 0.8em;
-	padding: 13px 15px;
-	margin-left: 10px;
-	font-size: 12px;
-	text-transform: uppercase;
-	letter-spacing: 0px;
-}
-
-/* Morph Shape */
-.morph-shape {
-	position: absolute;
-	width: 60px;
-	height: 100%;
-	top: 0;
-	right: 0;
-	fill: @mint;
-	z-index: 1000;
-}
-
-/* Shown menu */
-.show-menu .menu-wrap {
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
-}
-
-.show-menu .content-wrap {
-	-webkit-transition-delay: 0.1s;
-	transition-delay: 0.1s;
-	-webkit-transform: translate3d(100px,0,0);
-	transform: translate3d(100px,0,0);
-}
-
-.show-menu .content::before {
-	opacity: 1;
-	-webkit-transition: opacity 0.3s;
-	transition: opacity 0.3s;
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
-}
 
 /* ------------------------------------- FOOTER ------------------------------------ */
 
@@ -750,60 +385,6 @@ body .nomargin-bottom {
 
 .footer-info h5:hover{
 	color: @mint;
-}
-
-/* ------------------------------------- EMAIL CONTENT ------------------------------------ */
-
-.email-content{
-	background-color: #fff;
-	padding: 100px;
-	margin: 95px 120px;
-	position: relative;
-	h2{
-		font-size: 25px;
-	}
-	h3{
-		.sans-serif(13px, @purple);
-		font-style: normal;
-		line-height: 22px;
-	}
-	h1{
-		.serif(40px, 300, italic, @purple);
-		padding: 34px 0px 24px 0px;
-		line-height: 50px;
-	}
-	p{
-		line-height: 34px;
- 		padding: 15px 30px 0px 30px;
-	}
-	.task-status {
-		position: absolute;
-		top:0;
-		left: 0;
-		width: 100%;
-		background-color: @mint;
-		text-align:left;
-	}
-	.claimed{
-		height: auto;
-		background-image: none;
-		padding: 10px;
-  		text-align: center;
-  			h3{
-  				color: white;
-  			}
-  		
-	}
-	.claimer{
-		font-style: italic;
-		line-height: 28px;
-	}
-}
-
-
-
-.task-show{
-	background-color: #2A293A;
 }
 
 
