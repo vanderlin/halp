@@ -192,25 +192,23 @@
 }
 .ui-autocomplete {
   background: #fff;
-  display: block;
   height: 250px;
   max-height: 250px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   z-index: 1000;
   position: relative;
   width: 350px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: #404d5b;
 }
 .ui-autocomplete li {
   line-height: 25px;
-  padding: 10px;
+  padding: 10px !important;
   cursor: pointer;
   text-align: center;
+}
+.ui-autocomplete .ui-state-focus {
+  color: #fff;
+  background-color: #404d5b !important;
 }
 .ui-autocomplete li:hover {
   color: #fff;
@@ -218,6 +216,16 @@
 }
 .ui-autocomplete .ui-state-focus {
   background-color: rgba(64, 77, 91, 0.5);
+}
+.ui-widget {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #404d5b;
+  display: block;
+  width: 350px;
 }
 @media screen and (max-width: 1390px) {
   .ui-autocomplete {
