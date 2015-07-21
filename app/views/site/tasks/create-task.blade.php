@@ -2,7 +2,7 @@
 	
 	<div class="input-group">
 		<span class="input input--nao">
-			<input class="input__field input__field--nao" type="text" id="task-title" placeholder="ex: proofreading" autocomplete="off" name="title" value="{{Input::old('title')}}"/>
+			<input data-error-message="Need a task title" class="input__field input__field--nao" type="text" id="task-title" placeholder="ex: proofreading" autocomplete="off" name="title" value="{{Input::old('title')}}"/>
 			<label class="input__label input__label--nao" for="task-title">
 				<span class="input__label-content input__label-content--nao">I need a hand with:</span>
 			</label>
@@ -14,7 +14,7 @@
 	
 	<div class="input-group">
 		<span class="input input--nao">
-			<input class="input__field input__field--nao" type="text" id="task-project" placeholder="project name" name="project" value="{{Input::old('project')}}"/>
+			<input data-error-message="Need a project name" class="input__field input__field--nao" type="text" id="task-project" placeholder="project name" name="project" value="{{Input::old('project')}}"/>
 			<label class="input__label input__label--nao" for="task-project">
 				<span class="input__label-content input__label-content--nao">For:</span>
 			</label>
@@ -26,7 +26,7 @@
 	
 	<div class="input-group">
 		<span class="input input--nao">
-			<input class="input__field input__field--nao" type="text" id="task-duration" name="duration" autocomplete="off" placeholder="ex: an hour, a day" value="{{Input::old('duration')}}" />
+			<input data-error-message="Need to know how long this will take" class="input__field input__field--nao" type="text" id="task-duration" name="duration" autocomplete="off" placeholder="ex: an hour, a day" value="{{Input::old('duration')}}" />
 			<label class="input__label input__label--nao" for="task-duration">
 				<span class="input__label-content input__label-content--nao">And I think it will take:</span>
 			</label>
