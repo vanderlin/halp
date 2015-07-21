@@ -60,7 +60,7 @@
 			if(this.options.validate)
 			{
 				this._validate(this.options.validate);	
-				return;
+				
 			}
 
 			$.magnificPopup.open({
