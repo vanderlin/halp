@@ -234,6 +234,10 @@
 .form-field textarea:focus {
   outline: none;
 }
+.popup-content {
+  display: table;
+  transition: height 0.3s ease-out;
+}
 .ui-autocomplete {
   background: #fff;
   height: 250px;

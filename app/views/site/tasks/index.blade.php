@@ -22,10 +22,13 @@
 		}
 		
 		if(params.title!==undefined&&params.project!==undefined&&params.duration!==undefined)
-		{
-			$(this).createTask({
-				data:params
-			}).createTask('open');
+		{	
+			var $form = $('#init-create-task');
+			$form.find('input[name="title"]').val(params.title);
+    		$form.find('input[name="project"]').val(params.project);
+    		$form.find('input[name="duration"]').val(params.duration);
+
+			$('#init-create-task').validateTask();
 		}
 
 		// -------------------------------------

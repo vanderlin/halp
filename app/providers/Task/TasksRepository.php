@@ -135,7 +135,7 @@ class TasksRepository  {
 			'task_date'=>isset($input['task_date'])?$input['task_date']:NULL,
 			];
 		
-		
+
 		$task = new Task($data);
 		$task->save();
 		$view = NULL;
@@ -148,6 +148,8 @@ class TasksRepository  {
 			$view = View::make('site.tasks.card', array('task' => $task, 'claimed'=>false))->render();
 
 		}
+		$id = $task->id;
+		$task = Task::where('id', '=', $id)->with('Creator')->first();
 		return $this->listener ? $this->listener->statusResponse(['notice'=>'Task Created. Help is on the way!', 'task'=>$task, 'view'=>$view]) : $task;		
 	}
 

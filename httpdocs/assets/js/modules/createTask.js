@@ -4,10 +4,17 @@
 		// ------------------------------------------------------------------------
 		openCreateTaskPopup: function(options) {
 			var taskForm = {
+				
+				$form:null,
+				$popup:null,
+
 				// -------------------------------------
 		    	_submit: function(e) 
 		    	{
-		    		var url = this.$form.attr('action');
+		    	
+		    	
+		    		var self = this;
+		    		var url = this.$form.prop('action')+'?view=true';
 		    		var type = this.$form.attr('method');
 		    		var fd = new FormData(this.$form[0]);    
 		    		$.ajax({
@@ -19,9 +26,55 @@
 		  				contentType: false,
 		    		})
 		    		.always(function(e) {
-		    			console.log("complete", e);
+		    			self._showTaskCreated(e);
 		    		});
 		    		
+		    	},
+
+		    	// -------------------------------------
+		    	_showSuccessMessage: function(e)
+		    	{
+		    		var self = this;
+		    		this.$form.find('.create-task-buttons').fadeOut(200);
+	    			var $h2 = this.$form.find('h2');
+	    			self.$form.find('.form-field').fadeOut(300);
+	
+	    			$h2.html(e.notice);
+	    			self.$popup.css({height: 100});		
+		    			
+	    			setTimeout(function() {
+						App.closeClaimPopup();
+    					self._addViewToPage(e);
+	    			}, 1000);
+
+
+	    		
+		    		
+		    	},
+
+		    	// -------------------------------------
+		    	_addViewToPage: function(e)
+		    	{
+		    		console.log('_addViewToPage');
+					var $content = $('#tasks-content');
+					var $view = $(e.view);
+					$content.prepend($view);
+					$view.addClass('task-focused');
+					$view.hide().fadeIn(300);
+
+					var $delbtn = $view.find('.halp-delete-task-button');
+					App.addDeleteTaskEvent($delbtn);
+		    	},
+
+		    	// -------------------------------------
+		    	_showTaskCreated: function(e)
+		    	{
+		    		
+		    		this._showSuccessMessage(e);
+					
+					this.$form.find('.input').removeClass('input--filled');
+					this.$form[0].reset();
+
 		    	},
 
 		    	// -------------------------------------
@@ -50,7 +103,8 @@
 			                ajaxContentAdded: function() {
 			                    $(function() {
 		    						$( "#datepicker" ).datepicker();
-		  						});   
+		  						});  
+		  						self.$popup = $('.white-popup .popup-content');
 		  						self.$form = $('#create-task-form');
 		  						self.$form.submit(function(e) {
 		  							e.preventDefault();
@@ -104,13 +158,11 @@
 		    		this._addEventsToInput($title);
 		    		this._addEventsToInput($project);
 		    		this._addEventsToInput($duration);
-		    		console.log(this);
 					this._data = {
 						title:$title.val(),
 						project:$project.val(),
 						duration:$duration.val(),
 					};
-					console.log(this._data);
 		    		var isValid = true;
 
 		    		if($title.val() == "") 
