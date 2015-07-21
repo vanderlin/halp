@@ -230,6 +230,7 @@
   font-size: 16px;
   color: #1b1b25;
   font-style: italic;
+  resize: none;
 }
 .form-field textarea:focus {
   outline: none;
