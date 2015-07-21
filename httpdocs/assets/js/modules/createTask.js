@@ -36,9 +36,9 @@
 
     		if($title.val() == "") 
     		{
-    			$title.parent().parent().prepend($(	'<div class="input-error">\
-    											<span>Missing Title</span>\
-    			  							</div>'));
+    			$title.parent().parent().append($(	'<div class="input-error">\
+    													<span>Missing Title</span>\
+    			  									</div>'));
 
     			console.log("Title Invalid");
     		}
