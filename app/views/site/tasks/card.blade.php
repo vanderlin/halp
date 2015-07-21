@@ -15,7 +15,7 @@
 				</div>
 			@else
 				<div class="progress-button small">
-					<button class="halp-claim-button" data-id="{{$task->id}}" data-mfp-src="/tasks/{{$task->id}}?json=true"><span>Claim task</span></button>
+					<button class="halp-claim-button" data-id="{{$task->id}}" data-mfp-src="/tasks/{{$task->id}}?json=true"><span>See Details</span></button>
 				</div>
 			@endif
 			
