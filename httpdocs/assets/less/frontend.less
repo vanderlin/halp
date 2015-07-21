@@ -162,6 +162,11 @@ body .nomargin-bottom {
 	margin-bottom: 0;
 }
 
+.input-group {
+	position: relative;
+	z-index: 1;
+	display: inline-block;	
+}
 .input {
 	position: relative;
 	z-index: 1;
@@ -560,4 +565,13 @@ body .nomargin-bottom {
 		text-align: center;
 		width: 100%;
 	}	
+}
+
+.input-error {
+	position: absolute;
+  	background-color: #444;
+  	color: red;
+  	font-size: 20px;
+  	top: 83px;
+	font-family: 'Montserrat', sans-serif;
 }

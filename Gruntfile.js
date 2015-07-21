@@ -31,7 +31,6 @@ grunt.initConfig({
         src: [
           '<%= paths.assets.vendor %>jquery/dist/jquery.js',
           '<%= paths.assets.vendor %>jquery-ui/jquery-ui.js',
-          '<%= paths.assets.vendor %>bootstrap/dist/js/bootstrap.js',
           '<%= paths.assets.js %>frontend.js'
         ],
         dest: '<%= paths.js %>frontend.js',
@@ -40,7 +39,6 @@ grunt.initConfig({
         src: [
           '<%= paths.assets.vendor %>jquery/dist/jquery.js',
           '<%= paths.assets.vendor %>jquery-ui/jquery-ui.js',
-          '<%= paths.assets.vendor %>bootstrap/dist/js/bootstrap.js',
           '<%= paths.assets.js %>backend.js'
         ],
         dest: '<%= paths.js %>backend.js',
@@ -86,28 +84,6 @@ grunt.initConfig({
             "<%= paths.css %>core/api.css": "<%= paths.assets.less %>api.less",
           }
         },
-        bootstrap: {
-          options: {
-            paths: ["<%= paths.css %>"],
-            cleancss: true,
-            modifyVars: {
-            }
-          },
-          files: {
-            "<%= paths.css %>core/bootstrap.css": "<%= paths.assets.less %>bootstrap.less",
-          }
-        },
-        bootstrap_2: {
-          options: {
-            paths: ["<%= paths.css %>"],
-            cleancss: true,
-            modifyVars: {
-            }
-          },
-          files: {
-            "<%= paths.css %>core/bootstrap_2.css": "<%= paths.assets.less %>/bootstrap/bootstrap_2.less",
-          }
-        }
     },  
 
 

@@ -28,9 +28,35 @@
     	},
 
     	// -------------------------------------
+    	_validate: function($form)
+    	{
+    		var $title = $form.find('input[name="title"]');
+    		var $project = $form.find('input[name="project"]');
+    		var $duration = $form.find('input[name="duration"]');
+
+    		if($title.val() == "") 
+    		{
+    			$title.parent().parent().prepend($(	'<div class="input-error">\
+    											<span>Missing Title</span>\
+    			  							</div>'));
+
+    			console.log("Title Invalid");
+    		}
+    	},
+
+    	// -------------------------------------
 		_create: function() 
 		{
+
 			var self = this;
+			
+
+			if(this.options.validate)
+			{
+				this._validate(this.options.validate);	
+				return;
+			}
+
 			$.magnificPopup.open({
 	            tLoading: 'Loading some halp!...',
 	            closeOnContentClick: false,

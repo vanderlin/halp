@@ -31,7 +31,10 @@
 		// -------------------------------------
 		$('#init-create-task button[type="submit"]').click(function(e) {
 			e.preventDefault();
-			var $form = $('#init-create-task');
+			$('#init-create-task').createTask({
+				validate:$('#init-create-task')
+			});
+			return;
 			var data = {
 				title:$form.find('input[name="title"]').val(),
 				project:$form.find('input[name="project"]').val(),
