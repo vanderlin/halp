@@ -53,47 +53,8 @@ Route::get('testemail', function() {
 // ------------------------------------------------------------------------
 Route::group(array('prefix'=>'notifications'), function() {
 	
-	Route::get('/', function() {
-		return View::make('site.notifications.index', ['notifications'=>Notification::all()]);
-	});
-	
+	// send a notification
 	Route::any('send/{id}', ['uses'=>'NotificationsController@send']);
-	
-	Route::any('send', function() {
-
-		// first get all users that want to receive notifications
-		$users = User::where('notifications', '=', 1)->get();
-
-		// get all notifications that have not been sent out
-		$notifications = Notification::whereNull('sent_at')->get();
-		$results = [];
-		
-		$preview = Input::get('preview', false);
-		if($preview)
-		{
-			return View::make('emails.new-task', ['task'=>Task::first()]);
-		}
-
-
-		foreach ($notifications as $notice) {
-			
-			// New Task - send to all users that want to be notified
-			if($notice->event == Notification::NOTIFICATION_NEW_TASK)
-			{
-				foreach ($users as $user) {
-					$notice->sendEmailToUser($user);
-				}
-			}
-
-			// someone claimed your task
-			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
-				$notice->sendEmailToUser($notice->task->creator);
-			}
-		}
-		return  $results;
-		
-		return Redirect::back()->with(['notice'=>'Notifications Sent']);
-	});
 
 });
 

@@ -10,7 +10,7 @@
 				<button class="close-popup"><span>Close</span></button>
 			</div>
 		@else
-			<h2>Help {{$task->creator->getShortName()}} with {{ucfirst($task->title)}}</h2>
+			<h2>Help {{link_to($task->creator->getProfileURL(), $task->creator->getShortName())}} with {{ucfirst($task->title)}}</h2>
 			<hr>
 			<div class="task-message">
 				<p>

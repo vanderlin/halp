@@ -1,6 +1,6 @@
 <?php
 
-Entrust::routeNeedsRoleOrPermission( 'admin*', array('Admin', 'Editor', 'Writer', 'Reader'), [], Redirect::to('/') );
+Entrust::routeNeedsRoleOrPermission( 'admin*', array('Admin'), [], Redirect::to('/') );
 
 
 /*
@@ -15,8 +15,6 @@ Entrust::routeNeedsRoleOrPermission( 'admin*', array('Admin', 'Editor', 'Writer'
 */
 
 App::before(function($request) { });
-
-
 App::after(function($request, $response) { });
 
 /*
