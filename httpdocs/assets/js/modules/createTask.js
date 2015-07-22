@@ -184,7 +184,7 @@
 			var $form = $(this);
     		var $title = $form.find('input[name="title"]');
     		var $error = null;
-    		var maxChars = 2;					
+    		var maxChars = 20;					
 
 			$title.on('keyup', function(event) {
 
