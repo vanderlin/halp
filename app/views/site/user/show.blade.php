@@ -89,7 +89,7 @@
 			<h2>{{$user->totalCreated()}} Task{{$user->totalCreated()>1?'s':''}} Created!</h2>
 		</div>
 		@forelse ($user->createdTasks as $task)
-			@include('site.tasks.user-task-card', array('task' => $task))
+			@include('site.tasks.card', array('task' => $task, 'class'=>'user-created-card'))
 		@empty
 			<br/><h5>Go make some {{link_to('/', 'tasks')}}</h5>
 		@endforelse

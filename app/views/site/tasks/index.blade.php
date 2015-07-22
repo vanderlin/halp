@@ -62,7 +62,7 @@
 		
 	<section class="content" id="tasks-content">
 	@forelse ($tasks as $task)
-		@include('site.tasks.card', array('task' => $task, 'claimed'=>false))
+		@include('site.tasks.card', array('task' => $task))
 	@empty
 		<h3>No Tasks</h3>
 	@endforelse
@@ -79,7 +79,7 @@
 
 	<section class="content" id="claimed-tasks-content">
 	@forelse ($claimed_tasks as $task)
-		@include('site.tasks.card', array('task' => $task, 'claimed'=>true))
+		@include('site.tasks.card', array('task' => $task, 'claimed'=>true, 'show_button'=>false))
 	@empty
 		<h3>No Claimed Tasks</h3>
 	@endforelse

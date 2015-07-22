@@ -1,7 +1,7 @@
 
 .task {
 	width: 250px;
-	min-height: 337px;
+	height: 337px;
 	background-color: #fff;
 	text-align: center;
 	display: -moz-inline-stack;
@@ -119,11 +119,13 @@
   	padding: 10px 5px;
   	.sans-serif(12px, @grey);
 }
-
+.task.user-created-card {
+	height: 337px;
+}
 .claimed{
 	background-color: #F9F7F6;
 	background-image: url("@{img-path}diagonal-lines.png");
-	min-height: 253px;
+	height: 253px;
 }
 .claimed .project-name{
 	color: @grey;
