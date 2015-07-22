@@ -346,6 +346,16 @@ body .nomargin-bottom {
   	display: table;
 	background-color: #F9F7F6;
 	padding: 80px 0px;
+	hr{
+		color: #fff;
+	}
+	p{
+		color: @light-purple;
+	}
+	h5{
+		color: #fff;
+	}
+
 }
 
 .user-tasks {
@@ -483,7 +493,6 @@ body .nomargin-bottom {
 /* ------------------------------------- PROGRESS BAR ------------------------------------ */
 
 .task-ratio{
-	width: 80%;
 	margin: 0 auto;
 }
 
@@ -541,8 +550,10 @@ body .nomargin-bottom {
 	 border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
 	background-color: #fff;
-	position: relative;
-	overflow: hidden;
+ 	 position: absolute;
+  	overflow: hidden;
+  	top: 0;
+  	left: 0;
 }
 
 .slash{
@@ -569,6 +580,15 @@ body .nomargin-bottom {
 	}
 }
 
+@media screen and (max-width:1000px){
+	.tug-of-war{
+		width: 520px;
+	}
+	.meter{
+		width: 350px;
+	}
+}
+
 @media screen and (max-width: 900px) {
 	.footer{
 		height: 360px;
@@ -576,6 +596,15 @@ body .nomargin-bottom {
 }
 
 @media screen and (max-width: 650px) {
+	.tug-of-war img{
+		display: none;
+	}
+	.tug-of-war{
+		width: 300px;
+	}
+	.meter{
+		width: 230px;
+	}
 	.codrops-header h1 {
 		font-size: 2.8em;
 	}
