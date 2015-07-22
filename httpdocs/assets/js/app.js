@@ -86,42 +86,27 @@ var App = (function() {
     		});
     	});
 
+        // -------------------------------------
         $(document).on('click', '.halp-edit-button', function(e) {
-            alert("Still working on this...");
-            return;
-            e.preventDefault();
-            var $card = $('.task-card-'+$(this).data('id'));
-                $card.addClass('edit-card');
-            var self = this;    
-            var $taskdetails = $card.find('.task-details');
-            $taskdetails.fadeToggle(200, function() {
-                $(this).addClass('edit');   
-                
-                var $title = $card.find('.task-name');
-                var $project = $card.find('.project-name');
-                var $duration = $card.find('.duration');
-
-                var $input = $('\<div class="task-edit">\
-                    <input autocomplete="off" type="text" name="title" value="'+$title.data('value')+'">\
-                    <input autocomplete="off" type="text" name="duration" value="'+$project.data('value')+'">\
-                    <input autocomplete="off" type="text" name="project" value="'+$duration.data('value')+'">\
-                    <a href="#cancel" class="cancel-edit">Cancel</a>\
-                    <div>').insertAfter($taskdetails);
-
-                // change edit button
-                $(self).find('span').html('Save');
-                        
-                $input.hide();
-                $input.fadeIn(200);
-
-            });
-            
+            var id = $(this).data('id');
+            App.editTask(id);   
         });
-
+    
+        // -------------------------------------
         $(document).on('click', '.close-popup', function(e) {
             App.closeClaimPopup();
         });
+    
+        
+        $('input[name="project"]').autocomplete({
+            source: projects,
+            minLength: 0
+        })
+        .focus(function() {
+            $(this).autocomplete('search', $(this).val())
+        });
 
+        // -------------------------------------
         $(document).on('click', '#claim-task-form button', function(e) {
             e.preventDefault();
             var isEmail = $(this).attr('id')==='email-task';
@@ -140,7 +125,6 @@ var App = (function() {
                 console.log(e);
                 if(e.status == 200)
                 {
-                    
                     
                     $('.task-card-'+e.task.id).fadeOut(200, function() {
                        $(this).remove(); 
@@ -172,7 +156,90 @@ var App = (function() {
             });    
         })
 	}
-		
+	
+    // ------------------------------------------------------------------------
+    self.editTask = function(id)
+    {
+        var self = this;
+        $.magnificPopup.open({
+            tLoading: 'Loading your task!...',
+            closeOnContentClick: false,
+            closeOnBgClick:false,
+            mainClass: 'mfp-fade',
+            items: {
+                src: '/tasks/edit/'+id,
+                type: 'ajax',
+            },
+            callbacks: {
+                parseAjax: function(mfpResponse) {
+                    var task = mfpResponse.xhr.responseText;
+                    mfpResponse.data = $(mfpResponse.xhr.responseText);
+                },
+                ajaxContentAdded: function() {
+                    console.log(this.content[2]); 
+                    var $content = $(this.content[2]);
+                    
+                    $("#edit-task-datepicker").datepicker({showAnim:'slideDown'});
+                    $("#edit-task-datepicker").datepicker("setDate", new Date( $("#edit-task-datepicker").data('default-date') )); 
+                    $("#edit-task-title").on('keydown, keyup', function(event) {
+                        var v = $(this).val();
+                        if(v=="") {
+                            v = 'Untitled';
+                        }
+                        $('.edit-task-content h2 .task-title').html(v.trim());
+                    });
+                       
+                    
+                    $('#edit-task-project').autocomplete({
+                        source: projects,
+                        appendTo:$('#edit-task-project').parent(),
+                        minLength: 0
+                    })
+                    .focus(function() {
+                        $(this).autocomplete('search', $(this).val())
+                    });
+
+                    $('#edit-task-form').submit(function(e) {
+                        e.preventDefault();
+                        var $form = $(this);
+                        var url = $form.prop('action')+'?view=true';
+                        var type = $form.attr('method');
+                        var fd = new FormData($form[0]);    
+                        $.ajax({
+                            url: url,
+                            type: type,
+                            dataType: 'json',
+                            data: fd,
+                            processData: false,
+                            contentType: false,
+                        })
+                        .always(function(e) {
+                            console.log(e);
+
+                            $form.fadeOut(200, function() {
+                                $('.edit-task-content h2').html(e.notice);
+                                setTimeout(function() {
+                                    App.closeClaimPopup(function() {
+                                        var $card = $('.task-card-'+e.task.id);
+                                            $card.fadeTo(200, 0, function() {
+                                                var $view = $(e.view);
+                                                $(this).replaceWith($view);
+                                                $view.hide();
+                                                $view.addClass('task-focused');
+                                                $view.delay(200).fadeTo(200, 1);
+                                            });
+                                        App.scrollTo($card);
+                                    });
+                                }, 300);
+                            });
+                        });
+                                
+                    });
+
+                }
+            }
+        });        
+    }
 
     // ------------------------------------------------------------------------
 	self.scrollTo = function(target, speed, callback) {
@@ -216,10 +283,13 @@ var App = (function() {
     }
     
     // -------------------------------------
-    self.closeClaimPopup = function(id) 
+    self.closeClaimPopup = function(callback) 
     {
         $('.white-popup').fadeOut(200, function() {
-            $.magnificPopup.close();    
+            $.magnificPopup.close(); 
+            if(callback) {
+                callback();
+            }   
         })
     }
 

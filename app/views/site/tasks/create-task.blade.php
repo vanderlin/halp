@@ -48,14 +48,3 @@
 
 	<div class="error-container">@include('site.partials.form-errors')</div>
 </section>
-
-<script type="text/javascript">
-	var data = {{json_encode(Project\Project::all()->lists('title'))}}
-	$( 'input[name="project"]' ).autocomplete({
-		source: data,
-	 	minLength: 0
-	})
-	.focus(function() {
-    	$(this).autocomplete('search', $(this).val())
-	});;
-</script>

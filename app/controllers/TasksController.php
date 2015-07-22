@@ -26,6 +26,13 @@ class TasksController extends \BaseController {
 	}
 
 	// ------------------------------------------------------------------------
+	public function edit($id)
+	{
+		$task = $this->repository->get($id);
+		return View::make('site.tasks.edit-task-popup', ['task'=>$task]);
+	}
+
+	// ------------------------------------------------------------------------
 	public function create()
 	{
 		return View::make('site.tasks.create-task-popup', ['data'=>Input::all()]);

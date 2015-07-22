@@ -22,7 +22,9 @@
 
 <script src="{{bower('underscore/underscore-min.js')}}"></script>
 <script src="{{asset('assets/js/snap.svg-min.js')}}"></script>
-
+<script type="text/javascript">
+	var projects = {{json_encode(Project\Project::all()->lists('title'))}}
+</script>
 <!-- core scripts -->
 @include('site.layouts.core-scripts')
 <script src="{{asset('assets/js/app.js')}}"></script>

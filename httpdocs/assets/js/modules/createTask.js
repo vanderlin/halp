@@ -102,7 +102,7 @@
 			                },
 			                ajaxContentAdded: function() {
 			                    $(function() {
-		    						$( "#datepicker" ).datepicker();
+		    						$( "#datepicker" ).datepicker({showAnim:'slideDown'});
 		  						});  
 		  						self.$popup = $('.white-popup .popup-content');
 		  						self.$form = $('#create-task-form');

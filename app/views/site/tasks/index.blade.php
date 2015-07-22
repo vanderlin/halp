@@ -22,6 +22,9 @@
 		}
 		
 		@if(Auth::user()->isAdmin())
+		if(params.edit_task!==undefined) {
+			App.editTask(params.edit_task);
+		}
 		if(params.title!==undefined&&params.project!==undefined&&params.duration!==undefined)
 		{	
 			var $form = $('#init-create-task');
@@ -38,61 +41,6 @@
 		$('#init-create-task button[type="submit"]').click(function(e) {
 			e.preventDefault();
 			$('#init-create-task').validateTask();
-			
-			return;
-			var data = {
-				title:$form.find('input[name="title"]').val(),
-				project:$form.find('input[name="project"]').val(),
-				duration:$form.find('input[name="duration"]').val(),
-			};
-			$(this).createTask({
-				data:data
-			});
-			return;
-			
-			var url = $form.prop('action')+'?view=true';
-			var fd = new FormData($form[0]);    
-
-			
-			$.ajax({
-				url: url,
-				data: fd,
-  				processData: false,
-  				contentType: false,
-				type: 'POST',
-				dataType: 'json',
-			})
-			.always(function(e) {
-				if(e.status == 400)
-				{
-					var data = e.responseJSON;
-					var $errorcontainer = $form.find('.error-container');
-					$errorcontainer.html('');
-					var str = '<ul class="alert alert-error alert-danger">';
-					for(var i=0; i<data.errors.length; i++){
-						str += '<li>'+data.errors[i]+'</li>';
-					}
-					str += '</ul>';
-					var $message = $(str);
-					$message.hide().fadeIn(300).delay(3000).slideUp(200);
-					$errorcontainer.append($message);
-				}
-				else if(e.status == 200)
-				{
-					var $content = $('#tasks-content');
-					var $view = $(e.view);
-					$content.prepend($view);
-					$view.addClass('task-focused');
-					$view.hide().fadeIn(300);
-
-					$form.find('.input').removeClass('input--filled');
-					$form[0].reset();
-
-					var $delbtn = $view.find('.halp-delete-task-button');
-					App.addDeleteTaskEvent($delbtn);
-				}
-			});
-			
 		});	
 	});
 </script>

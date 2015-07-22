@@ -105,4 +105,7 @@ You should see `mcrypt support => enabled` in the output. You may need to alias 
 
 ## Testing *(For Admins only)*
 - **Auto fill the form**			
-<http://localhost:8888/?title={title-of-task}&project={project}&duration={how-long-will-it-taks}>
+<http://localhost:8888/?title={title-of-task}&project={project}&duration={how-long-will-it-taks}>       
+
+- **Launch a edit task**
+<http://localhost:8888/?edit_task={task_id}>

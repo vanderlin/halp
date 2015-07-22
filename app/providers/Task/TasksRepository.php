@@ -52,6 +52,21 @@ class TasksRepository  {
 		return $this->listener->statusResponse(['task'=>$task]);		
 	}
 
+	// ------------------------------------------------------------------------
+	public function update($id)
+	{
+		if(is_object($id)) {
+			$id = $id->id;
+		}
+		$task = Task::withTrashed()->whereId($id)->first();
+
+		$view = null;
+		if(Input::has('view')&&Input::get('view'))
+		{
+			$view = View::make('site.tasks.card', array('task' => $task, 'claimed'=>$task->isClaimed))->render();
+		}
+		return $this->listener->statusResponse(['notice'=>'Your Task is updated', 'task'=>$task, 'view'=>$view]);		
+	}
 
 	// ------------------------------------------------------------------------
 	public function claim($id) {
