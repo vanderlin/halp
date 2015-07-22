@@ -281,11 +281,6 @@
     			var $input = $(el);  
     			if($input.data().validator == null) {  			
 	    			
-	    			$input.validateInput();
-
-	    			$input.focusin(function(e) {
-	    				$(this).validateInput();
-					});
 					$input.focusout(function(e) {
 	    				$(this).validateInput();
 					});
