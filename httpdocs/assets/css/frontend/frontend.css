@@ -269,14 +269,14 @@
 }
 .ui-autocomplete .ui-state-focus {
   color: #fff;
-  background-color: #404d5b !important;
+  background-color: #1b1b25 !important;
 }
 .ui-autocomplete li:hover {
   color: #fff;
-  background: #404d5b;
+  background: #1b1b25;
 }
 .ui-autocomplete .ui-state-focus {
-  background-color: rgba(64, 77, 91, 0.5);
+  background-color: rgba(27, 27, 37, 0.5);
 }
 .ui-widget {
   font-family: 'Montserrat', sans-serif;
@@ -332,6 +332,10 @@
 }
 .ui-datepicker {
   width: 480px;
+}
+.ui-datepicker-current-day .ui-state-default,
+.ui-datepicker-current-day .ui-state-active {
+  background-color: #4fd2c2;
 }
 .ui-datepicker .ui-datepicker-header {
   position: relative;
