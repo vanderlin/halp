@@ -140,7 +140,6 @@
 .claimed-popup h2 {
   font-size: 32px;
   margin-bottom: 30px;
-  margin-top: 40px;
 }
 .claimed-popup .claimed-buttons {
   width: 100%;
@@ -167,7 +166,7 @@
 /* overlay at start */
 .mfp-fade.mfp-bg {
   opacity: 0;
-  transition: all 0.15s ease-out;
+  transition: all 0.2s ease-out;
 }
 /* overlay animate in */
 .mfp-fade.mfp-bg.mfp-ready {
@@ -180,7 +179,7 @@
 /* content at start */
 .mfp-fade.mfp-wrap .mfp-content {
   opacity: 0;
-  transition: all 0.15s ease-out;
+  transition: all 0.2s ease-out;
 }
 /* content animate it */
 .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
@@ -222,7 +221,7 @@
 .form-field textarea {
   border: 1px solid #ECECEC;
   width: 100%;
-  height: 200px;
+  height: 150px;
   background-color: #FAFAFA;
   padding: 20px;
   font-family: 'Merriweather', serif;
@@ -231,14 +230,20 @@
   color: #1b1b25;
   font-style: italic;
   resize: none;
+  line-height: 27px;
 }
 .form-field textarea:focus {
   outline: none;
 }
 .popup-content {
   display: table;
+<<<<<<< HEAD
   width: 100%;
   transition: height 0.3s ease-out;
+=======
+  transition: height 0.8s ease 1s;
+  width: 100%;
+>>>>>>> 84f48ecd43d0f9f6dc8aafa9ab60a58b26865a63
 }
 .popup-content .form-field {
   position: relative;
@@ -282,6 +287,7 @@
   letter-spacing: 1px;
   color: #404d5b;
   display: block;
+  border: 0;
 }
 @media screen and (max-width: 1390px) {
   .ui-autocomplete {
@@ -358,6 +364,9 @@
 }
 .ui-datepicker table {
   margin: 0 0 2px;
+}
+.ui-helper-hidden-accessible {
+  display: none;
 }
 .task {
   width: 250px;
@@ -988,8 +997,18 @@ hr {
   background-color: #E6E6E6;
   display: inline-block;
 }
-.ui-helper-hidden-accessible {
-  display: none;
+.halp-special-text {
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+  font-size: 19px;
+  color: #ffffff;
+  font-style: italic;
+  text-transform: lowercase;
+}
+.i-need {
+  line-height: 70px;
+  bottom: 1px;
+  position: relative;
 }
 /* ----------------------------------- TOP NAV ----------------------------------- */
 .nav {
@@ -1043,6 +1062,9 @@ hr {
 .bgcolor {
   background: #f9f7f6;
 }
+.bgcolor2 {
+  background: #404d5b;
+}
 body .nomargin-bottom {
   margin-bottom: 0;
 }
@@ -1050,6 +1072,7 @@ body .nomargin-bottom {
   position: relative;
   z-index: 1;
   display: inline-block;
+  vertical-align: top;
 }
 .input {
   position: relative;
@@ -1057,7 +1080,7 @@ body .nomargin-bottom {
   display: inline-block;
   margin: 1em;
   max-width: 350px;
-  width: calc(98%);
+  width: 350px;
   vertical-align: top;
 }
 .input__field {
@@ -1088,7 +1111,7 @@ body .nomargin-bottom {
   font-family: 'Merriweather', serif;
   font-weight: 500;
   font-size: 70.25%;
-  color: #d1d1d1;
+  color: #a2b7cd;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1143,7 +1166,7 @@ body .nomargin-bottom {
   transition-timing-function: ease-out;
 }
 .graphic--nao {
-  stroke: #DCDCDC;
+  stroke: #a2b7cd;
   pointer-events: none;
   transition: -webkit-transform 0.7s, stroke 0.7s;
   transition: transform 0.7s, stroke 0.7s;
@@ -1151,13 +1174,13 @@ body .nomargin-bottom {
 }
 .input__field--nao:focus + .input__label--nao,
 .input--filled .input__label--nao {
-  color: #1b1b25;
+  color: #fff;
   -webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
   transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
 }
 .input__field--nao:focus ~ .graphic--nao,
 .input--filled .graphic--nao {
-  stroke: #1b1b25;
+  stroke: #fff;
   -webkit-transform: translate3d(-66.6%, 0, 0);
   transform: translate3d(-66.6%, 0, 0);
 }
@@ -1167,7 +1190,7 @@ body .nomargin-bottom {
 }
 [placeholder]::-webkit-input-placeholder {
   opacity: 0;
-  color: #cccccc;
+  color: #1b1b25;
 }
 [placeholder]:focus::-webkit-input-placeholder {
   opacity: 1;
@@ -1252,6 +1275,67 @@ body .nomargin-bottom {
 .footer-info h5:hover {
   color: #4fd2c2;
 }
+.notifications-setting-form button[type="submit"] {
+  border: none;
+  background-color: transparent;
+}
+.small.progress-button .halp-edit-button {
+  border-color: #1b1b25;
+  color: #1b1b25;
+}
+.progress-button .halp-edit-button:hover {
+  background-color: #1b1b25;
+  color: white;
+}
+.edit-card .task-details.edit {
+  display: none;
+}
+.edit-card .task-edit {
+  padding: 25px;
+}
+.edit-card input[type=text] {
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  font-family: 'Montserrat', sans-serif;
+  color: #404d5b;
+  margin-bottom: 10px;
+}
+.edit-card .cancel-edit {
+  margin-top: 10px;
+  font-size: 12px;
+  display: table;
+  text-align: center;
+  width: 100%;
+}
+.input-error {
+  position: absolute;
+  background: #1b1b25;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: white;
+  margin-top: -8px;
+  left: 42%;
+  padding: 12px;
+  border-radius: 20px;
+}
+.input-error:after {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #1b1b25;
+  border-width: 10px;
+  margin-left: -10px;
+}
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 @media screen and (max-width: 1390px) {
   .input__label {
@@ -1263,6 +1347,10 @@ body .nomargin-bottom {
   .input {
     max-width: 246px;
     margin: 0.5em;
+  }
+  .input-error {
+    margin-top: -2px;
+    left: 38%;
   }
 }
 @media screen and (max-width: 900px) {
@@ -1328,6 +1416,7 @@ body .nomargin-bottom {
     font-size: 22px;
     margin-bottom: 0px;
     line-height: 36px;
+    margin-top: 0px;
   }
   p {
     font-size: 14px;
@@ -1335,6 +1424,7 @@ body .nomargin-bottom {
   }
   .small.progress-button {
     margin-top: 10px;
+    margin-bottom: 0px;
   }
   .small.progress-button button {
     margin-top: 15px;
@@ -1392,61 +1482,4 @@ body .nomargin-bottom {
   .form-field input {
     width: 280px;
   }
-}
-.notifications-setting-form button[type="submit"] {
-  border: none;
-  background-color: transparent;
-}
-.small.progress-button .halp-edit-button {
-  border-color: #1b1b25;
-  color: #1b1b25;
-}
-.progress-button .halp-edit-button:hover {
-  background-color: #1b1b25;
-  color: white;
-}
-.edit-card .task-details.edit {
-  display: none;
-}
-.edit-card .task-edit {
-  padding: 25px;
-}
-.edit-card input[type=text] {
-  padding: 10px;
-  border: none;
-  border-bottom: 1px solid #cccccc;
-  font-family: 'Montserrat', sans-serif;
-  color: #404d5b;
-  margin-bottom: 10px;
-}
-.edit-card .cancel-edit {
-  margin-top: 10px;
-  font-size: 12px;
-  display: table;
-  text-align: center;
-  width: 100%;
-}
-.input-error {
-  position: absolute;
-  background: #404d5b;
-  color: red;
-  font-size: 20px;
-  margin-top: 10px;
-  font-family: 'Montserrat', sans-serif;
-  left: 20%;
-  padding: 10px;
-}
-.input-error:after {
-  bottom: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba(136, 183, 213, 0);
-  border-bottom-color: #404d5b;
-  border-width: 10px;
-  margin-left: -10px;
 }

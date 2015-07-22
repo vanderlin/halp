@@ -108,10 +108,16 @@ hr{
   	background-color: #E6E6E6;
   	display: inline-block;
 }
-.ui-helper-hidden-accessible{
-	display: none;
-}
 
+.halp-special-text{
+	.serif(19px, 400, italic, #fff);
+	text-transform: lowercase;
+}
+.i-need{
+	line-height: 70px;
+	bottom: 1px;
+    position: relative;
+}
 
 /* ----------------------------------- TOP NAV ----------------------------------- */
 
@@ -165,6 +171,7 @@ hr{
 }
 
 .bgcolor { background: #f9f7f6; }
+.bgcolor2 { background: @purple; }
 
 body .nomargin-bottom {
 	margin-bottom: 0;
@@ -173,7 +180,8 @@ body .nomargin-bottom {
 .input-group {
 	position: relative;
 	z-index: 1;
-	display: inline-block;	
+	display: inline-block;
+	vertical-align: top;
 }
 .input {
 	position: relative;
@@ -181,7 +189,7 @@ body .nomargin-bottom {
 	display: inline-block;
 	margin: 1em;
 	max-width: 350px;
-	width: calc(100% - 2em);
+	width: 350px;
 	vertical-align: top;
 }
 
@@ -207,7 +215,7 @@ body .nomargin-bottom {
 	float: right;
 	padding: 0 1em;
 	width: 40%;
-	.serif(70.25%, 500, normal, #D1D1D1);
+	.serif(70.25%, 500, normal, @light-purple);
 	-webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	-webkit-touch-callout: none;
@@ -269,7 +277,7 @@ body .nomargin-bottom {
 }
 
 .graphic--nao {
-	stroke: #DCDCDC;
+	stroke: @light-purple;
 	pointer-events: none;
 	-webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
 	transition: transform 0.7s, stroke 0.7s;
@@ -279,14 +287,14 @@ body .nomargin-bottom {
 
 .input__field--nao:focus + .input__label--nao,
 .input--filled .input__label--nao {
-	color: @dark-purple;
+	color: #fff;
 	-webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
 	transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
 }
 
 .input__field--nao:focus ~ .graphic--nao,
 .input--filled .graphic--nao {
-	stroke: @dark-purple;
+	stroke: #fff;
 	-webkit-transform: translate3d(-66.6%, 0, 0);
 	transform: translate3d(-66.6%, 0, 0);
 }
@@ -298,7 +306,7 @@ body .nomargin-bottom {
 
 [placeholder]::-webkit-input-placeholder {
   opacity: 0;
-  color: @grey;
+  color: @dark-purple;
 }
 
 [placeholder]:focus::-webkit-input-placeholder {
@@ -400,6 +408,70 @@ body .nomargin-bottom {
 	color: @mint;
 }
 
+// ------------------------------------------------------------------------
+
+.notifications-setting-form {
+	button[type="submit"] {
+		border: none;
+  		background-color: transparent;
+	}	
+}
+.small.progress-button .halp-edit-button {
+	border-color: @dark-purple;
+	color:@dark-purple;
+}
+.progress-button .halp-edit-button:hover {
+	background-color: @dark-purple;
+	color:white;	
+}
+.edit-card {
+	.task-details.edit {
+		display: none;
+	}
+	.task-edit {
+		padding: 25px;
+	}
+	input[type=text] {
+		padding: 10px;
+		border:none;
+		border-bottom:1px solid @grey;
+		font-family: 'Montserrat', sans-serif;
+		color: @purple;
+		margin-bottom: 10px;
+	}
+	.cancel-edit {
+		margin-top: 10px;
+		font-size: 12px;
+		display: table;
+		text-align: center;
+		width: 100%;
+	}	
+}
+
+.input-error {
+	position: absolute;
+	background: @dark-purple;
+	.sans-serif(13px, white);
+  	margin-top: -8px;
+	left: 42%;
+	padding: 12px;
+  	border-radius: 20px;
+}
+.input-error:after {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: @dark-purple;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
 
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 
@@ -413,6 +485,10 @@ body .nomargin-bottom {
 	.input{
 		max-width: 246px;
 		margin: 0.5em;
+	}
+	.input-error{
+		margin-top: -2px;
+		left: 38%;
 	}
 }
 
@@ -480,6 +556,7 @@ body .nomargin-bottom {
   		font-size: 22px;
   		margin-bottom: 0px;
   		line-height: 36px;
+  		margin-top: 0px;
 	}
 	p{
 		font-size: 14px;
@@ -487,6 +564,7 @@ body .nomargin-bottom {
 	}
 	.small.progress-button{
 		margin-top: 10px;
+		margin-bottom: 0px;
 	}
 	.small.progress-button button{
 		margin-top: 15px;
@@ -546,66 +624,3 @@ body .nomargin-bottom {
 
 }
 
-// ------------------------------------------------------------------------
-.notifications-setting-form {
-	button[type="submit"] {
-		border: none;
-  		background-color: transparent;
-	}	
-}
-.small.progress-button .halp-edit-button {
-	border-color: @dark-purple;
-	color:@dark-purple;
-}
-.progress-button .halp-edit-button:hover {
-	background-color: @dark-purple;
-	color:white;	
-}
-.edit-card {
-	.task-details.edit {
-		display: none;
-	}
-	.task-edit {
-		padding: 25px;
-	}
-	input[type=text] {
-		padding: 10px;
-		border:none;
-		border-bottom:1px solid @grey;
-		font-family: 'Montserrat', sans-serif;
-		color: @purple;
-		margin-bottom: 10px;
-	}
-	.cancel-edit {
-		margin-top: 10px;
-		font-size: 12px;
-		display: table;
-		text-align: center;
-		width: 100%;
-	}	
-}
-
-.input-error {
-	position: absolute;
-	background: @purple;
-	color: red;
-  	font-size: 20px;
-  	margin-top: 10px;
-	font-family: 'Montserrat', sans-serif;
-	left: 20%;
-	padding: 10px;
-}
-.input-error:after {
-	bottom: 100%;
-	left: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-color: rgba(136, 183, 213, 0);
-	border-bottom-color: @purple;
-	border-width: 10px;
-	margin-left: -10px;
-}
