@@ -45,7 +45,7 @@
 								</div>');
 
 				var $parent = $input.data('parent') ? $($input.data('parent')) : $input.parent();
-				
+								
 
 				$parent.append($error);
 
@@ -54,6 +54,7 @@
 					$error.data('parent', $($input.data('parent')));
 				}
 
+				$input.addClass('has-error');
 				$error.data('target', $input);
 				setTimeout(function() {
 					self._positionError($error);
@@ -88,6 +89,7 @@
 		{
 			if($input.data().$error)
 			{
+				$input.removeClass('has-error');
 				$input.data().$error.fadeOut(200, function() {
 					$(this).remove();
 					$input.data('$error', null);
