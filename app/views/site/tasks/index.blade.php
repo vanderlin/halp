@@ -56,9 +56,6 @@
 
 @section('content')
 	
-	<div id="task-claim-popup" class="white-popup mfp-hide">
-	</div>
-
 	@if (Auth::check() && isset($tasks))
 		@include('site.tasks.create-task')
 	@endif

@@ -219,23 +219,18 @@ var App = (function() {
                             })
                             .always(function(e) {
                                 console.log(e);
-
-                                $form.fadeOut(200, function() {
-                                    $('.edit-task-content h2').html(e.notice);
-                                    setTimeout(function() {
-                                        App.closeClaimPopup(function() {
-                                            var $card = $('.task-card-'+e.task.id);
-                                                $card.fadeTo(200, 0, function() {
-                                                    var $view = $(e.view);
-                                                    $(this).replaceWith($view);
-                                                    $view.hide();
-                                                    $view.addClass('task-focused');
-                                                    $view.delay(200).fadeTo(200, 1);
-                                                });
-                                            App.scrollTo($card);
+                                $(this).popupResponse(e, function() {
+                                    var $card = $('.task-card-'+e.task.id);
+                                    App.scrollTo($card, 500, function() {
+                                        $card.fadeTo(200, 0, function() {
+                                            var $view = $(e.view);
+                                            $(this).replaceWith($view);
+                                            $view.hide();
+                                            $view.addClass('task-focused');
+                                            $view.delay(200).fadeTo(200, 1);
                                         });
-                                    }, 300);
-                                });
+                                    });
+                                })
                             });
                         }
                         else
@@ -293,9 +288,10 @@ var App = (function() {
     }
     
     // -------------------------------------
-    self.closeClaimPopup = function(callback) 
+    self.closePopup = function(callback) 
     {
-        $('.white-popup').fadeOut(200, function() {
+        $('.mfp-bg').fadeOut(200);
+        $('.mfp-container').fadeOut(200, function() {
             $.magnificPopup.close(); 
             if(callback) {
                 callback();

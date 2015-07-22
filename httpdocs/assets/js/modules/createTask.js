@@ -108,6 +108,28 @@
 
 	$.fn.extend({
 		
+		// ------------------------------------------------------------------------
+		popupResponse: function(e, callback, delay)
+		{
+			$('.popup-content').fadeTo(200, 0, function() {
+                
+
+
+                $('.white-popup').first().animate({height:200}, 500, function() {
+                	var $notice = $('<h2>'+e.notice+'</h2>');
+                    $('.popup-content').html($notice);
+
+                    $('.popup-content').fadeTo(300, 1, function() {
+                    	setTimeout(function() {
+                    		App.closePopup(callback);
+                    	}, delay||1000);
+                    });
+                });
+                
+
+            });
+		},
+
 
 		// ------------------------------------------------------------------------
 		openCreateTaskPopup: function(options) {
