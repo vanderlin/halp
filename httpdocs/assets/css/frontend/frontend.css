@@ -1378,26 +1378,35 @@ body .nomargin-bottom {
   letter-spacing: 1px;
   color: #ffffff;
   line-height: 37px;
+  padding-top: 22px;
 }
 .tug-of-war {
-  height: 110px;
+  height: 59px;
+  width: 840px;
+  margin: 0 auto;
 }
 .tug-of-war-turtle {
   float: left;
   position: relative;
-  bottom: 34px;
-  left: 21px;
+  bottom: 54px;
+  left: 25px;
+  z-index: 200;
+}
+.tug-of-war-skunk {
+  float: right;
+  position: relative;
+  bottom: 67px;
+  left: 20px;
   z-index: 200;
 }
 .meter {
-  height: 10px;
+  height: 5px;
   position: relative;
-  margin: 20px 0;
-  background: #292E39;
+  margin: 30px auto;
+  background: #404d5b;
   border-radius: 25px;
   padding: 0px;
-  width: 500px;
-  float: left;
+  width: 680px;
 }
 .meter > span {
   display: block;
@@ -1414,9 +1423,12 @@ body .nomargin-bottom {
   -moz-border-radius-bottomleft: 20px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  background-color: #404d5b;
+  background-color: #fff;
   position: relative;
   overflow: hidden;
+}
+.slash {
+  color: #33394A;
 }
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 @media screen and (max-width: 1390px) {

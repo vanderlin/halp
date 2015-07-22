@@ -63,10 +63,12 @@
 
 	<section class="task-ratio">
 		<p class="progress-title">Tasks Completed vs. Tasks Created</p>
+		<h4>{{$user->totalClaimed()}} Claimed <span class="slash">/</span> {{$user->totalCreated()}} Created</h4>
 		<div class="tug-of-war">
 			<img src="{{asset('assets/img/progress-turtle.svg')}}" class="tug-of-war-turtle">
-			<div class="meter">
-				<span style="width: 25%"></span>
+			<img src="{{asset('assets/img/progress-skunk.svg')}}" class="tug-of-war-skunk">
+			<div class="meter"> 
+				<span style="width: 25%"></span> <!-- Todd, insert percentage here! -->
 			</div>
 		</div>
 	</section>
