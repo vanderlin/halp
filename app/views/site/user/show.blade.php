@@ -62,8 +62,12 @@
 	</section>
 
 	<section class="task-ratio">
-		<div class="meter">
-			<span style="width: 25%"></span>
+		<p class="progress-title">Tasks Completed vs. Tasks Created</p>
+		<div class="tug-of-war">
+			<img src="{{asset('assets/img/progress-turtle.svg')}}" class="tug-of-war-turtle">
+			<div class="meter">
+				<span style="width: 25%"></span>
+			</div>
 		</div>
 	</section>
 
