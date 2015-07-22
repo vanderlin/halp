@@ -30,9 +30,9 @@
 
 @section('content')
 		
-	<section class="hero">
+	<section class="hero bgcolor2">
 		@if (Auth::check() && Auth::id() == $user->id)
-			<h3>{{$user->getName()}}</h3>
+			<h3 class="light-h3">{{$user->getName()}}</h3>
 			@if($user->hasRole('Admin'))
 				<small>{{link_to('admin', 'Admin')}}</small>
 			@endif
@@ -44,12 +44,10 @@
 			{{Form::close()}}
 			<h5 class="notifications-message">{{$user->notifications?'E-mails Are Enabled':'E-mails Are Disabled'}}</h5>
 		@else
-			<div class="user-image-most-helpful">
-				<a href="{{$user->getProfileURL()}}">
-					<img src="{{$user->profileImage->url('s280')}}">
-				</a>
+			<div class="user-overview">
+				<img src="{{$user->profileImage->url('s280')}}">
 			</div>
-			<h3>{{$user->getName()}}</h3>
+			<h3 class="light-h3">{{$user->getName()}}</h3>
 		@endif
 	</section>
 
