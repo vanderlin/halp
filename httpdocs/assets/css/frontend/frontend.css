@@ -1253,6 +1253,13 @@ body .nomargin-bottom {
   font-style: normal;
   opacity: 1;
 }
+.user-overview img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 13px solid #1b1b25;
+}
 /* ------------------------------------- LEADERBOARD  ------------------------------------ */
 .user-image-most-helpful img:hover {
   border-color: white;
@@ -1265,7 +1272,6 @@ body .nomargin-bottom {
   border: 13px solid #1b1b25;
   margin: 40px 0px 10px 0px;
   transition: border .4s;
-  z-index: 2;
 }
 .bird-left {
   position: relative;
@@ -1500,5 +1506,11 @@ body .nomargin-bottom {
   }
   .form-field input {
     width: 280px;
+  }
+  .bird-left {
+    display: none;
+  }
+  .bird-right {
+    display: none;
   }
 }
