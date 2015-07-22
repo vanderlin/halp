@@ -15,14 +15,14 @@
 	}
 	.ui-state-focus{
 		color:#fff;
-		background-color: @purple !important;	
+		background-color: @dark-purple !important;	
 	}
 	li:hover {
 		color:#fff;
-		background: @purple;
+		background: @dark-purple;
 	}
 	.ui-state-focus {
-		background-color: fade(@purple, 50%);
+		background-color: fade(@dark-purple, 50%);
 	}
 }
 
@@ -85,6 +85,13 @@
 
 .ui-datepicker{
 	width: 480px;
+}
+
+.ui-datepicker-current-day {
+	.ui-state-default, .ui-state-active{
+		background-color: @mint;
+	}
+	
 }
 
 .ui-datepicker .ui-datepicker-header{
