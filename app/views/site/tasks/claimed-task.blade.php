@@ -1,4 +1,4 @@
-<div class="task claimed-task">
+<div class="task claimed-task task-card-{{$task->id}}">
 	<div class="task-details">
 		<span class="task-name">{{$task->title}}</span>
 		<hr>

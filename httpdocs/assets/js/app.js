@@ -97,8 +97,33 @@ var App = (function() {
         $(document).on('click', '.close-popup', function(e) {
             App.closeClaimPopup();
         });
-    
         
+        // -------------------------------------
+        $(".return-task form").submit(function(e) {
+            e.preventDefault();
+            var c = confirm("Are you sure you want to return this task?");
+            if(c)
+            {
+                var $form = $(this); 
+                var fd = new FormData($form[0]);               
+                $.ajax({
+                    url: $form.attr('action'),
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    dataType: 'json',
+                })
+                .always(function(e) {
+                    console.log(e);
+                    var $card = $('.task-card-'+e.task.id);
+                        $card.fadeTo(200, 0, function() {
+                            $(this).remove();
+                        })       
+                });
+            }
+        });
+        // -------------------------------------
         $('input[name="project"]').autocomplete({
             source: projects,
             minLength: 0

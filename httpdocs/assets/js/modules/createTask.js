@@ -165,46 +165,25 @@
 		    	},
 
 		    	// -------------------------------------
-		    	_showSuccessMessage: function(e)
-		    	{
-		    		var self = this;
-		    		this.$form.find('.create-task-buttons').fadeOut(200);
-	    			var $h2 = this.$form.find('h2');
-	    			self.$form.find('.form-field').fadeOut(300);
-	
-	    			$h2.html(e.notice);
-	    			self.$popup.css({height: 100});		
-		    			
-	    			setTimeout(function() {
-						App.closeClaimPopup();
-    					self._addViewToPage(e);
-	    			}, 1000);
-
-
-	    		
-		    		
-		    	},
-
-		    	// -------------------------------------
-		    	_addViewToPage: function(e)
-		    	{
-		    		console.log('_addViewToPage');
-					var $content = $('#tasks-content');
-					var $view = $(e.view);
-					$content.prepend($view);
-					$view.addClass('task-focused');
-					$view.hide().fadeIn(300);
-
-					var $delbtn = $view.find('.halp-delete-task-button');
-					App.addDeleteTaskEvent($delbtn);
-		    	},
-
-		    	// -------------------------------------
 		    	_showTaskCreated: function(e)
 		    	{
-		    		
-		    		this._showSuccessMessage(e);
-					
+		    		$(this).popupResponse(e, {
+                        callback:function() {
+                            App.scrollTo($('#tasks-content'), 500, function() {
+                                var $view = $(e.view);
+                                $('#tasks-content').prepend($view);
+                                $view.hide();
+                                $view.addClass('task-focused');
+                                $view.delay(200).fadeTo(500, 1);
+                                
+                                var $delbtn = $view.find('.halp-delete-task-button');
+								App.addDeleteTaskEvent($delbtn);
+
+                            });
+                        }
+                        
+                    })
+				
 					this.$form.find('.input').removeClass('input--filled');
 					this.$form[0].reset();
 
