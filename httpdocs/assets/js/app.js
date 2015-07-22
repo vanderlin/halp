@@ -89,6 +89,7 @@ var App = (function() {
         // -------------------------------------
         $(document).on('click', '.halp-edit-button', function(e) {
             var id = $(this).data('id');
+            console.log("Edit button task", id);
             App.editTask(id);   
         });
     
@@ -290,9 +291,9 @@ var App = (function() {
     // -------------------------------------
     self.closePopup = function(callback) 
     {
-        $('.mfp-bg').fadeOut(200);
-        $('.mfp-container').fadeOut(200, function() {
-            $.magnificPopup.close(); 
+        
+        $('.white-popup').fadeOut(200, function() {
+            $.magnificPopup.close();    
             if(callback) {
                 callback();
             }   
