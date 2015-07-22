@@ -2,6 +2,8 @@
 (function($) {
 
 	var TaskValidator = {
+		
+		maxTitleChars:20,
 
 		// -------------------------------------
 		_setErrorMessage: function($error, message)
@@ -184,7 +186,7 @@
 			var $form = $(this);
     		var $title = $form.find('input[name="title"]');
     		var $error = null;
-    		var maxChars = 20;					
+    		var maxChars = TaskValidator.maxTitleChars;					
 
 			$title.on('keyup', function(event) {
 
@@ -236,6 +238,11 @@
 		    		if($title.val() == "") 
 		    		{
 		    			TaskValidator._addErrorToInput($title);
+		    			isValid = false;
+		    		}
+		    		else if($title.val().length > TaskValidator.maxTitleChars) 
+		    		{
+		    			TaskValidator._addErrorToInput($title, "Too Many Letters +"+($title.val().length-TaskValidator.maxTitleChars));
 		    			isValid = false;
 		    		}
 		    		if($project.val() == "") 
