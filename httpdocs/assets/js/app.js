@@ -236,6 +236,8 @@ var App = (function() {
                                 
                     });
 
+                    $('#edit-task-form').addValidationListener();
+
                 }
             }
         });        

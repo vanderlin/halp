@@ -3,41 +3,55 @@
 
 	var TaskValidator = {
 		
-		maxTitleChars:20,
+		maxTitleChars:2,
 
 		// -------------------------------------
 		_setErrorMessage: function($error, message)
 		{
 			$error.find('span').html(message);
-			var pw = $error.parent().find('input').width();
+			this._positionError($error);
+		},
+
+		// -------------------------------------
+		_positionError: function($error)
+		{
+			
+			var $target = $error.data().target || $error.parent();
+			var pw = $target.width();
 			var ew = $error.width();
 			var cx = (pw-ew)/2;
-			$error.css('left', cx);
+			$error.css({
+				'top':0,
+				'left':cx,
+			});
 
 		},
 
 		// -------------------------------------
 		_addErrorToInput: function($input, message)
 		{	
+			var self = this;
 			var id = "input-error-"+$input.attr('name');
 			if($("."+id).length == 0) {
 				var message = message || ($input.data('error-message') || "Input Error");
 				var $error = $(	'<div class="input-error '+id+'">\
 									<span>'+message+'</span>\
 								</div>');
-				var $parent = $input.parent().parent();
+
+				var $parent = $($input.data('parent')) || $input.parent();
+				
 				$parent.append($error);
+
+				if($input.data('parent')!==undefined)
+				{
+					$error.data('parent', $($input.data('parent')));
+				}
+				$error.data('target', $input);
 				$error.hide().fadeIn(200);
 
-				var pw = $input.width();
-				var ew = $error.width();
-				var cx = (pw-ew)/2;
-				$error.css('left', cx);
+				this._positionError($error);
 				$(window).resize(function(event) {
-					var pw = $input.width();
-					var ew = $error.width();
-					var cx = (pw-ew)/2;
-					$error.css('left', cx);
+					self._positionError($error);
 				});		
 				
 			}
