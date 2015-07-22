@@ -1362,6 +1362,86 @@ body .nomargin-bottom {
   text-align: center;
   width: 100%;
 }
+/* ------------------------------------- PROGRESS BAR ------------------------------------ */
+.meter {
+  height: 50px;
+  /* Can be anything */
+  position: relative;
+  margin: 60px 0 20px 0;
+  /* Just for demo spacing */
+  background: #555;
+  border-radius: 25px;
+  padding: 10px;
+}
+.meter > span {
+  display: block;
+  height: 100%;
+  -webkit-border-top-right-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -moz-border-radius-bottomright: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #2bc253;
+  position: relative;
+  overflow: hidden;
+}
+.meter > span:after,
+.animate > span > span {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  -webkit-background-size: 50px 50px;
+  -moz-background-size: 50px 50px;
+  -webkit-animation: move 2s linear infinite;
+  -webkit-border-top-right-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -moz-border-radius-bottomright: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+.animate > span:after {
+  display: none;
+}
+@-webkit-keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+.orange > span {
+  background-color: #f1a165;
+  background-image: -webkit-linear-gradient(#f1a165, #f36d0a);
+}
+.red > span {
+  background-color: #f0a3a3;
+  background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
+}
+.nostripes > span > span,
+.nostripes > span:after {
+  -webkit-animation: none;
+  background-image: none;
+}
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 @media screen and (max-width: 1390px) {
   .input__label {
