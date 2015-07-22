@@ -7,7 +7,8 @@ return array(
 	'site_password'			 =>'ideobos',
 	'carousel' 				 => array('interval'=>5000),		
 	'api_base'			     => 'http://halp.ideo.com/api',
-
+	'max_title'				 => 2,
+	
 	'google' => array(
 	    'oauth_options'      => array('access_type'=>'offline', 'display'=>'popup'),
 	    'oauth_local_path'   => 'assets/google/client_secret_386187553837-0jfjomr9dh4lfcp9gu6t0m6trhnu75st.apps.googleusercontent.com.json',

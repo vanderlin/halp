@@ -176,7 +176,7 @@ var App = (function() {
                     mfpResponse.data = $(mfpResponse.xhr.responseText);
                 },
                 ajaxContentAdded: function() {
-                    console.log(this.content[2]); 
+                    // console.log(this.content[2]); 
                     var $content = $(this.content[2]);
                     
                     $("#edit-task-datepicker").datepicker({showAnim:'slideDown'});
@@ -235,7 +235,7 @@ var App = (function() {
                         });
                                 
                     });
-
+                
                     $('#edit-task-form').addValidationListener();
 
                 }

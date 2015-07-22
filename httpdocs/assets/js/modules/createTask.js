@@ -15,16 +15,23 @@
 		// -------------------------------------
 		_positionError: function($error)
 		{
-			
+			var $parent = $error.parent();
 			var $target = $error.data().target || $error.parent();
 			var pw = $target.width();
 			var ew = $error.width();
 			var cx = (pw-ew)/2;
 			$error.css({
-				'top':0,
-				'left':cx,
+				'top':$parent.height(),
+				'left':($parent.outerWidth()-$error.outerWidth())/2,
 			});
 
+			console.log($error.data());
+
+			/*
+			$parent.css('border', '1px solid red');
+			$target.css('border', '1px solid red');
+			$error.css('border', '1px solid red');
+			*/
 		},
 
 		// -------------------------------------
@@ -32,22 +39,31 @@
 		{	
 			var self = this;
 			var id = "input-error-"+$input.attr('name');
-			if($("."+id).length == 0) {
+			var $error = $("."+id);
+			if($error.length == 0) {
+
 				var message = message || ($input.data('error-message') || "Input Error");
-				var $error = $(	'<div class="input-error '+id+'">\
+					$error = $(	'<div class="input-error '+id+'">\
 									<span>'+message+'</span>\
 								</div>');
 
-				var $parent = $($input.data('parent')) || $input.parent();
+				var $parent = $input.data('parent') ? $($input.data('parent')) : $input.parent();
 				
+				console.log("parent", $parent);
+
 				$parent.append($error);
 
 				if($input.data('parent')!==undefined)
 				{
 					$error.data('parent', $($input.data('parent')));
 				}
+
 				$error.data('target', $input);
-				$error.hide().fadeIn(200);
+				setTimeout(function() {
+					self._positionError($error);
+				}, 20);
+				$error.hide().fadeIn(200, function() {
+				});
 
 				this._positionError($error);
 				$(window).resize(function(event) {
@@ -55,13 +71,15 @@
 				});		
 				
 			}
-			return $("."+id);
+			console.log($error);
+			return $error;
 		},
 
 		// -------------------------------------
 		_addEventsToInput: function($input)
 		{
 			$input.focusin(function(e) {
+				console.log(e);
 				$(this).parent().parent().find('.input-error').fadeOut(200, function() {
 					$(this).remove();
 				});
@@ -70,6 +88,10 @@
 
 
 	}
+
+
+
+
 
 	$.fn.extend({
 		
@@ -196,12 +218,50 @@
 
 		// ------------------------------------------------------------------------
 		addValidationListener: function(options) {
-			
-			var $form = $(this);
+			console.log('addValidationListener', $(this).attr('id'));
+			var $form  = $(this);
     		var $title = $form.find('input[name="title"]');
     		var $error = null;
-    		var maxChars = TaskValidator.maxTitleChars;					
+    		var maxChars = TaskValidator.maxTitleChars;	
+    		
+    		$form.find('input').each(function(index, el) {
+    			
+    			var $input = $(el);
+    			var maxChars = $input.data('max');
+    			
 
+    			// check if the value is longer than the max
+    			if(maxChars !== undefined)
+    			{
+    				var len = $input.val().length;
+    				if(len > maxChars && $input.data().$error == null) {
+    					var $error = TaskValidator._addErrorToInput($input, "Too many letters +"+(len-maxChars));
+    					$input.data('$error', $error);
+
+    				}
+    			}
+    		
+    		});
+
+    		return;
+
+    		$title.focusin(function(e) {
+    			var length = $(this).val().length;
+				
+				if (length > maxChars && $error==null) {		
+					$error = TaskValidator._addErrorToInput($title, "Too many letters +"+overChar);
+				}
+				if (length > maxChars && $error) {		
+					var overChar = (length-maxChars);
+					TaskValidator._setErrorMessage($error, "Too many letters +"+overChar);
+				}
+				else if($error && length <= maxChars) {
+					$error.fadeOut(200, function() {
+						$error.remove();
+						$error = null;
+					});
+				}
+    		});
 			$title.on('keyup', function(event) {
 
 				var length = $(this).val().length;

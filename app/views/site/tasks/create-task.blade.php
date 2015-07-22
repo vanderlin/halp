@@ -2,7 +2,7 @@
 	
 	<div class="input-group" id="input-group-title">
 		<span class="input input--nao">
-			<input data-error-message="Derp!" data-parent="#input-group-title" class="input__field input__field--nao" type="text" id="task-title" placeholder="ex: proofreading" autocomplete="off" name="title" value="{{Input::old('title')}}"/>
+			<input data-max="{{Config::get('config.max_title')}}" data-error-message="Derp!" data-parent="#input-group-title" class="input__field input__field--nao" type="text" id="task-title" placeholder="ex: proofreading" autocomplete="off" name="title" value="{{Input::old('title')}}"/>
 			<label class="input__label input__label--nao" for="task-title">
 				<span class="input__label-content input__label-content--nao">I need a hand with:</span>
 			</label>

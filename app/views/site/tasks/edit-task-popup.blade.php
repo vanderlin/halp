@@ -10,8 +10,8 @@
 				
 				<div class="form-field">
 					<label>Name of task</label>
-					<input type="text" autocomplete="off" name="title" id="edit-task-title" value="{{$task->title}}">
-				</div>
+					<input type="text" data-max="{{Config::get('config.max_title')}}" autocomplete="off" name="title" id="edit-task-title" value="{{$task->title}}">
+				</div> 
 
 				<div class="form-field">
 					<label>Project</label>

@@ -752,6 +752,33 @@
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
+.input-error {
+  position: absolute;
+  z-index: 1000;
+  background: #1b1b25;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: white;
+  padding: 12px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+.input-error:after {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #1b1b25;
+  border-width: 10px;
+  margin-left: -10px;
+}
 /** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
 html,
 body,
@@ -1334,31 +1361,6 @@ body .nomargin-bottom {
   display: table;
   text-align: center;
   width: 100%;
-}
-.input-error {
-  position: absolute;
-  background: #1b1b25;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: white;
-  padding: 12px;
-  border-radius: 20px;
-}
-.input-error:after {
-  bottom: 100%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba(136, 183, 213, 0);
-  border-bottom-color: #1b1b25;
-  border-width: 10px;
-  margin-left: -10px;
 }
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 @media screen and (max-width: 1390px) {
