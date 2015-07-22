@@ -2,7 +2,7 @@
 	
 	<div class="input-group" id="input-group-title">
 		<span class="input input--nao">
-			<input data-max="{{Config::get('config.max_title')}}" data-error-message="Derp!" data-parent="#input-group-title" class="input__field input__field--nao" type="text" id="task-title" placeholder="ex: proofreading" autocomplete="off" name="title" value="{{Input::old('title')}}"/>
+			<input data-max="{{Config::get('config.max_title')}}" data-required="true" data-error-message="Derp!" data-parent="#input-group-title" class="validate input__field input__field--nao" type="text" id="task-title" placeholder="ex: proofreading" autocomplete="off" name="title" value="{{Input::old('title')}}"/>
 			<label class="input__label input__label--nao" for="task-title">
 				<span class="input__label-content input__label-content--nao">I need a hand with:</span>
 			</label>
@@ -14,7 +14,7 @@
 	
 	<div class="input-group" id="input-group-project">
 		<span class="input input--nao">
-			<input data-error-message="Derp!" data-parent="#input-group-project" class="input__field input__field--nao" type="text" id="task-project" placeholder="project name" name="project" value="{{Input::old('project')}}"/>
+			<input data-error-message="Derp!" data-required="true" data-parent="#input-group-project" class="validate input__field input__field--nao" type="text" id="task-project" placeholder="project name" name="project" value="{{Input::old('project')}}"/>
 			<label class="input__label input__label--nao" for="task-project">
 				<span class="input__label-content input__label-content--nao">For:</span>
 			</label>
@@ -26,7 +26,7 @@
 	
 	<div class="input-group" id="input-group-duration">
 		<span class="input input--nao">
-			<input data-error-message="Derp!" data-parent="#input-group-duration" class="input__field input__field--nao" type="text" id="task-duration" name="duration" autocomplete="off" placeholder="ex: an hour, a day" value="{{Input::old('duration')}}" />
+			<input data-error-message="Derp!" data-required="true" data-parent="#input-group-duration" class="validate input__field input__field--nao" type="text" id="task-duration" name="duration" autocomplete="off" placeholder="ex: an hour, a day" value="{{Input::old('duration')}}" />
 			<label class="input__label input__label--nao" for="task-duration">
 				<span class="input__label-content input__label-content--nao">And I think it will take:</span>
 			</label>

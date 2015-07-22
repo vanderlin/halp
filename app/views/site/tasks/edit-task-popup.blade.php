@@ -10,17 +10,17 @@
 				
 				<div class="form-field">
 					<label>Name of task</label>
-					<input type="text" data-max="{{Config::get('config.max_title')}}" autocomplete="off" name="title" id="edit-task-title" value="{{$task->title}}">
+					<input type="text" class="validate" data-error-message="Derp!" data-required="true" data-max="{{Config::get('config.max_title')}}" autocomplete="off" name="title" id="edit-task-title" value="{{$task->title}}">
 				</div> 
 
 				<div class="form-field">
 					<label>Project</label>
-					<input type="text" name="project" id="edit-task-project" value="{{$task->project->title}}" data-project-id="{{$task->project->id}}">
+					<input type="text" class="validate" data-error-message="Derp!" data-validate data-required="true" name="project" id="edit-task-project" value="{{$task->project->title}}" data-project-id="{{$task->project->id}}">
 				</div>
 
 				<div class="form-field">
 					<label>How long this task will take</label>
-					<input type="text" autocomplete="off" name="duration" value="{{$task->duration}}">
+					<input type="text" class="validate" data-error-message="Derp!" data-validate data-required="true" autocomplete="off" name="duration" value="{{$task->duration}}">
 				</div>
 
 

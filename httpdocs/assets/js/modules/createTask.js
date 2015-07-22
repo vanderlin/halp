@@ -24,9 +24,6 @@
 				'top':$parent.height(),
 				'left':($parent.outerWidth()-$error.outerWidth())/2,
 			});
-
-			console.log($error.data());
-
 			/*
 			$parent.css('border', '1px solid red');
 			$target.css('border', '1px solid red');
@@ -49,7 +46,6 @@
 
 				var $parent = $input.data('parent') ? $($input.data('parent')) : $input.parent();
 				
-				console.log("parent", $parent);
 
 				$parent.append($error);
 
@@ -62,16 +58,17 @@
 				setTimeout(function() {
 					self._positionError($error);
 				}, 20);
-				$error.hide().fadeIn(200, function() {
-				});
+				
+				$error.hide().fadeIn(200);
 
 				this._positionError($error);
+				
 				$(window).resize(function(event) {
 					self._positionError($error);
 				});		
 				
 			}
-			console.log($error);
+			
 			return $error;
 		},
 
@@ -86,6 +83,17 @@
 			});
 		},
 
+		// -------------------------------------
+		_removeErrorInput: function($input)
+		{
+			if($input.data().$error)
+			{
+				$input.data().$error.fadeOut(200, function() {
+					$(this).remove();
+					$input.data('$error', null);
+				});	
+			}
+		}
 
 	}
 
@@ -217,70 +225,81 @@
 		},
 
 		// ------------------------------------------------------------------------
+		validateInput: function(options)
+		{
+
+			var valid = true;
+			var $input = $(this);
+			var len = $input.val().length;
+    		var maxChars = $input.data('max');
+    		var required = $input.data('required') || false;
+    		
+    		// console.log($input.attr('name')+" required:",required);
+			
+			// check if the value is longer than the max
+			if(maxChars !== undefined)
+			{
+				if(len > maxChars) 
+				{
+					valid = false;
+				}
+				if(len > maxChars && $input.data().$error == null) 
+				{
+					var $error = TaskValidator._addErrorToInput($input, "Too many letters +"+(len-maxChars));
+					$input.data('$error', $error);
+				}
+				else if(len <= maxChars && $input.data().$error)
+				{
+					TaskValidator._removeErrorInput($input);
+				}
+			}
+			else {
+
+				if(len==0) 
+				{
+					valid = false;
+				}
+				// this field is required
+				if(len==0 && $input.data().$error == null)
+				{
+					var $error = TaskValidator._addErrorToInput($input);
+					$input.data('$error', $error);
+				}
+				else if($input.data().$error && len!=0) {
+					TaskValidator._removeErrorInput($input);
+				}
+			}
+			return valid;
+		},
+
+		// ------------------------------------------------------------------------
 		addValidationListener: function(options) {
-			console.log('addValidationListener', $(this).attr('id'));
 			var $form  = $(this);
-    		var $title = $form.find('input[name="title"]');
-    		var $error = null;
-    		var maxChars = TaskValidator.maxTitleChars;	
-    		
-    		$form.find('input').each(function(index, el) {
+    	
+    		$form.find('input.validate').each(function(index, el) {
     			
-    			var $input = $(el);
-    			var maxChars = $input.data('max');
-    			
+    			var $input = $(el);  
+    			if($input.data().validator == null) {  			
+	    			
+	    			$input.validateInput();
 
-    			// check if the value is longer than the max
-    			if(maxChars !== undefined)
-    			{
-    				var len = $input.val().length;
-    				if(len > maxChars && $input.data().$error == null) {
-    					var $error = TaskValidator._addErrorToInput($input, "Too many letters +"+(len-maxChars));
-    					$input.data('$error', $error);
+	    			$input.focusin(function(e) {
+	    				$(this).validateInput();
+					});
+					$input.focusout(function(e) {
+	    				$(this).validateInput();
+					});
+					$input.on('keyup', function(e) {
+						$(this).validateInput();
+					});
 
-    				}
-    			}
+					$input.data('validator'. true);
+				}
+				else {
+					console.log("*** Validation for input already init ***");
+				}
     		
     		});
-
-    		return;
-
-    		$title.focusin(function(e) {
-    			var length = $(this).val().length;
-				
-				if (length > maxChars && $error==null) {		
-					$error = TaskValidator._addErrorToInput($title, "Too many letters +"+overChar);
-				}
-				if (length > maxChars && $error) {		
-					var overChar = (length-maxChars);
-					TaskValidator._setErrorMessage($error, "Too many letters +"+overChar);
-				}
-				else if($error && length <= maxChars) {
-					$error.fadeOut(200, function() {
-						$error.remove();
-						$error = null;
-					});
-				}
-    		});
-			$title.on('keyup', function(event) {
-
-				var length = $(this).val().length;
-				
-				if (length > maxChars && $error==null) {		
-					$error = TaskValidator._addErrorToInput($title, "Too many letters +"+overChar);
-				}
-				if (length > maxChars && $error) {		
-					var overChar = (length-maxChars);
-					TaskValidator._setErrorMessage($error, "Too many letters +"+overChar);
-				}
-				else if($error && length <= maxChars) {
-					$error.fadeOut(200, function() {
-						$error.remove();
-						$error = null;
-					});
-				}
-				
-			});
 
 		},
 
@@ -290,47 +309,27 @@
 			var validator = {
 				
 				// -------------------------------------
-				_data:null,
+				_data:{},
 
 				// -------------------------------------
 		    	_validate: function($form)
 		    	{
-		    		var $title = $form.find('input[name="title"]');
-		    		var $project = $form.find('input[name="project"]');
-		    		var $duration = $form.find('input[name="duration"]');
-
-		    		TaskValidator._addEventsToInput($title);
-		    		TaskValidator._addEventsToInput($project);
-		    		TaskValidator._addEventsToInput($duration);
-					this._data = {
-						title:$title.val(),
-						project:$project.val(),
-						duration:$duration.val(),
-					};
-		    		var isValid = true;
-
-		    		if($title.val() == "") 
-		    		{
-		    			TaskValidator._addErrorToInput($title);
-		    			isValid = false;
-		    		}
-		    		else if($title.val().length > TaskValidator.maxTitleChars) 
-		    		{
-		    			TaskValidator._addErrorToInput($title, "Too Many Letters +"+($title.val().length-TaskValidator.maxTitleChars));
-		    			isValid = false;
-		    		}
-		    		if($project.val() == "") 
-		    		{
-		    			TaskValidator._addErrorToInput($project);
-		    			isValid = false;	
-		    		}
-		    		if($duration.val() == "") 
-		    		{
-		    			TaskValidator._addErrorToInput($duration);
-		    			isValid = false;
-		    		}
-
-					return isValid;
+		    		console.log("--- Checking Task Validation ---");
+					var self = this;
+					var passes = true;
+					$form.find('input.validate').each(function(index, el) {
+    					var $input = $(el);
+    					var valid = $input.validateInput();
+    					console.log($input.attr('name'), valid);
+		    			if(valid != true) {
+		    				passes = false;
+		    			}
+		    			var name = $input.attr('name');
+		    			self._data[name] = $input.val(); 
+					});
+					
+					console.log("*** validation:", passes, " ***");
+					return passes;
 		    	},    					
 
 			}
@@ -346,155 +345,3 @@
 		}
  	});
 })(jQuery);
-
-/*
-(function($) {
-    $.widget('halp.createTask', {
-    	options: {
-    		
-    	},
-
-    	// -------------------------------------
-    	$form:null,
-    	
-    	// -------------------------------------
-    	_submit: function(e) 
-    	{
-    		var url = this.$form.attr('action');
-    		var type = this.$form.attr('method');
-    		var fd = new FormData(this.$form[0]);    
-    		$.ajax({
-    			url: url,
-    			type: type,
-    			dataType: 'json',
-    			data: fd,
-    			processData: false,
-  				contentType: false,
-    		})
-    		.always(function(e) {
-    			console.log("complete", e);
-    		});
-    		
-    	},
-
-    	// -------------------------------------
-    	_addErrorToInput: function($input)
-    	{
-    		var message = $input.data('error-message') || "Input Error";
-			$input.parent().parent().append($(	'<div class="input-error">\
-													<span>'+message+'</span>\
-			  									</div>'));
-
-    	},
-
-    	// -------------------------------------
-    	_addEventsToInput: function($input)
-    	{
-			$input.focusin(function(e) {
-    			$(this).parent().parent().find('.input-error').fadeOut(200, function() {
-    				$(this).remove();
-    			});
-    		});
-    	},
-
-    	// -------------------------------------
-    	_validate: function($form)
-    	{
-    		var $title = $form.find('input[name="title"]');
-    		var $project = $form.find('input[name="project"]');
-    		var $duration = $form.find('input[name="duration"]');
-
-    		this._addEventsToInput($title);
-    		this._addEventsToInput($project);
-    		this._addEventsToInput($duration);
-    		
-    		var isValid = true;
-
-    		if($title.val() == "") 
-    		{
-    			this._addErrorToInput($title);
-    			isValid = false;
-    		}
-    		if($project.val() == "") 
-    		{
-    			this._addErrorToInput($project);
-    			isValid = false;	
-    		}
-    		if($duration.val() == "") 
-    		{
-    			this._addErrorToInput($duration);
-    			isValid = false;
-    		}
-
-			return isValid;
-    	},
-
-    	// -------------------------------------
-    	open: function() 
-    	{
-    		var self = this;
-    		$.magnificPopup.open({
-	            tLoading: 'Loading some halp!...',
-	            closeOnContentClick: false,
-	            closeOnBgClick:false,
-	            mainClass: 'mfp-fade',
-	            ajax: {
-                	settings: {
-                		data:self.options.data
-                	}
-                },
-	            items: {
-	                src: '/tasks/create',
-	                type: 'ajax',
-	            },
-	            callbacks: {
-	                parseAjax: function(mfpResponse) {
-	                    var task = mfpResponse.xhr.responseText;
-	                    mfpResponse.data = $(mfpResponse.xhr.responseText);
-	                },
-	                ajaxContentAdded: function() {
-	                    $(function() {
-    						$( "#datepicker" ).datepicker();
-  						});   
-  						self.$form = $('#create-task-form');
-  						self.$form.submit(function(e) {
-  							e.preventDefault();
-  							self._submit(e);
-  						});
-	                }
-	            }
-	        });	
-	        console.log("Open Create Task Form");
-    	},
-
-    	// -------------------------------------
-		_create: function() 
-		{
-
-			var self = this;
-			if(this.options.validate && this._validate(this.options.validate))
-			{
-				this.open();
-				return;
-			}
-			
-			
-
-    	},    	
-    });
-}(jQuery));
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
