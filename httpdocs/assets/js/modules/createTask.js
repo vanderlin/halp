@@ -109,20 +109,23 @@
 	$.fn.extend({
 		
 		// ------------------------------------------------------------------------
-		popupResponse: function(e, callback, delay)
+		popupResponse: function(e, options)
 		{
+			options = options || {};
+
 			$('.popup-content').fadeTo(200, 0, function() {
                 
 
-
-                $('.white-popup').first().animate({height:200}, 500, function() {
-                	var $notice = $('<h2>'+e.notice+'</h2>');
+				var $notice = $('<h2>'+e.notice+'</h2>');
+				
+                $('.white-popup').first().animate({height:options.height||200}, 500, function() {
+                	
                     $('.popup-content').html($notice);
 
                     $('.popup-content').fadeTo(300, 1, function() {
                     	setTimeout(function() {
-                    		App.closePopup(callback);
-                    	}, delay||1000);
+                    		App.closePopup(options.callback);
+                    	}, options.delay||1000);
                     });
                 });
                 

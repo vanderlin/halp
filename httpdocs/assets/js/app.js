@@ -126,30 +126,23 @@ var App = (function() {
                 console.log(e);
                 if(e.status == 200)
                 {
-                    
-                    $('.task-card-'+e.task.id).fadeOut(200, function() {
-                       $(this).remove(); 
-                    });
 
-                    $('.white-popup .task-message p').fadeTo(200, 0);
-                    $('.white-popup .claimed-buttons').fadeTo(200, 0, function() {
-                        $('#claim-task-form button').prop( "disabled", true );
-                    });
-                    $('.white-popup h2').fadeTo(100, 0, function() {
-                        $(this).html('Thanks for helping!').fadeTo(100, 1, function() {
-                            $('.front-facing-turtle').animate({'margin-bottom':-80})
-                            setTimeout(function() {
-                                App.closeClaimPopup();
-                                App.scrollTo('#claimed-tasks-content', 500, function() {
-                                    var $view = $(e.view);
-                                    $('#claimed-tasks-content').prepend($view);
-                                    $view.addClass('task-focused');
-                                    $view.hide().delay(200).fadeIn(300);
-                                });
-
-                            }, 1000);
-                        });
-                    });
+                    $(this).popupResponse(e, {
+                        height:500,
+                        delay:3500,
+                        callback:function() {
+                            var $card = $('.task-card-'+e.task.id);
+                            App.scrollTo($('#claimed-tasks-content'), 500, function() {
+                                $card.remove();
+                                var $view = $(e.view);
+                                $('#claimed-tasks-content').prepend($view);
+                                $view.hide();
+                                $view.addClass('task-focused');
+                                $view.delay(200).fadeTo(500, 1);
+                            });
+                        }
+                        
+                    })
                 }
                 else {
                     console.log("Some error during task claim");
@@ -220,17 +213,19 @@ var App = (function() {
                             })
                             .always(function(e) {
                                 console.log(e);
-                                $(this).popupResponse(e, function() {
-                                    var $card = $('.task-card-'+e.task.id);
-                                    App.scrollTo($card, 500, function() {
-                                        $card.fadeTo(200, 0, function() {
-                                            var $view = $(e.view);
-                                            $(this).replaceWith($view);
-                                            $view.hide();
-                                            $view.addClass('task-focused');
-                                            $view.delay(200).fadeTo(200, 1);
+                                $(this).popupResponse(e, {
+                                    callback: function() {
+                                        var $card = $('.task-card-'+e.task.id);
+                                        App.scrollTo($card, 500, function() {
+                                            $card.fadeTo(200, 0, function() {
+                                                var $view = $(e.view);
+                                                $(this).replaceWith($view);
+                                                $view.hide();
+                                                $view.addClass('task-focused');
+                                                $view.delay(200).fadeTo(200, 1);
+                                            });
                                         });
-                                    });
+                                    }
                                 })
                             });
                         }
