@@ -352,6 +352,9 @@
 .ui-datepicker table {
   margin: 0 0 2px;
 }
+.ui-helper-hidden-accessible {
+  display: none;
+}
 .task {
   width: 250px;
   height: 337px;
@@ -981,8 +984,18 @@ hr {
   background-color: #E6E6E6;
   display: inline-block;
 }
-.ui-helper-hidden-accessible {
-  display: none;
+.halp-special-text {
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+  font-size: 19px;
+  color: #1b1b25;
+  font-style: italic;
+  text-transform: lowercase;
+}
+.i-need {
+  line-height: 70px;
+  bottom: 1px;
+  position: relative;
 }
 /* ----------------------------------- TOP NAV ----------------------------------- */
 .nav {
@@ -1246,6 +1259,67 @@ body .nomargin-bottom {
 .footer-info h5:hover {
   color: #4fd2c2;
 }
+.notifications-setting-form button[type="submit"] {
+  border: none;
+  background-color: transparent;
+}
+.small.progress-button .halp-edit-button {
+  border-color: #1b1b25;
+  color: #1b1b25;
+}
+.progress-button .halp-edit-button:hover {
+  background-color: #1b1b25;
+  color: white;
+}
+.edit-card .task-details.edit {
+  display: none;
+}
+.edit-card .task-edit {
+  padding: 25px;
+}
+.edit-card input[type=text] {
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  font-family: 'Montserrat', sans-serif;
+  color: #404d5b;
+  margin-bottom: 10px;
+}
+.edit-card .cancel-edit {
+  margin-top: 10px;
+  font-size: 12px;
+  display: table;
+  text-align: center;
+  width: 100%;
+}
+.input-error {
+  position: absolute;
+  background: #404d5b;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: white;
+  margin-top: -8px;
+  left: 42%;
+  padding: 12px;
+  border-radius: 20px;
+}
+.input-error:after {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #404d5b;
+  border-width: 10px;
+  margin-left: -10px;
+}
 /* ------------------------------------- MEDIA QUERIES ------------------------------------ */
 @media screen and (max-width: 1390px) {
   .input__label {
@@ -1257,6 +1331,10 @@ body .nomargin-bottom {
   .input {
     max-width: 246px;
     margin: 0.5em;
+  }
+  .input-error {
+    margin-top: -2px;
+    left: 38%;
   }
 }
 @media screen and (max-width: 900px) {
@@ -1388,65 +1466,4 @@ body .nomargin-bottom {
   .form-field input {
     width: 280px;
   }
-}
-.notifications-setting-form button[type="submit"] {
-  border: none;
-  background-color: transparent;
-}
-.small.progress-button .halp-edit-button {
-  border-color: #1b1b25;
-  color: #1b1b25;
-}
-.progress-button .halp-edit-button:hover {
-  background-color: #1b1b25;
-  color: white;
-}
-.edit-card .task-details.edit {
-  display: none;
-}
-.edit-card .task-edit {
-  padding: 25px;
-}
-.edit-card input[type=text] {
-  padding: 10px;
-  border: none;
-  border-bottom: 1px solid #cccccc;
-  font-family: 'Montserrat', sans-serif;
-  color: #404d5b;
-  margin-bottom: 10px;
-}
-.edit-card .cancel-edit {
-  margin-top: 10px;
-  font-size: 12px;
-  display: table;
-  text-align: center;
-  width: 100%;
-}
-.input-error {
-  position: absolute;
-  background: #404d5b;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: white;
-  margin-top: -8px;
-  left: 42%;
-  padding: 12px;
-  border-radius: 20px;
-}
-.input-error:after {
-  bottom: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba(136, 183, 213, 0);
-  border-bottom-color: #404d5b;
-  border-width: 10px;
-  margin-left: -10px;
 }
