@@ -1317,13 +1317,11 @@ body .nomargin-bottom {
   letter-spacing: 1px;
   color: white;
   margin-top: -8px;
-  left: 42%;
   padding: 12px;
   border-radius: 20px;
 }
 .input-error:after {
   bottom: 100%;
-  left: 50%;
   border: solid transparent;
   content: " ";
   height: 0;

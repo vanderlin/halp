@@ -1,6 +1,63 @@
-(function($){
+
+(function($) {
+
+	var TaskValidator = {
+
+		// -------------------------------------
+		_setErrorMessage: function($error, message)
+		{
+			$error.find('span').html(message);
+			var pw = $error.parent().find('input').width();
+			var ew = $error.width();
+			var cx = (pw-ew)/2;
+			$error.css('left', cx);
+
+		},
+
+		// -------------------------------------
+		_addErrorToInput: function($input, message)
+		{	
+			var id = "input-error-"+$input.attr('name');
+			if($("."+id).length == 0) {
+				var message = message || ($input.data('error-message') || "Input Error");
+				var $error = $(	'<div class="input-error '+id+'">\
+									<span>'+message+'</span>\
+								</div>');
+				var $parent = $input.parent().parent();
+				$parent.append($error);
+				$error.hide().fadeIn(200);
+
+				var pw = $input.width();
+				var ew = $error.width();
+				var cx = (pw-ew)/2;
+				$error.css('left', cx);
+				$(window).resize(function(event) {
+					var pw = $input.width();
+					var ew = $error.width();
+					var cx = (pw-ew)/2;
+					$error.css('left', cx);
+				});		
+				
+			}
+			return $("."+id);
+		},
+
+		// -------------------------------------
+		_addEventsToInput: function($input)
+		{
+			$input.focusin(function(e) {
+				$(this).parent().parent().find('.input-error').fadeOut(200, function() {
+					$(this).remove();
+				});
+			});
+		},
+
+
+	}
+
 	$.fn.extend({
 		
+
 		// ------------------------------------------------------------------------
 		openCreateTaskPopup: function(options) {
 			var taskForm = {
@@ -122,6 +179,36 @@
 		},
 
 		// ------------------------------------------------------------------------
+		addValidationListener: function(options) {
+			
+			var $form = $(this);
+    		var $title = $form.find('input[name="title"]');
+    		var $error = null;
+    		var maxChars = 2;					
+
+			$title.on('keyup', function(event) {
+
+				var length = $(this).val().length;
+				
+				if (length > maxChars && $error==null) {		
+					$error = TaskValidator._addErrorToInput($title, "Too many letters +"+overChar);
+				}
+				if (length > maxChars && $error) {		
+					var overChar = (length-maxChars);
+					TaskValidator._setErrorMessage($error, "Too many letters +"+overChar);
+				}
+				else if($error && length <= maxChars) {
+					$error.fadeOut(200, function() {
+						$error.remove();
+						$error = null;
+					});
+				}
+				
+			});
+
+		},
+
+		// ------------------------------------------------------------------------
 		validateTask: function(options) {
 
 			var validator = {
@@ -130,37 +217,15 @@
 				_data:null,
 
 				// -------------------------------------
-    			_addErrorToInput: function($input)
-    			{
-    				var message = $input.data('error-message') || "Input Error";
-					var $error = $(	'<div class="input-error">\
-										<span>'+message+'</span>\
-  									</div>');
-
-					$input.parent().parent().append($error);
-					$error.hide().fadeIn(200);
-    			},
-		
-				// -------------------------------------
-		    	_addEventsToInput: function($input)
-		    	{
-					$input.focusin(function(e) {
-		    			$(this).parent().parent().find('.input-error').fadeOut(200, function() {
-		    				$(this).remove();
-		    			});
-		    		});
-		    	},
-
-				// -------------------------------------
 		    	_validate: function($form)
 		    	{
 		    		var $title = $form.find('input[name="title"]');
 		    		var $project = $form.find('input[name="project"]');
 		    		var $duration = $form.find('input[name="duration"]');
 
-		    		this._addEventsToInput($title);
-		    		this._addEventsToInput($project);
-		    		this._addEventsToInput($duration);
+		    		TaskValidator._addEventsToInput($title);
+		    		TaskValidator._addEventsToInput($project);
+		    		TaskValidator._addEventsToInput($duration);
 					this._data = {
 						title:$title.val(),
 						project:$project.val(),
@@ -170,17 +235,17 @@
 
 		    		if($title.val() == "") 
 		    		{
-		    			this._addErrorToInput($title);
+		    			TaskValidator._addErrorToInput($title);
 		    			isValid = false;
 		    		}
 		    		if($project.val() == "") 
 		    		{
-		    			this._addErrorToInput($project);
+		    			TaskValidator._addErrorToInput($project);
 		    			isValid = false;	
 		    		}
 		    		if($duration.val() == "") 
 		    		{
-		    			this._addErrorToInput($duration);
+		    			TaskValidator._addErrorToInput($duration);
 		    			isValid = false;
 		    		}
 

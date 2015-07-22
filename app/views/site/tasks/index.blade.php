@@ -37,6 +37,8 @@
 		}
 		@endif
 
+		$('#init-create-task').addValidationListener();
+
 		// -------------------------------------
 		$('#init-create-task button[type="submit"]').click(function(e) {
 			e.preventDefault();
