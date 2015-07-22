@@ -110,7 +110,7 @@ hr{
 }
 
 .halp-special-text{
-	.serif(19px, 400, italic, @dark-purple);
+	.serif(19px, 400, italic, #fff);
 	text-transform: lowercase;
 }
 .i-need{
@@ -171,6 +171,7 @@ hr{
 }
 
 .bgcolor { background: #f9f7f6; }
+.bgcolor2 { background: @purple; }
 
 body .nomargin-bottom {
 	margin-bottom: 0;
@@ -214,7 +215,7 @@ body .nomargin-bottom {
 	float: right;
 	padding: 0 1em;
 	width: 40%;
-	.serif(70.25%, 500, normal, #D1D1D1);
+	.serif(70.25%, 500, normal, @light-purple);
 	-webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	-webkit-touch-callout: none;
@@ -276,7 +277,7 @@ body .nomargin-bottom {
 }
 
 .graphic--nao {
-	stroke: #DCDCDC;
+	stroke: @light-purple;
 	pointer-events: none;
 	-webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
 	transition: transform 0.7s, stroke 0.7s;
@@ -286,14 +287,14 @@ body .nomargin-bottom {
 
 .input__field--nao:focus + .input__label--nao,
 .input--filled .input__label--nao {
-	color: @dark-purple;
+	color: #fff;
 	-webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
 	transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
 }
 
 .input__field--nao:focus ~ .graphic--nao,
 .input--filled .graphic--nao {
-	stroke: @dark-purple;
+	stroke: #fff;
 	-webkit-transform: translate3d(-66.6%, 0, 0);
 	transform: translate3d(-66.6%, 0, 0);
 }
@@ -305,7 +306,7 @@ body .nomargin-bottom {
 
 [placeholder]::-webkit-input-placeholder {
   opacity: 0;
-  color: @grey;
+  color: @dark-purple;
 }
 
 [placeholder]:focus::-webkit-input-placeholder {
@@ -449,7 +450,7 @@ body .nomargin-bottom {
 
 .input-error {
 	position: absolute;
-	background: @purple;
+	background: @dark-purple;
 	.sans-serif(13px, white);
   	margin-top: -8px;
 	left: 42%;
@@ -466,7 +467,7 @@ body .nomargin-bottom {
 	position: absolute;
 	pointer-events: none;
 	border-color: rgba(136, 183, 213, 0);
-	border-bottom-color: @purple;
+	border-bottom-color: @dark-purple;
 	border-width: 10px;
 	margin-left: -10px;
 }
