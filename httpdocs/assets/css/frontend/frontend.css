@@ -140,7 +140,6 @@
 .claimed-popup h2 {
   font-size: 32px;
   margin-bottom: 30px;
-  margin-top: 40px;
 }
 .claimed-popup .claimed-buttons {
   width: 100%;
@@ -222,7 +221,7 @@
 .form-field textarea {
   border: 1px solid #ECECEC;
   width: 100%;
-  height: 200px;
+  height: 150px;
   background-color: #FAFAFA;
   padding: 20px;
   font-family: 'Merriweather', serif;
@@ -231,6 +230,7 @@
   color: #1b1b25;
   font-style: italic;
   resize: none;
+  line-height: 27px;
 }
 .form-field textarea:focus {
   outline: none;
@@ -1042,6 +1042,7 @@ body .nomargin-bottom {
   position: relative;
   z-index: 1;
   display: inline-block;
+  vertical-align: top;
 }
 .input {
   position: relative;
@@ -1049,7 +1050,7 @@ body .nomargin-bottom {
   display: inline-block;
   margin: 1em;
   max-width: 350px;
-  width: calc(98%);
+  width: 350px;
   vertical-align: top;
 }
 .input__field {
@@ -1320,6 +1321,7 @@ body .nomargin-bottom {
     font-size: 22px;
     margin-bottom: 0px;
     line-height: 36px;
+    margin-top: 0px;
   }
   p {
     font-size: 14px;
@@ -1327,6 +1329,7 @@ body .nomargin-bottom {
   }
   .small.progress-button {
     margin-top: 10px;
+    margin-bottom: 0px;
   }
   .small.progress-button button {
     margin-top: 15px;
@@ -1421,12 +1424,16 @@ body .nomargin-bottom {
 .input-error {
   position: absolute;
   background: #404d5b;
-  color: red;
-  font-size: 20px;
-  margin-top: 10px;
   font-family: 'Montserrat', sans-serif;
-  left: 20%;
-  padding: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: white;
+  margin-top: -8px;
+  left: 42%;
+  padding: 12px;
+  border-radius: 20px;
 }
 .input-error:after {
   bottom: 100%;

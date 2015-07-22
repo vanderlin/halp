@@ -173,7 +173,8 @@ body .nomargin-bottom {
 .input-group {
 	position: relative;
 	z-index: 1;
-	display: inline-block;	
+	display: inline-block;
+	vertical-align: top;
 }
 .input {
 	position: relative;
@@ -181,7 +182,7 @@ body .nomargin-bottom {
 	display: inline-block;
 	margin: 1em;
 	max-width: 350px;
-	width: calc(100% - 2em);
+	width: 350px;
 	vertical-align: top;
 }
 
@@ -480,6 +481,7 @@ body .nomargin-bottom {
   		font-size: 22px;
   		margin-bottom: 0px;
   		line-height: 36px;
+  		margin-top: 0px;
 	}
 	p{
 		font-size: 14px;
@@ -487,6 +489,7 @@ body .nomargin-bottom {
 	}
 	.small.progress-button{
 		margin-top: 10px;
+		margin-bottom: 0px;
 	}
 	.small.progress-button button{
 		margin-top: 15px;
@@ -588,12 +591,11 @@ body .nomargin-bottom {
 .input-error {
 	position: absolute;
 	background: @purple;
-	color: red;
-  	font-size: 20px;
-  	margin-top: 10px;
-	font-family: 'Montserrat', sans-serif;
-	left: 20%;
-	padding: 10px;
+	.sans-serif(13px, white);
+  	margin-top: -8px;
+	left: 42%;
+	padding: 12px;
+  	border-radius: 20px;
 }
 .input-error:after {
 	bottom: 100%;
