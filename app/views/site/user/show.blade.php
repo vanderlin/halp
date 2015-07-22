@@ -68,7 +68,7 @@
 			<img src="{{asset('assets/img/progress-turtle.svg')}}" class="tug-of-war-turtle">
 			<img src="{{asset('assets/img/progress-skunk.svg')}}" class="tug-of-war-skunk">
 			<div class="meter"> 
-				<span style="width: 25%"></span> <!-- Todd, insert percentage here! -->
+				<span style="width: {{$user->taskRatio*100}}%"></span>
 			</div>
 		</div>
 	</section>

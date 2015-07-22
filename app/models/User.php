@@ -77,9 +77,13 @@ class User extends BaseModel implements ConfideUserInterface {
     public function claimedTasks()
     {
         return $this->hasMany('Task\Task', 'claimed_id');
+    }
 
-            // ->selectRaw('claimed_id, count(*) as total_claimed')->groupBy('claimed_id')
-        // ;
+    public function getTaskRatioAttribute() {
+        $created = $this->totalCreated();
+        $claimed = $this->totalClaimed();
+        if($claimed == 0 && $created == 0) return 0;
+        return $claimed / ($claimed+$created);
     }
 
     public function createdTasks()
