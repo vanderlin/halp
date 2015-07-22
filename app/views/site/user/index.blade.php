@@ -15,15 +15,17 @@
 {{-- Content --}}
 @section('content')
 
-<section class="hero">
-	<h3>The most helpful person is:</h3>
+<section class="hero bgcolor2">
+	<h3 class="light-h3">The most helpful person is:</h3>
 		<div class="user-image-most-helpful">
+			<img src="{{asset('assets/img/bird-left.svg')}}" class="bird-left">
 			<a href="{{$leader->getProfileURL()}}">
 				<img src="{{$leader->profileImage->url('s280')}}">
 			</a>
+			<img src="{{asset('assets/img/bird-right.svg')}}" class="bird-right">
 		</div>
 		<div class="user-details">
-			<span class="user-name">
+			<span class="user-name-leaderboard">
 				<h5>{{$leader->getName()}}</h5>
 			</span>
 			<span class="total-task">

@@ -58,6 +58,9 @@ h3{
 	.serif(50px, 300, italic, @dark-purple);
 	line-height: 68px;
 }
+.light-h3{
+	color: #fff;
+}
 
 h4{
 	.serif(20px, 400, italic, @light-purple);
@@ -70,6 +73,10 @@ h5{
 h6{
 	.sans-serif(13px, @light-purple);
 	line-height: 37px;
+}
+
+.user-name-leaderboard h5{
+	color: #fff;
 }
 
 hr{
@@ -117,6 +124,10 @@ hr{
 	line-height: 70px;
 	bottom: 1px;
     position: relative;
+}
+
+.user-details hr{
+	color: #fff;
 }
 
 /* ----------------------------------- TOP NAV ----------------------------------- */
@@ -169,9 +180,6 @@ hr{
 	padding: 5em 0 0 0;
 	font-size: 0.65em;
 }
-
-.bgcolor { background: #f9f7f6; }
-.bgcolor2 { background: @purple; }
 
 body .nomargin-bottom {
 	margin-bottom: 0;
@@ -377,17 +385,28 @@ body .nomargin-bottom {
 /* ------------------------------------- LEADERBOARD  ------------------------------------ */
 
 .user-image-most-helpful img:hover{
-	border-color: @light-purple;
+	border-color: white;
 }
-.user-image-most-helpful img{
+.user-image-most-helpful a img{
 	width: 220px;
 	height: 220px;
 	border-radius: 50%;
 	overflow: hidden;	
-	border: 13px solid white;
+	border: 13px solid @dark-purple;
 	margin: 40px 0px 10px 0px;
 	-webkit-transition: border .4s;
    	transition: border .4s;
+   	z-index: 2;
+}
+.bird-left{
+	position: relative;
+  	top: -53px;
+  	right: -6px;
+}
+.bird-right{
+	position: relative;
+  	top: -53px;
+  	left: -6px;
 }
 
 
@@ -409,6 +428,9 @@ body .nomargin-bottom {
 }
 
 // ------------------------------------------------------------------------
+
+.bgcolor { background: #f9f7f6; }
+.bgcolor2 { background: @purple; }
 
 .notifications-setting-form {
 	button[type="submit"] {
@@ -535,6 +557,7 @@ body .nomargin-bottom {
 	h6{
 		font-size: 12px;
 	}
+
 	.user-image-most-helpful img{
 		margin: 15px 0px 10px 0px;
 	}

@@ -940,6 +940,9 @@ h3 {
   font-style: italic;
   line-height: 68px;
 }
+.light-h3 {
+  color: #fff;
+}
 h4 {
   font-family: 'Merriweather', serif;
   font-weight: 400;
@@ -964,6 +967,9 @@ h6 {
   letter-spacing: 1px;
   color: #a2b7cd;
   line-height: 37px;
+}
+.user-name-leaderboard h5 {
+  color: #fff;
 }
 hr {
   width: 60px;
@@ -1010,6 +1016,9 @@ hr {
   line-height: 70px;
   bottom: 1px;
   position: relative;
+}
+.user-details hr {
+  color: #fff;
 }
 /* ----------------------------------- TOP NAV ----------------------------------- */
 .nav {
@@ -1059,12 +1068,6 @@ hr {
   margin: 1em 0;
   padding: 5em 0 0 0;
   font-size: 0.65em;
-}
-.bgcolor {
-  background: #f9f7f6;
-}
-.bgcolor2 {
-  background: #404d5b;
 }
 body .nomargin-bottom {
   margin-bottom: 0;
@@ -1252,16 +1255,27 @@ body .nomargin-bottom {
 }
 /* ------------------------------------- LEADERBOARD  ------------------------------------ */
 .user-image-most-helpful img:hover {
-  border-color: #a2b7cd;
+  border-color: white;
 }
-.user-image-most-helpful img {
+.user-image-most-helpful a img {
   width: 220px;
   height: 220px;
   border-radius: 50%;
   overflow: hidden;
-  border: 13px solid white;
+  border: 13px solid #1b1b25;
   margin: 40px 0px 10px 0px;
   transition: border .4s;
+  z-index: 2;
+}
+.bird-left {
+  position: relative;
+  top: -53px;
+  right: -6px;
+}
+.bird-right {
+  position: relative;
+  top: -53px;
+  left: -6px;
 }
 /* ------------------------------------- FOOTER ------------------------------------ */
 .footer {
@@ -1275,6 +1289,12 @@ body .nomargin-bottom {
 }
 .footer-info h5:hover {
   color: #4fd2c2;
+}
+.bgcolor {
+  background: #f9f7f6;
+}
+.bgcolor2 {
+  background: #404d5b;
 }
 .notifications-setting-form button[type="submit"] {
   border: none;
