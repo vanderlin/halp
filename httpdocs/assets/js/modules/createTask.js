@@ -8,8 +8,11 @@
 		// -------------------------------------
 		_setErrorMessage: function($error, message)
 		{
-			$error.find('span').html(message);
-			this._positionError($error);
+			if($error)
+			{
+				$error.find('span').html(message);
+				this._positionError($error);
+			}
 		},
 
 		// -------------------------------------
@@ -249,6 +252,10 @@
 				{
 					var $error = TaskValidator._addErrorToInput($input, "Too many letters +"+(len-maxChars));
 					$input.data('$error', $error);
+				}
+				if(len > maxChars && $input.data().$error) 
+				{
+					TaskValidator._setErrorMessage($input.data().$error, "Too many letters +"+(len-maxChars));
 				}
 				else if(len <= maxChars && $input.data().$error)
 				{
