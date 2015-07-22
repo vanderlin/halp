@@ -42,7 +42,12 @@
 		// -------------------------------------
 		$('#init-create-task button[type="submit"]').click(function(e) {
 			e.preventDefault();
-			$('#init-create-task').validateTask();
+			var $form = $('#init-create-task');
+			var validation = $form.validateTask();
+			if(validation.valid)
+			{
+				$form.openCreateTaskPopup({data:validation.data});
+			}
 		});	
 	});
 </script>

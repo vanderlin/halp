@@ -199,41 +199,49 @@ var App = (function() {
                         $(this).autocomplete('search', $(this).val())
                     });
 
+                    // -------------------------------------
                     $('#edit-task-form').submit(function(e) {
                         e.preventDefault();
-                        var $form = $(this);
-                        var url = $form.prop('action')+'?view=true';
-                        var type = $form.attr('method');
-                        var fd = new FormData($form[0]);    
-                        $.ajax({
-                            url: url,
-                            type: type,
-                            dataType: 'json',
-                            data: fd,
-                            processData: false,
-                            contentType: false,
-                        })
-                        .always(function(e) {
-                            console.log(e);
+                        var validation = $(this).validateTask();
+                        if(validation.valid) 
+                        {
+                            var $form = $(this);
+                            var url = $form.prop('action')+'?view=true';
+                            var type = $form.attr('method');
+                            var fd = new FormData($form[0]);    
+                            $.ajax({
+                                url: url,
+                                type: type,
+                                dataType: 'json',
+                                data: fd,
+                                processData: false,
+                                contentType: false,
+                            })
+                            .always(function(e) {
+                                console.log(e);
 
-                            $form.fadeOut(200, function() {
-                                $('.edit-task-content h2').html(e.notice);
-                                setTimeout(function() {
-                                    App.closeClaimPopup(function() {
-                                        var $card = $('.task-card-'+e.task.id);
-                                            $card.fadeTo(200, 0, function() {
-                                                var $view = $(e.view);
-                                                $(this).replaceWith($view);
-                                                $view.hide();
-                                                $view.addClass('task-focused');
-                                                $view.delay(200).fadeTo(200, 1);
-                                            });
-                                        App.scrollTo($card);
-                                    });
-                                }, 300);
+                                $form.fadeOut(200, function() {
+                                    $('.edit-task-content h2').html(e.notice);
+                                    setTimeout(function() {
+                                        App.closeClaimPopup(function() {
+                                            var $card = $('.task-card-'+e.task.id);
+                                                $card.fadeTo(200, 0, function() {
+                                                    var $view = $(e.view);
+                                                    $(this).replaceWith($view);
+                                                    $view.hide();
+                                                    $view.addClass('task-focused');
+                                                    $view.delay(200).fadeTo(200, 1);
+                                                });
+                                            App.scrollTo($card);
+                                        });
+                                    }, 300);
+                                });
                             });
-                        });
-                                
+                        }
+                        else
+                        {
+                            console.log("Invalid Edit Form");
+                        }    
                     });
                 
                     $('#edit-task-form').addValidationListener();

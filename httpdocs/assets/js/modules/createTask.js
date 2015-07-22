@@ -233,52 +233,41 @@
 		validateInput: function(options)
 		{
 
-			var valid = true;
+			var isValid = true;
 			var $input = $(this);
+			var $error = $input.data().$error;
 			var len = $input.val().length;
-    		var maxChars = $input.data('max');
-    		var required = $input.data('required') || false;
-    		
-    		// console.log($input.attr('name')+" required:",required);
-			
-			// check if the value is longer than the max
-			if(maxChars !== undefined)
-			{
-				if(len > maxChars) 
-				{
-					valid = false;
-				}
-				if(len > maxChars && $input.data().$error == null) 
-				{
-					var $error = TaskValidator._addErrorToInput($input, "Too many letters +"+(len-maxChars));
-					$input.data('$error', $error);
-				}
-				if(len > maxChars && $input.data().$error) 
-				{
-					TaskValidator._setErrorMessage($input.data().$error, "Too many letters +"+(len-maxChars));
-				}
-				else if(len <= maxChars && $input.data().$error)
-				{
-					TaskValidator._removeErrorInput($input);
-				}
-			}
-			else {
+    		var maxChars = $input.data('max')||1000000;
+    		var isRequired = $input.data('required') || false;
+    		var message = null;
 
-				if(len==0) 
-				{
-					valid = false;
-				}
-				// this field is required
-				if(len==0 && $input.data().$error == null)
-				{
-					var $error = TaskValidator._addErrorToInput($input);
-					$input.data('$error', $error);
-				}
-				else if($input.data().$error && len!=0) {
-					TaskValidator._removeErrorInput($input);
-				}
-			}
-			return valid;
+    		
+
+    		if(isRequired && len==0)
+    		{
+				isValid = false;
+    		}
+    		if(len > maxChars)
+    		{
+    			message = "Too many letters +"+(len-maxChars);
+    			isValid = false;
+    		}
+    		
+    		if(len > maxChars && $error)
+    		{
+				TaskValidator._setErrorMessage($error, message);
+    		}
+
+    		if($error == null && !isValid) {
+    			var $error = TaskValidator._addErrorToInput($input, message);
+				$input.data('$error', $error);
+    		}
+    		else if(isValid && $error) {
+    			TaskValidator._removeErrorInput($input);
+    		}
+
+			
+			return isValid;
 		},
 
 		// ------------------------------------------------------------------------
@@ -336,16 +325,8 @@
 					return passes;
 		    	},    					
 
-			}
-
-			// 
-			if(validator._validate($(this))) 
-			{
-				console.log(validator._data);
-				$(this).openCreateTaskPopup({data:validator._data});
-			}
-
-
+			} 
+			return {valid:validator._validate($(this)) , data:validator._data}; 
 		}
  	});
 })(jQuery);

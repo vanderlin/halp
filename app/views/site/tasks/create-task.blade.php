@@ -26,7 +26,7 @@
 	
 	<div class="input-group" id="input-group-duration">
 		<span class="input input--nao">
-			<input data-error-message="Derp!" data-required="true" data-parent="#input-group-duration" class="validate input__field input__field--nao" type="text" id="task-duration" name="duration" autocomplete="off" placeholder="ex: an hour, a day" value="{{Input::old('duration')}}" />
+			<input data-error-message="Derp!" data-required="true" data-parent="#input-group-duration" data-max="{{Config::get('config.max_title')}}" class="validate input__field input__field--nao" type="text" id="task-duration" name="duration" autocomplete="off" placeholder="ex: an hour, a day" value="{{Input::old('duration')}}" />
 			<label class="input__label input__label--nao" for="task-duration">
 				<span class="input__label-content input__label-content--nao">And I think it will take:</span>
 			</label>
