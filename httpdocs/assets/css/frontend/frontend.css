@@ -767,7 +767,7 @@
   color: white;
   padding: 12px;
   border-radius: 20px;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 .input-error:after {
   bottom: 100%;
