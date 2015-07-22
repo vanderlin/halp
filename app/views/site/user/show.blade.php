@@ -24,6 +24,16 @@
 			$('.notifications-message').html(val==0?'E-mails Are Enabled':'E-mails Are Disabled');
 		});
 	});
+	$(function() {
+		$(".meter > span").each(function() {
+			$(this)
+				.data("origWidth", $(this).width())
+				.width(0)
+				.animate({
+					width: $(this).data("origWidth")
+				}, 1200);
+		});
+	});
 </script>
 @stop
 
@@ -49,6 +59,12 @@
 			</div>
 			<h3 class="light-h3">{{$user->getName()}}</h3>
 		@endif
+	</section>
+
+	<section class="task-ratio">
+		<div class="meter">
+			<span style="width: 25%"></span>
+		</div>
 	</section>
 
 	<section class="tasks user-tasks claimed-task-section">
