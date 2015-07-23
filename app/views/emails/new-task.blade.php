@@ -11,7 +11,7 @@
 	<body>
 		<div class="container">
 			<div class="email-content">
-				<img src="http://halp.ideo.com/assets/img/unhappy-turtle.png" />
+				<img src="http://halp.ideo.com/assets/img/{{get_random_task_image()}}" />
 				<h2>Alert! Alert! {{$task->creator->getShortName()}} needs help.</h2>
 				<hr>
 				<h3>{{link_to($task->creator->getProfileURL(), $task->creator->firstname)}} is looking for help with:</h3>

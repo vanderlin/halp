@@ -182,6 +182,17 @@ function time_ago($time, Carbon $other = null, $absolute = false)
  
 }
 
+function get_random_task_image() 
+{
+  $path = public_path('assets/img/friends');
+  $files = File::files($path);
+
+  foreach ($files as &$f) {
+    $f = substr($f, strlen($path)+1);
+  }
+  return array_random_item($files);
+}
+
 
 function get_image_info($sURL) {
   try {

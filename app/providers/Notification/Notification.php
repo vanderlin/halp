@@ -16,6 +16,12 @@ class Notification extends BaseModel {
 	const NOTIFICATION_TASK_CLAIMED = "notification.task.claimed";
 	const NOTIFICATION_TASK_DELETED = "notification.task.deleted";
 	
+	public static $eventTypes = [
+		Notification::NOTIFICATION_NEW_TASK,
+		Notification::NOTIFICATION_TASK_CLAIMED,
+		Notification::NOTIFICATION_TASK_DELETED,
+	];
+	
     // ------------------------------------------------------------------------
     public function toArray() 
     {
@@ -23,6 +29,7 @@ class Notification extends BaseModel {
      	return $array;
     }
 
+  
     // ------------------------------------------------------------------------
     public function contextUser()
     {

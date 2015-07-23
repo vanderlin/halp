@@ -7,7 +7,59 @@
 	
 	
 	Route::get('/', function() {
-		return View::make('admin.index', ['users'=>User::all(), 'active_link'=>'index']);
+		
+		return View::make('admin.index', ['users'=>User::orderBy('created_at', 'DESC')->paginate(12), 'active_link'=>'index']);
+	});
+
+
+	Route::group(['prefix'=>'tests'], function() {
+		Route::get('/', function() {
+			return View::make('admin.tests', ['users'=>User::all(), 'active_link'=>'tests']);
+		});
+		Route::post('send', function() {
+
+			$notice = new Notification;
+			$notice->event = Input::get('event');
+			$notice->task_id = Input::get('task_id');
+			$notice->load('Task');
+			$notice->task->creator_id = Input::get('creator_id');
+			$notice->task->claimed_id = Input::get('claimed_id');
+
+			$notice->task->load('creator');
+			$notice->task->load('claimer');
+			$status = false;
+			if($notice->event == Notification::NOTIFICATION_NEW_TASK)
+			{
+				$users = User::where('username', '=', 'tvanderlin')->get();
+				$emails = [];
+				foreach ($users as $user) {
+					if(substr($user->email, 0, strlen('fake_')) !== 'fake_') {
+						array_push($emails, $user->email);
+					}
+				}
+				$status = $notice->sendEmailToGroup($emails);
+			}
+			// someone deleted a task - you need to check if
+			// this task has been claimed
+			else if($notice->event == Notification::NOTIFICATION_TASK_DELETED) {
+				$status = $notice->sendEmailToUser($notice->task->claimer);
+			}
+
+
+			// someone claimed your task
+			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
+				$status = $notice->sendEmailToUser($notice->task->creator);
+			}
+
+
+			return [
+				'status'=>$status,
+				'notice'=>$notice,
+				'input'=>Input::all()
+			];
+
+			dd($notice);
+		});
 	});
 
 	// ------------------------------------------------------------------------
@@ -49,7 +101,7 @@
 	// Users Roles & Permissions CMS
 	// ------------------------------------------------------------------------
 	Route::get('users', function() {
-		return View::make('admin.index', ['users'=>User::all(), 'active_link'=>'index']);
+		return View::make('admin.index', ['users'=>User::orderBy('created_at', 'DESC')->paginate(12), 'active_link'=>'users']);
 	});
 
 	Route::get('users/{id}', function($id) {

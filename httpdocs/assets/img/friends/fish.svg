@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="83px" height="66px" viewBox="0 0 83 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>fish</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Group" sketch:type="MSLayerGroup" transform="translate(-635.000000, -573.000000)">
+            <g id="fish" transform="translate(673.976807, 603.277978) rotate(-330.000000) translate(-673.976807, -603.277978) translate(630.336907, 582.606447)" sketch:type="MSShapeGroup">
+                <path d="M1.77732349,24.7045051 C5.74295586,34.609614 20.4985615,37.8765504 36.2130527,37.8765504 C51.9275439,37.8765504 69.0495215,27.2996616 69.0495215,27.2996616 L79.3393069,40.9449809 C79.3393069,40.9449809 77.1423007,31.813698 79.3393069,22.7867361 C81.292645,14.7609472 86.48552,7.82140847 86.48552,7.82140847 L70.9717765,17.9463318 C70.9717765,17.9463318 59.2117036,0.351081198 32.033214,0.351081198 C4.85472435,0.351081198 -2.18830888,14.7993962 1.77732349,24.7045051 Z" id="Path-31" fill="#52D2C3"></path>
+                <circle id="Oval-36" fill="#FFFFFF" cx="17.2262764" cy="17.2262764" r="10.3357658"></circle>
+                <circle id="Oval-36-Copy" fill="#000000" cx="10.9512014" cy="18.066977" r="2.29683685"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
