@@ -1,0 +1,58 @@
+
+.footer{
+	background-size: cover;
+	background-position: center;
+	.footer-bg {
+		position: absolute;
+		z-index: 50;
+		width: 100%;
+	}
+	.container {
+		position: relative;
+		z-index: 100;
+	}
+}
+
+.footer-info{
+	padding-top: 12px;
+}
+
+.footer-info h5:hover{
+	color: @mint;
+}
+
+
+.makeRandom(@min: 0, @max: @min+1, @int: 0) { 
+  .checkInt() {
+    @getNum: `Math.random() * (@{max} - @{min} + @{int})`;
+    @base: unit(`@{int} == 1 ? Math.floor(@{getNum}) : @{getNum}`);
+  }
+  .checkInt();
+  
+  @randNum: @base + @min;
+}
+
+.generate-star(26);
+
+.generate-star(@n, @i: 1) when (@i =< @n) {
+  #star-@{i} {
+	.makeRandom(0, 6, 1); 
+    animation-duration: 4s;
+	animation-delay: ~"@{randNum}s";
+  }
+  .generate-star(@n, (@i + 1));
+}
+
+#ripple1{
+	animation-duration: 2s;
+	animation-delay: 1s;
+}
+#ripple2{
+	animation-duration: 2s;
+	animation-delay: 1.33s;
+}
+#ripple3{
+	animation-duration: 2s;
+	animation-delay: 1.66s;
+}
+
