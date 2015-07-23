@@ -9,6 +9,9 @@
                     <li><a href="{{URL::to($link->url)}}"><h5>{{$link->name}}</h5></a></li>
                 @endforeach
             </ul>
-        </div>    
+            <div class="made-at-ideo">made at</div> 
+            <img src="{{asset('assets/img/ideo.svg')}}" width="70px">
+        </div>   
+
     </div>
 </footer>
