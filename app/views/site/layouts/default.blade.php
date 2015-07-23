@@ -6,7 +6,7 @@
     @yield('scripts')
   </head>
   <body>
-   
+     
     <!-- Content -->  
     <div class="container {{isset($container_class)?$container_class:''}}">
   

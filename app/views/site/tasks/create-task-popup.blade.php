@@ -16,7 +16,7 @@
 		</div>
 		<div class="form-field">
 			<label for="details">Any more details you want to add?</label>
-			<textarea name="details">{{Input::old('details')}}</textarea>
+			<textarea name="details" placeholder="optional">{{Input::old('details')}}</textarea>
 		</div>
 		<div class="task-info">
 			<h4>

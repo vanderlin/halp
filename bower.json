@@ -33,6 +33,7 @@
     "jquery-ui": "~1.11.4",
     "classie": "~1.0.1",
     "semantic-ui": "~2.0.3",
-    "underscore": "~1.8.3"
+    "underscore": "~1.8.3",
+    "animate.css": "~3.3.0"
   }
 }

@@ -30,6 +30,7 @@
 <script src="{{asset('assets/js/app.js')}}"></script>
 
 <link href="{{asset('assets/css/frontend/frontend.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{bower('animate.css/animate.min.css')}}">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

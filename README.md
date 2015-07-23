@@ -88,6 +88,13 @@ You should see `mcrypt support => enabled` in the output. You may need to alias 
 - **Open Chrome**			
 	- <http://localhost:8888>
 
+## CSS Animtations		
+```			
+$("#class").addCSSAnimation('pulse', function() {
+	console.log("Done with pulse");
+})
+```			
+
 ## EndPoints
 
 - **Leaderboard Page**		

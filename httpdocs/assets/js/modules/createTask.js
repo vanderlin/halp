@@ -141,11 +141,22 @@
 				$form:null,
 				$popup:null,
 
+				_resetForm: function() 
+				{
+					var $initForm = $('#init-create-task');
+						$initForm.find('.input').removeClass('input--filled');
+						$initForm.find('input').each(function(index, el) {
+							var $input = $(el);
+							$input.val('');
+						});
+						this.$form[0].reset();
+				},
+
 				// -------------------------------------
 		    	_submit: function(e) 
 		    	{
-		    	
-		    	
+		    		this._resetForm();
+		    	return;
 		    		var self = this;
 		    		var url = this.$form.prop('action')+'?view=true';
 		    		var type = this.$form.attr('method');
@@ -245,8 +256,6 @@
     		var isRequired = $input.data('required') || false;
     		var message = null;
 
-    		
-
     		if(isRequired && len==0)
     		{
 				isValid = false;
@@ -316,8 +325,16 @@
 					var passes = true;
 					$form.find('input.validate').each(function(index, el) {
     					var $input = $(el);
+    					
+    					if($input.data().$error) {
+    						$input.data().$error.addCSSAnimation('pulse', function() {
+								console.log("Done with error pulse");
+							})
+    					}
     					var valid = $input.validateInput();
-    					console.log($input.attr('name'), valid);
+    					var $error = $input.data().$error;
+    					
+    					
 		    			if(valid != true) {
 		    				passes = false;
 		    			}

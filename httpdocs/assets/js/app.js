@@ -1,3 +1,4 @@
+
 function prevent_default(e) {
     e.preventDefault();
 }
@@ -7,7 +8,6 @@ function disable_scroll() {
 function enable_scroll() {
     $(document).unbind('touchmove', prevent_default)
 }
-
 function getQueryParams(queryString) {
   var query = (queryString || window.location.search).substring(1); // delete ?
   if (!query) {
