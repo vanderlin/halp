@@ -10,7 +10,7 @@
                 @endforeach
             </ul>
             <div class="made-at-ideo">made at</div> 
-            <img src="{{asset('assets/img/ideo.svg')}}" width="70px">
+            <img src="{{asset('assets/img/ideo.svg')}}" data-no-retina width="70px">
         </div>   
 
     </div>
