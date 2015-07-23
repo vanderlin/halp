@@ -24,6 +24,7 @@
                 <div class="item">{{link_to('admin/users', 'Users')}}</div>
                 <div class="item">{{link_to('admin/notifications', 'Notifications')}}</div>
                 <div class="item">{{link_to('admin/projects', 'Projects')}}</div>
+                <div class="item">{{link_to('admin/assets', 'Assets')}}</div>
             </div>
             <br>
             <br>

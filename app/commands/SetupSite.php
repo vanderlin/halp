@@ -206,7 +206,7 @@ class SetupSite extends Command {
 		foreach (User::all() as $user) {
 			$user->delete();		
 		}
-
+	
 		$faker = Faker\Factory::create();
 		$seeder = new LOFaker;
 		$n = 30;
@@ -270,7 +270,8 @@ class SetupSite extends Command {
 			}
 
 			$userImage = new Asset;
-			$userImage->path = public_path('assets/content/users');
+			$userImage->path = 'assets/content/users';
+			$userImage->fromSeed = true;
 			$userImage->saveRemoteAsset($user_photo_url,  $user->username.".jpg", Asset::ASSET_TYPE_IMAGE);
 			$userImage->save();
 

@@ -27,11 +27,13 @@ class User extends BaseModel implements ConfideUserInterface {
     }
 
     public static function missingProfileImage() {
-      $m = Asset::findFromTag('missing-user-image');
-      if($m == NULL) {
-        return Asset::missingFile();   
-      }
-      return $m;
+
+        $m = Asset::findFromTag('missing-user-image');
+        
+        if($m == NULL) {
+            return Asset::missingFile();   
+        }
+        return $m;
     }
 
     public function scopeAdmin($query) {   
@@ -93,6 +95,7 @@ class User extends BaseModel implements ConfideUserInterface {
 
     public function getProfileImageAttribute() {
         $img = $this->profileImage()->first();
+
         if($img == null) {
             return User::missingProfileImage();
         }
@@ -221,4 +224,18 @@ class User extends BaseModel implements ConfideUserInterface {
         return $user;
     }
 
+    // ------------------------------------------------------------------------
+    public function delete() {
+        
+        if($this->hasDefaultProfileImage()==false) {
+            $this->profileImage->delete();
+        }
+        foreach ($this->createdTasks as $task) {
+            $task->delete();
+        }
+        
+        
+
+        parent::delete();
+    }
 }

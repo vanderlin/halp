@@ -1,101 +1,136 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.default', ['use_footer'=>false])
 
-<?php $assets = Asset::orderBy('created_at', 'DESC')->paginate(25); ?>
+<?php $assets = Asset::orderBy('created_at', 'DESC')->paginate(12); ?>
+
 {{-- Web site Title --}}
 @section('title')
-  Admin | Assets 
+  {{Config::get('config.site_name')}} | Admin | Projects
 @stop
-
 
 @section('scripts')
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
 
+        $('.edit-asset').click(function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            $.magnificPopup.open({
+                tLoading: 'Loading...',
+                closeOnContentClick: false,
+                closeOnBgClick:false,
+                mainClass: 'mfp-fade',
+                items: {
+                    src: url,
+                    type: 'ajax',
+                },
+                callbacks: {
+                    parseAjax: function(mfpResponse) {
+                        mfpResponse.data = $(mfpResponse.xhr.responseText);
+                    },
+                    ajaxContentAdded: function() {
+                  
+                    }
+                }
+            });    
+        });
+
+        // -------------------------------------
+        $(".delete-asset").click(function(e) {
+          e.preventDefault();
+          var c = confirm('Are you sure?');
+          if(c) {
+            $.ajax({
+              url: $(this).attr('href'),
+              type: 'POST',
+              dataType: 'json',
+              data: {_method: 'DELETE'},
+            })
+            .done(function(evt) {
+              console.log("success", evt);
+              if(evt.status == 200) {
+                document.location = '/admin/assets';
+              }
+            })
+            .fail(function(evt) {
+              console.log("error", evt);
+            });
+          }
+        });
+
+        // -------------------------------------   
+        $('.add-asset').click(function(e) {
+            e.preventDefault();
+            $.magnificPopup.open({
+                tLoading: 'Loading...',
+                closeOnContentClick: false,
+                closeOnBgClick:false,
+                mainClass: 'mfp-fade',
+                items: {
+                    src: '/admin/assets/upload',
+                    type: 'ajax',
+                },
+                callbacks: {
+                    parseAjax: function(mfpResponse) {
+                        mfpResponse.data = $(mfpResponse.xhr.responseText);
+                    },
+                    ajaxContentAdded: function() {
+                  
+                    }
+                }
+            });    
+        });
+    });
+</script> 
 @stop
+
 
 {{-- Content --}}
 @section('content')
-  
-  <h2 class="page-header">Assets ({{$assets->getTotal()}})</h2>
 
-  <div class="row">
-    <div class="col-md-6">
-      
-      <h3>Add Asset</h3>
-      {{Form::open(['url'=>'/assets/create', 'method'=>'POST', 'files'=>true])}}
-      
-      <div class="form-group">
-        <label for="filename">Filename</label>
-        <div class="input-group">
-          <input type="text" class="form-control" id="filename" placeholder="ie: assets/content/file.png">
-          <span class="input-group-btn">
-            <button class="btn btn-default btn-file" type="button">
-              <span id="file-icon">Browse</span>
-              <input type="file" name="file" id="file" accept="image/*">
-            </button>
-          </span>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="optional">
-      </div>
-
-      <div class="form-group">
-        <button type="submit" class="btn btn-default btn-success">Create</button>
-      </div>
-
-      <div class="text-center">
-        
-          @include('site.partials.form-errors')
-        
-      </div>
-
-      {{Form::close()}}
-      
-
-    </div>
-  </div>
-
-
-
-
-  <div class="table-responsive">
-    <h3>Assets</h3>
-    <table class="table table-striped assets-table">
-    
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>File</th>
-          <th>Name</th>
-          <th>Type</th>
-          <th></th>
+<section class="content admin">
+  @if ($assets->count()>0)
+    <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>File</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($assets as $asset)
+        <tr class="{{$asset->fileExists()?'':'danger'}}">
+          <td class="center aligned">{{ $asset->id }}</td>
+          <td class="center aligned">
+            <img width="40" height="40" src="{{$asset->url('s40')}}" class="thumbnail">
+          </td>
+          <td>
+          {{ link_to('admin/assets/'.$asset->id.'/edit', $asset->getName()) }}
+          {{ $asset->shared?' <small class="text-warning">(Shared)</small>':'' }}
+          </td>
+          <td>{{$asset->assetable_type?$asset->assetable_type:'None'}}</td>
+          <td class="center aligned">
+          <a href="/assets/{{$asset->id}}" class="delete-asset ui red button" data-id="{{$asset->id}}"><i class="trash icon"></i></a>
+          {{ link_to('admin/assets/'.$asset->id.'/edit', 'Edit', ['class'=>'edit-asset ui button'])}}
+          </td>
         </tr>
-      </thead>
-
-      <tbody>
-        @foreach ($assets as $asset)
-          
-          <tr class="{{$asset->fileExists()?'':'danger'}}">
-            <td>{{ $asset->id }}</td>
-            <td>
-            	<img width="30" height="30" src="{{$asset->url('s30')}}" class="thumbnail">
-            </td>
-            <td>
-            {{ link_to('admin/assets/'.$asset->id.'/edit', $asset->getName()) }}
-            {{ $asset->shared?' <small class="text-warning">(Shared)</small>':'' }}
-            </td>
-            <td>{{$asset->assetable_type?$asset->assetable_type:'None'}}</td>
-            <td>{{ link_to('admin/assets/'.$asset->id.'/edit', 'Edit', ['class'=>'btn btn-default btn-xs pull-right'])}}</td>
-          </tr>
-
-        @endforeach
-      </tbody>
-    </table>
+      @endforeach
+    </tbody>
+  </table>  
+  
+  <div class="ui pagination menu">
+    @include('admin.partials.paginator', ['paginator'=>$assets])
+    <div class="icon item"></div>
+    <a class="icon item add-asset">
+      <i class="plus icon"></i>
+    </a>
   </div>
 
-  <div class="row text-center">
-  {{$assets->links()}}
-  </div>
+  <div class="text-center">@include('site.partials.form-errors')</div>
+ 
+  @endif
 
+</section>
 @stop

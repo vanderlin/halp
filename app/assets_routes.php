@@ -18,8 +18,10 @@ Route::group(['prefix'=>'assets'], function() {
 	Route::get('{id}', ['uses'=>'AssetsController@show', 'as'=>'assets.show']);
 	Route::get('{id}/clear-cache', ['uses'=>'AssetsController@clearCache', 'as'=>'assets.clear-cache']);
 	Route::get('{id}/meta', ['uses'=>'AssetsController@meta', 'as'=>'assets.meta']);
+	
 	Route::post('/create', ['uses'=>'AssetsController@store', 'as'=>'assets.store']);
-	Route::put('{id}', ['uses'=>'AssetsController@update']);
+	Route::put('{id}', ['uses'=>'AssetsController@update', 'as'=>'assets.update']);
+	
 	Route::put('{id}/versions', ['uses'=>'AssetsController@storeVersion']);
 	Route::delete('{asset_id}/versions/{version_id}', ['uses'=>'AssetsController@deleteVersion']);
 	Route::delete('{id}', ['uses'=>'AssetsController@delete']);

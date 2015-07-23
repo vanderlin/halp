@@ -121,7 +121,6 @@ class AssetsController extends \BaseController {
 			$asset->rights = Input::get('rights');
 		}
 
-
 		$file = Input::file('file');
 		if($file) {
 			$asset->saveFile($file);
@@ -370,26 +369,27 @@ class AssetsController extends \BaseController {
 		$asset = Asset::find($id);
 		if($asset == null) return $wantsJson ? Response::json(['errors'=>'No asset found', 'status'=>404, 'id'=>$id]) : Redirect::back()->with(['errors'=>'No asset found', 'status'=>404]);
 
-		$total	 	= 0;
-		$assetables = DB::table('assetables')->where('asset_id', $id)->get();
-		
-		if($assetables) {
-
-			$item = null;
-			foreach ($assetables as $as) {
-				$as_type = $as->assetable_type;
-				$as_id 	 = $as->assetable_id;
-				$item 	 = $as_type::find($as_id);
+		if (Schema::hasTable('assetables')) {
+			$total	 	= 0;
+			$assetables = DB::table('assetables')->where('asset_id', $id)->get();
 			
-				if($item) {
-					$item->assets()->detach($asset);
-					$total = $item->assets->count();
-				}			
+			if($assetables) {
+
+				$item = null;
+				foreach ($assetables as $as) {
+					$as_type = $as->assetable_type;
+					$as_id 	 = $as->assetable_id;
+					$item 	 = $as_type::find($as_id);
+				
+					if($item) {
+						$item->assets()->detach($asset);
+						$total = $item->assets->count();
+					}			
+				}
 			}
 		}
-
 		$asset->delete();
-		return $wantsJson ? Response::json(['notice'=>'Asset deleted', 'status'=>200, 'id'=>$id, 'total'=>$total]) : Redirect::back()->with(['error'=>'Asset deleted', 'status'=>200, 'id'=>$id, 'total'=>$total]);
+		return $wantsJson ? Response::json(['notice'=>'Asset deleted', 'status'=>200, 'id'=>$id]) : Redirect::back()->with(['error'=>'Asset deleted', 'status'=>200, 'id'=>$id]);
 
 	}
 

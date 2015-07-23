@@ -12,7 +12,7 @@ class Asset extends \Eloquent {
     protected $fillable = [];
     protected $missing_filename = 'missing.svg';
     protected $dates = ['deleted_at'];
-
+    public $fromSeed = false;     
     const ASSET_RIGHTS_USER_OWENED      = 1;//"assets.rights.user.owned";
     const ASSET_RIGHTS_NOT_USER_OWENED  = 2;//"assets.rights.not.user.owned";
     const ASSET_RIGHTS_UNKNOWN          = 3;//"assets.rights.unknown";
@@ -295,6 +295,13 @@ class Asset extends \Eloquent {
       }
     }
 
+    public function getPathAttribute($value)
+    {
+      if(isset($this->fromSeed)&&$this->fromSeed) {
+        $value = public_path($value);
+      }
+      return $value;
+    }
     // ------------------------------------------------------------------------
     public function getBasePath() 
     {

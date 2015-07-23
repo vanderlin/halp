@@ -73,8 +73,12 @@
 	Route::get('assets', function() {
 		return View::make('admin.assets.index');
 	});
+	Route::get('assets/upload', function() {
+		return View::make('admin.assets.upload-popup');
+	});
+	
 	Route::get('assets/{id}/edit', function($id) {
-		return View::make('admin.assets.edit', ['asset'=>Asset::find($id)]);
+		return View::make('admin.assets.edit-popup', ['asset'=>Asset::find($id)]);
 	});
 
 });

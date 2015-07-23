@@ -283,7 +283,6 @@ class AssetsRepository  {
 	// ------------------------------------------------------------------------
 	public function store($input)
 	{		
-
 		$files = $this->getInputFiles();
 		if(empty($files)) {
 			return $this->listener->errorResponse('No input files');
@@ -322,6 +321,14 @@ class AssetsRepository  {
 			$asset = new Asset;
 			$asset->path = Input::get('path', $this->getPathForFile($f));
 			
+			if(Input::has('tag')) {
+				$asset->tag = Str::slug(strtolower(Input::get('tag')));
+			}
+			if(Input::has('shared')) {
+				$asset->shared = Input::get('shared')=='on'?1:0;
+			}
+
+
 			$user  = User::findFromData($input['user_id']);
 			$asset->user()->associate($user);
 			
