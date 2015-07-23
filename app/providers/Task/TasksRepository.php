@@ -91,9 +91,9 @@ class TasksRepository  {
 		$view = null;
 		if(Input::has('view')&&Input::get('view'))
 		{
-			$view = View::make('site.tasks.card', array('task' => $task, 'claimed'=>true))->render();
+			$view = View::make('site.tasks.card', array('task' => $task, 'show_button'=>false))->render();
 		}
-		$notice = "Thanks for helping!<hr><p>".$task->creator->firstname." was notified that you claimed this task and will reach out soon. Or you can reach out to ".$task->creator->firstname.", if you're feeling like a go-getter.</p>";
+		$notice = View::make('site.tasks.claim-task-response', array('task' => $task))->render();
 		return $this->listener->statusResponse(['task'=>$task, 'notice'=>$notice, 'view'=>$view]);		
 	}
 

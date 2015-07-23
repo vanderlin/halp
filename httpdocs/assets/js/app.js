@@ -88,10 +88,23 @@ var App = (function() {
 
         // -------------------------------------
         $(document).on('click', '.halp-edit-button', function(e) {
+            e.preventDefault();
             var id = $(this).data('id');
             console.log("Edit button task", id);
             App.editTask(id);   
         });
+
+    
+        // -------------------------------------
+        $(document).on('click', '.halp-claim-button', function(e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            console.log("Claim button task", id);
+            App.openPopup({
+                url:'/tasks/'+id+'/claimed'
+            });
+        });
+    
 
         // -------------------------------------
         $(document).on('click', '.halp-delete-task-button', function(e) {
@@ -117,7 +130,7 @@ var App = (function() {
     
         // -------------------------------------
         $(document).on('click', '.close-popup', function(e) {
-            App.closeClaimPopup();
+            App.closePopup();
         });
         
         // -------------------------------------
@@ -176,17 +189,24 @@ var App = (function() {
 
                     $(this).popupResponse(e, {
                         height:500,
-                        delay:3500,
-                        callback:function() {
-                            var $card = $('.task-card-'+e.task.id);
-                            App.scrollTo($('#claimed-tasks-content'), 500, function() {
-                                $card.remove();
-                                var $view = $(e.view);
-                                $('#claimed-tasks-content').prepend($view);
-                                $view.hide();
-                                $view.addClass('task-focused');
-                                $view.delay(200).fadeTo(500, 1);
+                        close:false,
+                        callback:function(e) {
+                            $('#claimed-close-popup-button').click(function(evt) {
+                                evt.preventDefault();
+                                App.closePopup(function() {
+                                    var $card = $('.task-card-'+e.task.id);
+                                    App.scrollTo($('#claimed-tasks-content'), 500, function() {
+                                        $card.remove();
+                                        var $view = $(e.view);
+                                        $('#claimed-tasks-content').prepend($view);
+                                        $view.hide();
+                                        $view.addClass('task-focused');
+                                        $view.delay(200).fadeTo(500, 1);
+                                    });
+                                })
+                                
                             });
+                            
                         }
                         
                     })
@@ -196,11 +216,32 @@ var App = (function() {
                 }
             });    
         })
+
+        $(document).on('mouseover mouseout', '.front-facing-turtle', function(e) {
+            if(e.type == 'mouseover')
+            {
+                $('.front-facing-turtle').show().animate({top: -10}, {
+                    duration: 100, 
+                    easing: 'easeOutCubic', 
+                });
+            }
+            else {
+                $('.front-facing-turtle').show().animate({top: -44}, {
+                    duration: 100, 
+                    easing: 'easeOutCubic', 
+                });   
+            }
+        });
+        
 	}
 	
     // ------------------------------------------------------------------------
     self.editTask = function(id)
     {
+        this.openPopup({
+            url:'/tasks/edit/'+id,
+        });
+        return;
         var self = this;
         $.magnificPopup.open({
             tLoading: 'Loading your task!...',
@@ -290,7 +331,8 @@ var App = (function() {
     }
 
     // ------------------------------------------------------------------------
-	self.scrollTo = function(target, speed, callback) {
+	self.scrollTo = function(target, speed, callback) 
+    {
     	target = $(target);
         $('body').animate({ scrollTop: target.offset().top - 100 }, speed||500, function(e) {
             if(callback) {
@@ -299,59 +341,46 @@ var App = (function() {
         });
 	}
 
-
     // ------------------------------------------------------------------------
-    self.windowResize = function(e) {
-  
+    self.windowResize = function(e) 
+    {
+        if($('.front-facing-turtle').length)
+        {
+            $('.front-facing-turtle').css({left:($('.white-popup').offset().left) + (($('.white-popup').outerWidth()-$('.front-facing-turtle').width())/2)});    
+        }
     }
 
-    // -------------------------------------
-    self.addDeleteTaskEvent = function($item) {
-        $item.click(function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            var c = confirm("Are you sure you want to delete this task?");
-            var $target = $($(this).data('target'));
-            if(c)
-            {
-                $.ajax({
-                    url: '/tasks/'+id,
-                    type: 'POST',
-                    dataType:'json',
-                    data: {_method: 'DELETE'},
-                })
-                .done(function(e) {
-                    $target.fadeOut(200, function() {
-                        $(this).remove();
-                    });
-                });
-                 
-            } 
-        });
-    }
-    
     // -------------------------------------
     self.closePopup = function(callback) 
     {
-        
-        $('.white-popup').fadeOut(200, function() {
-            $.magnificPopup.close();    
-            if(callback) {
-                callback();
-            }   
-        })
+
+        $('.white-popup').removeClass('animated fadeIn');
+        $('.front-facing-turtle').show().animate({top: 20}, {
+            duration: 200, 
+            easing: 'easeOutCubic', 
+            complete:function() {
+                $(this).remove();
+                $('.white-popup').fadeOut(400, function() {
+                    $.magnificPopup.close();    
+                    if(callback) {
+                        callback();
+                    }   
+                })     
+            }
+        });
     }
 
     // -------------------------------------
-    self.openClaimPopup = function(id) 
+    self.openPopup = function(options) 
     {
+
         $.magnificPopup.open({
             tLoading: 'Loading some halp!...',
             closeOnContentClick: false,
             closeOnBgClick:false,
             mainClass: 'mfp-fade',
             items: {
-                src: '/tasks/'+id+'/claimed',
+                src: options.url,
                 type: 'ajax',
             },
             callbacks: {
@@ -360,14 +389,18 @@ var App = (function() {
                     mfpResponse.data = $(mfpResponse.xhr.responseText);
                 },
                 ajaxContentAdded: function() {
-                    console.log(this.content);                   
+                    $('.front-facing-turtle').css({left:($('.white-popup').offset().left) + (($('.white-popup').outerWidth()-$('.front-facing-turtle').width())/2)});
+                    setTimeout(function() {
+                        $('.front-facing-turtle').show().animate({top: -44}, {duration: 200, easing: 'easeOutCubic'});
+                    }, 1000);
                 }
             }
         });
     }
 
     // -------------------------------------
-    self.loadModules = function() {
+    self.loadModules = function() 
+    {
 
         var self = this;
 
@@ -378,18 +411,6 @@ var App = (function() {
         // $('.halp-delete-task-button').each(function(index, el) {
         //     self.addDeleteTaskEvent($(el));
         // });
-
-        // -------------------------------------
-        $('.halp-claim-button').each(function(index, el) {
-            $(el).click(function(e) {
-                e.preventDefault();
-                var id = $(this).data('id');
-                App.openClaimPopup(id);
-            });
-        });
-    
-        
-
 
     }
 

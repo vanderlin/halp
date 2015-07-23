@@ -113,9 +113,10 @@
 		{
 			options = options || {};
 
-			$('.popup-content').fadeTo(200, 0, function() {
-                
+			options.close = options.close==undefined ? true : options.close;
 
+			$('.popup-content').fadeTo(200, 0, function() {
+               
 				var $notice = $('<h2>'+e.notice+'</h2>');
 				
                 $('.white-popup').first().animate({height:options.height||200}, 500, function() {
@@ -123,9 +124,15 @@
                     $('.popup-content').html($notice);
 
                     $('.popup-content').fadeTo(300, 1, function() {
-                    	setTimeout(function() {
-                    		App.closePopup(options.callback);
-                    	}, options.delay||1000);
+                    	if(options.close) 
+                    	{
+	                    	setTimeout(function() {
+	                    		App.closePopup(options.callback);
+	                    	}, options.delay||1000);
+                    	}
+                    	else if(options.callback) {
+                    		options.callback(e);
+                    	}
                     });
                 });
                 

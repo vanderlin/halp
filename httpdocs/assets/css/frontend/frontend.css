@@ -151,9 +151,10 @@
   font-size: 65px;
 }
 .front-facing-turtle {
+  position: absolute;
   margin: 0 auto;
-  display: block;
-  margin-bottom: -20px;
+  top: 20px;
+  display: none;
 }
 .mfp-close-btn-in .mfp-close {
   margin: 20px;
