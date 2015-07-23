@@ -244,8 +244,18 @@ var App = (function() {
             url:'/tasks/edit/'+id,
             onContentAdded: function(e) {
                 var $content = $(e.content[2]);
-                $("#edit-task-datepicker").datepicker({showAnim:'slideDown'});
+                
+
+                // date picker
+                $("#edit-task-datepicker").datepicker({
+                    showAnim:'slideDown',
+
+                })
+               
                 $("#edit-task-datepicker").datepicker("setDate", new Date( $("#edit-task-datepicker").data('default-date') )); 
+                
+                    
+
                 $("#edit-task-title").on('keydown, keyup', function(event) {
                     var v = $(this).val();
                     if(v=="") {
@@ -335,11 +345,13 @@ var App = (function() {
     self.closePopup = function(callback) 
     {
 
+        
         $('.white-popup').removeClass('animated fadeIn');
         $('.front-facing-turtle').show().animate({top: 20}, {
             duration: 200, 
             easing: 'easeOutCubic', 
             complete:function() {
+                $('.ui-datepicker').remove();
                 $(this).remove();
                 $('.white-popup').fadeOut(400, function() {
                     $.magnificPopup.close();    
@@ -365,6 +377,10 @@ var App = (function() {
                 type: 'ajax',
             },
             callbacks: {
+                afterClose: function() {
+                    console.log("afterClose");
+                    $('.ui-datepicker').remove();                
+                },
                 parseAjax: function(mfpResponse) {
                     var task = mfpResponse.xhr.responseText;
                     mfpResponse.data = $(mfpResponse.xhr.responseText);
