@@ -216,7 +216,8 @@ var App = (function() {
                 }
             });    
         })
-
+    
+        // -------------------------------------
         $(document).on('mouseover mouseout', '.front-facing-turtle', function(e) {
             if(e.type == 'mouseover')
             {
@@ -239,95 +240,75 @@ var App = (function() {
     self.editTask = function(id)
     {
         this.openPopup({
+            loadingMessage: 'Loading your task!...',
             url:'/tasks/edit/'+id,
-        });
-        return;
-        var self = this;
-        $.magnificPopup.open({
-            tLoading: 'Loading your task!...',
-            closeOnContentClick: false,
-            closeOnBgClick:false,
-            mainClass: 'mfp-fade',
-            items: {
-                src: '/tasks/edit/'+id,
-                type: 'ajax',
-            },
-            callbacks: {
-                parseAjax: function(mfpResponse) {
-                    var task = mfpResponse.xhr.responseText;
-                    mfpResponse.data = $(mfpResponse.xhr.responseText);
-                },
-                ajaxContentAdded: function() {
-                    // console.log(this.content[2]); 
-                    var $content = $(this.content[2]);
-                    
-                    $("#edit-task-datepicker").datepicker({showAnim:'slideDown'});
-                    $("#edit-task-datepicker").datepicker("setDate", new Date( $("#edit-task-datepicker").data('default-date') )); 
-                    $("#edit-task-title").on('keydown, keyup', function(event) {
-                        var v = $(this).val();
-                        if(v=="") {
-                            v = 'Untitled';
-                        }
-                        $('.edit-task-content h2 .task-title').html(v.trim());
-                    });
-                       
-                    
-                    $('#edit-task-project').autocomplete({
-                        source: projects,
-                        appendTo:$('#edit-task-project').parent(),
-                        minLength: 0
-                    })
-                    .focus(function() {
-                        $(this).autocomplete('search', $(this).val())
-                    });
-
-                    // -------------------------------------
-                    $('#edit-task-form').submit(function(e) {
-                        e.preventDefault();
-                        var validation = $(this).validateTask();
-                        if(validation.valid) 
-                        {
-                            var $form = $(this);
-                            var url = $form.prop('action')+'?view=true';
-                            var type = $form.attr('method');
-                            var fd = new FormData($form[0]);    
-                            $.ajax({
-                                url: url,
-                                type: type,
-                                dataType: 'json',
-                                data: fd,
-                                processData: false,
-                                contentType: false,
-                            })
-                            .always(function(e) {
-                                console.log(e);
-                                $(this).popupResponse(e, {
-                                    callback: function() {
-                                        var $card = $('.task-card-'+e.task.id);
-                                        App.scrollTo($card, 500, function() {
-                                            $card.fadeTo(200, 0, function() {
-                                                var $view = $(e.view);
-                                                $(this).replaceWith($view);
-                                                $view.hide();
-                                                $view.addClass('task-focused');
-                                                $view.delay(200).fadeTo(200, 1);
-                                            });
-                                        });
-                                    }
-                                })
-                            });
-                        }
-                        else
-                        {
-                            console.log("Invalid Edit Form");
-                        }    
-                    });
+            onContentAdded: function(e) {
+                var $content = $(e.content[2]);
+                $("#edit-task-datepicker").datepicker({showAnim:'slideDown'});
+                $("#edit-task-datepicker").datepicker("setDate", new Date( $("#edit-task-datepicker").data('default-date') )); 
+                $("#edit-task-title").on('keydown, keyup', function(event) {
+                    var v = $(this).val();
+                    if(v=="") {
+                        v = 'Untitled';
+                    }
+                    $('.edit-task-content h2 .task-title').html(v.trim());
+                });
+                   
                 
-                    $('#edit-task-form').addValidationListener();
+                $('#edit-task-project').autocomplete({
+                    source: projects,
+                    appendTo:$('#edit-task-project').parent(),
+                    minLength: 0
+                })
+                .focus(function() {
+                    $(this).autocomplete('search', $(this).val())
+                });
 
-                }
+                // -------------------------------------
+                $('#edit-task-form').submit(function(e) {
+                    e.preventDefault();
+                    var validation = $(this).validateTask();
+                    if(validation.valid) 
+                    {
+                        var $form = $(this);
+                        var url = $form.prop('action')+'?view=true';
+                        var type = $form.attr('method');
+                        var fd = new FormData($form[0]);    
+                        $.ajax({
+                            url: url,
+                            type: type,
+                            dataType: 'json',
+                            data: fd,
+                            processData: false,
+                            contentType: false,
+                        })
+                        .always(function(e) {
+                            console.log(e);
+                            $(this).popupResponse(e, {
+                                callback: function() {
+                                    var $card = $('.task-card-'+e.task.id);
+                                    App.scrollTo($card, 500, function() {
+                                        $card.fadeTo(200, 0, function() {
+                                            var $view = $(e.view);
+                                            $(this).replaceWith($view);
+                                            $view.hide();
+                                            $view.addClass('task-focused');
+                                            $view.delay(200).fadeTo(200, 1);
+                                        });
+                                    });
+                                }
+                            })
+                        });
+                    }
+                    else
+                    {
+                        console.log("Invalid Edit Form");
+                    }    
+                });
+        
+                $('#edit-task-form').addValidationListener();
             }
-        });        
+        });       
     }
 
     // ------------------------------------------------------------------------
@@ -375,7 +356,7 @@ var App = (function() {
     {
 
         $.magnificPopup.open({
-            tLoading: 'Loading some halp!...',
+            tLoading: options.loadingMessage||'Loading some halp!...',
             closeOnContentClick: false,
             closeOnBgClick:false,
             mainClass: 'mfp-fade',
@@ -393,6 +374,9 @@ var App = (function() {
                     setTimeout(function() {
                         $('.front-facing-turtle').show().animate({top: -44}, {duration: 200, easing: 'easeOutCubic'});
                     }, 1000);
+                    if(options.onContentAdded) {
+                        options.onContentAdded(this);
+                    }
                 }
             }
         });
