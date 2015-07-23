@@ -59,19 +59,9 @@ grunt.initConfig({
             "<%= paths.css %>frontend/frontend.css": "<%= paths.assets.less %>frontend.less",
             "<%= paths.css %>backend/backend.css": "<%= paths.assets.less %>backend.less",
             "<%= paths.css %>core/api.css": "<%= paths.assets.less %>api.less",
-          }
-
-        },
-        email: {
-          options: {
-            paths: ["<%= paths.css %>"],
-            cleancss: true,
-            modifyVars: {
-            }
-          },
-          files: {
             "<%= paths.css %>core/email.css": "<%= paths.assets.less %>email.less",
           }
+
         },
         api: {
           options: {

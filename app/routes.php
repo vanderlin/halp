@@ -30,11 +30,16 @@ Route::get('testemail', function() {
 
 
 	$view = View::make('emails.new-task', $data)->render();
-
+	
 	$premailer = new ScottRobertson\Premailer\Request();
 	$response = $premailer->convert($view);
 	// $email = Input::get('email', 'vanderlin@gmail.com');
 	$emails = ['vanderlin@gmail.com', 'tvanderlin@ideo.com'];
+
+	if (Input::get('view', false)==true) {
+		return $response->downloadHtml();
+	}
+
 	Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($emails) {
 		$message->bcc($emails, 'Halp')->subject('From '.Auth::user()->getName()." Halp Email Test ".uniqid());
 	});

@@ -25,7 +25,6 @@
   letter-spacing: 1px;
   color: #4fd2c2;
   -webkit-tap-highlight-color: transparent;
-  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
   cursor: pointer;
 }
@@ -54,7 +53,6 @@
 }
 /* Text (transition for when returning to initial state) */
 .progress-button button span {
-  -webkit-transition: opacity 0.3s 0.1s;
   transition: opacity 0.3s 0.1s;
 }
 /* Common style of SVGs */
@@ -79,7 +77,6 @@
   stroke: #fff;
   stroke-linecap: round;
   stroke-width: 4;
-  -webkit-transition: opacity 0.1s;
   transition: opacity 0.1s;
 }
 /* Loading, success and error effects */
@@ -92,7 +89,6 @@
   color: #fff;
 }
 .loading.progress-button span {
-  -webkit-transition: opacity 0.15s;
   transition: opacity 0.15s;
 }
 .loading.progress-button span,
@@ -103,7 +99,6 @@
 }
 .success.progress-button button,
 .error.progress-button button {
-  -webkit-transition: background-color 0.3s, width 0.3s, border-width 0.3s;
   transition: background-color 0.3s, width 0.3s, border-width 0.3s;
 }
 .success.progress-button button {
@@ -118,23 +113,31 @@
 .success.progress-button svg.checkmark path,
 .error.progress-button svg.cross path {
   opacity: 1;
-  -webkit-transition: stroke-dashoffset 0.3s;
   transition: stroke-dashoffset 0.3s;
 }
 /* Optional elastic effect for the width of the button */
 .elastic.progress-button button {
-  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1), border-width 0.3s, border-color 0.3s;
-  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1.6), border-width 0.3s, border-color 0.3s;
   transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1.6), border-width 0.3s, border-color 0.3s;
 }
 .loading.elastic.progress-button button {
-  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, 0, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
-  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
   transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
 }
 body {
   margin: 0;
   padding: 0;
+}
+table {
+  background-color: #F0EFEE;
+  width: 100%;
 }
 .container {
   text-align: center;
@@ -146,6 +149,7 @@ body {
   padding: 100px;
   background-color: #fff;
   margin: 40px auto;
+  border-radius: 10px;
 }
 h1 {
   font-family: Georgia, serif;
