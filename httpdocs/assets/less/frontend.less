@@ -431,10 +431,17 @@ body .nomargin-bottom {
 /* ------------------------------------- FOOTER ------------------------------------ */
 
 .footer{
-	background-image: url("@{img-path}footer.svg");
 	height: 500px;
 	background-size: cover;
 	background-position: center;
+	.footer-bg {
+		position: absolute;
+		z-index: 50;
+	}
+	.container {
+		position: relative;
+		z-index: 100;
+	}
 }
 
 .footer-info{

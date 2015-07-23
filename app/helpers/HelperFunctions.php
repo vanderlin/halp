@@ -45,6 +45,17 @@ function bower($file) {
   return asset('bower_components/'.$file);
 }
 
+function print_svg($file)
+{
+  if(File::exists($file)) {
+    $str = File::get($file);
+    return $str;
+  }
+  else {
+    return "error loading: $file";
+  }
+}
+
 function echo_form_error($name, $errors) {
   if ($errors->has($name)) return 'has-error';
 }

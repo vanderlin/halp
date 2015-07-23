@@ -1336,10 +1336,17 @@ body .nomargin-bottom {
 }
 /* ------------------------------------- FOOTER ------------------------------------ */
 .footer {
-  background-image: url("/assets/img/footer.svg");
   height: 500px;
   background-size: cover;
   background-position: center;
+}
+.footer .footer-bg {
+  position: absolute;
+  z-index: 50;
+}
+.footer .container {
+  position: relative;
+  z-index: 100;
 }
 .footer-info {
   padding-top: 12px;

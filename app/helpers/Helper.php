@@ -18,7 +18,7 @@ class Helper {
         return $str;
     	}
     	else {
-    		return 'Missing Image';
+    		return "error loading: $file";
     	}
     }
 

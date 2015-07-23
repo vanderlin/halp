@@ -1,4 +1,7 @@
 <footer class="footer">
+	<div class="footer-bg">
+		{{print_svg('assets/img/footer.svg')}}
+	</div>
     <div class="container">
         <div class="footer-info">
             <ul class="list-inline site-map halp-list-menu">
