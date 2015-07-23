@@ -92,6 +92,28 @@ var App = (function() {
             console.log("Edit button task", id);
             App.editTask(id);   
         });
+
+        // -------------------------------------
+        $(document).on('click', '.halp-delete-task-button', function(e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            var c = confirm("Are you sure you want to delete this task?");
+            var $target = $($(this).data('target'));
+            if(c)
+            {
+                $.ajax({
+                    url: '/tasks/'+id,
+                    type: 'POST',
+                    dataType:'json',
+                    data: {_method: 'DELETE'},
+                })
+                .done(function(e) {
+                    $target.fadeOut(200, function() {
+                        $(this).remove();
+                    });
+                });
+            } 
+        });
     
         // -------------------------------------
         $(document).on('click', '.close-popup', function(e) {
@@ -353,9 +375,9 @@ var App = (function() {
         $(".timeago").timeago();
         
 
-        $('.halp-delete-task-button').each(function(index, el) {
-            self.addDeleteTaskEvent($(el));
-        });
+        // $('.halp-delete-task-button').each(function(index, el) {
+        //     self.addDeleteTaskEvent($(el));
+        // });
 
         // -------------------------------------
         $('.halp-claim-button').each(function(index, el) {
