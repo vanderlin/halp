@@ -63,6 +63,9 @@
 	@endif
 		
 	<section class="content" id="tasks-content">
+	@if (isset($title))
+		<h3>Tasks for {{$title}}</h3>
+	@endif
 	@forelse ($tasks as $task)
 		@include('site.tasks.card', array('task' => $task))
 	@empty
@@ -74,7 +77,7 @@
 		<div class="turtle-line"></div>
 		<img src="{{asset('assets/img/happy-turtle.png')}}" width="111px" height="58px" />
 		<div class="turtle-line"></div>
-		<h3>Claimed Tasks:</h3>
+		<h3>Claimed Tasks{{isset($title)?' for '.$title:''}}:</h3>
 	</div>
 
 

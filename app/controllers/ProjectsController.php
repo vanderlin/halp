@@ -21,6 +21,10 @@ class ProjectsController extends \BaseController {
 	// ------------------------------------------------------------------------
 	public function show($id)
 	{
+
+		$project = Project\Project::find($id);
+		$title = $project ? link_to($project->getURL(), $project->title) : NULL;
+
 		$tasks = Task\Task::unClaimed()->whereHas('Project', function($q) use($id) {
 			$q->where('id', '=', $id);
 		})->get();
@@ -29,7 +33,7 @@ class ProjectsController extends \BaseController {
 			$q->where('id', '=', $id);
 		})->get();
 
-		return View::make('site.tasks.index', ['tasks'=>$tasks, 'claimed_tasks'=>$claimed_tasks]);	
+		return View::make('site.tasks.index', ['tasks'=>$tasks, 'title'=>$title, 'claimed_tasks'=>$claimed_tasks]);	
 
 	}
 	
