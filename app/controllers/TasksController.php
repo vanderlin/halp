@@ -15,7 +15,14 @@ class TasksController extends \BaseController {
 	// ------------------------------------------------------------------------
 	public function index()
 	{
-		return View::make('site.tasks.index', ['tasks'=>Task::unClaimed()->paginate(10), 'claimed_tasks'=>Task::claimed()->paginate(10)]);	
+
+		Paginator::setPageName('tasks_page');
+		$tasks = Task::unClaimed()->paginate(10);
+
+		Paginator::setPageName('claimed_tasks_page');
+		$claimed_tasks = Task::unClaimed()->paginate(10);
+		
+		return View::make('site.tasks.index', ['tasks'=>$tasks, 'claimed_tasks'=>$claimed_tasks]);	
 	}
 	
 	// ------------------------------------------------------------------------

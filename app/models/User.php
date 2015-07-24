@@ -124,7 +124,7 @@ class User extends BaseModel implements ConfideUserInterface {
     }
     public function getShortName()
     {
-        return ucfirst($this->firstname).' '.strtoupper(substr($this->lastname, 0, 1)).'.';
+        return (empty($this->firstname)||empty($this->lastname)) ? $this->username : ucfirst($this->firstname).' '.strtoupper(substr($this->lastname, 0, 1)).'.';
     }
     public function getFirstName() {
         return empty($this->firstname) ? $this->username : $this->firstname;

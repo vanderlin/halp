@@ -72,6 +72,7 @@
 			@foreach ($tasks as $task)
 				@include('site.tasks.card', array('task' => $task))
 			@endforeach
+			<?php Paginator::setPageName('tasks_page'); ?>
 			{{$tasks->links()}}
 		@else
 			<h3>No Tasks</h3>
@@ -92,9 +93,10 @@
 		
 		@if ($claimed_tasks->count()>0)
 			@foreach ($claimed_tasks as $task)
-				@include('site.tasks.card', array('task' => $task, 'claimed'=>true, 'show_button'=>false))
+				@include('site.tasks.card', array('task' => $task, 'show_button'=>false))
 			@endforeach
-			{{$claimed_tasks->links()}}
+			<?php Paginator::setPageName('claimed_tasks_page'); ?>
+			{{$claimed_tasks->appends('claimed_tasks_page', Input::get('claimed_tasks_page', 1))->links()}}
 		@else
 			<h3>No Claimed Tasks</h3>
 		@endif
