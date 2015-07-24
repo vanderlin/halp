@@ -157,21 +157,17 @@
                 <path d="M39.6662283,145.328795 L34.1433323,173.669866 L58.3816136,174.545647 L50.7777692,141.8125 L39.6662283,145.328795 Z" id="trunk" fill="#19182A"></path>
                 <path d="M42.1515316,0 L0,139.677232 C0,139.677232 28.7650835,152.563728 49.6797649,152.563728 C70.5944462,152.563728 84.3030631,143.519475 84.3030631,143.519475 L42.1515316,0 Z" id="tree-top" fill="#3A3851"></path>
             </g>
-            <g transform="translate(740,275)">
+            <g transform="translate(745,340) scale(.8)">
                 <g id="fish" transform="matrix(10, 0, 0, 10, cx-sx*cx, cy-sy*cy)" sketch:type="MSShapeGroup">
                     <path d="M1.54762712,21.5117631 C5.00075212,30.1367631 17.8493841,32.9814897 31.5329778,32.9814897 C45.2165716,32.9814897 60.1257521,23.7715287 60.1257521,23.7715287 L69.0857141,35.6533647 C69.0857141,35.6533647 67.1726429,27.7021835 69.0857141,19.8418412 C70.7866082,12.8532831 75.3083704,6.81059125 75.3083704,6.81059125 L61.7995802,15.6269975 C61.7995802,15.6269975 51.5593467,0.305708434 27.8933299,0.305708434 C4.22731319,0.305708434 -1.90549788,12.8867631 1.54762712,21.5117631 Z" id="Path-31" fill="#52D2C3"></path>
                     <circle id="Oval-36" fill="#FFFFFF" cx="15" cy="15" r="9"></circle>
                     <circle id="Oval-36-Copy" fill="#000000" cx="9.53589838" cy="15.7320508" r="2"></circle>
                 </g>
            </g>
-             <path id="motionPath"
-                d="M 100, 100
-                m -100, 0
-                a 100,100 0 1,0 200,0
-                a 100,100 0 1,0 -200,0
-            "/>
 
-            <path id="motionPath" d="M1.28320314,75.5878906 C-3.9941408,108.078125 9.04687381,130.371094 38.716796,130.371094 C68.3867182,130.371094 93.5664092,112.234375 125.636722,115.195313 C157.707034,118.15625 160.402347,130.371094 186.5293,135.050781 C212.656253,139.730469 220.730469,123.800781 220.730469,104.96875 C220.730469,86.1367187 214.23242,72.125 209.79492,60.9785156 C205.35742,49.8320312 171.416021,0.587890625 110.434157,0.587890625 C49.4522916,0.587890625 6.56054707,43.0976562 1.28320314,75.5878906 Z" id="Path-102" fill="#222222" sketch:type="MSShapeGroup"></path>
+             <path id="motionPath" d="M1.04403172,75.2487074 C-3.76641393,107.738942 8.12083327,130.031911 35.1657918,130.031911 C62.2107504,130.031911 83.235769,123.728512 112.46875,126.68945 C141.701731,129.650387 170.078644,137.924523 184.173942,124.68945 C236.828125,75.2487074 177.367749,0.248707392 100.538159,0.248707392 C23.7085685,0.248707392 5.85447736,42.758473 1.04403172,75.2487074 Z" fill="#222222" sketch:type="MSShapeGroup"></path>
+    
+           
 
               <animateMotion 
                     xlink:href="#fish"
@@ -190,11 +186,11 @@
         </g>
    
 
-         <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="930" cy="406.30497" rx="36" ry="8">
+         <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="910" cy="406.30497" rx="36" ry="8">
                 <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="1.2s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
         </ellipse>
 
-         <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="930" cy="406.30497" rx="24" ry="4">
+         <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="910" cy="406.30497" rx="24" ry="4">
                 <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="1.1s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
          </ellipse>
 
