@@ -63,14 +63,20 @@
 	@endif
 		
 	<section class="content" id="tasks-content">
-	@if (isset($title))
-		<h3>Tasks for {{$title}}</h3>
-	@endif
-	@forelse ($tasks as $task)
-		@include('site.tasks.card', array('task' => $task))
-	@empty
-		<h3>No Tasks</h3>
-	@endforelse
+		
+		@if (isset($title))
+			<h3>Tasks for {{$title}}</h3>
+		@endif
+		
+		@if ($tasks->count()>0)
+			@foreach ($tasks as $task)
+				@include('site.tasks.card', array('task' => $task))
+			@endforeach
+			{{$tasks->links()}}
+		@else
+			<h3>No Tasks</h3>
+		@endif
+
 	</section>
 
 	<div class="turtle-break">
@@ -83,11 +89,16 @@
 
 
 	<section class="content" id="claimed-tasks-content">
-	@forelse ($claimed_tasks as $task)
-		@include('site.tasks.card', array('task' => $task, 'claimed'=>true, 'show_button'=>false))
-	@empty
-		<h3>No Claimed Tasks</h3>
-	@endforelse
+		
+		@if ($claimed_tasks->count()>0)
+			@foreach ($claimed_tasks as $task)
+				@include('site.tasks.card', array('task' => $task, 'claimed'=>true, 'show_button'=>false))
+			@endforeach
+			{{$claimed_tasks->links()}}
+		@else
+			<h3>No Claimed Tasks</h3>
+		@endif
+
 	</section>
 @stop
   

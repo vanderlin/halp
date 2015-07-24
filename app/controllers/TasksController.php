@@ -15,7 +15,7 @@ class TasksController extends \BaseController {
 	// ------------------------------------------------------------------------
 	public function index()
 	{
-		return View::make('site.tasks.index', ['tasks'=>Task::unClaimed()->get(), 'claimed_tasks'=>Task::claimed()->get()]);	
+		return View::make('site.tasks.index', ['tasks'=>Task::unClaimed()->paginate(10), 'claimed_tasks'=>Task::claimed()->paginate(10)]);	
 	}
 	
 	// ------------------------------------------------------------------------

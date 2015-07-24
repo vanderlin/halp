@@ -407,7 +407,7 @@ var App = (function() {
         $.timeago.settings.cutoff = 0;
         $(".timeago").timeago();
         
-
+        
         // $('.halp-delete-task-button').each(function(index, el) {
         //     self.addDeleteTaskEvent($(el));
         // });

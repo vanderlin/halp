@@ -129,7 +129,7 @@ class SetupSite extends Command {
 		
 		Notification::truncate();
 		Task::truncate();
-
+		$options = $this->option();
 		$task_repo = App::make('TasksRepository');
 
 		$task_titles = ["Draw me a picture",
@@ -148,7 +148,7 @@ class SetupSite extends Command {
 
 		$durs = ['a min', 'couple of hours', 'a day', 'few mins', "10 minutes"];
 
-		$n = 100;
+		$n = isset($options['count']) ? min($options['count'], 1500) : 100;
 		$faker = Faker\Factory::create();
 		
 		for ($i=0; $i < $n; $i++) { 
@@ -305,6 +305,7 @@ class SetupSite extends Command {
 		return array(
 			array('setup', null, InputOption::VALUE_OPTIONAL, 'setup the site and migrate all tables', null),
 			array('reset', null, InputOption::VALUE_OPTIONAL, 'reset database.', null),
+			array('count', null, InputOption::VALUE_OPTIONAL, 'how many?', null),
 			array('seed', null, InputOption::VALUE_OPTIONAL, 'seed database.', null),
 		);
 	}

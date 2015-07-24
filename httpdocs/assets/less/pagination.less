@@ -1,0 +1,33 @@
+.pagination {
+	margin-top: 10px;
+	
+	li {
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 12px;
+		letter-spacing: 1px;
+
+		display: inline;
+		margin-right: 3px;
+	}
+
+	li.disabled, li.active, li a {
+		padding: 10px;
+		background-color: fade(@grey, 10%);
+	}
+
+	li.disabled {
+		color:fade(@purple, 50%);
+	}
+	li.active {
+		color:@mint;
+	}
+	li a {
+		color:@purple;
+	}
+
+	li:last-child {
+		margin-right: 0;
+	}
+}
