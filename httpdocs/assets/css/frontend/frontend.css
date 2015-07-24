@@ -830,32 +830,52 @@ input.has-error {
 #star-1 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-2 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-3 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-4 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-5 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-6 {
   -webkit-animation-duration: 4s;
@@ -866,8 +886,13 @@ input.has-error {
 #star-7 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-8 {
   -webkit-animation-duration: 4s;
@@ -878,14 +903,24 @@ input.has-error {
 #star-9 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-10 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-11 {
   -webkit-animation-duration: 4s;
@@ -896,50 +931,85 @@ input.has-error {
 #star-12 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-13 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
-}
-#star-14 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
+=======
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
-#star-15 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
-}
-#star-16 {
+#star-14 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
+#star-15 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+<<<<<<< HEAD
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
+}
+#star-16 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+<<<<<<< HEAD
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
+}
 #star-17 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-18 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-20 {
   -webkit-animation-duration: 4s;
@@ -956,8 +1026,13 @@ input.has-error {
 #star-22 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-23 {
   -webkit-animation-duration: 4s;
@@ -968,20 +1043,35 @@ input.has-error {
 #star-24 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #star-26 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> df9ce3dc5c1bb166b59f85cae588768bfc54e5ae
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
