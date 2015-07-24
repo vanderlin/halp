@@ -36,10 +36,13 @@
 </section>
 
 <section class="content">
-@forelse ($users as $user)
-	@include('site.user.leaderboard-card', array('user' => $user))
-@empty
-	<h3>No Users</h3>
-@endforelse
+	@if ($users->count()>0)
+		@foreach ($users as $user)
+			@include('site.user.leaderboard-card', array('user' => $user))
+		@endforeach
+		{{$users->links()}}
+	@else
+		<h3>No Users</h3>
+	@endif
 </section>
 @stop

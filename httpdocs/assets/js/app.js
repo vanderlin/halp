@@ -324,12 +324,14 @@ var App = (function() {
     // ------------------------------------------------------------------------
 	self.scrollTo = function(target, speed, callback) 
     {
-    	target = $(target);
-        $('body').animate({ scrollTop: target.offset().top - 100 }, speed||500, function(e) {
-            if(callback) {
-                callback(e)
-            }
-        });
+    	var $target = $(target);
+        if($target.length) {
+            $('body').animate({ scrollTop: $target.offset().top - 100 }, speed||500, function(e) {
+                if(callback) {
+                    callback(e)
+                }
+            });
+        }
 	}
 
     // ------------------------------------------------------------------------
@@ -372,6 +374,11 @@ var App = (function() {
             closeOnContentClick: false,
             closeOnBgClick:false,
             mainClass: 'mfp-fade',
+            ajax: {
+                settings: {
+                    data:options.data?options.data:null,
+                }
+            },
             items: {
                 src: options.url,
                 type: 'ajax',

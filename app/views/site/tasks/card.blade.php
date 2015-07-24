@@ -1,9 +1,8 @@
 <?php 
-$claimed = isset($claimed) ? $claimed : $task->isClaimed; 
 $show_button = isset($show_button) ? $show_button : true;
 $class = isset($class) ? $class : "";
 ?>
-<div class="task {{$claimed?'claimed':''}} task-card-{{$task->id}} {{$class}}">
+<div class="task {{$task->isClaimed?'claimed':''}} task-card-{{$task->id}} {{$class}}">
 	<div class="task-details">
 	
 		<span class="task-name" data-value="{{$task->title}}">{{$task->title}}</span>
@@ -25,8 +24,8 @@ $class = isset($class) ? $class : "";
 	@endif	
 		
 	</div>
-	<div class="card-footer {{$claimed?'claimed':'posted'}}-by">
-	@if ($claimed)
+	<div class="card-footer {{$task->isClaimed?'claimed':'posted'}}-by">
+	@if ($task->isClaimed)
 		Claimed by {{link_to($task->claimer->getProfileURL(), $task->claimer->getShortName())}}
 	@else
 		Posted by {{link_to($task->creator->getProfileURL(), $task->creator->getShortName())}}

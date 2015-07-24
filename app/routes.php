@@ -32,6 +32,7 @@ Route::group(array('before'=>['auth']), function() {
 	Route::get('unsubscribe', ['uses'=>'UsersController@unsubscribe']);
 	Route::get('/', ['uses'=>'TasksController@index']);
 		
+	// leaderboard
 	Route::get('leaderboard', ['uses'=>'UsersController@index']);
 
 	// projects

@@ -162,8 +162,7 @@
 				// -------------------------------------
 		    	_submit: function(e) 
 		    	{
-		    		this._resetForm();
-		    	return;
+		    		
 		    		var self = this;
 		    		var url = this.$form.prop('action')+'?view=true';
 		    		var type = this.$form.attr('method');
@@ -177,6 +176,7 @@
 		  				contentType: false,
 		    		})
 		    		.always(function(e) {
+		    			self._resetForm();
 		    			self._showTaskCreated(e);
 		    		});
 		    		
@@ -187,15 +187,15 @@
 		    	{
 		    		$(this).popupResponse(e, {
                         callback:function() {
-                            App.scrollTo($('#tasks-content'), 500, function() {
+                            App.scrollTo($('#tasks'), 500, function() {
                                 var $view = $(e.view);
-                                $('#tasks-content').prepend($view);
+                                $('#tasks').prepend($view);
                                 $view.hide();
                                 $view.addClass('task-focused');
                                 $view.delay(200).fadeTo(500, 1);
                                 
-                                var $delbtn = $view.find('.halp-delete-task-button');
-								App.addDeleteTaskEvent($delbtn);
+        //                         var $delbtn = $view.find('.halp-delete-task-button');
+								// App.addDeleteTaskEvent($delbtn);
 
                             });
                         }
@@ -210,6 +210,26 @@
 		    	// -------------------------------------
 		    	_open: function(options)
 		    	{
+		    		var self = this;
+		    		App.openPopup({
+			            loadingMessage: 'Loading your new task!...',
+			            url:'/tasks/create',
+			            data:options.data,
+			            onContentAdded: function(e) {
+			                var $content = $(e.content[2]);
+
+    						$( "#datepicker" ).datepicker({showAnim:'slideDown'});
+  					
+	  						self.$popup = $('.white-popup .popup-content');
+	  						self.$form = $('#create-task-form');
+	  						self.$form.submit(function(e) {
+	  							e.preventDefault();
+	  							console.log("Submiting the task...");
+	  							self._submit(e);
+	  						});
+			           	}
+			        });
+		    		return;
 		    		var self = this;
 		    		$.magnificPopup.open({
 			            tLoading: 'Loading some halp!...',
@@ -238,6 +258,7 @@
 		  						self.$form = $('#create-task-form');
 		  						self.$form.submit(function(e) {
 		  							e.preventDefault();
+		  							console.log("Submiting the task...");
 		  							self._submit(e);
 		  						});
 			                }
