@@ -790,17 +790,17 @@
           animation-iteration-count: 2;
 }
 .input-error:after {
-  bottom: 100%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
+  content: '';
   position: absolute;
-  pointer-events: none;
-  border-color: rgba(136, 183, 213, 0);
-  border-bottom-color: #1b1b25;
-  border-width: 10px;
-  margin-left: -10px;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-bottom: solid 6px #1b1b25;
+  border-left: solid 6px transparent;
+  border-right: solid 6px transparent;
 }
 input.has-error {
   color: #FF6666;
@@ -830,8 +830,8 @@ input.has-error {
 #star-1 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-2 {
   -webkit-animation-duration: 4s;
@@ -842,68 +842,68 @@ input.has-error {
 #star-3 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-4 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
 }
 #star-5 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-6 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-7 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-8 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
-}
-#star-9 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
-}
-#star-10 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 }
-#star-11 {
+#star-9 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
+}
+#star-10 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+#star-11 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-12 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-13 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-14 {
   -webkit-animation-duration: 4s;
@@ -914,74 +914,74 @@ input.has-error {
 #star-15 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
-#star-16 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
-}
-#star-17 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 }
-#star-18 {
+#star-16 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
-#star-19 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
-}
-#star-20 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-#star-21 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-#star-22 {
+#star-17 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 }
-#star-23 {
+#star-18 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+#star-19 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+#star-20 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 }
-#star-24 {
+#star-21 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
 }
-#star-25 {
+#star-22 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+#star-23 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+#star-24 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
-#star-26 {
+#star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
+}
+#star-26 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
@@ -1664,11 +1664,14 @@ body .nomargin-bottom {
   }
   .input {
     max-width: 246px;
-    margin: 0.5em;
+    margin: 0.44em;
   }
   .input-error {
     margin-top: -2px;
     left: 38%;
+  }
+  .progress-button {
+    margin: 7px 0 17px 0;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -1698,7 +1701,7 @@ body .nomargin-bottom {
     font-size: 2.8em;
   }
   .content {
-    padding: 1em;
+    padding: 0;
   }
   .hero {
     padding: 30px 30px;
@@ -1780,13 +1783,14 @@ body .nomargin-bottom {
   }
   .introduction-content {
     width: 80%;
+    padding: 0;
   }
   .intro-text {
     line-height: 38px;
-    font-size: 20px;
+    font-size: 17px;
   }
   .introduction img {
-    margin-top: 50px;
+    margin-top: 12px;
     margin-bottom: 30px;
   }
   .footer {

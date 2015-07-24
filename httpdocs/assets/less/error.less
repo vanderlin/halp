@@ -12,17 +12,17 @@
 	animation-iteration-count: 2;
 }
 .input-error:after {
-	bottom: 100%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-color: rgba(136, 183, 213, 0);
-	border-bottom-color: @dark-purple;
-	border-width: 10px;
-	margin-left: -10px;
+	content:'';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-bottom: solid 6px @dark-purple;
+    border-left: solid 6px transparent;
+    border-right: solid 6px transparent;
 }
 input.has-error {
 	color: #FF6666;
