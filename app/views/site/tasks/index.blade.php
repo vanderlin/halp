@@ -73,7 +73,7 @@
 				@include('site.tasks.card', array('task' => $task))
 			@endforeach
 			<?php Paginator::setPageName('tasks_page'); ?>
-			{{$tasks->links()}}
+			{{$tasks->appends('tasks_page', Input::get('tasks_page', 1))->fragment('tasks-content')->links()}}
 		@else
 			<h3>No Tasks</h3>
 		@endif
@@ -87,16 +87,13 @@
 		<h3>Claimed Tasks{{isset($title)?' for '.$title:''}}:</h3>
 	</div>
 
-
-
 	<section class="content" id="claimed-tasks-content">
-		
 		@if ($claimed_tasks->count()>0)
 			@foreach ($claimed_tasks as $task)
 				@include('site.tasks.card', array('task' => $task, 'show_button'=>false))
 			@endforeach
 			<?php Paginator::setPageName('claimed_tasks_page'); ?>
-			{{$claimed_tasks->appends('claimed_tasks_page', Input::get('claimed_tasks_page', 1))->links()}}
+			{{$claimed_tasks->appends('claimed_tasks_page', Input::get('claimed_tasks_page', 1))->fragment('claimed-tasks-content')->links()}}
 		@else
 			<h3>No Claimed Tasks</h3>
 		@endif
