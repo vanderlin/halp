@@ -62,7 +62,7 @@
 		@include('site.tasks.create-task')
 	@endif
 		
-	<section class="content" id="tasks-content">
+	<section class="content" id="tasks">
 		
 		@if (isset($title))
 			<h3>Tasks for {{$title}}</h3>
@@ -73,14 +73,14 @@
 				@include('site.tasks.card', array('task' => $task))
 			@endforeach
 			<?php Paginator::setPageName('tasks_page'); ?>
-			{{$tasks->appends('tasks_page', Input::get('tasks_page', 1))->fragment('tasks-content')->links()}}
+			{{$tasks->appends('tasks_page', Input::get('tasks_page', 1))->fragment('tasks')->links()}}
 		@else
 			<h3>No Tasks</h3>
 		@endif
 
 	</section>
 
-	<div class="turtle-break">
+	<div class="turtle-break" id="claimed-task">
 		<div class="turtle-line"></div>
 		<img src="{{asset('assets/img/happy-turtle.png')}}" width="111px" height="58px" />
 		<div class="turtle-line"></div>
@@ -93,7 +93,7 @@
 				@include('site.tasks.card', array('task' => $task, 'show_button'=>false))
 			@endforeach
 			<?php Paginator::setPageName('claimed_tasks_page'); ?>
-			{{$claimed_tasks->appends('claimed_tasks_page', Input::get('claimed_tasks_page', 1))->fragment('claimed-tasks-content')->links()}}
+			{{$claimed_tasks->appends('claimed_tasks_page', Input::get('claimed_tasks_page', 1))->fragment('claimed-task')->links()}}
 		@else
 			<h3>No Claimed Tasks</h3>
 		@endif
