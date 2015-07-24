@@ -4,7 +4,7 @@
 	<div class="popup-content">
 		@if ($task == NULL)
 			<h2>Looks like this task has gone missing...</h2>
-			<p>Don't worry there are {{link_to('/', 'plenty')}} more things you can give a hand with</p>
+			<p>Don't worry. There are {{link_to('/', 'plenty')}} of other things you could help with!</p>
 			<hr>
 			<div class="progress-button small">
 				<button class="close-popup"><span>Close</span></button>
