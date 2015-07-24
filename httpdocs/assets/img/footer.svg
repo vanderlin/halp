@@ -13,21 +13,8 @@
             <path d="M612.292969,362.640625 C612.292969,362.640625 608.648438,392.871094 563.253906,399.78125 C517.859375,406.691406 481.332024,413.343749 436.761711,418.45703 C392.191399,423.570311 355.351563,440.957034 342.496094,450.953128 C329.640625,460.949221 289.053711,490.015625 227.850586,494.1875 C166.647461,498.359375 1132.53029,496.053711 1132.53029,496.053711 C1132.53029,496.053711 1044.99219,477.613281 1024.87893,462.058594 C1004.76567,446.503906 1017.2344,413.183594 974.312523,399.78125 C931.390648,386.378906 921.485375,359.699219 910.711937,359.699219 C899.9385,359.699219 612.292969,362.640625 612.292969,362.640625 Z" id="river" stroke-linecap="round" fill="#404D5B" sketch:type="MSShapeGroup"></path>
             <path d="M611.90918,362.529297 C611.90918,362.529297 595.524112,392.003906 545.203125,398.914062 C494.882138,405.824219 457.430758,409.605469 408.023438,414.71875 C358.616117,419.832031 315.431311,440.957034 301.180699,450.953128 C286.930086,460.949221 241.938464,490.015625 174.09325,494.1875 C106.248036,498.359375 1176.95361,496.053711 1176.95361,496.053711 C1176.95361,496.053711 1066.90934,472.238281 1044.61328,456.683594 C1022.31723,441.128906 1035.63467,407.316406 988.054688,393.914062 C940.474702,380.511719 926.80591,359.699219 914.863281,359.699219 C902.920653,359.699219 611.90918,362.529297 611.90918,362.529297 Z" id="river" stroke-linecap="round" opacity="0.33879431" fill="#404D5B" sketch:type="MSShapeGroup"></path>
             
-            <path d="M631.965431,465.828704 C688.064994,465.828704 733.542675,455.744961 733.542675,443.306035 C733.542675,430.867109 688.064994,420.783366 631.965431,420.783366 C575.865869,420.783366 530.388188,430.867109 530.388188,443.306035 C530.388188,455.744961 575.865869,465.828704 631.965431,465.828704 Z" id="ripple2" stroke="#445568" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup" >
-                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin=".2s" keyTimes="0; .5; 1" values="0; 1; 0;" repeatCount="indefinite"/>
-            </path>
-            
-            <ellipse id="ripple3" stroke="#445568" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup" cx="632.386914" cy="443.715538" rx="121.386914" ry="27.0272023">
-                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin=".4s" keyTimes="0; .5; 1" values="0; 1; 0;" repeatCount="indefinite"/>      
-            </ellipse>
-
-            <ellipse id="ripple1" stroke="#445568" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup" cx="632.386914" cy="443.715538" rx="80.924609" ry="18.0181349">
-                 <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="0s" keyTimes="0; .5; 1" values="0; 1; 0;" repeatCount="indefinite"/>
-            </ellipse>
-
-            <path d="M570.738536,442.243193 C570.738536,442.243193 578.082568,415.660041 590.034147,408.336356 C601.985726,401.012672 608.633757,410.718695 626.924797,394.583035 C645.215837,378.447374 664.088201,387.765263 672.576632,394.583035 C681.065063,401.400806 674.523623,420.60021 684.016854,422.947655 C693.510085,425.295099 700.219227,442.243193 700.219227,442.243193 C700.219227,442.243193 678.635545,452.395884 638.034942,452.395884 C597.434338,452.395884 570.738536,442.243193 570.738536,442.243193 Z" id="rock" fill="#273441" sketch:type="MSShapeGroup"></path>
-            <ellipse id="ripple" stroke="#455668" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup" cx="841.526172" cy="406.30497" rx="46.2999995" ry="10.3833655"></ellipse>
-            <ellipse id="ripple" stroke="#455668" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup" cx="841.526172" cy="406.30497" rx="30.8666663" ry="6.92224366"></ellipse>
+  
+           
             <g id="happy-turtle" transform="translate(178.000000, 363.000000)">
                 <g id="Shape_18_1_" transform="translate(83.102804, 43.689320)" fill="#389086" sketch:type="MSShapeGroup">
                     <g id="Shape_18">
@@ -125,8 +112,7 @@
                 </g>
             </g>
             <path d="M1353.51128,82.9276723 C1363.82386,82.9276723 1372.18386,74.5676703 1372.18386,64.2550853 C1372.18386,53.9425002 1363.82386,45.5824983 1353.51128,45.5824983 C1353.51128,45.5824983 1362.46086,54.5010482 1362.46086,64.8136332 C1362.46086,75.1262183 1353.51128,82.9276723 1353.51128,82.9276723 Z" id="moon" fill="#FFFFFF" sketch:type="MSShapeGroup" transform="translate(1362.847571, 64.255085) rotate(-15.000000) translate(-1362.847571, -64.255085) "></path>
-            <path d="M832.205772,407.916428 C836.01816,401.44079 837.095309,390.139469 837.095309,385.542779 C837.095309,380.946088 836.677087,371.835499 834.588332,369.372166 C834.588332,369.372166 834.588331,381.648365 834.588331,386.245055 C834.588331,390.841746 832.205772,407.916428 832.205772,407.916428 Z" id="splah" fill="#506479" sketch:type="MSShapeGroup" transform="translate(834.650541, 388.644297) rotate(-30.000000) translate(-834.650541, -388.644297) "></path>
-            <path d="M835.638689,407.923823 C840.629144,399.447146 842.039143,384.653601 842.039143,378.636486 C842.039143,372.619371 841.491686,360.693517 838.757484,357.468988 C838.757484,357.468988 838.757484,373.538658 838.757484,379.555773 C838.757484,385.572889 835.638689,407.923823 835.638689,407.923823 Z" id="splash" fill="#506479" sketch:type="MSShapeGroup" transform="translate(838.838916, 382.696405) rotate(-30.000000) translate(-838.838916, -382.696405) "></path>
+            
             <circle id="star-1" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1136" cy="126" r="3"></circle>
             <circle id="star-2" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1106" cy="76" r="3"></circle>
             <circle id="star-3" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="976" cy="146" r="3"></circle>
@@ -171,11 +157,72 @@
                 <path d="M39.6662283,145.328795 L34.1433323,173.669866 L58.3816136,174.545647 L50.7777692,141.8125 L39.6662283,145.328795 Z" id="trunk" fill="#19182A"></path>
                 <path d="M42.1515316,0 L0,139.677232 C0,139.677232 28.7650835,152.563728 49.6797649,152.563728 C70.5944462,152.563728 84.3030631,143.519475 84.3030631,143.519475 L42.1515316,0 Z" id="tree-top" fill="#3A3851"></path>
             </g>
-            <g id="fish" transform="translate(797.000000, 342.411543) rotate(-330.000000) translate(-797.000000, -342.411543) translate(759.000000, 324.411543)" sketch:type="MSShapeGroup">
-                <path d="M1.54762712,21.5117631 C5.00075212,30.1367631 17.8493841,32.9814897 31.5329778,32.9814897 C45.2165716,32.9814897 60.1257521,23.7715287 60.1257521,23.7715287 L69.0857141,35.6533647 C69.0857141,35.6533647 67.1726429,27.7021835 69.0857141,19.8418412 C70.7866082,12.8532831 75.3083704,6.81059125 75.3083704,6.81059125 L61.7995802,15.6269975 C61.7995802,15.6269975 51.5593467,0.305708434 27.8933299,0.305708434 C4.22731319,0.305708434 -1.90549788,12.8867631 1.54762712,21.5117631 Z" id="Path-31" fill="#52D2C3"></path>
-                <circle id="Oval-36" fill="#FFFFFF" cx="15" cy="15" r="9"></circle>
-                <circle id="Oval-36-Copy" fill="#000000" cx="9.53589838" cy="15.7320508" r="2"></circle>
-            </g>
+            <g transform="translate(740,275)">
+                <g id="fish" transform="matrix(10, 0, 0, 10, cx-sx*cx, cy-sy*cy)" sketch:type="MSShapeGroup">
+                    <path d="M1.54762712,21.5117631 C5.00075212,30.1367631 17.8493841,32.9814897 31.5329778,32.9814897 C45.2165716,32.9814897 60.1257521,23.7715287 60.1257521,23.7715287 L69.0857141,35.6533647 C69.0857141,35.6533647 67.1726429,27.7021835 69.0857141,19.8418412 C70.7866082,12.8532831 75.3083704,6.81059125 75.3083704,6.81059125 L61.7995802,15.6269975 C61.7995802,15.6269975 51.5593467,0.305708434 27.8933299,0.305708434 C4.22731319,0.305708434 -1.90549788,12.8867631 1.54762712,21.5117631 Z" id="Path-31" fill="#52D2C3"></path>
+                    <circle id="Oval-36" fill="#FFFFFF" cx="15" cy="15" r="9"></circle>
+                    <circle id="Oval-36-Copy" fill="#000000" cx="9.53589838" cy="15.7320508" r="2"></circle>
+                </g>
+           </g>
+             <path id="motionPath"
+                d="M 100, 100
+                m -100, 0
+                a 100,100 0 1,0 200,0
+                a 100,100 0 1,0 -200,0
+            "/>
+
+              <animateMotion 
+                    xlink:href="#fish"
+                    dur="2s"
+                    begin="0s"
+                    fill="freeze"
+                    repeatCount="indefinite"
+                    rotate="auto-reverse"
+                    >
+                <mpath xlink:href="#motionPath" />
+            </animateMotion>
+
+       <defs>
+        <linearGradient x1="50%" y1="14.2883434%" x2="49.4262091%" y2="31.2926764%" id="linearGradient-1">
+            <stop stop-color="#404D5B" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#404D5B" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+       <g id="water-cover" sketch:type="MSLayerGroup" transform="translate(0,0)" fill-opacity="0.9" fill="#404D5B">
+            <path d="M724.455078,395.753906 C768.519531,395.753906 798.539061,408.705078 846.214843,408.705078 C893.890624,408.705078 949.945311,401.435545 973.767577,408.705078 C997.589843,415.97461 1006.53906,460.722656 1013.20312,475.65625 C1019.86719,490.589844 1018.08227,496.326297 1018.08227,496.326297 L705.9375,496.630252 C705.9375,496.630252 696.914063,469.728515 702.140625,446.08789 C707.367188,422.447265 680.390625,395.753906 724.455078,395.753906 Z" id="Path-101" sketch:type="MSShapeGroup"></path>
+        </g>
+   
+
+         <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="930" cy="406.30497" rx="36" ry="8">
+                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="1.2s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
+        </ellipse>
+
+         <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="930" cy="406.30497" rx="24" ry="4">
+                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="1.1s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
+         </ellipse>
+
+        <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="750" cy="400" rx="46.2999995" ry="10.3833655">
+                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="2.3s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
+        </ellipse>
+
+         <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="750" cy="400" rx="30.8666663" ry="6.92224366">
+                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="2.2s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
+         </ellipse>
+
+            <path d="M631.965431,465.828704 C688.064994,465.828704 733.542675,455.744961 733.542675,443.306035 C733.542675,430.867109 688.064994,420.783366 631.965431,420.783366 C575.865869,420.783366 530.388188,430.867109 530.388188,443.306035 C530.388188,455.744961 575.865869,465.828704 631.965431,465.828704 Z" id="ripple2" stroke="#445568" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup" >
+                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin=".2s" keyTimes="0; .5; 1" values="0; 1; 0;" repeatCount="indefinite"/>
+            </path>
+            
+            <ellipse id="ripple3" stroke="#445568" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup" cx="632.386914" cy="443.715538" rx="121.386914" ry="27.0272023">
+                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin=".4s" keyTimes="0; .5; 1" values="0; 1; 0;" repeatCount="indefinite"/>      
+            </ellipse>
+
+            <ellipse id="ripple1" stroke="#445568" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup" cx="632.386914" cy="443.715538" rx="80.924609" ry="18.0181349">
+                 <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="0s" keyTimes="0; .5; 1" values="0; 1; 0;" repeatCount="indefinite"/>
+            </ellipse>
+
+            <path d="M570.738536,442.243193 C570.738536,442.243193 578.082568,415.660041 590.034147,408.336356 C601.985726,401.012672 608.633757,410.718695 626.924797,394.583035 C645.215837,378.447374 664.088201,387.765263 672.576632,394.583035 C681.065063,401.400806 674.523623,420.60021 684.016854,422.947655 C693.510085,425.295099 700.219227,442.243193 700.219227,442.243193 C700.219227,442.243193 678.635545,452.395884 638.034942,452.395884 C597.434338,452.395884 570.738536,442.243193 570.738536,442.243193 Z" id="rock" fill="#273441" sketch:type="MSShapeGroup"></path>
+
             <g id="frog" transform="translate(627.000000, 345.000000)" sketch:type="MSShapeGroup">
                 <ellipse id="Oval-38" fill="#52D2C3" cx="23" cy="18.5" rx="16" ry="10.5"></ellipse>
                 <path d="M23,48 C44.519043,48 40.3017561,42.9257812 39,37.5 C37.6234864,31.7626258 31.836556,27 23,27 C14.163444,27 7.32617185,31.2592773 6.21826172,37.5 C5.11035159,43.7407227 1.80273438,48 23,48 Z" id="Oval-38-Copy" fill="#52D2C3"></path>
@@ -238,12 +285,7 @@
     </clipPath>
     <circle cx="656" cy="351" r="6" clip-path="url(#circle3)" fill="#52D2C3"/>
 
-    <clipPath id="circle4">
-        <rect width="20" height="0" x="768" y="319" fill="#52D2C3">
-            <animate attributeName="height" dur="2s" begin="1s" keyTimes="0; 0.05; 0.1; 1" values="0; 20; 0; 0" repeatCount="indefinite"/>
-        </rect>
-    </clipPath>
-    <circle cx="778" cy="329" r="10" clip-path="url(#circle4)" fill="#52D2C3"/>
+
 
     <clipPath id="circle5">
         <rect width="13" height="0" x="1188" y="380" fill="#52D2C3">
