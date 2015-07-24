@@ -20,7 +20,7 @@ class TasksController extends \BaseController {
 		$tasks = Task::unClaimed()->paginate(10);
 
 		Paginator::setPageName('claimed_tasks_page');
-		$claimed_tasks = Task::unClaimed()->paginate(10);
+		$claimed_tasks = Task::claimed()->paginate(10);
 		
 		return View::make('site.tasks.index', ['tasks'=>$tasks, 'claimed_tasks'=>$claimed_tasks]);	
 	}
