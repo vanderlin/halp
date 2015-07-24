@@ -27,17 +27,27 @@ class UsersController extends BaseController
 
     public function index()
     {
-        $users = User::paginate(10);
         
+        
+        $leader = User::all()->sortByDesc(function($item) {
+            return $item->claimedTasks->count();
+        })->each(function($item) {
+            return $item->totalClaimedTasks = $item->claimedTasks->count();
+        })->values()->first();
+
+        
+        $users = User::paginate(10);
         $users->sortByDesc(function($item) {
             return $item->claimedTasks->count();
         })->each(function($item) {
             return $item->totalClaimedTasks = $item->claimedTasks->count();
         })->values();
 
+
+
         // $paginator = Paginator::make($items, $totalItems, $perPage);
 
-        return View::make('site.user.index', ['users'=>$users, 'leader'=>$users->shift()]);
+        return View::make('site.user.index', ['users'=>$users, 'leader'=>$leader]);
     }
 
     // ------------------------------------------------------------------------
