@@ -4,6 +4,8 @@
 	<title>Halp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width"/>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 	<style type="text/css">
 	{{File::get(public_path('assets/css/core/email.css'))}}
 	</style>	
@@ -15,18 +17,25 @@
 					<div class="container">
 						<div class="email-content">
 							
-							<img src="http://halp.ideo.com/assets/img/friends/{{get_random_task_image()}}" />
+							<img src="{{production_url('assets/img/friends/'.get_random_task_image())}}" />
 
 							@yield('content')
 								
 							<br>
-							<a class="unsubscribe" href="{{URL::to('unsubscribe')}}">unsubscribe me</a>
-
+							
 						</div>
+					</div>
+					<div class="footer">
+						<a class="unsubscribe" href="{{URL::to('unsubscribe')}}">unsubscribe me</a>
+						<div class="made-at-ideo">made at</div> 
+        				<a href="http://ideo.com"><img src="{{production_url('assets/img/ideo-dark.png')}}" width="70px"></a>
 					</div>
 				</td>
 			</tr>
 		</table>
+		@if (isset($extra))
+			{{$extra}}
+		@endif
 	</body>
 </html>
 

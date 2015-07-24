@@ -138,6 +138,7 @@ body {
 table {
   background-color: #F0EFEE;
   width: 100%;
+  padding: 50px;
 }
 .container {
   text-align: center;
@@ -148,8 +149,12 @@ table {
 .unsubscribe {
   margin: 25px;
   display: block;
-  font-family: Arial;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-size: 12px;
+  color: #ccc;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .email-content {
   width: 60%;
@@ -158,15 +163,22 @@ table {
   margin: 40px auto;
   border-radius: 10px;
 }
+.footer {
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  color: #cccccc;
+  font-size: 12px;
+}
 h1 {
-  font-family: Georgia, serif;
+  font-family: 'Merriweather', Georgia, serif;
   color: #4fd2c2;
   font-size: 45px;
-  font-weight: 100;
+  font-weight: 300;
   line-height: 46px;
 }
 h2 {
-  font-family: Georgia, serif;
+  font-family: 'Merriweather', Georgia, serif;
   color: #404d5b;
   font-style: italic;
   font-size: 26px;
@@ -188,7 +200,7 @@ hr {
   margin-bottom: 40px;
 }
 p {
-  font-family: Georgia, serif;
+  font-family: 'Merriweather', Georgia, serif;
   color: #cccccc;
   font-size: 17px;
   font-weight: 100;
@@ -204,7 +216,7 @@ a {
   border: 2px solid #4fd2c2;
   border-radius: 30px;
   text-transform: uppercase;
-  font-family: Arial;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-size: 13px;
   font-weight: bold;
   width: 200px;

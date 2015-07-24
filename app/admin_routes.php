@@ -13,10 +13,14 @@
 
 
 	Route::group(['prefix'=>'tests'], function() {
+		
 		Route::get('/', function() {
 			return View::make('admin.tests', ['users'=>User::all(), 'active_link'=>'tests']);
 		});
-		Route::post('send', function() {
+
+		Route::get('view-email', function() {
+
+			
 
 			$notice = new Notification;
 			$notice->event = Input::get('event');
@@ -27,17 +31,64 @@
 
 			$notice->task->load('creator');
 			$notice->task->load('claimer');
+			$data = [
+				'task'=>$notice->task,
+				'extra'=>'<div style="text-align:center;padding:25px 0;background-color:#FF6666;width:100%"><a style="color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="/admin/tests">Back to Admin</a></div>'
+			];
+
+			$view_name = Notification::getViewEvent(Input::get('event'));
+			$view = View::make($view_name, $data)->render();
+			
+			$premailer = new ScottRobertson\Premailer\Request();
+			$response = $premailer->convert($view);
+			// $email = Input::get('email', 'vanderlin@gmail.com');
+			$emails = ['vanderlin@gmail.com', 'tvanderlin@ideo.com'];
+
+			if (Input::get('view', true)==true) {
+				return $response->downloadHtml();
+			}
+
+			Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($emails) {
+				$message->bcc($emails, 'Halp')->subject('From '.Auth::user()->getName()." Halp Email Test ".uniqid());
+			});
+			return $emails;
+			if(Input::has('send')) {
+				Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($email) {
+					$message->to($email, 'Halp')->subject(Auth::user()->getName()."Halp Email Test ".uniqid());
+				});
+				return 'sent';
+			}
+			return $view;
+		});
+
+
+		Route::post('send', function() {
+
+			
+			$notice = new Notification;
+			$notice->event = Input::get('event');
+			$notice->task_id = Input::get('task_id');
+			$notice->load('Task');
+			$notice->task->creator_id = Input::get('creator_id')==""?NULL:Input::get('creator_id');
+			$notice->task->claimed_id = Input::get('claimed_id')==""?NULL:Input::get('claimed_id');
+
+			$notice->task->load('creator');
+			$notice->task->load('claimer');
 			$status = false;
+			
+			$emails = explode(',', Input::get('emails', 'tvanderlin@ideo.com'));
+
+			$emails = array_filter($emails, function($a) {
+				if(filter_var($a, FILTER_VALIDATE_EMAIL)) {
+					return $a;
+				}
+			});
+			
+			$status = $notice->sendEmailToGroup($emails);
+			/*
 			if($notice->event == Notification::NOTIFICATION_NEW_TASK)
 			{
-				$users = User::where('username', '=', 'tvanderlin')->get();
-				$emails = [];
-				foreach ($users as $user) {
-					if(substr($user->email, 0, strlen('fake_')) !== 'fake_') {
-						array_push($emails, $user->email);
-					}
-				}
-				$status = $notice->sendEmailToGroup($emails);
+				
 			}
 			// someone deleted a task - you need to check if
 			// this task has been claimed
@@ -50,8 +101,7 @@
 			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
 				$status = $notice->sendEmailToUser($notice->task->creator);
 			}
-
-
+			*/
 			return [
 				'status'=>$status,
 				'notice'=>$notice,

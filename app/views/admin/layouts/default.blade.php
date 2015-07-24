@@ -6,7 +6,6 @@
     <link href="{{asset('assets/css/backend/backend.css')}}" rel="stylesheet">
     @yield('head')
     @yield('scripts')
-    <script src="{{bower('semantic-ui/dist/semantic.min.js')}}"></script>
   </head>
   <body>
    
@@ -36,6 +35,7 @@
   
     <!-- Retina JS -->
     <script src="{{bower('retinajs/dist/retina.min.js') }}"></script>
+    <script src="{{bower('semantic-ui/dist/semantic.min.js')}}"></script>    
     
     <script>
       (function() {

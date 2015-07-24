@@ -12,47 +12,6 @@ Route::get('php', function() {
 Route::get('env', function() {
 	return [$_SERVER, Config::getEnvironment()];
 });
-Route::get('test', function() {
-
-	$email = "faka_adams.jeanne@dicki.org";
-	return strbool(substr($email, 0, strlen('fake_')) === 'fake_');
-	
-
-});
-
-// ------------------------------------------------------------------------
-Route::get('testemail', function() {
-
-	
-	$data = [
-		'task'=>Task::first(),
-	];
-
-
-	$view = View::make('emails.new-task', $data)->render();
-	
-	$premailer = new ScottRobertson\Premailer\Request();
-	$response = $premailer->convert($view);
-	// $email = Input::get('email', 'vanderlin@gmail.com');
-	$emails = ['vanderlin@gmail.com', 'tvanderlin@ideo.com'];
-
-	if (Input::get('view', false)==true) {
-		return $response->downloadHtml();
-	}
-
-	Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($emails) {
-		$message->bcc($emails, 'Halp')->subject('From '.Auth::user()->getName()." Halp Email Test ".uniqid());
-	});
-	return $emails;
-	if(Input::has('send')) {
-		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($email) {
-			$message->to($email, 'Halp')->subject(Auth::user()->getName()."Halp Email Test ".uniqid());
-		});
-		return 'sent';
-	}
-	return $view;
-});
-
 
 // notifications
 // ------------------------------------------------------------------------

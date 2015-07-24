@@ -17,7 +17,9 @@
 		
 		if(params.claim_task !== undefined)
 		{
-			App.openClaimPopup(params.claim_task);
+            App.openPopup({
+                url:'/tasks/'+params.claim_task+'/claimed'
+            });
 			$('.task-card-'+params.claim_task).addClass('task-focused')
 		}
 		

@@ -5,5 +5,5 @@
 	<hr>
 	<h1>{{$task->title}} for {{link_to($task->project->getURL(), $task->project->title)}}</h1>
 	<p>Thanks for trying thought...</p>
-	<p>Go Find more {{link_to('/', 'tasks!')}}</p>
+	<p>Go find more {{link_to('/', 'tasks!')}}</p>
 @stop

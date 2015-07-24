@@ -90,6 +90,23 @@ class Notification extends BaseModel {
 				break;
 		}
 	}
+	public static function getViewEvent($event)
+	{
+		switch ($event) {
+			case Notification::NOTIFICATION_NEW_TASK:
+				return 'emails.new-task';
+				break;
+			case Notification::NOTIFICATION_TASK_CLAIMED:
+				return 'emails.task-claimed';
+				break;
+			case Notification::NOTIFICATION_TASK_DELETED:
+				return 'emails.task-deleted';
+				break;
+			default:
+				return 'emails.new-task';
+				break;
+		}
+	}
 
 	// ------------------------------------------------------------------------
 	public function getAction()

@@ -127,34 +127,35 @@
             <path d="M1353.51128,82.9276723 C1363.82386,82.9276723 1372.18386,74.5676703 1372.18386,64.2550853 C1372.18386,53.9425002 1363.82386,45.5824983 1353.51128,45.5824983 C1353.51128,45.5824983 1362.46086,54.5010482 1362.46086,64.8136332 C1362.46086,75.1262183 1353.51128,82.9276723 1353.51128,82.9276723 Z" id="moon" fill="#FFFFFF" sketch:type="MSShapeGroup" transform="translate(1362.847571, 64.255085) rotate(-15.000000) translate(-1362.847571, -64.255085) "></path>
             <path d="M832.205772,407.916428 C836.01816,401.44079 837.095309,390.139469 837.095309,385.542779 C837.095309,380.946088 836.677087,371.835499 834.588332,369.372166 C834.588332,369.372166 834.588331,381.648365 834.588331,386.245055 C834.588331,390.841746 832.205772,407.916428 832.205772,407.916428 Z" id="splah" fill="#506479" sketch:type="MSShapeGroup" transform="translate(834.650541, 388.644297) rotate(-30.000000) translate(-834.650541, -388.644297) "></path>
             <path d="M835.638689,407.923823 C840.629144,399.447146 842.039143,384.653601 842.039143,378.636486 C842.039143,372.619371 841.491686,360.693517 838.757484,357.468988 C838.757484,357.468988 838.757484,373.538658 838.757484,379.555773 C838.757484,385.572889 835.638689,407.923823 835.638689,407.923823 Z" id="splash" fill="#506479" sketch:type="MSShapeGroup" transform="translate(838.838916, 382.696405) rotate(-30.000000) translate(-838.838916, -382.696405) "></path>
-            <circle id="star-1" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1136" cy="126" r="3"></circle>
-            <circle id="star-2" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1106" cy="76" r="3"></circle>
-            <circle id="star-3" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="976" cy="146" r="3"></circle>
-            <circle id="star-4" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="326" cy="176" r="3"></circle>
-            <circle id="star-5" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="365" cy="166" r="3"></circle>
-            <circle id="star-6" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="405" cy="156" r="3"></circle>
-            <circle id="star-7" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="415" cy="56" r="3"></circle>
-            <circle id="star-8" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="193" cy="54" r="1"></circle>
-            <circle id="star-9" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="133" cy="104" r="1"></circle>
-            <circle id="star-10" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="333" cy="94" r="1"></circle>
-            <circle id="star-11" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="393" cy="124" r="1"></circle>
-            <circle id="star-12" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="513" cy="154" r="1"></circle>
-            <circle id="star-13" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="663" cy="124" r="1"></circle>
-            <circle id="star-14" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="573" cy="174" r="1"></circle>
-            <circle id="star-15" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="793" cy="174" r="1"></circle>
-            <circle id="star-16" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="843" cy="124" r="1"></circle>
-            <circle id="star-17" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="783" cy="124" r="1"></circle>
-            <circle id="star-18" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="284" cy="86" r="3"></circle>
-            <circle id="star-19" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="324" cy="36" r="3"></circle>
-            <circle id="star-20" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="464" cy="227" r="3"></circle>
-            <circle id="star-21" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1253" cy="174" r="1"></circle>
-            <circle id="star-22" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1303" cy="124" r="1"></circle>
-            <circle id="star-23" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1243" cy="124" r="1"></circle>
-            <circle id="star-24" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="744" cy="186" r="3"></circle>
-            <circle id="star-25" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="924" cy="227" r="3"></circle>
+            <g id="stars-group">
+                <circle id="star-1" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1136" cy="126" r="3"></circle>
+                <circle id="star-2" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1106" cy="76" r="3"></circle>
+                <circle id="star-3" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="976" cy="146" r="3"></circle>
+                <circle id="star-4" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="326" cy="176" r="3"></circle>
+                <circle id="star-5" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="365" cy="166" r="3"></circle>
+                <circle id="star-6" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="405" cy="156" r="3"></circle>
+                <circle id="star-7" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="415" cy="56" r="3"></circle>
+                <circle id="star-8" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="193" cy="54" r="1"></circle>
+                <circle id="star-9" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="133" cy="104" r="1"></circle>
+                <circle id="star-10" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="333" cy="94" r="1"></circle>
+                <circle id="star-11" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="393" cy="124" r="1"></circle>
+                <circle id="star-12" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="513" cy="154" r="1"></circle>
+                <circle id="star-13" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="663" cy="124" r="1"></circle>
+                <circle id="star-14" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="573" cy="174" r="1"></circle>
+                <circle id="star-15" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="793" cy="174" r="1"></circle>
+                <circle id="star-16" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="843" cy="124" r="1"></circle>
+                <circle id="star-17" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="783" cy="124" r="1"></circle>
+                <circle id="star-18" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="284" cy="86" r="3"></circle>
+                <circle id="star-19" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="324" cy="36" r="3"></circle>
+                <circle id="star-20" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="464" cy="227" r="3"></circle>
+                <circle id="star-21" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1253" cy="174" r="1"></circle>
+                <circle id="star-22" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1303" cy="124" r="1"></circle>
+                <circle id="star-23" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="1243" cy="124" r="1"></circle>
+                <circle id="star-24" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="744" cy="186" r="3"></circle>
+                <circle id="star-25" class="animated flash infinite star" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="924" cy="227" r="3"></circle>
 
-            <path class="animated flash infinite star" d="M1264,239 C1265.65685,239 1267,237.656854 1267,236 C1267,234.343146 1265.65685,233 1264,233 C1262.34315,233 1261,234.343146 1261,236 C1261,237.656854 1262.34315,239 1264,239 Z" id="star-26" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
-           
+                <path class="animated flash infinite star" d="M1264,239 C1265.65685,239 1267,237.656854 1267,236 C1267,234.343146 1265.65685,233 1264,233 C1262.34315,233 1261,234.343146 1261,236 C1261,237.656854 1262.34315,239 1264,239 Z" id="star-26" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            </g>
             <g id="tree" transform="translate(33.000000, 41.000000)" sketch:type="MSShapeGroup">
                 <path d="M47.9609375,174.796875 L41.3984375,208.421875 L70.1992188,209.460938 L61.1640625,170.625 L47.9609375,174.796875 Z" id="trunk" fill="#19182A"></path>
                 <path d="M50.9140625,0 L0.828125,165.71875 C0.828125,165.71875 35.0078125,181.007812 59.859375,181.007812 C84.7109375,181.007812 101,170.277344 101,170.277344 L50.9140625,0 Z" id="tree-top" fill="#3A3851" ></path>

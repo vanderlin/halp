@@ -41,6 +41,11 @@ function js($file) {
     return asset('assets/js/'.$file);
 }
 
+function production_url($url)
+{
+  return Config::get('config.site_url').'/'.$url;
+}
+
 function bower($file) {
   return asset('bower_components/'.$file);
 }

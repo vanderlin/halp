@@ -8,7 +8,8 @@ return array(
 	'carousel' 				 => array('interval'=>5000),		
 	'api_base'			     => 'http://halp.ideo.com/api',
 	'max_title'				 => 20,
-	
+	'site_url'				 => 'http://halp.ideo.com',
+
 	'google' => array(
 	    'oauth_options'      => array('access_type'=>'offline', 'display'=>'popup'),
 	    'oauth_local_path'   => 'assets/google/client_secret_386187553837-0jfjomr9dh4lfcp9gu6t0m6trhnu75st.apps.googleusercontent.com.json',
