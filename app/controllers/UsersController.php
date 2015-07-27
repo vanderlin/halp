@@ -36,7 +36,7 @@ class UsersController extends BaseController
         })->values()->first();
 
         
-        $users = User::paginate(10);
+        $users = User::paginate(12);
         $users->sortByDesc(function($item) {
             return $item->claimedTasks->count();
         })->each(function($item) {

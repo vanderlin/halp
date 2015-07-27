@@ -660,6 +660,9 @@
   letter-spacing: 1px;
   color: #ffffff;
 }
+.menu-wrap {
+  display: none;
+}
 .menu-wrap a {
   color: #1b1b25;
 }
@@ -830,8 +833,8 @@ input.has-error {
 #star-1 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-2 {
   -webkit-animation-duration: 4s;
@@ -848,14 +851,24 @@ input.has-error {
 #star-4 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-5 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-6 {
   -webkit-animation-duration: 4s;
@@ -872,32 +885,52 @@ input.has-error {
 #star-8 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-9 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-10 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-11 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-12 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-13 {
   -webkit-animation-duration: 4s;
@@ -920,14 +953,24 @@ input.has-error {
 #star-16 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-17 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-18 {
   -webkit-animation-duration: 4s;
@@ -938,20 +981,30 @@ input.has-error {
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-20 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-21 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-22 {
   -webkit-animation-duration: 4s;
@@ -968,20 +1021,35 @@ input.has-error {
 #star-24 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #star-26 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
@@ -1010,7 +1078,8 @@ input.has-error {
   font-style: italic;
 }
 .pagination {
-  margin-top: 10px;
+  margin-top: 18px;
+  margin-bottom: 28px;
 }
 .pagination li {
   font-family: 'Montserrat', sans-serif;
@@ -1019,13 +1088,13 @@ input.has-error {
   font-size: 12px;
   letter-spacing: 1px;
   display: inline;
-  margin-right: 3px;
+  margin-right: 2px;
 }
 .pagination li.disabled,
 .pagination li.active,
 .pagination li a {
   padding: 10px;
-  background-color: rgba(204, 204, 204, 0.1);
+  background-color: #F9F7F6;
 }
 .pagination li.disabled {
   color: rgba(64, 77, 91, 0.5);
@@ -1035,6 +1104,10 @@ input.has-error {
 }
 .pagination li a {
   color: #404d5b;
+}
+.pagination li a:hover {
+  background-color: #404d5b;
+  color: white;
 }
 .pagination li:last-child {
   margin-right: 0;
@@ -1255,6 +1328,10 @@ h6 {
   color: #a2b7cd;
   line-height: 37px;
 }
+.special-note {
+  line-height: 23px;
+  color: #4fd2c2;
+}
 .user-name-leaderboard h5 {
   color: #fff;
 }
@@ -1270,7 +1347,7 @@ hr {
 }
 .content {
   font-size: 150%;
-  padding: 3em;
+  padding: 80px;
   background-color: #f0efee;
 }
 .turtle-break {
@@ -1520,9 +1597,6 @@ body .nomargin-bottom {
   background-color: #f0efee;
   padding: 80px 60px;
 }
-.user-tasks h2 {
-  padding: 30px;
-}
 .user-tasks .line-break {
   display: table;
   text-align: center;
@@ -1541,7 +1615,7 @@ body .nomargin-bottom {
 }
 .user-tasks .line-break > h2 {
   white-space: pre;
-  padding: 0 30px;
+  padding: 0 70px;
 }
 .total-task h2 {
   font-size: 80px;
@@ -1558,7 +1632,7 @@ body .nomargin-bottom {
 }
 /* ------------------------------------- LEADERBOARD  ------------------------------------ */
 .user-image-most-helpful img:hover {
-  border-color: white;
+  border-color: #4fd2c2;
 }
 .user-image-most-helpful a img {
   width: 220px;
@@ -1568,16 +1642,20 @@ body .nomargin-bottom {
   border: 13px solid #1b1b25;
   margin: 40px 0px 10px 0px;
   transition: border .4s;
+  z-index: 10;
+  position: relative;
 }
 .bird-left {
   position: relative;
   top: -53px;
-  right: -6px;
+  right: -7px;
+  z-index: 3;
 }
 .bird-right {
   position: relative;
   top: -53px;
-  left: -6px;
+  left: -7px;
+  z-index: 3;
 }
 .bgcolor {
   background: #f9f7f6;
@@ -1712,9 +1790,9 @@ body .nomargin-bottom {
     width: 350px;
   }
 }
-@media screen and (max-width: 900px) {
-  .footer {
-    height: 360px;
+@media screen and (max-width: 750px) {
+  .content {
+    padding: 20px;
   }
 }
 @media screen and (max-width: 650px) {
@@ -1731,7 +1809,7 @@ body .nomargin-bottom {
     font-size: 2.8em;
   }
   .content {
-    padding: 0;
+    padding: 20px 10px;
   }
   .hero {
     padding: 30px 30px;
@@ -1771,6 +1849,13 @@ body .nomargin-bottom {
   .user-tasks {
     padding: 10px 0px 10px 0px;
   }
+  .user-tasks h6 {
+    display: none;
+  }
+  .user-tasks .line-break:before,
+  .user-tasks .line-break:after {
+    border-bottom: none;
+  }
   .user-tasks .line-break {
     padding: 10px 10px 0px 10px;
   }
@@ -1778,7 +1863,7 @@ body .nomargin-bottom {
     margin: 20px 0px;
   }
   .claimed-popup {
-    padding: 40px;
+    padding: 60px 20px;
   }
   .claimed-popup h2 {
     font-size: 22px;
@@ -1792,7 +1877,7 @@ body .nomargin-bottom {
   }
   .small.progress-button {
     margin-top: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
   .small.progress-button button {
     margin-top: 15px;
@@ -1825,6 +1910,15 @@ body .nomargin-bottom {
   }
   .footer {
     height: 220px;
+  }
+  .footer .footer-bg {
+    display: none;
+  }
+  .halp-list-menu li {
+    padding: 0px 10px;
+  }
+  .made-at-ideo {
+    padding-top: 43px;
   }
   .email-content {
     padding: 50px;
@@ -1865,8 +1959,12 @@ body .nomargin-bottom {
     padding: 12px 7px;
   }
   .form-field input {
+<<<<<<< HEAD
     width: 100%;
     -webkit-min-logical-width: 100%;
+=======
+    width: 263px;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
   }
   .bird-left {
     display: none;
@@ -1874,7 +1972,12 @@ body .nomargin-bottom {
   .bird-right {
     display: none;
   }
+<<<<<<< HEAD
   .popup-content {
     margin-top: 20px;
+=======
+  .menu-wrap {
+    display: block;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
   }
 }

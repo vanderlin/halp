@@ -17,10 +17,10 @@ class TasksController extends \BaseController {
 	{
 
 		Paginator::setPageName('tasks_page');
-		$tasks = Task::unClaimed()->paginate(10);
+		$tasks = Task::unClaimed()->paginate(16);
 
 		Paginator::setPageName('claimed_tasks_page');
-		$claimed_tasks = Task::claimed()->paginate(10);
+		$claimed_tasks = Task::claimed()->paginate(8);
 		
 		return View::make('site.tasks.index', ['tasks'=>$tasks, 'claimed_tasks'=>$claimed_tasks]);	
 	}

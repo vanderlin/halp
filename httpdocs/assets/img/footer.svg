@@ -165,13 +165,13 @@
                 </g>
            </g>
 
-             <path id="motionPath" d="M1.04403172,75.2487074 C-3.76641393,107.738942 8.12083327,130.031911 35.1657918,130.031911 C62.2107504,130.031911 83.235769,123.728512 112.46875,126.68945 C141.701731,129.650387 170.078644,137.924523 184.173942,124.68945 C236.828125,75.2487074 177.367749,0.248707392 100.538159,0.248707392 C23.7085685,0.248707392 5.85447736,42.758473 1.04403172,75.2487074 Z" fill="#222222" sketch:type="MSShapeGroup"></path>
+             <path id="motionPath" d="M1.04403172,75.2487074 C-3.76641393,107.738942 8.12083327,130.031911 35.1657918,130.031911 C62.2107504,130.031911 83.235769,123.728512 112.46875,126.68945 C141.701731,129.650387 170.078644,137.924523 184.173942,124.68945 C236.828125,75.2487074 177.367749,0.248707392 100.538159,0.248707392 C23.7085685,0.248707392 5.85447736,42.758473 1.04403172,75.2487074 Z" sketch:type="MSShapeGroup"></path>
     
            
 
               <animateMotion 
                     xlink:href="#fish"
-                    dur="2s"
+                    dur="3s"
                     begin="0s"
                     fill="freeze"
                     repeatCount="indefinite"
@@ -187,19 +187,19 @@
    
 
          <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="910" cy="406.30497" rx="36" ry="8">
-                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="1.2s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
+                <animate attributeType="CSS" attributeName="opacity" dur="3s" begin="1.8s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
         </ellipse>
 
          <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="910" cy="406.30497" rx="24" ry="4">
-                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="1.1s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
+                <animate attributeType="CSS" attributeName="opacity" dur="3s" begin="1.9s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
          </ellipse>
 
         <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="750" cy="400" rx="46.2999995" ry="10.3833655">
-                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="2.3s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
+                <animate attributeType="CSS" attributeName="opacity" dur="3s" begin="0.2s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
         </ellipse>
 
          <ellipse id="ripple" stroke="#506479" stroke-width="2" opacity= "0" stroke-linecap="round" sketch:type="MSShapeGroup" cx="750" cy="400" rx="30.8666663" ry="6.92224366">
-                <animate attributeType="CSS" attributeName="opacity" dur="2s" begin="2.2s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
+                <animate attributeType="CSS" attributeName="opacity" dur="3s" begin="0.3s" keyTimes="0; .05; .3; 1" values="0; 1; 0; 0;" repeatCount="indefinite"/>
          </ellipse>
 
             <path d="M631.965431,465.828704 C688.064994,465.828704 733.542675,455.744961 733.542675,443.306035 C733.542675,430.867109 688.064994,420.783366 631.965431,420.783366 C575.865869,420.783366 530.388188,430.867109 530.388188,443.306035 C530.388188,455.744961 575.865869,465.828704 631.965431,465.828704 Z" id="ripple2" stroke="#445568" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup" >

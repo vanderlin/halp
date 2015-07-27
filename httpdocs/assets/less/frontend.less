@@ -76,6 +76,11 @@ h5{
 h6{
 	.sans-serif(13px, @light-purple);
 	line-height: 37px;
+
+}
+.special-note{
+	line-height: 23px;
+	color: @mint;
 }
 
 .user-name-leaderboard h5{
@@ -96,7 +101,7 @@ hr{
 
 .content {
 	font-size: 150%;
-	padding: 3em;
+	padding: 80px;
 	background-color: #f0efee;
 }
 
@@ -364,10 +369,6 @@ body .nomargin-bottom {
 	background-color: #f0efee;
 	padding: 80px 60px;
 
-	h2 {
-		padding: 30px;
-	}
-
 	.line-break{ 
 	  display:table;
 	  text-align:center; 
@@ -383,7 +384,8 @@ body .nomargin-bottom {
   		position: relative;
   		border-bottom: 2px solid #E0DEDC;
 	}
-	.line-break > h2{ white-space:pre; padding:0 30px; }
+
+	.line-break > h2{ white-space:pre; padding:0 70px; }
 }
 
 .total-task{
@@ -406,7 +408,7 @@ body .nomargin-bottom {
 /* ------------------------------------- LEADERBOARD  ------------------------------------ */
 
 .user-image-most-helpful img:hover{
-	border-color: white;
+	border-color: @mint;
 }
 .user-image-most-helpful a img{
 	width: 220px;
@@ -417,16 +419,20 @@ body .nomargin-bottom {
 	margin: 40px 0px 10px 0px;
 	-webkit-transition: border .4s;
    	transition: border .4s;
+   	z-index: 10;
+   	position: relative;
 }
 .bird-left{
 	position: relative;
   	top: -53px;
-  	right: -6px;
+  	right: -7px;
+  	z-index: 3;
 }
 .bird-right{
 	position: relative;
   	top: -53px;
-  	left: -6px;
+  	left: -7px;
+  	z-index: 3;
 }
 
 
@@ -577,11 +583,12 @@ body .nomargin-bottom {
 	}
 }
 
-@media screen and (max-width: 900px) {
-	.footer{
-		height: 360px;
+@media screen and (max-width:750px){
+	.content{
+		padding: 20px;
 	}
 }
+
 
 @media screen and (max-width: 650px) {
 
@@ -598,7 +605,7 @@ body .nomargin-bottom {
 		font-size: 2.8em;
 	}
 	.content{
-		padding: 0;
+		padding: 20px 10px;
 	}
 	.hero{
 		  padding: 30px 30px;
@@ -638,6 +645,12 @@ body .nomargin-bottom {
 	}
 	.user-tasks{
 		padding: 10px 0px 10px 0px;
+		h6{
+			display: none;
+		}
+	}
+	.user-tasks .line-break:before, .user-tasks .line-break:after{
+		border-bottom: none;
 	}
 	.user-tasks .line-break{
 		padding: 10px 10px 0px 10px;
@@ -646,7 +659,7 @@ body .nomargin-bottom {
 		margin: 20px 0px;
 	}
 	.claimed-popup{
-		padding: 40px;
+		padding: 60px 20px;
 	}
 	.claimed-popup h2 {
   		font-size: 22px;
@@ -660,7 +673,7 @@ body .nomargin-bottom {
 	}
 	.small.progress-button{
 		margin-top: 10px;
-		margin-bottom: 0px;
+		margin-bottom: 10px;
 	}
 	.small.progress-button button{
 		margin-top: 15px;
@@ -693,6 +706,15 @@ body .nomargin-bottom {
 	}
 	.footer{
 		height: 220px;
+	}
+	.footer .footer-bg{
+		display: none;
+	}
+	.halp-list-menu li{
+		padding: 0px 10px;
+	}
+	.made-at-ideo{
+		padding-top: 43px;
 	}
 	.email-content{
 		padding: 50px;
@@ -730,8 +752,12 @@ body .nomargin-bottom {
 	}
 	.form-field{
 		input{
+<<<<<<< HEAD
 			width:100%;
 			-webkit-min-logical-width:100%;
+=======
+			width: 263px;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 		}
 	}
 	.bird-left{
@@ -740,8 +766,13 @@ body .nomargin-bottom {
 	.bird-right{
 		display: none;
 	}
+<<<<<<< HEAD
 	.popup-content {
 		margin-top: 20px;
+=======
+	.menu-wrap{
+		display: block;
+>>>>>>> 601f4f053168556b06ba7653456876386e4b0318
 	}
 
 
