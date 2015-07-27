@@ -1,5 +1,6 @@
 .pagination {
-	margin-top: 10px;
+	margin-top: 18px;
+	margin-bottom: 28px;
 	
 	li {
 		font-family: 'Montserrat', sans-serif;
@@ -7,14 +8,13 @@
 		text-transform: uppercase;
 		font-size: 12px;
 		letter-spacing: 1px;
-
 		display: inline;
-		margin-right: 3px;
+		margin-right: 2px;
 	}
 
 	li.disabled, li.active, li a {
 		padding: 10px;
-		background-color: fade(@grey, 10%);
+		background-color: #F9F7F6;
 	}
 
 	li.disabled {
@@ -25,6 +25,10 @@
 	}
 	li a {
 		color:@purple;
+	}
+	li a:hover{
+		background-color: @purple;
+		color: white;
 	}
 
 	li:last-child {
