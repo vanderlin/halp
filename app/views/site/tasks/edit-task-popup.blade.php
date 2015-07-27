@@ -27,7 +27,7 @@
 				<div class="form-field">
 					<label>When will this task happen</label>
 					@if (isMobile())
-						<input type="date" name="task_date" autocomplete="off" id="edit-task-datepicker" data-default-date="{{$task->date->format('m-d-Y')}}" value="{{$task->date->format('F j, Y')}}">					
+						<input type="date" name="task_date" autocomplete="off" value="{{$task->date->format('Y-m-d')}}">					
 					@else
 						<input type="text" name="task_date" autocomplete="off" id="edit-task-datepicker" data-default-date="{{$task->date->format('m-d-Y')}}" value="{{$task->date->format('F j, Y')}}">
 					@endif					

@@ -65,8 +65,8 @@
 		<p class="progress-title">Tasks Claimed vs. Tasks Created</p>
 		<h4>{{$user->totalClaimed()}} Claimed <span class="slash">/</span> {{$user->totalCreated()}} Created</h4>
 		<div class="tug-of-war">
-			<img src="{{asset('assets/img/progress-turtle.svg')}}" class="tug-of-war-turtle">
-			<img src="{{asset('assets/img/progress-skunk.svg')}}" class="tug-of-war-skunk">
+			<img src="{{asset('assets/img/progress-turtle.svg')}}" data-no-retina class="tug-of-war-turtle">
+			<img src="{{asset('assets/img/progress-skunk.svg')}}" data-no-retina class="tug-of-war-skunk">
 			<div class="meter"> 
 				<span style="width: {{$user->taskRatio*100}}%"></span>
 			</div>

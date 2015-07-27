@@ -40,12 +40,12 @@ class SetupSite extends Command {
 	 */
 	public function fire()
 	{
-	
 
-		$options = $this->option();
-
+		$options = $this->option();		
+   
 		// -------------------------------------
 		if(is_true($options['reset'])) {
+
 			if ($this->confirm('Do you really want to delete the tables? [yes|no]'))
 			{
 				$name = $this->call('migrate');
@@ -106,6 +106,22 @@ class SetupSite extends Command {
 		}
 
 		$this->seed();
+
+		// add core assets
+        $m = Asset::findFromTag('missing-user-image');
+        if($m == NULL)
+        {	
+        	
+        	
+        	$m = new Asset();
+        	$m->path = "assets/content/uploads";
+        	$m->fromSeed = true;
+        	$m->saveLocalFile(public_path('assets/content/common/missing/profile-default.png'), 'profile-default.png');
+			$m->tag = 'missing-user-image';
+			$m->shared = 1;
+			$m->type = Asset::ASSET_TYPE_IMAGE;
+			$m->save();
+        }
 
 		$this->comment("****\tHalp has been setup :-) \t****");
 		return;
@@ -183,6 +199,7 @@ class SetupSite extends Command {
 			$this->info("$task->title Claimed at: ".$task->claimed_at->diffForHumans($task->created_at) );
 			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 
 		}
+
 
 	}
 

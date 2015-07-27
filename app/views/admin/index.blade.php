@@ -50,6 +50,10 @@
 		</tbody>
 	</table>	
 	<br>
+
+	<div class="text-center">
+		{{$users->links()}}
+	</div>
 	
 	@include('site.partials.form-errors')
 

@@ -6,6 +6,7 @@
 /test/tmp/
 /httpdocs/bower_components
 /httpdocs/assets/content/users
+/httpdocs/assets/uploads/
 /bootstrap/compiled.php
 /vendor
 composer.phar

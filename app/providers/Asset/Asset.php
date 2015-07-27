@@ -534,6 +534,30 @@ class Asset extends \Eloquent {
     }
 
     // ------------------------------------------------------------------------
+    public function saveLocalFile($path, $filename) 
+    {
+      
+      if($this->uid == 'missing') return;
+      
+
+      $this->removeOldFile();
+      
+      $save_path = $this->getRelativePath();
+
+      $this->filename     = $this->getSaveFilename($filename);
+      $this->org_filename = $filename;
+      $this->source = $path;
+
+      if(!File::exists($save_path)) {
+        File::makeDirectory($save_path, 0755, true);     
+      }
+
+      File::copy($path, $save_path.'/'.$this->filename);
+      // $f->move($save_path, $this->filename);
+      $this->save();
+    }
+
+    // ------------------------------------------------------------------------
     public function saveFile($f) 
     {
       
