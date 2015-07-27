@@ -76,6 +76,11 @@ h5{
 h6{
 	.sans-serif(13px, @light-purple);
 	line-height: 37px;
+
+}
+.special-note{
+	line-height: 23px;
+	color: @mint;
 }
 
 .user-name-leaderboard h5{
@@ -364,10 +369,6 @@ body .nomargin-bottom {
 	background-color: #f0efee;
 	padding: 80px 60px;
 
-	h2 {
-		padding: 30px;
-	}
-
 	.line-break{ 
 	  display:table;
 	  text-align:center; 
@@ -383,7 +384,8 @@ body .nomargin-bottom {
   		position: relative;
   		border-bottom: 2px solid #E0DEDC;
 	}
-	.line-break > h2{ white-space:pre; padding:0 30px; }
+
+	.line-break > h2{ white-space:pre; padding:0 70px; }
 }
 
 .total-task{
@@ -639,6 +641,12 @@ body .nomargin-bottom {
 	}
 	.user-tasks{
 		padding: 10px 0px 10px 0px;
+		h6{
+			display: none;
+		}
+	}
+	.user-tasks .line-break:before, .user-tasks .line-break:after{
+		border-bottom: none;
 	}
 	.user-tasks .line-break{
 		padding: 10px 10px 0px 10px;
@@ -661,7 +669,7 @@ body .nomargin-bottom {
 	}
 	.small.progress-button{
 		margin-top: 10px;
-		margin-bottom: 0px;
+		margin-bottom: 10px;
 	}
 	.small.progress-button button{
 		margin-top: 15px;

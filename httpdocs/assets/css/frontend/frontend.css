@@ -830,14 +830,14 @@ input.has-error {
 #star-1 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-2 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-3 {
   -webkit-animation-duration: 4s;
@@ -848,134 +848,134 @@ input.has-error {
 #star-4 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-5 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-6 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 #star-7 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 #star-8 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
 }
 #star-9 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-10 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 #star-11 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-12 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
 }
 #star-13 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 #star-14 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
 }
 #star-15 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
 }
 #star-16 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
 }
 #star-17 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-18 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-20 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
-}
-#star-21 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
-}
-#star-22 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 }
+#star-21 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+#star-22 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
 #star-23 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-24 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 #star-26 {
   -webkit-animation-duration: 4s;
@@ -1260,6 +1260,10 @@ h6 {
   color: #a2b7cd;
   line-height: 37px;
 }
+.special-note {
+  line-height: 23px;
+  color: #4fd2c2;
+}
 .user-name-leaderboard h5 {
   color: #fff;
 }
@@ -1525,9 +1529,6 @@ body .nomargin-bottom {
   background-color: #f0efee;
   padding: 80px 60px;
 }
-.user-tasks h2 {
-  padding: 30px;
-}
 .user-tasks .line-break {
   display: table;
   text-align: center;
@@ -1546,7 +1547,7 @@ body .nomargin-bottom {
 }
 .user-tasks .line-break > h2 {
   white-space: pre;
-  padding: 0 30px;
+  padding: 0 70px;
 }
 .total-task h2 {
   font-size: 80px;
@@ -1776,6 +1777,13 @@ body .nomargin-bottom {
   .user-tasks {
     padding: 10px 0px 10px 0px;
   }
+  .user-tasks h6 {
+    display: none;
+  }
+  .user-tasks .line-break:before,
+  .user-tasks .line-break:after {
+    border-bottom: none;
+  }
   .user-tasks .line-break {
     padding: 10px 10px 0px 10px;
   }
@@ -1797,7 +1805,7 @@ body .nomargin-bottom {
   }
   .small.progress-button {
     margin-top: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
   .small.progress-button button {
     margin-top: 15px;
