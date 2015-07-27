@@ -408,7 +408,7 @@ body .nomargin-bottom {
 /* ------------------------------------- LEADERBOARD  ------------------------------------ */
 
 .user-image-most-helpful img:hover{
-	border-color: white;
+	border-color: @mint;
 }
 .user-image-most-helpful a img{
 	width: 220px;
@@ -419,16 +419,20 @@ body .nomargin-bottom {
 	margin: 40px 0px 10px 0px;
 	-webkit-transition: border .4s;
    	transition: border .4s;
+   	z-index: 10;
+   	position: relative;
 }
 .bird-left{
 	position: relative;
   	top: -53px;
-  	right: -6px;
+  	right: -7px;
+  	z-index: 3;
 }
 .bird-right{
 	position: relative;
   	top: -53px;
-  	left: -6px;
+  	left: -7px;
+  	z-index: 3;
 }
 
 
