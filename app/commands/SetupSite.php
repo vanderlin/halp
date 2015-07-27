@@ -48,6 +48,7 @@ class SetupSite extends Command {
 		if(is_true($options['reset'])) {
 			if ($this->confirm('Do you really want to delete the tables? [yes|no]'))
 			{
+				$name = $this->call('migrate');
 				$name = $this->call('migrate:reset');
 				File::deleteDirectory(public_path('assets/content/users'));
 				$this->info('--- Halp has been reset ---');
