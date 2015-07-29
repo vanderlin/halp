@@ -24,13 +24,15 @@ class ProjectsController extends \BaseController {
 		$project = Project\Project::find($id);
 		$title = $project ? link_to($project->getURL(), $project->title) : NULL;
 
+		Paginator::setPageName('tasks_page');
 		$tasks = Task\Task::unClaimed()->whereHas('Project', function($q) use($id) {
 			$q->where('id', '=', $id);
-		})->get();
+		})->paginate(16);
 
+		Paginator::setPageName('claimed_tasks_page');
 		$claimed_tasks = Task\Task::claimed()->whereHas('Project', function($q) use($id) {
 			$q->where('id', '=', $id);
-		})->get();
+		})->paginate(8);
 
 		return View::make('site.tasks.index', ['tasks'=>$tasks, 'title'=>$title, 'claimed_tasks'=>$claimed_tasks]);	
 
