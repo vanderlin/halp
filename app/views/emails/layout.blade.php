@@ -9,15 +9,20 @@
 	<style type="text/css">
 	{{File::get(public_path('assets/css/core/email.css'))}}
 	</style>	
+
 </head>
 	<body>
-		<table>
+		<table class="{{isset($css_class)?$css_class:''}}">
 			<tr>
 				<td>
 					<div class="container">
 						<div class="email-content">
 							
-							<img src="{{production_url('assets/img/friends/'.get_random_task_image())}}" />
+							@if (array_key_exists('header', View::getSections()))
+								@yield('header')
+							@else
+								<img src="{{production_url('assets/img/friends/'.get_random_task_image())}}" />
+							@endif
 
 							@yield('content')
 								

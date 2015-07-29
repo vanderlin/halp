@@ -92,13 +92,11 @@ hr{
   	border: 1px solid;
   	margin: 30px auto;
 }
-
 .container {
-	margin: 0 auto;
-	text-align: center;
-	overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden;
 }
-
 .content {
 	font-size: 150%;
 	padding: 80px;
@@ -113,7 +111,7 @@ hr{
 		padding-top: 12px;
 	}
 }
-.turtle-break img {
+.turtle-break img, svg {
 	vertical-align: middle;
   	margin: 0 10px;
 }
@@ -122,6 +120,9 @@ hr{
   	height: 2px;
   	background-color: #E6E6E6;
   	display: inline-block;
+}
+.turtle-svg {
+	display: inline-table;
 }
 
 .halp-special-text{
@@ -551,9 +552,9 @@ body .nomargin-bottom {
 	color: #33394A;
 }
 
-
-/* ------------------------------------- MEDIA QUERIES ------------------------------------ */
-
+// ------------------------------------------------------------------------
+// MEDIA QUERIES
+// ------------------------------------------------------------------------
 @media screen and (max-width: 1390px) {
 	.input__label{
 		font-size: 18px;
@@ -755,7 +756,7 @@ body .nomargin-bottom {
 	}
 	.form-field{
 		input{
-			text-indent: 23px;
+			// text-indent: 23px;
 			width: 263px;
 		}
 	}
@@ -768,6 +769,4 @@ body .nomargin-bottom {
 	.menu-wrap{
 		display: block;
 	}
-
-
 }

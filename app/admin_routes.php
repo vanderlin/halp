@@ -15,11 +15,12 @@
 	Route::group(['prefix'=>'tests'], function() {
 		
 		Route::get('/', function() {
-			return View::make('admin.tests', ['users'=>User::all(), 'active_link'=>'tests']);
+			return View::make('admin.tests.index', ['users'=>User::all(), 'active_link'=>'tests']);
 		});
 
 		Route::get('view-email', function() {
 
+			$pre_render = Input::get('pre_render', false) == "on" ? true : false;
 			
 
 			$notice = new Notification;
@@ -33,12 +34,14 @@
 			$notice->task->load('claimer');
 			$data = [
 				'task'=>$notice->task,
-				'extra'=>'<div style="text-align:center;padding:25px 0;background-color:#FF6666;width:100%"><a style="color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="/admin/tests">Back to Admin</a></div>'
+				'extra'=>'<a style="position: fixed; bottom:0; text-align:center;padding:25px 0;background-color:#FF6666;width:100%;color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="/admin/tests">Back to Admin</a>'
 			];
 
 			$view_name = Notification::getViewEvent(Input::get('event'));
 			$view = View::make($view_name, $data)->render();
-			
+			if(!$pre_render) {
+				return $view;
+			}
 			$premailer = new ScottRobertson\Premailer\Request();
 			$response = $premailer->convert($view);
 			// $email = Input::get('email', 'vanderlin@gmail.com');
@@ -84,7 +87,7 @@
 				}
 			});
 			
-			$status = $notice->sendEmailToGroup($emails);
+			$status = $notice->sendEmailToGroup($emails, Auth::user()->getName()." Halp Email Test:".$notice->event." ".uniqid());
 			/*
 			if($notice->event == Notification::NOTIFICATION_NEW_TASK)
 			{

@@ -33,6 +33,7 @@ table {
 	background-color: #fff; 
 	margin: 40px auto; 
 	border-radius: 10px;
+	overflow: hidden;
 }
 .footer {
 	margin: 0 auto;
@@ -40,6 +41,7 @@ table {
  	font-family: 'Merriweather', serif;
   	color: #cccccc;
   	font-size: 12px;
+  	padding-bottom: 100px;
 }
 h1{
 	font-family: 'Merriweather', Georgia, serif; 
@@ -100,8 +102,30 @@ a{
 	margin: 40px auto;
 }
 
+// ------------------------------------------------------------------------
+// New Letters
+// ------------------------------------------------------------------------
+table.news-letter {
+	padding: 20px;
+}
+.news-letter {
+	p {
+		padding: 0 50px;
+	}
+	.img-responsive {
+		width: 100%
+	}
+	.email-content {
+		padding: 0;
+		width: 100%;
+		background: #2A293A !important;
+	}
+}
+
+
+// ------------------------------------------------------------------------
 @media screen and (max-width: 930px) {
-	.email-content{
+	.email-content {
 		padding: 80px;
 	}
 	p{
