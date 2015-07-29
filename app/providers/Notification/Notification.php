@@ -9,10 +9,12 @@ use View;
 
 class Notification extends BaseModel {
 	
-	protected $fillable  = ['task_id', 'event'];
+	protected $fillable  = ['object_type', 'object_id', 'event'];
 	public static $rules = [];
 
-	const NOTIFICATION_NEW_TASK = "notification.new.task";
+	const NOTIFICATION_HALP_INVITE 	= "notification.halp.invite";
+	const NOTIFICATION_HALP_WELCOME = "notification.halp.welcome";
+	const NOTIFICATION_NEW_TASK 	= "notification.new.task";
 	const NOTIFICATION_TASK_CLAIMED = "notification.task.claimed";
 	const NOTIFICATION_TASK_DELETED = "notification.task.deleted";
 	
@@ -20,6 +22,8 @@ class Notification extends BaseModel {
 		Notification::NOTIFICATION_NEW_TASK,
 		Notification::NOTIFICATION_TASK_CLAIMED,
 		Notification::NOTIFICATION_TASK_DELETED,
+		Notification::NOTIFICATION_HALP_WELCOME,
+		Notification::NOTIFICATION_HALP_INVITE,
 	];
 	
     // ------------------------------------------------------------------------
@@ -69,26 +73,19 @@ class Notification extends BaseModel {
 	// ------------------------------------------------------------------------
 	public function task()
 	{
-		return $this->belongsTo('Task\Task')->withTrashed();
+		return $this->belongsTo('Task\Task', 'object_id')->where('object_type', 'Task\Task')->withTrashed();
+	}
+
+	// ------------------------------------------------------------------------
+	public function user()
+	{
+		return $this->belongsTo('User', 'object_id')->where('object_type', 'User')->withTrashed();
 	}
 
 	// ------------------------------------------------------------------------
 	public function getViewPath()
 	{
-		switch ($this->event) {
-			case Notification::NOTIFICATION_NEW_TASK:
-				return 'emails.new-task';
-				break;
-			case Notification::NOTIFICATION_TASK_CLAIMED:
-				return 'emails.task-claimed';
-				break;
-			case Notification::NOTIFICATION_TASK_DELETED:
-				return 'emails.task-deleted';
-				break;
-			default:
-				return 'emails.new-task';
-				break;
-		}
+		return Notification::getViewEvent($this->event);
 	}
 	public static function getViewEvent($event)
 	{
@@ -101,6 +98,12 @@ class Notification extends BaseModel {
 				break;
 			case Notification::NOTIFICATION_TASK_DELETED:
 				return 'emails.task-deleted';
+				break;
+			case Notification::NOTIFICATION_HALP_INVITE:
+				return 'emails.invite';
+				break;
+			case Notification::NOTIFICATION_HALP_WELCOME:
+				return 'emails.welcome';
 				break;
 			default:
 				return 'emails.new-task';
@@ -179,18 +182,18 @@ class Notification extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
-	public function sendEmailToGroup($group)
+	public function sendEmailToGroup($group, $subject=null)
 	{	
 		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
 		$premailer = new \ScottRobertson\Premailer\Request();
 		$response = $premailer->convert($view);
 
-		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($group) {			
-			$message->bcc($group, 'Halp')->subject($this->getSubject());
+		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($subject, $group) {			
+			$message->bcc($group, 'Halp')->subject($subject?$subject:$this->getSubject());
 		});
 	}
 	// ------------------------------------------------------------------------
-	public function sendEmailToUser($user)
+	public function sendEmailToUser($user, $subject=null)
 	{	
 
 		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
@@ -198,8 +201,8 @@ class Notification extends BaseModel {
 		$response = $premailer->convert($view);
 
 		if(substr($user->email, 0, strlen('fake_')) !== 'fake_') {
-			Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($user) {
-				$message->to($user->email, 'Halp')->subject($this->getSubject());
+			Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($subject, $user) {
+				$message->to($user->email, 'Halp')->subject($subject?$subject:$this->getSubject());
 			});
 		}
 	}
