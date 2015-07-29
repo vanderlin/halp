@@ -41,7 +41,7 @@ class UsersController extends BaseController
                     ->get(['users.*', DB::raw("count(".DB::getTablePrefix()."tasks.id) as total_claimed_tasks")]);
         
         // Paginate users
-        $perPage = 10;
+        $perPage = 1;
         $currentPage = Input::get('page') - 1;
         $pagedData = $users_q->slice($currentPage * $perPage, $perPage)->all();
         $users = Paginator::make($pagedData, count($users_q), $perPage);
