@@ -35,17 +35,19 @@ class UsersController extends BaseController
             return $item->totalClaimedTasks = $item->claimedTasks->count();
         })->values()->first();
 
+        $users_q = User::join('tasks', 'tasks.claimed_id', '=', 'users.id')
+                    ->groupBy('users.id')
+                    ->orderBy('total_claimed_tasks', 'DESC')
+                    ->get(['users.*', DB::raw('count(app_halp_tasks.id) as total_claimed_tasks')]);
         
-        $users = User::paginate(12);
-        $users->sortByDesc(function($item) {
-            return $item->claimedTasks->count();
-        })->each(function($item) {
-            return $item->totalClaimedTasks = $item->claimedTasks->count();
-        })->values();
+        // Paginate users
+        $perPage = 10;
+        $currentPage = Input::get('page') - 1;
+        $pagedData = $users_q->slice($currentPage * $perPage, $perPage)->all();
+        $users = Paginator::make($pagedData, count($users_q), $perPage);
 
-
-
-        // $paginator = Paginator::make($items, $totalItems, $perPage);
+        
+       
 
         return View::make('site.user.index', ['users'=>$users, 'leader'=>$leader]);
     }
