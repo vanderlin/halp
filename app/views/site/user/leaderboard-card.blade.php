@@ -8,7 +8,7 @@
 		<span class="user-name">
 			<h4><a href="{{$user->getProfileURL()}}">{{$user->getName()}}</a></h4>
 		</span>
-		<hr>
+		<hr class="leaderboard-hr">
 		<span class="total-task">
 		<h2>{{$user->totalClaimed()}}</h2>
 		<h6>Claimed Tasks</h6>
