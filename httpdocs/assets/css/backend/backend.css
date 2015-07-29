@@ -132,7 +132,8 @@
   text-align: right;
 }
 .admin {
-  width: 900px;
+  max-width: 900px;
+  padding: 0 10px;
   margin: 0 auto;
   margin-top: 50px;
 }

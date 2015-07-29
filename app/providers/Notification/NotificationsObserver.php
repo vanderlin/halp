@@ -13,16 +13,19 @@ use Notification\Notification;
 */
 class NotificationObserver {
 
-	private $timeframe = 30; // mins
-
 	// ------------------------------------------------------------------------
 	public function createNotification($event)
 	{
 
-		$exist = Notification::where('task_id', '=', $event['task']->id)->where('event', '=', $event['name'])->first();
+		$type = get_class($event['object']);
+		$id = $event['object']->id;
+
+		$exist = Notification::where('object_id', '=', $id)
+							 ->where('object_type', '=', $type)
+							 ->where('event', '=', $event['name'])->first();
 		if($exist == NULL)
 		{
-			$notification = new Notification(['task_id'=>$event['task']->id, 'event'=>$event['name']]);
+			$notification = new Notification(['object_type'=>$type, 'object_id'=>$id, 'event'=>$event['name']]);
 			$notification->save();		
 		}
 	}
@@ -34,6 +37,9 @@ class NotificationObserver {
 			$this->createNotification($e);
 		});
 		Event::listen(Notification::NOTIFICATION_TASK_CLAIMED, function($e) {
+			$this->createNotification($e);
+		});
+		Event::listen(Notification::NOTIFICATION_HALP_WELCOME, function($e) {
 			$this->createNotification($e);
 		});
 	}

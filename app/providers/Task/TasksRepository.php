@@ -82,7 +82,7 @@ class TasksRepository  {
 			$task->save();
 
 			// fire a new notification to the system
-			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 
+			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['object'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 
    
 		}
 		
@@ -163,7 +163,7 @@ class TasksRepository  {
 		$view = NULL;
 
 		// fire a new notification to the system
-		Event::fire(Notification::NOTIFICATION_NEW_TASK, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_NEW_TASK])); 
+		Event::fire(Notification::NOTIFICATION_NEW_TASK, array(['object'=>$task, 'name'=>Notification::NOTIFICATION_NEW_TASK])); 
  
 		if(Input::has('view')&&Input::get('view')==true)
 		{
@@ -187,7 +187,7 @@ class TasksRepository  {
 			if($task->isClaimed)
 			{
 				// fire a new notification to the system
-				Event::fire(Notification::NOTIFICATION_NEW_TASK, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_TASK_DELETED])); 
+				Event::fire(Notification::NOTIFICATION_NEW_TASK, array(['object'=>$task, 'name'=>Notification::NOTIFICATION_TASK_DELETED])); 
 				
 			}
 			$task->delete();

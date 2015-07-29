@@ -93,6 +93,11 @@ class User extends BaseModel implements ConfideUserInterface {
         return $this->hasMany('Task\Task', 'creator_id');
     }
 
+    public function notificationEvents()
+    {
+        return $this->hasMany('Notification', 'object_id')->where('object_type', 'User');
+    }
+
     public function getProfileImageAttribute() {
         $img = $this->profileImage()->first();
 
@@ -218,7 +223,6 @@ class User extends BaseModel implements ConfideUserInterface {
         return URL::to('admin/users/'.$this->id.'/edit');
     }
 
-
     static function findFromEmail($email) {
         $user = User::where('email', '=', $email)->first();   
         return $user;
@@ -227,11 +231,15 @@ class User extends BaseModel implements ConfideUserInterface {
     // ------------------------------------------------------------------------
     public function delete() {
         
+        
         if($this->hasDefaultProfileImage()==false) {
             $this->profileImage->delete();
         }
         foreach ($this->createdTasks as $task) {
             $task->delete();
+        }
+        foreach ($this->notificationEvents as $events) {
+            $events->delete();
         }
         
         

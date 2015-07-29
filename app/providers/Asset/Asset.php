@@ -12,7 +12,7 @@ class Asset extends \Eloquent {
     protected $fillable = [];
     protected $missing_filename = 'missing.svg';
     protected $dates = ['deleted_at'];
-    public $fromSeed = false;     
+    public static $fromSeed = false;     
     const ASSET_RIGHTS_USER_OWENED      = 1;//"assets.rights.user.owned";
     const ASSET_RIGHTS_NOT_USER_OWENED  = 2;//"assets.rights.not.user.owned";
     const ASSET_RIGHTS_UNKNOWN          = 3;//"assets.rights.unknown";
@@ -46,6 +46,11 @@ class Asset extends \Eloquent {
         return $array;
     }
 
+    // ------------------------------------------------------------------------
+    public static function setFromSeed($value)
+    {
+      Asset::$fromSeed = $value;
+    }
     // ------------------------------------------------------------------------
     static public function missingFile() {
       $m = new Asset;
@@ -297,7 +302,7 @@ class Asset extends \Eloquent {
 
     public function getPathAttribute($value)
     {
-      if(isset($this->fromSeed)&&$this->fromSeed) {
+      if(Asset::$fromSeed) {
         $value = public_path($value);
       }
       return $value;
@@ -534,7 +539,7 @@ class Asset extends \Eloquent {
     }
 
     // ------------------------------------------------------------------------
-    public function saveLocalFile($path, $filename) 
+    public function saveLocalFile($path, $filename, $type=Asset::ASSET_TYPE_IMAGE) 
     {
       
       if($this->uid == 'missing') return;
@@ -544,6 +549,7 @@ class Asset extends \Eloquent {
       
       $save_path = $this->getRelativePath();
 
+      $this->type = $type;
       $this->filename     = $this->getSaveFilename($filename);
       $this->org_filename = $filename;
       $this->source = $path;

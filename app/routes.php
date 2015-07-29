@@ -5,6 +5,9 @@ use Carbon\Carbon;
 use Task\Task;
 use Notification\Notification;
 
+Route::any('t', function() {
+	return User::first()->notificationEvents;
+});
 // ------------------------------------------------------------------------
 Route::get('php', function() {
 	phpinfo();

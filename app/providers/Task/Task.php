@@ -81,11 +81,10 @@ class Task extends BaseModel {
 		return $this->belongsTo('User', 'claimed_id');
 	}
 
-
 	// ------------------------------------------------------------------------
 	public function notification()
 	{
-		return $this->hasOne('Notification');
+		return  $this->hasMany('Notification', 'object_id')->where('object_type', '=', 'Task\Task');//\Notification::where('notice_id', '=', $this->id)->where('notice_type', '=', 'Task\Task');
 	}
 
 	// ------------------------------------------------------------------------
@@ -114,11 +113,11 @@ class Task extends BaseModel {
 
 	// ------------------------------------------------------------------------
 	public function delete() {
-      	$notification = $this->notification;
-      	if($notification)
-      	{
-      		$notification->delete();
-      	}
+      	// $notification = $this->notification;
+      	// if($notification)
+      	// {
+      	// 	$notification->delete();
+      	// }
     	parent::delete();
     }
 

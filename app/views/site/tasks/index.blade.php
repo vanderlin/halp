@@ -82,7 +82,10 @@
 
 	<div class="turtle-break" id="claimed-task">
 		<div class="turtle-line"></div>
-		<img src="{{asset('assets/img/happy-turtle.png')}}" width="111px" height="58px" />
+		<div class="turtle-svg">
+			{{print_svg('assets/img/happy-turtle.svg')}}
+		</div>
+		{{-- <img src="{{asset('assets/img/happy-turtle.svg')}}" width="111px" height="58px" /> --}}
 		<div class="turtle-line"></div>
 		<h3>Claimed Tasks{{isset($title)?' for '.$title:''}}:</h3>
 	</div>

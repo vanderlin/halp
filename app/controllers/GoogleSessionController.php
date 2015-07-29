@@ -435,7 +435,11 @@ class GoogleSessionController extends BaseController {
 			}
 
 		
-			$back_url = 'users/'.$username;
+			$back_url = '/';
+
+			// fire a new notification to the system
+			Event::fire(Notification::NOTIFICATION_HALP_WELCOME, array(['object'=>$user, 'name'=>Notification::NOTIFICATION_HALP_WELCOME])); 
+
 			Auth::login($user);			
         	return Redirect::to($back_url);		
 

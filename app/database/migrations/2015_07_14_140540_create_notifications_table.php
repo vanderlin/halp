@@ -15,7 +15,8 @@ class CreateNotificationsTable extends Migration {
 		Schema::create('notifications', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('task_id');
+			$table->integer('object_id');
+			$table->string('object_type');
 			$table->string('event');
 			$table->timestamp('sent_at')->nullable()->default(NULL);
 			$table->timestamps();

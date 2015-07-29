@@ -245,6 +245,7 @@ var App = (function() {
             onContentAdded: function(e) {
                 var $content = $(e.content[2]);
                 
+                // $('#task-time').timeEntry({show24Hours: true});
 
                 // date picker
                 $("#edit-task-datepicker").datepicker({
@@ -413,7 +414,6 @@ var App = (function() {
 
         $.timeago.settings.cutoff = 0;
         $(".timeago").timeago();
-        
         
         // $('.halp-delete-task-button').each(function(index, el) {
         //     self.addDeleteTaskEvent($(el));

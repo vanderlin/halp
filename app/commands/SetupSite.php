@@ -15,7 +15,7 @@ class SetupSite extends Command {
 	 * @var string
 	 */
 	protected $name = 'halp';
-
+	protected $seed_path;
 	/**
 	 * The console command description.
 	 *
@@ -42,9 +42,26 @@ class SetupSite extends Command {
 	{
 
 		$options = $this->option();		
-   
+		$this->seed_path = storage_path('seeder');
+
+
+   		
 		// -------------------------------------
 		if(is_true($options['reset'])) {
+
+	   		if (!File::exists($seed_path)) {
+	   			File::makeDirectory($this->seed_path);
+	   		
+		   		$n = 50;
+		   		for ($i=1; $i <= $n; $i++) { 
+		   			$gender_types = ['men', 'women'];
+					foreach ($gender_types as $gender) {
+						$user_photo_url = "http://api.randomuser.me/portraits/$gender/$i.jpg";
+						File::put($this->seed_path."/{$gender}_{$i}.jpg", file_get_contents($user_photo_url));
+					}
+					$this->info("Cache user seed image - $i");
+		   		}
+			}
 
 			if ($this->confirm('Do you really want to delete the tables? [yes|no]'))
 			{
@@ -146,6 +163,7 @@ class SetupSite extends Command {
 		
 		Notification::truncate();
 		Task::truncate();
+
 		$options = $this->option();
 		$task_repo = App::make('TasksRepository');
 
@@ -154,6 +172,9 @@ class SetupSite extends Command {
 						"Using the espresso machine",
 						"Render a building",
 						"Take a picture",
+						"Make a latte",
+						"Sing a song",
+						"Giving a hug",
 						"Use the 3D printer",
 						"Setup a wordpress site",
 						"Make a ios prototype",
@@ -163,7 +184,7 @@ class SetupSite extends Command {
 						"Talk about life..."];
 
 
-		$durs = ['a min', 'couple of hours', 'a day', 'few mins', "10 minutes"];
+		$durs = ['a min', 'couple of hours', 'a day', 'few mins', "2 minutes", "an hour", "1/2 hour", "5 minutes", "20 minutes", "10 minutes"];
 
 		$n = isset($options['count']) ? min($options['count'], 1500) : 100;
 		$faker = Faker\Factory::create();
@@ -174,7 +195,7 @@ class SetupSite extends Command {
 					 'project'=>Project::getRandom()->title,
 					 'creator_id'=>User::getRandomID(),
 					 'duration'=>array_random_item($durs)];
-			
+			// dd($data);
 			if($faker->boolean(80))
 			{
 				$data['details'] = implode("\n", $faker->sentences(4));
@@ -197,7 +218,7 @@ class SetupSite extends Command {
 			$task->claimed_at = $task->created_at->subDays($faker->randomDigit);
 			$task->save();
 			$this->info("$task->title Claimed at: ".$task->claimed_at->diffForHumans($task->created_at) );
-			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['task'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 
+			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['object'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 
 		}
 
 
@@ -221,17 +242,21 @@ class SetupSite extends Command {
 	// ------------------------------------------------------------------------
 	public function seedUsers()
 	{
+
+		$user_photos = File::files($this->seed_path);
+			
+		Asset::setFromSeed(true);
 		foreach (User::all() as $user) {
 			$user->delete();		
 		}
-	
+		
 		$faker = Faker\Factory::create();
 		$seeder = new LOFaker;
-		$n = 30;
+		$n = 10;
 
 		// also creat admin users (kim & I)
-		$admins = array(['username'=>'tvanderlin', 'email'=>'tvanderlin@ideo.com'],
-						['username'=>'kmiller', 'email'=>'kmiller@ideo.com']);
+		$admins = array(['username'=>'tvanderlin', 'firstname'=>'Todd', 'lastname'=>'Vanderlin', 'email'=>'tvanderlin@ideo.com'],
+						['username'=>'kmiller', 'firstname'=>'Kim', 'lastname'=>'Miller', 'email'=>'kmiller@ideo.com']);
 		foreach ($admins as $data) {
 			$data = (object)$data;
 
@@ -239,6 +264,8 @@ class SetupSite extends Command {
 			$user->timestamps 		     = false;
 		    $user->email 	  			 = $data->email;
 		    $user->username   			 = $data->username;
+		    $user->firstname  			 = $data->firstname;
+		    $user->lastname              = $data->lastname;
 			$password 		  			 = Hash::make($user->username);
 
 			$user->password 			 = $password;
@@ -258,12 +285,12 @@ class SetupSite extends Command {
 		}
 		
 		$this->info("\t");
-
+		
 		for ($i=0; $i < $n; $i++) { 
 			
 			$gender = array_random_item(['men', 'women']);
-			$photo_n = rand()%40;
-			$user_photo_url = "http://api.randomuser.me/portraits/$gender/$photo_n.jpg";
+			$photo  = array_random_item($user_photos);
+
 			
 			$role = Role::where('name', '=', 'Writer')->first();
 			$joinDate = $faker->dateTimeBetween('-3 years', 'now');
@@ -289,8 +316,7 @@ class SetupSite extends Command {
 
 			$userImage = new Asset;
 			$userImage->path = 'assets/content/users';
-			$userImage->fromSeed = true;
-			$userImage->saveRemoteAsset($user_photo_url,  $user->username.".jpg", Asset::ASSET_TYPE_IMAGE);
+			$userImage->saveLocalFile($photo, $user->username.".jpg", Asset::ASSET_TYPE_IMAGE);
 			$userImage->save();
 
 			$user->profileImage()->save($userImage);
@@ -301,11 +327,12 @@ class SetupSite extends Command {
         	$user->save();
 
 	        $this->info($user->id.' Creating User: '.$user->getName()." [$user->username, $user->email]");
-			// $this->info("\t$user_photo_url");
 
 		}
 
-		
+		foreach (User::all() as $user) {
+			Event::fire(Notification::NOTIFICATION_HALP_WELCOME, array(['object'=>$user, 'name'=>Notification::NOTIFICATION_HALP_WELCOME])); 
+		}
 
 	}
 	

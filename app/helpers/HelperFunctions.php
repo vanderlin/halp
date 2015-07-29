@@ -41,7 +41,7 @@ function js($file) {
     return asset('assets/js/'.$file);
 }
 
-function production_url($url)
+function production_url($url="")
 {
   return Config::get('config.site_url').'/'.$url;
 }

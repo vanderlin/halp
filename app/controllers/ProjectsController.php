@@ -1,7 +1,6 @@
 <?php 
 
 
-
 class ProjectsController extends \BaseController {
 
 	private $repository;

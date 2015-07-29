@@ -17,21 +17,27 @@
 					<label>Project</label>
 					<input type="text" class="validate" data-error-message="Derp!" data-validate data-required="true" data-max="{{Config::get('config.max_title')}}" name="project" id="edit-task-project" value="{{$task->project->title}}" data-project-id="{{$task->project->id}}">
 				</div>
-
+		
 				<div class="form-field">
 					<label>How long this task will take</label>
 					<input type="text" class="validate" data-error-message="Derp!" data-validate data-required="true" data-max="{{Config::get('config.max_title')}}" autocomplete="off" name="duration" value="{{$task->duration}}">
 				</div>
 
-
+				
 				<div class="form-field">
 					<label>When will this task happen</label>
 					@if (isMobile())
 						<input type="date" name="task_date" autocomplete="off" value="{{$task->date->format('Y-m-d')}}">					
 					@else
 						<input type="text" name="task_date" autocomplete="off" id="edit-task-datepicker" data-default-date="{{$task->date->format('m-d-Y')}}" value="{{$task->date->format('F j, Y')}}">
-					@endif					
+					@endif				
 				</div>
+
+				<div class="form-field">
+					<label>What time?</label>
+					<input id="task-time" type="text" class="validate" data-error-message="Derp!" data-validate data-required="false" data-max="{{Config::get('config.max_title')}}" autocomplete="off" name="time" value="{{$task->time}}">
+				</div>
+			
 
 				<div class="form-field">
 					<label>Details (optional)</label>
