@@ -40,7 +40,7 @@
 		@foreach ($users as $user)
 			@include('site.user.leaderboard-card', array('user' => $user))
 		@endforeach
-		{{$users->links()}}
+		{{--$users->links()--}}
 	@else
 		<h3>No Users</h3>
 	@endif
