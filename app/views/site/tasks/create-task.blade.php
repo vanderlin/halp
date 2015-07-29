@@ -1,4 +1,4 @@
-<section class="content bgcolor2" id="init-create-task">
+<section class="content rain-bg" id="init-create-task">
 	
 	<div class="input-group" id="input-group-title">
 		<span class="input input--nao">
