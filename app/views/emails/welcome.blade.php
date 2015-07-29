@@ -11,7 +11,7 @@
 	<h1>Welcome to Halp!</h1>
 	<hr>
 
-	<p>Thanks for joining! You’re the best.</p>
+	<p class="purple-text">Thanks for joining! You’re the best.</p>
 	
 	<a href="{{production_url('login')}}"><div class="rounded-button">Go to Halp</div></a>
 @stop
