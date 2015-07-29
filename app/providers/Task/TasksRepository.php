@@ -55,9 +55,52 @@ class TasksRepository  {
 	// ------------------------------------------------------------------------
 	public function update($id)
 	{
+		$input = Input::all();
 		if(is_object($id)) {
 			$id = $id->id;
 		}
+		$task = Task::withTrashed()->whereId($id)->first();
+
+		
+		$ntd = new Carbon($input['task_date']);
+		if(Input::has('task_date') && $task->date->eq($ntd) == false) {
+			$task->task_date = $ntd;
+		}
+
+		// title
+		if(Input::has('title') && $task->title != $input['title']) {
+			$task->title = $input['title'];	
+		}
+
+		// projects
+		if(Input::has('project') && $task->project->title != $input['project']) {
+
+			if($task->project->tasks->count() == 0)
+			{
+				$task->project->delete();
+			}
+
+			$project = Project::where('title', '=', $input['project'])->first();
+
+			// if null we need to create the new project
+			if($project == NULL)
+			{
+				$project = new Project(['title'=>$input['project'], 'creator_id'=>Auth::id()]);
+				$project->save();
+			}
+
+			$task->project_id = $project->id;
+		}
+
+		if (Input::has('task_date')) {
+			# code...
+		}
+		
+		// save and update timestamp
+		$task->touch();
+		$task->save();
+
+		// reload the task
 		$task = Task::withTrashed()->whereId($id)->first();
 
 		$view = null;

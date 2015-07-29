@@ -250,6 +250,7 @@ var App = (function() {
                 // date picker
                 $("#edit-task-datepicker").datepicker({
                     showAnim:'slideDown',
+                    minDate:0,
 
                 })
                

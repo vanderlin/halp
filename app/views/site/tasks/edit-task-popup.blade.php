@@ -33,10 +33,10 @@
 					@endif				
 				</div>
 
-				<div class="form-field">
+				{{--<div class="form-field">
 					<label>What time?</label>
 					<input id="task-time" type="text" class="validate" data-error-message="Derp!" data-validate data-required="false" data-max="{{Config::get('config.max_title')}}" autocomplete="off" name="time" value="{{$task->time}}">
-				</div>
+				</div>--}}
 			
 
 				<div class="form-field">
