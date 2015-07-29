@@ -14,7 +14,7 @@
 	<hr>
 
 	<p class="purple-text">
-	<a href="{{production_url()}}">Halp</a> is a task board for our studio. It connects willing volunteers to folks who need help with anything from proofreading a deck to moving a couch. 
+	<a href="{{production_url()}}">Halp</a> is a task board for IDEO Cambridge. It connects willing volunteers to folks who need help with anything from proofreading a deck to moving a couch. 
 	</p>
 	
 	<p>
