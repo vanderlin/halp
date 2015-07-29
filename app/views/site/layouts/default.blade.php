@@ -6,7 +6,9 @@
     @yield('scripts')
   </head>
   <body>
-     
+    
+    @include('site.layouts.analyticstracking')
+
     <!-- Content -->  
     <div class="container {{isset($container_class)?$container_class:''}}">
       
