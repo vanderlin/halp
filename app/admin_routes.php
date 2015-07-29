@@ -88,8 +88,8 @@
 			});
 
 			
-			
-			$status = $notice->sendEmailToGroup($emails, Auth::user()->getName()." Halp Email Test:".$notice->event." ".uniqid());
+			$subject = Input::get('subject', Auth::user()->getName()." Halp Email Test:".$notice->event." ".uniqid());
+			$status = $notice->sendEmailToGroup($emails, $subject);
 			/*
 			if($notice->event == Notification::NOTIFICATION_NEW_TASK)
 			{
