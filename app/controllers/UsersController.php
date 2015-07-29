@@ -22,7 +22,7 @@ class UsersController extends BaseController
 
     public function register() 
     {
-        return View::make('site.user.register');
+        return Redirect::to('login');
     }
 
     public function index()
