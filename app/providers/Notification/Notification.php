@@ -63,6 +63,17 @@ class Notification extends BaseModel {
 		}
     }
     // ------------------------------------------------------------------------
+    public function getTitle()
+    {
+    	if($this->task != null) {
+    		return $this->task->title;
+    	}
+    	else if($this->user != null) {
+    		return $this->user->getName();
+    	}
+    	return "No Title :".$this->id.":".$this->event;
+    }
+    // ------------------------------------------------------------------------
     public function getIsSentAttribute($val)
     {
     	return $this->sent_at != NULL;
@@ -163,6 +174,9 @@ class Notification extends BaseModel {
 			case Notification::NOTIFICATION_TASK_DELETED:
 				return $this->task->creator->getShortName().' has removed a task you claimed!';
 				break;
+			case Notification::NOTIFICATION_HALP_WELCOME:
+				return "Welcome to Halp";
+				break;
 			default:
 				return 'Halp';
 				break;
@@ -186,6 +200,12 @@ class Notification extends BaseModel {
 			}
 			$this->sendEmailToGroup($emails);
 		}
+
+		// Welcome to halp
+		else if($this->event == Notification::NOTIFICATION_HALP_WELCOME) {
+			$this->sendEmailToUser($this->user);
+		}
+
 
 		// someone deleted a task - you need to check if
 		// this task has been claimed

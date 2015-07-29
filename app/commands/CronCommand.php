@@ -49,7 +49,7 @@ class CronCommand extends Command {
 
 		$results = [];
 		foreach ($notifications as $notice) {
-			$this->info("Notification: ".$notice->task->title." : ".$notice->event);
+			$this->info("Notification: ".$notice->getTitle()." : ".$notice->event);
 			$status = $notice->send();
 			$this->info("\t status: ".strbool($status));
 		}
