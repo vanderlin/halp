@@ -203,6 +203,7 @@ class Notification extends BaseModel {
 	// ------------------------------------------------------------------------
 	public function sendEmailToGroup($group, $subject=null)
 	{	
+
 		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
 		$premailer = new \ScottRobertson\Premailer\Request();
 		$response = $premailer->convert($view);

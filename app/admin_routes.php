@@ -86,6 +86,8 @@
 					return $a;
 				}
 			});
+
+			
 			
 			$status = $notice->sendEmailToGroup($emails, Auth::user()->getName()." Halp Email Test:".$notice->event." ".uniqid());
 			/*

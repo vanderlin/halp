@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1501px" height="397px" viewBox="0 0 1501 397" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>rain</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="1501" height="397"></rect>
+        <rect id="path-3" x="0" y="0" width="1501" height="397"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="rain" sketch:type="MSLayerGroup">
+            <mask id="mask-2" sketch:name="Mask" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+            <g id="scene" mask="url(#mask-2)">
+                <mask id="mask-4" sketch:name="Mask Copy" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <use id="Mask-Copy" fill="#404D5B" sketch:type="MSShapeGroup" xlink:href="#path-3"></use>
+                <g id="rain" mask="url(#mask-4)" stroke-linecap="round" stroke="#1B1A25" sketch:type="MSShapeGroup" opacity="0.15">
+                    <g transform="translate(-424.000000, -14.000000)">
+                        <path d="M950.054688,0.97265625 L1365.16355,416.081524" id="Path-1"></path>
+                        <path d="M990.054688,0.97265625 L1405.16355,416.081524" id="Path-1-Copy"></path>
+                        <path d="M1030.05469,0.97265625 L1445.16355,416.081524" id="Path-1-Copy-2"></path>
+                        <path d="M1070.05469,0.97265625 L1485.16355,416.081524" id="Path-1-Copy-3"></path>
+                        <path d="M1110.05469,0.97265625 L1525.16355,416.081524" id="Path-1-Copy-4"></path>
+                        <path d="M1150.05469,0.97265625 L1565.16355,416.081524" id="Path-1-Copy-5"></path>
+                        <path d="M1190.05469,0.97265625 C1190.05469,0.97265625 1320.25911,131.177083 1385.36133,196.279297 C1458.62874,269.546706 1605.16355,416.081524 1605.16355,416.081524" id="Path-1-Copy-11"></path>
+                        <path d="M1230.05469,0.97265625 L1645.16355,416.081524" id="Path-1-Copy-6"></path>
+                        <path d="M1270.05469,0.97265625 L1685.16355,416.081524" id="Path-1-Copy-7"></path>
+                        <path d="M1310.05469,0.97265625 L1725.16355,416.081524" id="Path-1-Copy-8"></path>
+                        <path d="M1350.05469,0.97265625 L1765.16355,416.081524" id="Path-1-Copy-9"></path>
+                        <path d="M1390.05469,0.97265625 L1805.16355,416.081524" id="Path-1-Copy-10"></path>
+                        <path d="M1430.05469,0.97265625 L1845.16355,416.081524" id="Path-1-Copy-17"></path>
+                        <path d="M1470.05469,0.97265625 L1885.16355,416.081524" id="Path-1-Copy-12"></path>
+                        <path d="M1510.05469,0.97265625 L1925.16355,416.081524" id="Path-1-Copy-13"></path>
+                        <path d="M1550.05469,0.97265625 L1965.16355,416.081524" id="Path-1-Copy-14"></path>
+                        <path d="M1590.05469,0.97265625 L2005.16355,416.081524" id="Path-1-Copy-15"></path>
+                        <path d="M1630.05469,0.97265625 L2045.16355,416.081524" id="Path-1-Copy-16"></path>
+                        <path d="M1670.05469,0.97265625 L2085.16355,416.081524" id="Path-1-Copy-23"></path>
+                        <path d="M1710.05469,0.97265625 L2125.16355,416.081524" id="Path-1-Copy-18"></path>
+                        <path d="M1750.05469,0.97265625 L2165.16355,416.081524" id="Path-1-Copy-19"></path>
+                        <path d="M1790.05469,0.97265625 L2205.16355,416.081524" id="Path-1-Copy-20"></path>
+                        <path d="M1830.05469,0.97265625 L2245.16355,416.081524" id="Path-1-Copy-21"></path>
+                        <path d="M1870.05469,0.97265625 L2285.16355,416.081524" id="Path-1-Copy-22"></path>
+                        <path d="M30,1 L445.108867,416.108867" id="Path-1-Copy-24"></path>
+                        <path d="M70,1 L485.108867,416.108867" id="Path-1-Copy-25"></path>
+                        <path d="M110,1 L525.108867,416.108867" id="Path-1-Copy-26"></path>
+                        <path d="M150,1 L565.108867,416.108867" id="Path-1-Copy-27"></path>
+                        <path d="M190,1 L605.108867,416.108867" id="Path-1-Copy-28"></path>
+                        <path d="M230,1 L645.108867,416.108867" id="Path-1-Copy-29"></path>
+                        <path d="M270,1 L685.108867,416.108867" id="Path-1-Copy-30"></path>
+                        <path d="M310,1 L725.108867,416.108867" id="Path-1-Copy-31"></path>
+                        <path d="M350,1 L765.108867,416.108867" id="Path-1-Copy-32"></path>
+                        <path d="M390,1 L805.108867,416.108867" id="Path-1-Copy-33"></path>
+                        <path d="M430,1 L845.108867,416.108867" id="Path-1-Copy-34"></path>
+                        <path d="M470,1 L885.108867,416.108867" id="Path-1-Copy-35"></path>
+                        <path d="M510,1 L925.108867,416.108867" id="Path-1-Copy-36"></path>
+                        <path d="M550,1 L965.108867,416.108867" id="Path-1-Copy-37"></path>
+                        <path d="M590,1 L1005.10887,416.108867" id="Path-1-Copy-38"></path>
+                        <path d="M630,1 L1045.10887,416.108867" id="Path-1-Copy-39"></path>
+                        <path d="M670,1 L1085.10887,416.108867" id="Path-1-Copy-40"></path>
+                        <path d="M710,1 L1125.10887,416.108867" id="Path-1-Copy-41"></path>
+                        <path d="M750,1 L1165.10887,416.108867" id="Path-1-Copy-42"></path>
+                        <path d="M790,1 L1205.10887,416.108867" id="Path-1-Copy-43"></path>
+                        <path d="M830,1 L1245.10887,416.108867" id="Path-1-Copy-44"></path>
+                        <path d="M870,1 L1285.10887,416.108867" id="Path-1-Copy-45"></path>
+                        <path d="M910,1 L1325.10887,416.108867" id="Path-1-Copy-46"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
