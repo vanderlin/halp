@@ -145,3 +145,6 @@
   padding: inherit;
   background-color: transparent;
 }
+.admin .color-red {
+  color: red;
+}
