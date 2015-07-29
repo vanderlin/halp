@@ -54,6 +54,9 @@ class Notification extends BaseModel {
 			case Notification::NOTIFICATION_TASK_DELETED:
 				return $this->task->creator;
 				break;
+			case Notification::NOTIFICATION_HALP_WELCOME:
+				return $this->user;
+				break;
 			default:
 				return $this->creator;
 				break;

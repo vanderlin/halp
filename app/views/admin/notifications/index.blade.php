@@ -66,7 +66,11 @@
 								
 							<div class="content">
 							<a class="header">
-								{{link_to($notice->task->getURL(), $notice->task->title)}}								
+								@if($notice->task!=NULL)
+								{{link_to($notice->task->getURL(), $notice->task->title)}}		
+								@elseif($notice->user!=NULL)
+								{{link_to($notice->user->getURL(), $notice->user->getName())}}		
+								@endif						
 							</a>
 							<div class="description">
 								<small>{{$notice->created_at->diffForHumans()}}</small>
