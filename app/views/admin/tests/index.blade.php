@@ -85,10 +85,15 @@ $eventTypes = $evts;
 
     				<tr class="center aligned">
 		    			<td colspan="4">
+							<div class="ui input">
+								<div class="field">
+									<label>Email Subject</label>
+									<input type="text" name="subject" placeholder="enter a subject">
+								</div>
+							</div>
 		    				<div class="ui action input">
-								<input type="text" placeholder="Where to send email..." name="emails" value="{{Auth::user()->email}}">
+		    					<input type="text" placeholder="Where to send email..." name="emails" value="{{Auth::user()->email}}">
 								<button type="submit" class="ui button">Send</button>
-
 							</div>
 							<div><small><b>comma separated list</b></small></div>
 					    </td>
