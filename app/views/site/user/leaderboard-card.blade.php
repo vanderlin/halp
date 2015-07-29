@@ -13,7 +13,7 @@
 		<h2>{{$user->totalClaimed()}}</h2>
 		<h6>Claimed Tasks</h6>
 		@if (Auth::user()->isAdmin())
-			{{$user->claimedTask->count()}}
+			{{$user->claimedTasks->count()}}
 		@endif
 		</span>
 	</div>
