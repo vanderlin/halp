@@ -6,6 +6,7 @@ use Validator;
 use Carbon;
 use Mail;
 use View;
+use Event;
 
 class Notification extends BaseModel {
 	
@@ -26,6 +27,12 @@ class Notification extends BaseModel {
 		Notification::NOTIFICATION_HALP_INVITE,
 	];
 	
+	// ------------------------------------------------------------------------
+	public static function fire($object, $event)
+	{
+		Event::fire($event, array(['object'=>$object, 'name'=>$event])); 
+	}
+
     // ------------------------------------------------------------------------
     public function toArray() 
     {
@@ -33,7 +40,7 @@ class Notification extends BaseModel {
      	return $array;
     }
 
-  
+  	
     // ------------------------------------------------------------------------
     public function contextUser()
     {
@@ -70,16 +77,28 @@ class Notification extends BaseModel {
   		parent::save();
 	}
 
-	// ------------------------------------------------------------------------
-	public function task()
-	{
-		return $this->belongsTo('Task\Task', 'object_id')->where('object_type', 'Task\Task')->withTrashed();
-	}
+	
 
 	// ------------------------------------------------------------------------
+	// public function task()
+	// {	
+	// 	// return $this->belongsTo('Task\Task', 'object_id')->withTrashed();
+	// 	// return $this->join('tasks', $this->object_id, '=', 'task.id');
+	// 	// return $this->object_type == 'Task\Task' ? $this->belongsTo('Task\Task', 'object_id') : null;
+	// 		// public function morphOne($related, $name, $type = null, $id = null, $localKey = null)
+
+	// 	// return $this->morphedByMany('Task\Task','object');
+	// 	// return $this->joing('Task\Task', 'object_id')->where('notification.object_type', '=', 'Task\Task')->withTrashed();
+	// 	// return $this->hasOne('Task\Task')->join('tasks', 'notification.');//where('object_type', '=', 'Task\Task')->withTrashed();
+	// }
+	public function task()
+	{
+		return $this->belongsTo('Task\Task', 'task_id')->withTrashed();
+	}
+
 	public function user()
 	{
-		return $this->belongsTo('User', 'object_id')->where('object_type', 'User')->withTrashed();
+		return $this->belongsTo('User', 'user_id');
 	}
 
 	// ------------------------------------------------------------------------

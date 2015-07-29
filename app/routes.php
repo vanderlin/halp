@@ -6,7 +6,9 @@ use Task\Task;
 use Notification\Notification;
 
 Route::any('t', function() {
-	return User::first()->notificationEvents;
+
+
+	return Notification::with('task')->with('user')->get();
 });
 // ------------------------------------------------------------------------
 Route::get('php', function() {

@@ -19,28 +19,49 @@ class NotificationObserver {
 
 		$type = get_class($event['object']);
 		$id = $event['object']->id;
+		$name = $event['name'];
 
 		$exist = Notification::where('object_id', '=', $id)
 							 ->where('object_type', '=', $type)
-							 ->where('event', '=', $event['name'])->first();
+							 ->where('event', '=', $name)->first();
+		
+		$notification = Notification::create(['object_type'=>$type, 'object_id'=>$id, 'event'=>$name]);
+
+
+
+		$notification->save();
+
+
 		if($exist == NULL)
 		{
-			$notification = new Notification(['object_type'=>$type, 'object_id'=>$id, 'event'=>$event['name']]);
-			$notification->save();		
+			if(!$notification->id) {
+				dd("Error Saving Notification", $notification);
+			}		
 		}
+		else {
+			dd($exist);
+		}
+
+		return $notification;
 	}
 
 	// ------------------------------------------------------------------------
 	public function registerListeners()
 	{
 		Event::listen(Notification::NOTIFICATION_NEW_TASK, function($e) {
-			$this->createNotification($e);
+			$notice = $this->createNotification($e);
+			$notice->task_id  = $notice->object_id;
+			$notice->save();
 		});
 		Event::listen(Notification::NOTIFICATION_TASK_CLAIMED, function($e) {
-			$this->createNotification($e);
+			$notice = $this->createNotification($e);
+			$notice->task_id = $notice->object_id;
+			$notice->save();
 		});
 		Event::listen(Notification::NOTIFICATION_HALP_WELCOME, function($e) {
-			$this->createNotification($e);
+			$notice = $this->createNotification($e);
+			$notice->user_id = $notice->object_id;
+			$notice->save();
 		});
 	}
 }

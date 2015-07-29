@@ -43,7 +43,7 @@ class SetupSite extends Command {
 
 		$options = $this->option();		
 		$this->seed_path = storage_path('seeder');
-
+		Asset::setFromSeed(true);
 
    		
 		// -------------------------------------
@@ -65,6 +65,7 @@ class SetupSite extends Command {
 
 			if ($this->confirm('Do you really want to delete the tables? [yes|no]'))
 			{
+
 				$name = $this->call('migrate');
 				$name = $this->call('migrate:reset');
 				File::deleteDirectory(public_path('assets/content/users'));
@@ -103,6 +104,9 @@ class SetupSite extends Command {
 	// ------------------------------------------------------------------------
 	public function setupAll()
 	{
+		
+		
+
 		$name = $this->call('migrate', array('--path'=>'app/database/migrations/setup/'));
 		$name = $this->call('migrate');
 
@@ -132,7 +136,6 @@ class SetupSite extends Command {
         	
         	$m = new Asset();
         	$m->path = "assets/content/uploads";
-        	$m->fromSeed = true;
         	$m->saveLocalFile(public_path('assets/content/common/missing/profile-default.png'), 'profile-default.png');
 			$m->tag = 'missing-user-image';
 			$m->shared = 1;
@@ -161,7 +164,7 @@ class SetupSite extends Command {
 	public function seedTasks()
 	{
 		
-		Notification::truncate();
+		
 		Task::truncate();
 
 		$options = $this->option();
@@ -218,7 +221,7 @@ class SetupSite extends Command {
 			$task->claimed_at = $task->created_at->subDays($faker->randomDigit);
 			$task->save();
 			$this->info("$task->title Claimed at: ".$task->claimed_at->diffForHumans($task->created_at) );
-			Event::fire(Notification::NOTIFICATION_TASK_CLAIMED, array(['object'=>$task, 'name'=>Notification::NOTIFICATION_TASK_CLAIMED])); 
+			Notification::fire($task, Notification::NOTIFICATION_TASK_CLAIMED); 
 		}
 
 
@@ -252,7 +255,7 @@ class SetupSite extends Command {
 		
 		$faker = Faker\Factory::create();
 		$seeder = new LOFaker;
-		$n = 10;
+		$n = 20;
 
 		// also creat admin users (kim & I)
 		$admins = array(['username'=>'tvanderlin', 'firstname'=>'Todd', 'lastname'=>'Vanderlin', 'email'=>'tvanderlin@ideo.com'],
@@ -331,7 +334,7 @@ class SetupSite extends Command {
 		}
 
 		foreach (User::all() as $user) {
-			Event::fire(Notification::NOTIFICATION_HALP_WELCOME, array(['object'=>$user, 'name'=>Notification::NOTIFICATION_HALP_WELCOME])); 
+			Notification::fire($user, Notification::NOTIFICATION_HALP_WELCOME); 
 		}
 
 	}
