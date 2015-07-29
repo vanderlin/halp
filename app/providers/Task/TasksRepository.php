@@ -92,8 +92,8 @@ class TasksRepository  {
 			$task->project_id = $project->id;
 		}
 
-		if (Input::has('task_date')) {
-			# code...
+		if (Input::has('details') && $task->details != $input['details']) {
+			$task->details = $input['details'];
 		}
 		
 		// save and update timestamp
