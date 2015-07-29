@@ -49,7 +49,7 @@ class SetupSite extends Command {
 		// -------------------------------------
 		if(is_true($options['reset'])) {
 
-	   		if (!File::exists($seed_path)) {
+	   		if (!File::exists($this->seed_path)) {
 	   			File::makeDirectory($this->seed_path);
 	   		
 		   		$n = 50;
