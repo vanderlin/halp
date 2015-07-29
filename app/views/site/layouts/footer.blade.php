@@ -6,7 +6,11 @@
         <div class="footer-info">
             <ul class="list-inline site-map halp-list-menu">
                 @foreach (get_site_map() as $link)
-                    <li><a href="{{URL::to($link->url)}}"><h5>{{$link->name}}</h5></a></li>
+                    @if(Auth::user()->isAdmin() && isset($link->require) && $link->require == 'admin')
+                        <li><a href="{{URL::to($link->url)}}"><h5>{{$link->name}}</h5></a></li>
+                    @else
+                        <li><a href="{{URL::to($link->url)}}"><h5>{{$link->name}}</h5></a></li>
+                    @endif
                 @endforeach
             </ul>
             <div class="made-at-ideo">made at</div> 
