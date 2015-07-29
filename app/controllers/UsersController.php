@@ -38,7 +38,7 @@ class UsersController extends BaseController
         $users_q = User::join('tasks', 'tasks.claimed_id', '=', 'users.id')
                     ->groupBy('users.id')
                     ->orderBy('total_claimed_tasks', 'DESC')
-                    ->get(['users.*', DB::raw('count('.DB::getTablePrefix().'.id) as total_claimed_tasks')]);
+                    ->get(['users.*', DB::raw("count(".DB::getTablePrefix()."tasks.id) as total_claimed_tasks")]);
         
         // Paginate users
         $perPage = 10;
