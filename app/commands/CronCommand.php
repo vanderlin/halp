@@ -40,7 +40,7 @@ class CronCommand extends Command {
 
 		if($options['job'] == 'expired_tasks') {
 			$this->info("Looking for expired tasks...");
-			$tasks = Task::expired()->get()->filter(function($task) {
+			$tasks = Task::expired()->unClaimed()->get()->filter(function($task) {
 				if($task->notifications()->forEvent(Notification::NOTIFICATION_TASK_EXPIRED)->get()->count() == 0)
 				{
 					return $task;
