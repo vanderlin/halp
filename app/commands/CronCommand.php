@@ -13,7 +13,7 @@ class CronCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'cron:notifications';
+	protected $name = 'cron';
 
 	/**
 	 * The console command description.
@@ -35,25 +35,39 @@ class CronCommand extends Command {
 	// ------------------------------------------------------------------------
 	public function fire()
 	{
+		$options = $this->option();	
+		$debug = is_true($options['debug']);
 
-		// first get all users that want to receive notifications
-		$users = User::where('notifications', '=', 1)->get();
-
-		// get all notifications that have not been sent out
-		$notifications = Notification::whereNull('sent_at')->get();
-		if($notifications->count()==0) 
-		{
-			$this->info("*** No New Notification ***");
+		if($options['job'] == 'expired_tasks') {
+			$this->info("Looking for expired tasks...");
+			foreach (Task::expired()->get() as $task) {
+				$ago = $task->date->diffForHumans();
+				$this->info("[$task->title] Expired - $ago");
+			}
 			return;
 		}
 
-		$results = [];
-		foreach ($notifications as $notice) {
-			$this->info("Notification: ".$notice->getTitle()." : ".$notice->event);
-			$status = $notice->send();
-			$this->info("\t status: ".strbool($status));
+		if($options['job'] == 'notifications') {
+
+			// first get all users that want to receive notifications
+			$users = User::where('notifications', '=', 1)->get();
+
+			// get all notifications that have not been sent out
+			$notifications = Notification::whereNull('sent_at')->get();
+			if($notifications->count()==0) 
+			{
+				$this->info("*** No New Notification ***");
+				return;
+			}
+
+			$results = [];
+			foreach ($notifications as $notice) {
+				$this->info("Notification: ".$notice->getTitle()." : ".$notice->event);
+				$status = $notice->send($debug);
+				$this->info("\t status: ".strbool($status));
+			}
+			return  $results;
 		}
-		return  $results;
 	}
 
 	// ------------------------------------------------------------------------
@@ -68,6 +82,8 @@ class CronCommand extends Command {
 	protected function getOptions()
 	{
 		return array(
+			array('job', null, InputOption::VALUE_OPTIONAL, 'what cron job to run?', null),
+			array('debug', null, InputOption::VALUE_OPTIONAL, 'run in debug mode', null),
 		);
 	}
 

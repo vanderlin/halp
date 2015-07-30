@@ -28,7 +28,23 @@ class Task extends BaseModel {
     // ------------------------------------------------------------------------
     public function scopeClaimed($query)
     {
-    	return $query->whereNotNull('claimed_id')->orderBy('created_at', 'DESC');
+    	return $query->whereNotNull('claimed_id')->orderBy('task_date', 'DESC');
+    }
+
+    // ------------------------------------------------------------------------
+    public function scopeNotExpired($query)
+    {	
+    	$today = Carbon\Carbon::now();
+		$today = $today->setDateTime($today->year, $today->month, $today->day, 0, 0, 0)->toDateString();
+		return $query->whereRaw("IFNULL(`task_date`, `created_at`) >= '$today'");
+    }
+
+    // ------------------------------------------------------------------------
+    public function scopeExpired($query)
+    {	
+    	$today = Carbon\Carbon::now();
+		$today = $today->setDateTime($today->year, $today->month, $today->day, 0, 0, 0)->toDateString();
+		return $query->whereRaw("IFNULL(`task_date`, `created_at`) < '$today'");
     }
 
     // ------------------------------------------------------------------------
@@ -43,7 +59,7 @@ class Task extends BaseModel {
     // ------------------------------------------------------------------------
     public function scopeUnClaimed($query)
     {
-    	return $query->whereNull('claimed_id')->orderBy('created_at', 'DESC');
+    	return $query->whereNull('claimed_id')->orderBy('task_date', 'DESC');
     }
 
 	// ------------------------------------------------------------------------
@@ -69,6 +85,23 @@ class Task extends BaseModel {
 	{
 		return Auth::check() && Auth::id() == $this->creator_id;
 	}
+	
+	// ------------------------------------------------------------------------
+	public function isExpired()
+	{
+		$today = Carbon\Carbon::now();
+		$today = $today->setDateTime($today->year, $today->month, $today->day, 0, 0, 0);
+		$date = $this->date->setDateTime($this->date->year, $this->date->month, $this->date->day, 0, 0, 0);
+		
+		return $this->date->lt($today);
+	}
+
+	// ------------------------------------------------------------------------
+	public function isExpiredAndNotClaimed()
+	{
+		return $this->isExpired() && $this->isClaimed == false;
+	}
+
 	// ------------------------------------------------------------------------
 	public function creator()
 	{
@@ -84,7 +117,7 @@ class Task extends BaseModel {
 	// ------------------------------------------------------------------------
 	public function notification()
 	{
-		return  $this->hasMany('Notification', 'object_id')->where('object_type', '=', 'Task\Task');//\Notification::where('notice_id', '=', $this->id)->where('notice_type', '=', 'Task\Task');
+		return  $this->hasMany('Notification', 'task_id');
 	}
 
 	// ------------------------------------------------------------------------
@@ -113,11 +146,13 @@ class Task extends BaseModel {
 
 	// ------------------------------------------------------------------------
 	public function delete() {
-      	// $notification = $this->notification;
-      	// if($notification)
-      	// {
-      	// 	$notification->delete();
-      	// }
+      	$notifications = $this->notification;
+      	if($notifications)
+      	{
+      		foreach ($notifications as $n) {
+      			$n->delete();
+      		}
+      	}
     	parent::delete();
     }
 

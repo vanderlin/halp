@@ -49,6 +49,14 @@ class SetupSite extends Command {
 		// -------------------------------------
 		if(is_true($options['reset'])) {
 
+			if(Config::getEnvironment() == 'production') {
+				$really = $this->confirm('This is the *** PRODUCTION *** server are you sure!? [yes|no]');
+				if(!$really) {
+					$this->info("**** Exiting ****");
+					exit();
+				}
+			}
+			
 	   		if (!File::exists($this->seed_path)) {
 	   			File::makeDirectory($this->seed_path);
 	   		
@@ -66,6 +74,11 @@ class SetupSite extends Command {
 			if ($this->confirm('Do you really want to delete the tables? [yes|no]'))
 			{
 
+				// first delete all assets
+				foreach (Asset::all() as $asset) {
+					$asset->delete();
+				}
+				
 				$name = $this->call('migrate');
 				$name = $this->call('migrate:reset');
 				File::deleteDirectory(public_path('assets/content/users'));
@@ -132,8 +145,6 @@ class SetupSite extends Command {
         $m = Asset::findFromTag('missing-user-image');
         if($m == NULL)
         {	
-        	
-        	
         	$m = new Asset();
         	$m->path = "assets/content/uploads";
         	$m->saveLocalFile(public_path('assets/content/common/missing/profile-default.png'), 'profile-default.png');
@@ -164,7 +175,9 @@ class SetupSite extends Command {
 	public function seedTasks()
 	{
 		
-		
+		foreach (Task::all() as $task) {
+			$task->delete();
+		}
 		Task::truncate();
 
 		$options = $this->option();
@@ -204,9 +217,14 @@ class SetupSite extends Command {
 				$data['details'] = implode("\n", $faker->sentences(4));
 			}
 
-			if($faker->boolean(80))
+			if($faker->boolean(20))
 			{
-				$data['task_date'] = $faker->dateTimeBetween('now', '3 days'); 
+				$data['task_date'] = $faker->dateTimeBetween('now', '15 days'); 
+			}
+
+			if($faker->boolean(30))
+			{
+				$data['task_date'] = $faker->dateTimeBetween('-10 days', '-5 days'); 
 			}
 
 			$task = $task_repo->store($data);

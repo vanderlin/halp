@@ -9,7 +9,13 @@ $class = isset($class) ? $class : "";
 		<hr>
 		<span class="project-name">{{link_to($task->project->getURL(), $task->project->title)}}</span>
 		<span class="duration">{{$task->duration}}</span>
-		<span class="date">{{$task->date->format('F j, Y')}}</span>
+		<span class="date {{$task->isExpiredAndNotClaimed() ? 'expired':''}}">
+			@if($task->isExpiredAndNotClaimed()) 
+				This task expired {{$task->date->diffForHumans()}}
+			@else
+				{{$task->date->format('F j, Y')}}
+			@endif
+		</span>
 	
 	@if ($show_button)
 		@if ($task->isMine())

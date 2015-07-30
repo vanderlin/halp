@@ -136,6 +136,15 @@
 		});
 	});
 
+	// ------------------------------------------------------------------------
+	// Tasks
+	// ------------------------------------------------------------------------
+	Route::group(['prefix'=>'tasks'], function() {
+		Route::get('/', function() {
+			return View::make('admin.tasks.index', ['active_link'=>'tasks', 'active_tasks'=>Task\Task::notExpired()->get(), 'expired_tasks'=>Task\Task::expired()->get()]);
+		});
+	});
+
    
 	// ------------------------------------------------------------------------
 	// Tags CMS

@@ -7,6 +7,7 @@ use Carbon;
 use Mail;
 use View;
 use Event;
+use Auth;
 
 class Notification extends BaseModel {
 	
@@ -18,10 +19,12 @@ class Notification extends BaseModel {
 	const NOTIFICATION_NEW_TASK 	= "notification.new.task";
 	const NOTIFICATION_TASK_CLAIMED = "notification.task.claimed";
 	const NOTIFICATION_TASK_DELETED = "notification.task.deleted";
+	const NOTIFICATION_TASK_EXPIRED = "notification.task.expired";
 	
 	public static $eventTypes = [
 		Notification::NOTIFICATION_NEW_TASK,
 		Notification::NOTIFICATION_TASK_CLAIMED,
+		Notification::NOTIFICATION_TASK_EXPIRED,
 		Notification::NOTIFICATION_TASK_DELETED,
 		Notification::NOTIFICATION_HALP_WELCOME,
 		Notification::NOTIFICATION_HALP_INVITE,
@@ -50,6 +53,9 @@ class Notification extends BaseModel {
 				break;
 			case Notification::NOTIFICATION_TASK_CLAIMED:
 				return $this->task->claimer;
+				break;
+			case Notification::NOTIFICATION_TASK_EXPIRED:
+				return $this->task->creator;
 				break;
 			case Notification::NOTIFICATION_TASK_DELETED:
 				return $this->task->creator;
@@ -132,6 +138,9 @@ class Notification extends BaseModel {
 			case Notification::NOTIFICATION_TASK_DELETED:
 				return 'emails.task-deleted';
 				break;
+			case Notification::NOTIFICATION_TASK_EXPIRED:
+				return 'emails.task-expired';
+				break;
 			case Notification::NOTIFICATION_HALP_INVITE:
 				return 'emails.invite';
 				break;
@@ -184,11 +193,15 @@ class Notification extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
-	public function send()
+	public function send($debug=false)
 	{	
+
 		$this->sent_at = Carbon\Carbon::now();
 		$this->save();
-		
+		$results = [];
+
+
+		// this is a new task...
 		if($this->event == Notification::NOTIFICATION_NEW_TASK)
 		{
 			$users = User::where('notifications', '=', 1)->where('id', '<>', $this->task->creator_id)->get();
@@ -198,34 +211,37 @@ class Notification extends BaseModel {
 					array_push($emails, $user->email);
 				}
 			}
-			$this->sendEmailToGroup($emails);
+			if($debug) {
+				$emails = ["tvanderlin@ideo.com"];
+			}
+			$results = $this->sendEmailToGroup($emails);
 		}
 
 		// Welcome to halp
 		else if($this->event == Notification::NOTIFICATION_HALP_WELCOME) {
-			$this->sendEmailToUser($this->user);
+			$results = $this->sendEmailToUser($this->user);
 		}
 
 
 		// someone deleted a task - you need to check if
 		// this task has been claimed
 		else if($this->event == Notification::NOTIFICATION_TASK_DELETED) {
-			$this->sendEmailToUser($this->task->claimer);
+			$results = $this->sendEmailToUser($this->task->claimer);
 		}
 
 
 		// someone claimed your task
 		else if($this->event == Notification::NOTIFICATION_TASK_CLAIMED) {
-			$this->sendEmailToUser($this->task->creator);
+			$results = $this->sendEmailToUser($this->task->creator);
 		}
 
 
-		return true;
+		return $results;
 	}
 
 	// ------------------------------------------------------------------------
 	public function sendEmailToGroup($group, $subject=null)
-	{	
+	{
 
 		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
 		$premailer = new \ScottRobertson\Premailer\Request();
@@ -234,6 +250,7 @@ class Notification extends BaseModel {
 		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($subject, $group) {			
 			$message->bcc($group, 'Halp')->subject($subject?$subject:$this->getSubject());
 		});
+		return true;
 	}
 	// ------------------------------------------------------------------------
 	public function sendEmailToUser($user, $subject=null)
@@ -248,5 +265,6 @@ class Notification extends BaseModel {
 				$message->to($user->email, 'Halp')->subject($subject?$subject:$this->getSubject());
 			});
 		}
+		return true;
 	}
 }

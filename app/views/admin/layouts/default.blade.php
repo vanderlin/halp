@@ -21,6 +21,7 @@
         <div class="admin">
             <div class="ui celled horizontal list">
                 <div class="item">{{link_to('admin/users', 'Users')}}</div>
+                <div class="item">{{link_to('admin/tasks', 'Tasks')}}</div>
                 <div class="item">{{link_to('admin/notifications', 'Notifications')}}</div>
                 <div class="item">{{link_to('admin/projects', 'Projects')}}</div>
                 <div class="item">{{link_to('admin/assets', 'Assets')}}</div>
@@ -67,6 +68,11 @@
           }
         }
       })();
+
+      // ------------------------------------------------------------------------
+      jQuery(document).ready(function($) {
+        $('.menu .item').tab();
+      });
     </script>
 
     @if (isset($use_footer)?$use_footer:true)

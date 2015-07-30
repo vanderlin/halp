@@ -41,6 +41,16 @@ class TasksRepository  {
 		return Task::withTrashed()->whereId($id)->first();
 	}
 
+	// ------------------------------------------------------------------------
+	public function allActiveAndClaimed()
+	{
+		Paginator::setPageName('tasks_page');
+		$tasks = Task::notExpired()->unClaimed()->paginate(16);
+
+		Paginator::setPageName('claimed_tasks_page');
+		$claimed_tasks = Task::notExpired()->claimed()->paginate(8);
+		return array('tasks'=>$tasks, 'claimed_tasks'=>$claimed_tasks);
+	}
 
 	// ------------------------------------------------------------------------
 	public function find($id) {
@@ -197,9 +207,8 @@ class TasksRepository  {
 			'project_id'=>$project->id, 
 			'creator_id'=>$creator_id,
 			'details'=>isset($input['details'])?$input['details']:NULL,
-			'task_date'=>isset($input['task_date'])?$input['task_date']:NULL,
+			'task_date'=>isset($input['task_date'])?$input['task_date'] : NULL,
 			];
-		
 
 		$task = new Task($data);
 		$task->save();

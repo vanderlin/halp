@@ -38,10 +38,7 @@ class NotificationObserver {
 				dd("Error Saving Notification", $notification);
 			}		
 		}
-		else {
-			dd($exist);
-		}
-
+		
 		return $notification;
 	}
 

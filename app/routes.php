@@ -5,10 +5,26 @@ use Carbon\Carbon;
 use Task\Task;
 use Notification\Notification;
 
-Route::any('t', function() {
+Route::any('test-query', function() {
 
+	$q = Task::query();
+	$today = Carbon::now();
+	$today = $today->setDateTime($today->year, $today->month, $today->day, 0, 0, 0)->toDateString();
 
-	return Notification::with('task')->with('user')->get();
+	 // $q->where('created_at', '<=', $today);
+
+	$q->whereRaw("IFNULL(`task_date`, `created_at`) > '$today'");
+	$q->select('tasks.*', DB::raw("(IFNULL(`task_date`, `created_at`) < '$today') as is_expired"));
+	// $q->whereRaw("test ((CASE WHEN `task_date` IS NULL THEN `created_at` as test ELSE `task_date` as test END) as test) > 3");
+	// $q->where('title', '=', 'no');
+
+	// $q->whereRaw(DB::raw("(CASE WHEN `task_date` IS NULL THEN `created_at` ELSE `title` END) as q_date > 1"));
+	// $q->whereRaw('expired = (CASE WHEN `task_date` IS NULL THEN `created_at` ELSE `task_date` END) as expired', [Carbon::now()]);
+	// $q->where('tasks.q_date', '>', 1);
+	$q->withTrashed();
+	// return $q->toSql();
+	return $q->get();
+	return $r;
 });
 // ------------------------------------------------------------------------
 Route::get('php', function() {

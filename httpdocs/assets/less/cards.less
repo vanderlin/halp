@@ -1,4 +1,6 @@
-
+.task.expired {
+	background-color: @warn-color !important;
+}
 .task {
 	width: 250px;
 	height: 337px;
@@ -35,7 +37,9 @@
   		position: relative;
 	  }
     }
-
+    .date.expired {
+		color: @warn-color;
+	}
 }
 
 .user-created-task {
@@ -49,6 +53,7 @@
 	.date {
 		color:white;	
 	}
+	
 	hr {
 		border-color: @purple !important;
 	}

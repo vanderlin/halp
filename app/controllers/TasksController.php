@@ -16,13 +16,8 @@ class TasksController extends \BaseController {
 	public function index()
 	{
 
-		Paginator::setPageName('tasks_page');
-		$tasks = Task::unClaimed()->paginate(16);
-
-		Paginator::setPageName('claimed_tasks_page');
-		$claimed_tasks = Task::claimed()->paginate(8);
 		
-		return View::make('site.tasks.index', ['tasks'=>$tasks, 'claimed_tasks'=>$claimed_tasks]);	
+		return View::make('site.tasks.index', $this->repository->allActiveAndClaimed());	
 	}
 	
 	// ------------------------------------------------------------------------
