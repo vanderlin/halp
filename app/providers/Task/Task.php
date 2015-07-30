@@ -33,15 +33,16 @@ class Task extends BaseModel {
     }
 
     // ------------------------------------------------------------------------
-    public static function isExpiredSQL()
-    {
+    public static function isExpiredSQL($prefix='')
+    {	
+    	if($prefix !='')$prefix = DB::getTablePrefix().$prefix.'.';
     	$n_days = Config::get('config.task_expiration_days');	
     	return DB::raw("
-			(CASE WHEN `task_date` IS NULL
+			(CASE WHEN {$prefix}`task_date` IS NULL
 				THEN 
-					DATE_ADD(DATE_FORMAT(`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
+					DATE_ADD(DATE_FORMAT({$prefix}`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
 				ELSE 
-					`task_date` > CURRENT_DATE
+					{$prefix}`task_date` > CURRENT_DATE
 				END)
     		AS is_expired");	
     }
@@ -76,16 +77,17 @@ class Task extends BaseModel {
     }
 
     // ------------------------------------------------------------------------
-    public function scopeExpired($query)
+    public function scopeExpired($query, $prefix='')
     {	
+    	if($prefix !='')$prefix = DB::getTablePrefix().$prefix.'.';
     	$n_days = Config::get('config.task_expiration_days');	
     	return $query->whereRaw("
     		CURDATE() >
-			(CASE WHEN `task_date` IS NULL
+			(CASE WHEN {$prefix}`task_date` IS NULL
 				THEN 
-					DATE_ADD(DATE_FORMAT(`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
+					DATE_ADD(DATE_FORMAT({$prefix}`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
 				ELSE 
-					`task_date`
+					{$prefix}`task_date`
 			END)");
     }
 
