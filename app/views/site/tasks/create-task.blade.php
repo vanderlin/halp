@@ -14,7 +14,7 @@
 	
 	<div class="input-group" id="input-group-project">
 		<span class="input input--nao">
-			<input data-error-message="Derp!" data-required="true" data-parent="#input-group-project" class="validate input__field input__field--nao" type="text" id="task-project" placeholder="project name" name="project" value="{{Input::old('project')}}"/>
+			<input data-error-message="Derp!" data-required="true" data-parent="#input-group-project" class="validate input__field input__field--nao" type="text" id="task-project" placeholder="type a project name" name="project" value="{{Input::old('project')}}"/>
 			<label class="input__label input__label--nao" for="task-project">
 				<span class="input__label-content input__label-content--nao">For:</span>
 			</label>
@@ -40,6 +40,7 @@
 		<!-- progress button -->
 		<div class="progress-button elastic">
 			<button type="submit"><span class="i-need">I need</span> <span class="halp-special-text">halp!</span></button>
+			<h6 class="more-details">(add more details)</h6>
 			<svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
 			<svg class="checkmark" width="70" height="70"><path d="m31.5,46.5l15.3,-23.2"/><path d="m31.5,46.5l-8.5,-7.1"/></svg>
 			<svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>

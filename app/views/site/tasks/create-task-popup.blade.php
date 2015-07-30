@@ -11,11 +11,11 @@
 		<h2>Add more details (optional):</h2>	
 		<hr>
 		<div class="form-field">
-			<label for="task_date">What day do you need help?</label>
+			<label for="task_date">When do you need it done by? (OPTIONAL)</label>
 			<input type="text" id="datepicker" value="{{Input::old('task_date')}}">
 		</div>
 		<div class="form-field">
-			<label for="details">Any more details you want to add?</label>
+			<label for="details">Any more details you want to add? (OPTIONAL)</label>
 			<textarea name="details" placeholder="optional">{{Input::old('details')}}</textarea>
 		</div>
 		<div class="task-info">
