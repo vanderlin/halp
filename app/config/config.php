@@ -9,6 +9,7 @@ return array(
 	'api_base'			     => 'http://halp.ideo.com/api',
 	'max_title'				 => 20,
 	'site_url'				 => 'http://halp.ideo.com',
+	'task_expiration_days'	 => 1,
 
 	'google' => array(
 	    'oauth_options'      => array('access_type'=>'offline', 'display'=>'popup'),

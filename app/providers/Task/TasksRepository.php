@@ -45,10 +45,10 @@ class TasksRepository  {
 	public function allActiveAndClaimed()
 	{
 		Paginator::setPageName('tasks_page');
-		$tasks = Task::notExpired()->unClaimed()->paginate(16);
+		$tasks = Task::active()->unClaimed()->paginate(16);
 
 		Paginator::setPageName('claimed_tasks_page');
-		$claimed_tasks = Task::notExpired()->claimed()->paginate(8);
+		$claimed_tasks = Task::claimed()->paginate(8);
 		return array('tasks'=>$tasks, 'claimed_tasks'=>$claimed_tasks);
 	}
 

@@ -9,7 +9,7 @@
 	</thead>
 	<tbody>
 		@foreach ($tasks as $task)
-			<tr class="{{$task->isExpired() ? 'negative': ''}}">
+			<tr class="{{$task->isExpired ? 'negative': ''}}">
 				<td>{{$task->id}}</td>
 				<td>
 					<div class="ui list">
@@ -18,7 +18,15 @@
 						<div class="item">Created by: {{$task->claimer?$task->claimer->getName():'<span class="color-red">Not yet claimed</span>'}}</div>
 					</div>
 				</td>
-				<td><code>{{$task->date}}</code></td>
+				<td>
+					<code>
+						<ul>
+							<li>task_date: {{$task->task_date==NULL?'No task_date set':$task->task_date}}</li>
+							<li>Due Date: {{$task->date->toDateString()}}</li>
+							<li>Expiration Date: {{$task->getExpirationDate()->toDateString()}}</li>
+						</ul>
+					</code>
+				</td>
 			</tr>
 		@endforeach
 	</tbody>

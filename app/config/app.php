@@ -205,8 +205,11 @@ return array(
 		'Image' 	      => 'Intervention\Image\Facades\Image',
 		'Agent'           => 'Jenssegers\Agent\Facades\Agent',
 		'Asset' 		  => 'Asset\Asset',
+		
+		'Task'		      => 'Task\Task',
 		'Notification'	  => 'Notification\Notification',
 		'APIClient'	      => 'APIClient\APIClient',
+
 	),
 
 );

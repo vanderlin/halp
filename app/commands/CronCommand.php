@@ -40,9 +40,19 @@ class CronCommand extends Command {
 
 		if($options['job'] == 'expired_tasks') {
 			$this->info("Looking for expired tasks...");
-			foreach (Task::expired()->get() as $task) {
+			$tasks = Task::expired()
+						->whereHas('notifications', function($q) {
+							$q->where('event', '<>', Notification::NOTIFICATION_TASK_EXPIRED);
+						})->get();
+			
+			foreach ($tasks as $task) {
 				$ago = $task->date->diffForHumans();
-				$this->info("[$task->title] Expired - $ago");
+				$this->info("($task->id) $task->title Expired - $ago");
+
+				Notification::fire($task, Notification::NOTIFICATION_TASK_EXPIRED);
+
+				$n = $task->notifications()->forEvent(Notification::NOTIFICATION_TASK_EXPIRED)->get()->count();
+				$this->info("$n");
 			}
 			return;
 		}

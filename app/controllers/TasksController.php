@@ -16,7 +16,7 @@ class TasksController extends \BaseController {
 	public function index()
 	{
 
-		
+		// return [Task::first()->getExpirationDate(), strbool(Task::first()->isExpired)];
 		return View::make('site.tasks.index', $this->repository->allActiveAndClaimed());	
 	}
 	

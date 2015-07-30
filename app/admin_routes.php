@@ -141,7 +141,13 @@
 	// ------------------------------------------------------------------------
 	Route::group(['prefix'=>'tasks'], function() {
 		Route::get('/', function() {
-			return View::make('admin.tasks.index', ['active_link'=>'tasks', 'active_tasks'=>Task\Task::notExpired()->get(), 'expired_tasks'=>Task\Task::expired()->get()]);
+				/*return [
+				'total'=>Task::all()->count(),
+				'active_tasks'=>Task::active()->count(),
+				'expired_tasks'=>Task::expired()->count(),
+				'calc'=>(Task::active()->count()+Task::expired()->count())
+				];*/
+			return View::make('admin.tasks.index', ['active_link'=>'tasks', 'tasks'=>Task::all(), 'active_tasks'=>Task::active()->get(), 'expired_tasks'=>Task::expired()->get()]);
 		});
 	});
 

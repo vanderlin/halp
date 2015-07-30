@@ -43,6 +43,11 @@ class Notification extends BaseModel {
      	return $array;
     }
 
+    // ------------------------------------------------------------------------
+    public function scopeForEvent($query, $event)
+    {
+    	return $query->where('event', '=', $event);
+    }
   	
     // ------------------------------------------------------------------------
     public function contextUser()

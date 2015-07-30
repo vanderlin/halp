@@ -50,6 +50,11 @@ class NotificationObserver {
 			$notice->task_id  = $notice->object_id;
 			$notice->save();
 		});
+		Event::listen(Notification::NOTIFICATION_TASK_EXPIRED, function($e) {
+			$notice = $this->createNotification($e);
+			$notice->task_id  = $notice->object_id;
+			$notice->save();
+		});
 		Event::listen(Notification::NOTIFICATION_TASK_CLAIMED, function($e) {
 			$notice = $this->createNotification($e);
 			$notice->task_id = $notice->object_id;

@@ -8,6 +8,7 @@ use Carbon;
 use DB;
 use URL;
 use Auth;
+use Config;
 
 class Task extends BaseModel {
 	
@@ -32,19 +33,60 @@ class Task extends BaseModel {
     }
 
     // ------------------------------------------------------------------------
-    public function scopeNotExpired($query)
-    {	
-    	$today = Carbon\Carbon::now();
-		$today = $today->setDateTime($today->year, $today->month, $today->day, 0, 0, 0)->toDateString();
-		return $query->whereRaw("IFNULL(`task_date`, `created_at`) >= '$today'");
+    public static function isExpiredSQL()
+    {
+    	$n_days = Config::get('config.task_expiration_days');	
+    	return DB::raw("
+			(CASE WHEN `task_date` IS NULL
+				THEN 
+					DATE_ADD(DATE_FORMAT(`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
+				ELSE 
+					`task_date` > CURRENT_DATE
+				END)
+    		AS is_expired");	
+    }
+
+    // ------------------------------------------------------------------------
+    public static function expirationDateSQL()
+    {
+    	$n_days = Config::get('config.task_expiration_days');	
+    	return DB::raw("
+				(CASE WHEN `task_date` IS NULL
+				THEN 
+					DATE_ADD(DATE_FORMAT(`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY) 
+				ELSE 
+					`task_date`
+				END)
+    		AS expiration_date");	
+    }
+
+    // ------------------------------------------------------------------------
+    public function scopeActive($query)
+    {	    	
+    	$n_days = Config::get('config.task_expiration_days');	
+
+		return $query->whereRaw("
+			CURDATE() <=
+			(CASE WHEN `task_date` IS NULL
+				THEN 
+					DATE_ADD(DATE_FORMAT(`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
+				ELSE 
+					`task_date`
+			END)");
     }
 
     // ------------------------------------------------------------------------
     public function scopeExpired($query)
     {	
-    	$today = Carbon\Carbon::now();
-		$today = $today->setDateTime($today->year, $today->month, $today->day, 0, 0, 0)->toDateString();
-		return $query->whereRaw("IFNULL(`task_date`, `created_at`) < '$today'");
+    	$n_days = Config::get('config.task_expiration_days');	
+    	return $query->whereRaw("
+    		CURDATE() >
+			(CASE WHEN `task_date` IS NULL
+				THEN 
+					DATE_ADD(DATE_FORMAT(`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
+				ELSE 
+					`task_date`
+			END)");
     }
 
     // ------------------------------------------------------------------------
@@ -87,19 +129,26 @@ class Task extends BaseModel {
 	}
 	
 	// ------------------------------------------------------------------------
-	public function isExpired()
+	public function getExpirationDate()
 	{
-		$today = Carbon\Carbon::now();
-		$today = $today->setDateTime($today->year, $today->month, $today->day, 0, 0, 0);
-		$date = $this->date->setDateTime($this->date->year, $this->date->month, $this->date->day, 0, 0, 0);
-		
-		return $this->date->lt($today);
+		// create($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $tz = null)
+		$date = Carbon\Carbon::create($this->created_at->year, $this->created_at->month, $this->created_at->day, 0, 0, 0, null);
+		return $this->task_date == NULL ? $date->addDays(Config::get('config.task_expiration_days')) : new Carbon\Carbon($this->task_date);;
+	}
+
+	// ------------------------------------------------------------------------
+	public function getIsExpiredAttribute()
+	{
+		if($this->getExpirationDate()->isToday()) {
+			return false;
+		}
+		return $this->getExpirationDate()->isPast();
 	}
 
 	// ------------------------------------------------------------------------
 	public function isExpiredAndNotClaimed()
 	{
-		return $this->isExpired() && $this->isClaimed == false;
+		return $this->isExpired && $this->isClaimed == false;
 	}
 
 	// ------------------------------------------------------------------------
@@ -115,7 +164,7 @@ class Task extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
-	public function notification()
+	public function notifications()
 	{
 		return  $this->hasMany('Notification', 'task_id');
 	}

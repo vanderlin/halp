@@ -8,19 +8,16 @@ use Notification\Notification;
 Route::any('test-query', function() {
 
 	$q = Task::query();
-	$today = Carbon::now();
-	$today = $today->setDateTime($today->year, $today->month, $today->day, 0, 0, 0)->toDateString();
-
-	 // $q->where('created_at', '<=', $today);
-
-	$q->whereRaw("IFNULL(`task_date`, `created_at`) > '$today'");
-	$q->select('tasks.*', DB::raw("(IFNULL(`task_date`, `created_at`) < '$today') as is_expired"));
-	// $q->whereRaw("test ((CASE WHEN `task_date` IS NULL THEN `created_at` as test ELSE `task_date` as test END) as test) > 3");
-	// $q->where('title', '=', 'no');
-
-	// $q->whereRaw(DB::raw("(CASE WHEN `task_date` IS NULL THEN `created_at` ELSE `title` END) as q_date > 1"));
-	// $q->whereRaw('expired = (CASE WHEN `task_date` IS NULL THEN `created_at` ELSE `task_date` END) as expired', [Carbon::now()]);
-	// $q->where('tasks.q_date', '>', 1);
+	$q->notExpired()->withIsExpired();
+	
+	
+	// $q->whereRaw("IFNULL(`task_date`, `created_at`) > '$today'");
+	
+	
+	// $q->whereRaw(DB::raw("
+	// 	IFNULL(`task_date`, `created_at`) >
+	// 		(CASE WHEN `task_date` IS NULL THEN DATE_ADD(CURDATE(), INTERVAL $n_days DAY) ELSE CURRENT_DATE END)"));
+	//$q->select('tasks.*', DB::raw("IFNULL(`task_date`, `created_at`) > (CASE WHEN `task_date` IS NULL THEN DATE_ADD(CURDATE(), INTERVAL $n_days DAY) ELSE CURRENT_DATE END) AS is_expired"));
 	$q->withTrashed();
 	// return $q->toSql();
 	return $q->get();
