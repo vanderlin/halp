@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>halp</string>
+			<key>host</key>
+			<string>localhost</string>
+			<key>kcid</key>
+			<string>6933633462259106936</string>
+			<key>name</key>
+			<string>localhost</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPSocketConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK8QDwcIFRYXGBkfICEoLDA0OFUkbnVs
+			bNMJCgsMEBRXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6MNDg+A
+			AoADgASjERITgAWABoAKgA5UdHlwZVRyb3dzVGtleXNfECZTZWxl
+			Y3Rpb25EZXRhaWxUeXBlUHJpbWFyeUtleWVkRGV0YWlsc9MJCgsa
+			HB6hG4AHoR2ACIAJUTEJ0iIjJCVaJGNsYXNzbmFtZVgkY2xhc3Nl
+			c18QE05TTXV0YWJsZURpY3Rpb25hcnmjJCYnXE5TRGljdGlvbmFy
+			eVhOU09iamVjdNIKCykroSqAC4AN0gstLi9ZTlMuc3RyaW5ngAxS
+			aWTSIiMxMl8QD05TTXV0YWJsZVN0cmluZ6MxMydYTlNTdHJpbmfS
+			IiM1Nl5OU011dGFibGVBcnJheaM1NydXTlNBcnJhedIiIyY5oiYn
+			XxAPTlNLZXllZEFyY2hpdmVy0Tw9VGRhdGGAAQAIABEAGgAjAC0A
+			MgA3AEkATwBWAF4AaQBwAHQAdgB4AHoAfgCAAIIAhACGAIsAkACV
+			AL4AxQDHAMkAywDNAM8A0QDSANcA4gDrAQEBBQESARsBIAEiASQB
+			JgErATUBNwE6AT8BUQFVAV4BYwFyAXYBfgGDAYYBmAGbAaAAAAAA
+			AAACAQAAAAAAAAA+AAAAAAAAAAAAAAAAAAABog==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<false/>
+			<key>contentViewport</key>
+			<string>{{334, 0}, {1073, 627}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>  -- Most helpful this week --
+				SET @week_of = '2015-07-31';
+      	  SELECT 
+            users.id, users.firstname, 
+            @week_of AS test,
+            YEARWEEK(tasks.`created_at`) AS task_date, 
+            YEARWEEK(@week_of) AS cur_date,
+            DATE_FORMAT(tasks.`created_at`, '%W') AS task_date_name,
+            COUNT(tasks.`id`) AS total_claimed_this_week
+            
+        FROM `users` 
+        LEFT JOIN tasks
+        ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+        AND YEARWEEK(tasks.`created_at`) = YEARWEEK(@week_of)
+        GROUP BY users.`id`
+        ORDER BY total_claimed_this_week DESC, tasks.claimed_at DESC</string>
+			<key>table</key>
+			<string>tasks</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>202</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>SELECT 
+            users.id, users.firstname, 
+            @week_of AS test,
+            YEARWEEK(tasks.`created_at`) AS task_date, 
+            YEARWEEK(@week_of) AS cur_date,
+            DATE_FORMAT(tasks.`created_at`, '%W') AS task_date_name,
+            COUNT(tasks.`id`) AS total_claimed_this_week
+            
+        FROM `users` 
+        LEFT JOIN tasks
+        ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+        AND YEARWEEK(tasks.`created_at`) = YEARWEEK(@week_of)
+        GROUP BY users.`id`
+        ORDER BY total_claimed_this_week DESC, tasks.claimed_at DESC</string>
+		<string>-- Most helpful this week --
+				SET @week_of = curdate()</string>
+		<string>-- Most helpful this week --
+				SET @week_of = '2015-06-01'</string>
+		<string>-- Most helpful this week --
+				SET @week_of = '2015-05-01'</string>
+		<string>-- Most helpful this week --
+				SET @week_of = '2015-03-01'</string>
+		<string>-- Most helpful this week --
+				SET @week_of = '2015-08-01'</string>
+		<string>-- Most helpful this week --
+				SET @week_of = '2015-02-01'</string>
+		<string>-- Most helpful this week --
+				SET @week_of = '2015-04-01'</string>
+		<string>SELECT 
+            users.id, users.firstname, 
+            YEARWEEK(tasks.`created_at`) AS task_date, 
+            YEARWEEK(@week_of) AS cur_date,
+            DATE_FORMAT(tasks.`created_at`, '%W') AS task_date_name,
+            COUNT(tasks.`id`) AS total_claimed_this_week
+            
+        FROM `users` 
+        LEFT JOIN tasks
+        ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+        AND YEARWEEK(tasks.`created_at`) = YEARWEEK(@week_of)
+        GROUP BY users.`id`
+        ORDER BY total_claimed_this_week DESC, tasks.claimed_at DESC</string>
+		<string>-- Most helpful this week --
+				SET @week_of = '2015-06-10'</string>
+		<string>-- Most helpful this week --
+				SET @week_of = '2015-03-30'</string>
+		<string>-- Most helpful this week --
+				SET @week_of = '2015-05-30'</string>
+		<string>-- Most helpful this week --
+				SET @week_of = '2015-5-30'</string>
+		<string>-- Most helpful this week --
+	SET @week_of = '2015-01-30'</string>
+		<string>7</string>
+		<string>-- Most helpful this week --
+	SET @week_of = '2015-02-30'</string>
+		<string>-- Most helpful this week --
+	SET @week_of = '2015-07-30'</string>
+		<string>-- Most helpful this week --
+	SET @week_of = '2015-06-30'</string>
+		<string>-- Most helpful this week --
+	SET @week_of = '2015-08-30'</string>
+		<string>-- Most helpful this week --
+	SET @week_of = '2015-05-30'</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.5.42</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

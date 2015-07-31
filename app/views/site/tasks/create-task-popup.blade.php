@@ -8,15 +8,18 @@
 		<input type="hidden" name="title" value="{{isset($data['title'])?$data['title']:''}}">
 		<input type="hidden" name="project" value="{{isset($data['project'])?$data['project']:''}}">
 		<input type="hidden" name="duration" value="{{isset($data['duration'])?$data['duration']:''}}">
-		<h2>Add more details:</h2>	
-		<hr>
-		<div class="form-field">
-			<label for="task_date">When do you need it done by? (OPTIONAL)</label>
-			<input type="text" id="datepicker" value="{{Input::old('task_date')}}">
+		<h2>I need it done by:</h2>	
+		<div class="date-wrapper">
+			<div class="selector">
+				<a href="#"><span>Whenever!</span></a>
+			</div>
+			<div class="form-field date-field">
+				<input type="text" id="datepicker" placeholder="Pick a Date" value="{{Input::old('task_date')}}">
+			</div>
 		</div>
 		<div class="form-field">
-			<label for="details">Any more details you want to add? (OPTIONAL)</label>
-			<textarea name="details" placeholder="optional">{{Input::old('details')}}</textarea>
+			<label for="details">Additional details (optional):</label>
+			<textarea name="details" placeholder="Skills needed? Special requests?">{{Input::old('details')}}</textarea>
 		</div>
 		<div class="task-info">
 			<h4>
