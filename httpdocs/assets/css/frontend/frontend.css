@@ -993,15 +993,25 @@ input.has-error {
 =======
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
+<<<<<<< HEAD
 >>>>>>> Edit popup responsive edits
 =======
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
 }
 #star-2 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+}
+#star-2 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1024,10 +1034,15 @@ input.has-error {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-3 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1051,6 +1066,10 @@ input.has-error {
           animation-duration: 4s;
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-5 {
   -webkit-animation-duration: 4s;
@@ -1070,6 +1089,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1083,6 +1103,10 @@ input.has-error {
 =======
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-7 {
@@ -1120,6 +1144,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 =======
@@ -1130,20 +1155,30 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> Styles for edit popup date selector
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-9 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 =======
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-10 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1161,10 +1196,15 @@ input.has-error {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-11 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1182,16 +1222,26 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-12 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-13 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1208,6 +1258,10 @@ input.has-error {
 =======
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-14 {
@@ -1238,6 +1292,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 =======
@@ -1256,16 +1311,25 @@ input.has-error {
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-16 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 =======
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-17 {
@@ -1275,6 +1339,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 =======
@@ -1293,10 +1358,15 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-18 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1314,10 +1384,15 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
@@ -1325,16 +1400,26 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-20 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-21 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1352,12 +1437,21 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> Edit popup responsive edits
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-22 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-23 {
   -webkit-animation-duration: 4s;
@@ -1372,6 +1466,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1390,16 +1485,25 @@ input.has-error {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 =======
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 }
 #star-26 {
@@ -1409,6 +1513,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 =======
@@ -1423,6 +1528,10 @@ input.has-error {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> Edit popup responsive edits
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 =======
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
