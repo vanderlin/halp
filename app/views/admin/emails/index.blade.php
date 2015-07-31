@@ -45,7 +45,7 @@ $eventTypes = $evts;
 		</thead>
 		<tbody>
 	
-			{{Form::open(['url'=>'admin/tests/send', 'method'=>'POST'])}}
+			{{Form::open(['url'=>'admin/emails/send', 'method'=>'POST'])}}
 				
 					<tr>
 				      	<td>
@@ -83,9 +83,10 @@ $eventTypes = $evts;
 
 		    		</tr>
 
-    				<tr class="center aligned">
-		    			<td colspan="4">
-							<div class="ui input">
+					<tr>
+						<td colspan="2"></td>
+		    			<td colspan="2">
+							{{--<div class="ui input">
 								<div class="field">
 									<label>Email Subject</label>
 									<input type="text" name="subject" placeholder="enter a subject">
@@ -96,6 +97,21 @@ $eventTypes = $evts;
 								<button type="submit" class="ui button">Send</button>
 							</div>
 							<div><small><b>comma separated list</b></small></div>
+							--}}
+							<div class="ui small form">
+						    	<div class="field">
+						      		<label>Email Subject</label>
+						      		<input placeholder="optional" name="subject" type="text">
+						    	</div>
+						    	<div class="field">
+						      		<label>Email Address <small>(comma separated list)</small></label>
+						      		<input placeholder="ie:todd@gmail.com, kim@gmail.com" type="text" name="emails" value="{{Auth::user()->email}}">
+						    	</div>
+						    	<div class="field center aligned">
+						    		<label>&nbsp;</label>
+						    		<button type="submit" class="ui button">Send Email</button>
+						    	</div>
+							</div>
 					    </td>
 		    		</tr>
 				
@@ -118,7 +134,7 @@ $eventTypes = $evts;
 		</thead>
 		<tbody>
 	
-			{{Form::open(['url'=>'admin/tests/view-email', 'method'=>'GET'])}}
+			{{Form::open(['url'=>'admin/emails/view-email', 'method'=>'GET'])}}
 				
 					<tr>
 				      	<td>
@@ -160,7 +176,7 @@ $eventTypes = $evts;
 							<button type="submit" class="ui button">View Email</button>
 							<div class="ui checkbox">
 						     	<input type="checkbox" tabindex="0" checked name="pre_render" class="hidden">
-						      	<label>Pre-Render</label>
+						      	<label>Convert to inline styles</label>
 						    </div>
 					    </td>
 		    		</tr>

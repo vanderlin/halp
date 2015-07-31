@@ -131,6 +131,10 @@
 .text-right {
   text-align: right;
 }
+.img-circle {
+  border-radius: 50%;
+  overflow: hidden;
+}
 .admin {
   max-width: 900px;
   padding: 0 10px;
