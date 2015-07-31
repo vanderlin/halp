@@ -35,6 +35,33 @@
 		</div>
 </section>
 
+<section class="weekly-awards">
+		<div class="award">
+			<img class="headshot" src="{{$leader->profileImage->url('s113')}}">
+			<img src="{{asset('assets/img/award-last-week.svg')}}" class="award-image">
+			<h6>Most Helpful Last Week</h6>
+			<hr>
+			<h4><a href="#">Person's Name</a></h4>
+			<h5>XX Claimed Tasks</h5>
+		</div>
+		<div class="award">
+			<img class="headshot" src="{{$leader->profileImage->url('s113')}}">
+			<img src="{{asset('assets/img/award-project.svg')}}" class="award-image">
+			<h6>Most Helpful on 1 Project</h6>
+			<hr>
+			<h4><a href="#">Person's Name</a></h4>
+			<h5>XX Tasks for <a href="#">Project Name</a></h5>
+		</div>
+		<div class="award">
+			<img class="headshot" src="{{$leader->profileImage->url('s113')}}">
+			<img src="{{asset('assets/img/award-most-created.svg')}}" class="award-image">
+			<h6>Most Tasks Created</h6>
+			<hr>
+			<h4><a href="#">Person's Name</a></h4>
+			<h5>XX Tasks Created</h5>
+		</div>
+</section>
+
 <section class="content">
 	@if ($users->count()>0)
 		@foreach ($users as $user)

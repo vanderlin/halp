@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="134px" height="160px" viewBox="0 0 134 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>award-last-week</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path id="path-1" d="M56.5,113 C87.7040884,113 113,87.7040884 113,56.5 C113,25.2959116 87.7040884,0 56.5,0 C25.2959116,0 0,25.2959116 0,56.5 C0,87.7040884 25.2959116,113 56.5,113 Z"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="award-last-week" sketch:type="MSLayerGroup" transform="translate(0.119907, 0.000000)">
+            <path d="M43.6325443,82.9305307 L70.2794208,82.9305307 L70.2794208,157.689823 L57.4793207,148.807531 L43.6325443,157.689823 L43.6325443,82.9305307 Z" id="Rectangle-32" fill="#404D5B" sketch:type="MSShapeGroup" transform="translate(56.955983, 120.310177) rotate(-345.000000) translate(-56.955983, -120.310177) "></path>
+            <path d="M65.1325443,82.9305307 L91.7794208,82.9305307 L91.7794208,157.689823 L78.9793207,148.807531 L65.1325443,157.689823 L65.1325443,82.9305307 Z" id="Rectangle-32-Copy" fill="#404D5B" sketch:type="MSShapeGroup" transform="translate(78.455983, 120.310177) scale(-1, 1) rotate(-345.000000) translate(-78.455983, -120.310177) "></path>
+            <circle id="Oval-23" fill="#404D5B" sketch:type="MSShapeGroup" cx="66.5" cy="66.8101769" r="66.5"></circle>
+            <g id="front-facing-turtle-copy-2" transform="translate(10.000000, 10.310177)">
+                <mask id="mask-2" sketch:name="Mask" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#4DD2C3" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                <g id="front-facing-turtle" mask="url(#mask-2)">
+                    <g transform="translate(-9.000000, 62.000000)">
+                        <g id="Shape_14_1_" transform="translate(2.000000, 33.000000)">
+                            <g id="Shape_14" fill="#359086" sketch:type="MSShapeGroup">
+                                <path d="M77.2,0.9 C59.5,-0.2 42.7,-1.4 31.5,4.9 C20.2,11.2 0,26 0,26 L124,26 C124,26 95,2 77.2,0.9 L77.2,0.9 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_1_1_" transform="translate(3.000000, 0.000000)">
+                            <g id="Shape_1" fill="#E8DAC3" sketch:type="MSShapeGroup">
+                                <path d="M64.9,0.2 C-6.7,-0.3 1,53.8 1,53.8 C1,53.8 30.4,40.4 63.4,40.4 C96.4,40.4 124.5,55.7 124.5,55.7 C124.5,55.7 137.2,0.7 64.9,0.2 L64.9,0.2 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_2_1_" transform="translate(0.000000, 36.000000)">
+                            <g id="Shape_2" fill="#FFF2DA" sketch:type="MSShapeGroup">
+                                <path d="M63,1 C31.1,1.9 1.7,17.8 1.7,17.8 L0.5,23.5 C0.5,23.5 28.8,9.2 64.1,9 C90.6,8.3 129.8,25.5 129.8,25.5 L129.8,20.9 C129.8,20.9 100.3,7.10542736e-15 63,1 L63,1 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_4_1_" transform="translate(103.000000, 27.000000)">
+                            <g id="Shape_4" fill="#BFAF93" sketch:type="MSShapeGroup">
+                                <path d="M15.4,5.7 C15,3.5 14.2,5.1 8.5,1.1 C2.8,-3 0.9,5.9 0.4,9.1 C-0.1,12.3 18.8,20.7 18.8,20.7 C18.8,20.7 15.8,7.9 15.4,5.7 L15.4,5.7 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_5_1_" transform="translate(80.000000, 22.000000)">
+                            <g id="Shape_5" fill="#BFAF93" sketch:type="MSShapeGroup">
+                                <path d="M9.6,1.4 C5.4,0.5 2.1,-0.1 1.5,2.5 C0.9,5.1 0.3,11.7 0.3,11.7 L19.9,14.1 C19.9,14.1 20.7,7 21.1,4.9 C21.6,2.8 13.9,2.2 9.6,1.4 L9.6,1.4 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_6_1_" transform="translate(54.000000, 21.000000)">
+                            <g id="Shape_6" fill="#BFAF93" sketch:type="MSShapeGroup">
+                                <path d="M22.9,2.3 C22.5,0.7 5.3,0.7 2.1,1 C-1,1.3 0.8,7.7 0.9,10.2 C0.9,12.6 21.7,11.5 21.7,11.5 C21.7,11.5 23.3,3.9 22.9,2.3 L22.9,2.3 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_7_1_" transform="translate(32.000000, 23.000000)">
+                            <g id="Shape_7" fill="#BFAF93" sketch:type="MSShapeGroup">
+                                <path d="M2.2,3.4 C-1.7,7.6 1,12.6 1,12.6 L17.2,9.3 L17.3,0.1 C17.3,0.1 6.1,-0.8 2.2,3.4 L2.2,3.4 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_8_1_" transform="translate(12.000000, 27.000000)">
+                            <g id="Shape_8" fill="#BFAF93" sketch:type="MSShapeGroup">
+                                <path d="M4.9,6.2 C-0.2,10.3 0.2,17.6 0.2,17.6 L15.3,10.8 L16.5,0.5 C16.4,0.5 10,2 4.9,6.2 L4.9,6.2 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_9_1_" transform="translate(96.000000, 10.000000)">
+                            <g id="Shape_9" fill="#BFAF93" sketch:type="MSShapeGroup">
+                                <path d="M13.3,6.6 C11.7,4.9 4.9,0.2 1.8,0.8 C-1.3,1.4 0.6,11.1 0.6,11.1 L20,15 C19.9,15 14.9,8.3 13.3,6.6 L13.3,6.6 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_10_1_" transform="translate(72.000000, 2.000000)">
+                            <g id="Shape_10" fill="#BFAF93" sketch:type="MSShapeGroup">
+                                <path d="M7.4,0.6 C4.3,0.2 0.1,13.5 0.4,15.5 C0.7,17.5 18.2,21.4 18.8,17.9 C19.4,14.4 19.5,9.9 20,7.6 C20.6,5.2 10.5,1.1 7.4,0.6 L7.4,0.6 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_11_1_" transform="translate(53.000000, 2.000000)">
+                            <g id="Shape_11" fill="#BFAF93" sketch:type="MSShapeGroup">
+                                <path d="M5,1 C3.2,1.5 0.9,15.4 0.9,15.4 L15.9,16.6 C15.9,16.6 19,4.8 19.5,2.8 C19.9,0.9 6.8,0.5 5,1 L5,1 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_12_1_" transform="translate(37.000000, 4.000000)">
+                            <g id="Shape_12" fill="#BFAF93" sketch:type="MSShapeGroup">
+                                <path d="M0.8,5.2 C0.1,6.8 1.9,16.7 1.9,16.7 C1.9,16.7 13.6,17.8 13.5,14.5 C13.4,11.2 14.2,3.2 14.8,0.7 C15.4,-1.8 1.5,3.6 0.8,5.2 L0.8,5.2 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Shape_13_1_" transform="translate(16.000000, 11.000000)">
+                            <g id="Shape_13" fill="#BFAF93" sketch:type="MSShapeGroup">
+                                <path d="M16.2,0.6 C16.2,0.6 6.7,7.7 5.4,9 C4.1,10.3 -0.1,18.4 0.9,17.9 C1.9,17.4 18.4,9.8 18.4,9.8 L16.2,0.6 L16.2,0.6 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Ellipse_2_1_" transform="translate(40.000000, 10.000000)">
+                            <g id="Ellipse_2" fill="#4DD2C3" sketch:type="MSShapeGroup">
+                                <circle id="Oval" cx="26" cy="26" r="26"></circle>
+                            </g>
+                        </g>
+                        <g id="Ellipse_1_1_" transform="translate(42.000000, 20.000000)">
+                            <g id="Ellipse_1" fill="#F4FFFD" sketch:type="MSShapeGroup">
+                                <path d="M13.4,1 C7.2,0.3 1.6,4.5 0.8,10.5 C6.77236045e-15,16.5 4.4,22 10.6,22.7 C16.8,23.4 22.4,19.2 23.2,13.2 C24,7.2 19.6,1.8 13.4,1 L13.4,1 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Ellipse_1_copy_1_" transform="translate(50.000000, 21.000000)">
+                            <g id="Ellipse_1_copy" fill="#1B1B25" sketch:type="MSShapeGroup">
+                                <path d="M3.6,0.6 C1.9,0.4 0.3,1.6 0.1,3.3 C-0.1,5 1.1,6.5 2.8,6.7 C4.5,6.9 6.1,5.7 6.3,4 C6.5,2.3 5.3,0.8 3.6,0.6 L3.6,0.6 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Ellipse_1_copy_2_3_" transform="translate(66.000000, 20.000000)">
+                            <g id="Ellipse_1_copy_2" fill="#F4FFFD" sketch:type="MSShapeGroup">
+                                <path d="M13.4,1 C7.2,0.3 1.6,4.5 0.8,10.5 C3.50830476e-14,16.5 4.4,22 10.6,22.7 C16.8,23.4 22.4,19.2 23.2,13.2 C24,7.2 19.6,1.8 13.4,1 L13.4,1 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="Ellipse_1_copy_2_2_" transform="translate(74.000000, 21.000000)">
+                            <g id="Ellipse_1_copy_2_1_" fill="#1B1B25" sketch:type="MSShapeGroup">
+                                <path d="M4.5,0.6 C2.8,0.4 1.2,1.6 1,3.3 C0.8,5 2,6.5 3.7,6.7 C5.4,6.9 7,5.7 7.2,4 C7.4,2.3 6.2,0.8 4.5,0.6 L4.5,0.6 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <text id="1" sketch:type="MSTextLayer" font-family="Merriweather" font-size="52" font-weight="260" fill="#FFFFFF">
+                <tspan x="57" y="60.3101769">1</tspan>
+            </text>
+            <text id="#" sketch:type="MSTextLayer" font-family="Montserrat" font-size="22" font-weight="normal" letter-spacing="1.18461549" fill="#1B1A25">
+                <tspan x="41" y="50.3101769">#</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
