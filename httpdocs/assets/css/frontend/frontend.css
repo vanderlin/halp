@@ -35,13 +35,13 @@
   outline: none;
 }
 /* ---------------------------- SMALL BUTTON ---------------------------- */
-.small.progress-button {
+.small {
   min-width: none;
   width: initial;
   min-width: initial;
   margin-top: 30px;
 }
-.small.progress-button button {
+.small button {
   width: 150px;
   height: 50px;
   font-family: 'Montserrat', sans-serif;
@@ -50,6 +50,10 @@
   font-size: 12px;
   color: #4fd2c2;
   letter-spacing: 1px;
+}
+.small button:hover {
+  background-color: #4FD2C2;
+  color: #fff;
 }
 /* ---------------------------- SELECTOR  ---------------------------- */
 .selector {
@@ -988,6 +992,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 =======
@@ -1012,10 +1017,15 @@ input.has-error {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> Style fix for small buttons
 }
 #star-2 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
@@ -1055,10 +1065,15 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> Style fix for small buttons
 }
 #star-3 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1077,10 +1092,15 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> Style fix for small buttons
 }
 #star-4 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
@@ -1092,6 +1112,10 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> Style fix for small buttons
 }
 #star-5 {
   -webkit-animation-duration: 4s;
@@ -1113,6 +1137,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1149,10 +1174,15 @@ input.has-error {
 >>>>>>> Edit popup responsive edits
 =======
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> Style fix for small buttons
 }
 #star-7 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 1s;
@@ -1169,6 +1199,10 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> Style fix for small buttons
 }
 #star-8 {
   -webkit-animation-duration: 4s;
@@ -1178,6 +1212,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 =======
@@ -1196,10 +1231,15 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> Style fix for small buttons
 }
 #star-9 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 2s;
@@ -1216,10 +1256,15 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> Style fix for small buttons
 }
 #star-10 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1247,10 +1292,15 @@ input.has-error {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> Style fix for small buttons
 }
 #star-11 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1278,6 +1328,10 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> Style fix for small buttons
 }
 #star-12 {
   -webkit-animation-duration: 4s;
@@ -1333,6 +1387,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 =======
@@ -1351,6 +1406,10 @@ input.has-error {
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> Style fix for small buttons
 }
 #star-15 {
   -webkit-animation-duration: 4s;
@@ -1361,6 +1420,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 =======
@@ -1387,10 +1447,15 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> Style fix for small buttons
 }
 #star-16 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1408,6 +1473,10 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> Style fix for small buttons
 }
 #star-17 {
   -webkit-animation-duration: 4s;
@@ -1418,6 +1487,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 =======
@@ -1444,6 +1514,10 @@ input.has-error {
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> Style fix for small buttons
 }
 #star-18 {
   -webkit-animation-duration: 4s;
@@ -1453,6 +1527,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1475,10 +1550,15 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> Style fix for small buttons
 }
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1496,10 +1576,15 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> Style fix for small buttons
 }
 #star-20 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 6s;
@@ -1512,10 +1597,15 @@ input.has-error {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> Style fix for small buttons
 }
 #star-21 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1543,10 +1633,15 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> Style fix for small buttons
 }
 #star-22 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 5s;
@@ -1559,12 +1654,16 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> Style fix for small buttons
 }
 #star-23 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
 }
 #star-24 {
   -webkit-animation-duration: 4s;
@@ -1575,6 +1674,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1601,6 +1701,10 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> Style fix for small buttons
 }
 #star-25 {
   -webkit-animation-duration: 4s;
@@ -1632,6 +1736,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 =======
@@ -1658,6 +1763,10 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> Small font tweak to date selector
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> Style fix for small buttons
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
