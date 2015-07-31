@@ -48,13 +48,8 @@ class UsersController extends BaseController
         $users = Paginator::make($pagedData, count($users_q), $perPage);
         */
 
-        $users = User::all()->sortByDesc(function($item) {
-            return $item->claimedTasks->count();
-        })->each(function($item) {
-            return $item->totalClaimedTasks = $item->claimedTasks->count();
-        })->values();
+        $users = User::orderByClaimedTask()->get();
        
-
         return View::make('site.user.index', ['users'=>$users, 'leader'=>User::orderByClaimedTask()->first()]);
     }
 
