@@ -173,6 +173,20 @@
   }
 }
 
+.date-wrapper-edit{
+  height: 90px;
+  [placeholder]::-webkit-input-placeholder {
+      .sans-serif(14px, @mint);
+      font-style: normal;
+  }
+  [placeholder]:hover::-webkit-input-placeholder {
+    color: white;
+  }
+  [placeholder].active::-webkit-input-placeholder {
+    color: white;
+  }
+}
+
 .edit-task-content {
   .ui-autocomplete {
     position: absolute;

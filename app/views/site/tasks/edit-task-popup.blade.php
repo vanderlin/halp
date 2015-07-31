@@ -26,7 +26,7 @@
 				
 				<div class="form-field">
 					<label>When does this task need to be done?</label>	
-					<div class="date-wrapper">
+					<div class="date-wrapper-edit">
 						<div class="selector">
 							<a href="#"><span>Whenever!</span></a>
 						</div>
