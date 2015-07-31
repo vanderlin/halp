@@ -323,6 +323,13 @@
   background-color: #fff;
   margin: 0px 0 50px 0;
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #4fd2c2;
+  font-style: normal;
 }
 #task-datepicker.active {
   background-color: #4FD2C2;
@@ -980,6 +987,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 =======
@@ -1000,10 +1008,15 @@ input.has-error {
           animation-delay: 4s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
 =======
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> Small font tweak to date selector
 }
 #star-2 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
@@ -1038,6 +1051,10 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> Small font tweak to date selector
 }
 #star-3 {
   -webkit-animation-duration: 4s;
@@ -1064,12 +1081,17 @@ input.has-error {
 #star-4 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 =======
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> Small font tweak to date selector
 }
 #star-5 {
   -webkit-animation-duration: 4s;
@@ -1090,6 +1112,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1108,10 +1131,15 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> Small font tweak to date selector
 }
 #star-7 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 <<<<<<< HEAD
@@ -1137,6 +1165,10 @@ input.has-error {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> Styles for edit popup date selector
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> Small font tweak to date selector
 }
 #star-8 {
   -webkit-animation-duration: 4s;
@@ -1145,6 +1177,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 =======
@@ -1159,10 +1192,15 @@ input.has-error {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> Small font tweak to date selector
 }
 #star-9 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
@@ -1174,6 +1212,10 @@ input.has-error {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> Small font tweak to date selector
 }
 #star-10 {
   -webkit-animation-duration: 4s;
@@ -1182,6 +1224,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1200,10 +1243,15 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> Small font tweak to date selector
 }
 #star-11 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1226,10 +1274,15 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> Small font tweak to date selector
 }
 #star-12 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
@@ -1237,10 +1290,15 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> Small font tweak to date selector
 }
 #star-13 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1263,10 +1321,15 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> Small font tweak to date selector
 }
 #star-14 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1284,6 +1347,10 @@ input.has-error {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> Small font tweak to date selector
 }
 #star-15 {
   -webkit-animation-duration: 4s;
@@ -1293,6 +1360,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 =======
@@ -1315,10 +1383,15 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> Small font tweak to date selector
 }
 #star-16 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 4s;
@@ -1331,6 +1404,10 @@ input.has-error {
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> Small font tweak to date selector
 }
 #star-17 {
   -webkit-animation-duration: 4s;
@@ -1340,6 +1417,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 =======
@@ -1362,6 +1440,10 @@ input.has-error {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> Small font tweak to date selector
 }
 #star-18 {
   -webkit-animation-duration: 4s;
@@ -1370,6 +1452,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1388,10 +1471,15 @@ input.has-error {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> Small font tweak to date selector
 }
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 6s;
@@ -1404,10 +1492,15 @@ input.has-error {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> Small font tweak to date selector
 }
 #star-20 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
@@ -1415,10 +1508,15 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> Small font tweak to date selector
 }
 #star-21 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1441,10 +1539,15 @@ input.has-error {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> Small font tweak to date selector
 }
 #star-22 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
@@ -1452,6 +1555,10 @@ input.has-error {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> Small font tweak to date selector
 }
 #star-23 {
   -webkit-animation-duration: 4s;
@@ -1467,6 +1574,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1489,10 +1597,15 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> Small font tweak to date selector
 }
 #star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-animation-delay: 0s;
@@ -1505,10 +1618,15 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> Small font tweak to date selector
 }
 #star-26 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1536,6 +1654,10 @@ input.has-error {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> Small font tweak to date selector
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
@@ -2398,6 +2520,13 @@ body .nomargin-bottom {
   .date-field {
     float: none;
     display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #4fd2c2;
+    text-style: normal;
   }
   .date-wrapper {
     height: 210px;
