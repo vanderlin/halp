@@ -19,18 +19,25 @@
 				</div>
 		
 				<div class="form-field">
-					<label>How long this task will take</label>
+					<label>How long this task will take?</label>
 					<input type="text" class="validate" data-error-message="Derp!" data-validate data-required="true" data-max="{{Config::get('config.max_title')}}" autocomplete="off" name="duration" value="{{$task->duration}}">
 				</div>
 
 				
 				<div class="form-field">
-					<label>When will this task happen</label>
-					@if (isMobile())
-						<input type="date" name="task_date" autocomplete="off" value="{{$task->date->format('Y-m-d')}}">					
-					@else
-						<input type="text" name="task_date" autocomplete="off" id="edit-task-datepicker" data-default-date="{{$task->date->format('m-d-Y')}}" value="{{$task->date->format('F j, Y')}}">
-					@endif				
+					<label>When does this task need to be done?</label>	
+					<div class="date-wrapper">
+						<div class="selector">
+							<a href="#"><span>Whenever!</span></a>
+						</div>
+						<div class="form-field date-field">
+							@if (isMobile())
+								<input type="date" id="edit-task-datepicker" placeholder="Pick a Date" name="task_date" autocomplete="off" value="{{$task->date->format('Y-m-d')}}">					
+							@else
+								<input type="text" placeholder="Pick a Date" name="task_date" autocomplete="off" id="edit-task-datepicker" data-default-date="{{$task->date->format('m-d-Y')}}" value="{{$task->date->format('F j, Y')}}">
+							@endif	
+						</div>
+					</div>			
 				</div>
 
 				{{--<div class="form-field">
