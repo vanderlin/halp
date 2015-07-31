@@ -221,6 +221,7 @@
 			                var $datepicker = $("#task-datepicker");
     						$datepicker.datepicker({
     							showAnim:'slideDown',
+    							minDate:0,
     							onSelect: function(dateText) {
     								$('#date-none-button').parent().removeClass('active');
     								$(this).addClass('active');

@@ -246,15 +246,15 @@ var App = (function() {
                 var $content = $(e.content[2]);
                 
                 // $('#task-time').timeEntry({show24Hours: true});
+                var $datepicker = $("#task-datepicker");
 
                 // date picker
-                $("#edit-task-datepicker").datepicker({
+                $datepicker.datepicker({
                     showAnim:'slideDown',
                     minDate:0,
-
                 })
                
-                $("#edit-task-datepicker").datepicker("setDate", new Date( $("#edit-task-datepicker").data('default-date') )); 
+                $datepicker.datepicker("setDate", new Date( $("#edit-task-datepicker").data('default-date') )); 
                 
                     
 
