@@ -218,7 +218,13 @@
 			            onContentAdded: function(e) {
 			                var $content = $(e.content[2]);
 
-    						$( "#datepicker" ).datepicker({showAnim:'slideDown'});
+    						$( "#datepicker" ).datepicker({
+    							showAnim:'slideDown',
+    							onSelect: function(dateText) {
+    								$('#date-none-button').parent().removeClass('active');
+    								$(this).addClass('active');
+    							}
+    						});
   					
 	  						self.$popup = $('.white-popup .popup-content');
 	  						self.$form = $('#create-task-form');
@@ -227,44 +233,15 @@
 	  							console.log("Submiting the task...");
 	  							self._submit(e);
 	  						});
+
+	  						$('#date-none-button').click(function(e) {
+	  							e.preventDefault();
+	  							console.log("No Date set");
+	  							$(this).parent().addClass('active');
+	  						});
 			           	}
 			        });
-		    		return;
-		    		var self = this;
-		    		$.magnificPopup.open({
-			            tLoading: 'Loading some halp!...',
-			            closeOnContentClick: false,
-			            closeOnBgClick:false,
-			            mainClass: 'mfp-fade',
-			            ajax: {
-		                	settings: {
-		                		data:options.data
-		                	}
-		                },
-			            items: {
-			                src: '/tasks/create',
-			                type: 'ajax',
-			            },
-			            callbacks: {
-			                parseAjax: function(mfpResponse) {
-			                    var task = mfpResponse.xhr.responseText;
-			                    mfpResponse.data = $(mfpResponse.xhr.responseText);
-			                },
-			                ajaxContentAdded: function() {
-			                    $(function() {
-		    						$( "#datepicker" ).datepicker({showAnim:'slideDown'});
-		  						});  
-		  						self.$popup = $('.white-popup .popup-content');
-		  						self.$form = $('#create-task-form');
-		  						self.$form.submit(function(e) {
-		  							e.preventDefault();
-		  							console.log("Submiting the task...");
-		  							self._submit(e);
-		  						});
-			                }
-			            }
-			        });	
-			        console.log("Open Create Task Form");
+		    		console.log("--- Open Create Task Form ---");
 		    	}				
 			}
 

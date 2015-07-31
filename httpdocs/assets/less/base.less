@@ -59,7 +59,7 @@
 	float: left;
 }
 
-.selector a {
+.selector a, .selector input {
 	display: block;
 	margin: 0 auto;
 	padding: 0;
@@ -82,6 +82,10 @@
 }
 .selector a:focus {
 	outline: none;
+}
+.selector.active a {
+	background-color: #4FD2C2;
+	color: #fff;
 }
 
 /* Text (transition for when returning to initial state) */
