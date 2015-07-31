@@ -8,7 +8,7 @@
 		<input type="hidden" name="title" value="{{isset($data['title'])?$data['title']:''}}">
 		<input type="hidden" name="project" value="{{isset($data['project'])?$data['project']:''}}">
 		<input type="hidden" name="duration" value="{{isset($data['duration'])?$data['duration']:''}}">
-		<h2>Add more details (optional):</h2>	
+		<h2>Add more details:</h2>	
 		<hr>
 		<div class="form-field">
 			<label for="task_date">When do you need it done by? (OPTIONAL)</label>
