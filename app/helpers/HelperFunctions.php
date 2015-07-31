@@ -18,6 +18,15 @@ function bool_val($val) {
   return ( is_string($val) ? filter_var($val, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) : (bool) $val );
 }
 
+function null_if_not_set($array, $key)
+{
+  if(array_key_exists($key, $array) && $array[$key]!="")
+  {
+    return $array[$key];
+  }
+  return NULL;
+}
+
 function pdf_asset($file) {
   return URL::to('assets/content/pdf/'.$file);
 }

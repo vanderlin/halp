@@ -13,6 +13,7 @@ use Auth;
 use Notification\Notification;
 use Event;
 use View;
+use Config;
 
 /**
 * Tasks Repository
@@ -45,10 +46,10 @@ class TasksRepository  {
 	public function allActiveAndClaimed()
 	{
 		Paginator::setPageName('tasks_page');
-		$tasks = Task::active()->unClaimed()->paginate(16);
+		$tasks = Task::active()->unClaimed()->paginate(Config::get('config.active_task_per_page', 16));
 
 		Paginator::setPageName('claimed_tasks_page');
-		$claimed_tasks = Task::claimed()->paginate(8);
+		$claimed_tasks = Task::claimed()->paginate(Config::get('config.unclaimed_task_per_page', 8));
 		return array('tasks'=>$tasks, 'claimed_tasks'=>$claimed_tasks);
 	}
 
@@ -185,6 +186,7 @@ class TasksRepository  {
 			return $this->listener ? $this->listener->errorResponse($validator->errors()->all()) : $validator->errors()->all();
 		}
 
+
 		$creator_id = isset($input['creator_id'])?$input['creator_id']:Auth::id();
 		$claimed_id = isset($input['claimed_id'])?$input['claimed_id']:NULL;
 
@@ -207,7 +209,7 @@ class TasksRepository  {
 			'project_id'=>$project->id, 
 			'creator_id'=>$creator_id,
 			'details'=>isset($input['details'])?$input['details']:NULL,
-			'task_date'=>isset($input['task_date'])?$input['task_date'] : NULL,
+			'task_date'=>null_if_not_set($input, 'task_date'),
 			];
 
 		$task = new Task($data);
