@@ -269,6 +269,14 @@ body .nomargin-bottom {
 .input--nao {
 	overflow: hidden;
 	padding-top: 1em;
+	[placeholder]::-webkit-input-placeholder {
+  		opacity: 0;
+  		color: @dark-purple;
+	}
+	[placeholder]:focus::-webkit-input-placeholder {
+  		opacity: 1;
+  		transition: opacity 0.5s 0.5s ease;
+	}
 }
 
 .input__field--nao {
@@ -325,15 +333,7 @@ body .nomargin-bottom {
 	text-align: left;
 }
 
-[placeholder]::-webkit-input-placeholder {
-  opacity: 0;
-  color: @dark-purple;
-}
 
-[placeholder]:focus::-webkit-input-placeholder {
-  opacity: 1;
-  transition: opacity 0.5s 0.5s ease;
-}
 
 .alert{
 	font-style: italic;
@@ -447,8 +447,6 @@ body .nomargin-bottom {
 
 .bgcolor { background: #f9f7f6; }
 .bgcolor2 { background: @purple; }
-
-
 
 .rain-bg{
 	background: @purple;
@@ -566,6 +564,7 @@ body .nomargin-bottom {
 .leaderboard-hr{
 	color: @light-purple !important;
 }
+
 
 // ------------------------------------------------------------------------
 // MEDIA QUERIES
@@ -696,9 +695,21 @@ body .nomargin-bottom {
 	}
 	.claimed-popup h2 {
   		font-size: 22px;
-  		margin-bottom: 0px;
+  		margin-bottom: 18px;
   		line-height: 36px;
   		margin-top: 0px;
+	}
+	.selector{
+		display: block;
+		float: none;
+		margin: 0px 0 20px 0;
+	}
+	.date-field{
+		float: none;
+		display: block;
+	}
+	.date-wrapper{
+		height: 210px;
 	}
 	p{
 		font-size: 14px;
@@ -782,6 +793,7 @@ body .nomargin-bottom {
 	}
 	.ui-datepicker{
 		width: 280px;
+		margin-left: -30px;
 	}
 	.ui-datepicker td a {
   		padding: 12px 7px;

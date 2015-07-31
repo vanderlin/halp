@@ -20,6 +20,8 @@
 							
 							@if (array_key_exists('header', View::getSections()))
 								@yield('header')
+							@else
+								<img src="{{production_url('assets/img/friends/'.get_random_task_image())}}" />
 							@endif
 
 							@yield('content')

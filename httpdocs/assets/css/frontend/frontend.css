@@ -8,7 +8,6 @@
   min-width: 250px;
   margin: 15px 0 10px 0;
 }
-/* Button style */
 .progress-button button {
   display: block;
   margin: 0 auto;
@@ -28,6 +27,14 @@
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
   cursor: pointer;
 }
+.progress-button button:hover {
+  background-color: #4FD2C2;
+  color: #fff;
+}
+.progress-button button:focus {
+  outline: none;
+}
+/* ---------------------------- SMALL BUTTON ---------------------------- */
 .small.progress-button {
   min-width: none;
   width: initial;
@@ -44,11 +51,39 @@
   color: #4fd2c2;
   letter-spacing: 1px;
 }
-.progress-button button:hover {
+/* ---------------------------- SELECTOR  ---------------------------- */
+.selector {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 0px 0 50px 0;
+  float: left;
+}
+.selector a {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 220px;
+  height: 70px;
+  line-height: 65px;
+  border: 2px solid #4FD2C2;
+  border-radius: 40px;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #4fd2c2;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+.selector a:hover {
   background-color: #4FD2C2;
   color: #fff;
 }
-.progress-button button:focus {
+.selector a:focus {
   outline: none;
 }
 /* Text (transition for when returning to initial state) */
@@ -249,6 +284,11 @@
 .form-field textarea:focus {
   outline: none;
 }
+.date-field {
+  display: inline;
+  padding-bottom: 0;
+  float: right;
+}
 .claimed-popup {
   overflow: hidden;
 }
@@ -265,6 +305,26 @@
 }
 .popup-content .form-field {
   position: relative;
+}
+#datepicker {
+  border: 2px solid #4FD2C2;
+  border-radius: 40px;
+  width: 220px;
+  height: 70px;
+  background-color: #fff;
+  margin: 0px 0 50px 0;
+}
+.date-wrapper {
+  height: 120px;
+}
+.date-wrapper [placeholder]::-webkit-input-placeholder {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #4fd2c2;
+  font-style: normal;
 }
 .edit-task-content {
   transition: height 0.8s ease 1s;
@@ -355,7 +415,25 @@ td.ui-state-disabled span {
   color: #404d5b;
 }
 .ui-datepicker {
-  width: 480px;
+  width: 400px;
+  border-radius: 20px;
+  border: 14px solid #1b1b25;
+  margin-left: -90px;
+  margin-top: 8px;
+}
+.ui-datepicker:after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin: 14px auto;
+  width: 0;
+  height: 0;
+  border-bottom: solid 6px #1b1b25;
+  border-left: solid 6px transparent;
+  border-right: solid 6px transparent;
+  display: block;
 }
 .ui-datepicker-current-day .ui-state-default,
 .ui-datepicker-current-day .ui-state-active {
@@ -852,44 +930,74 @@ input.has-error {
 #star-1 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-2 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-3 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-4 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-5 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-6 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-7 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-8 {
   -webkit-animation-duration: 4s;
@@ -906,32 +1014,52 @@ input.has-error {
 #star-10 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-11 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-12 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-13 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-14 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
 }
 #star-15 {
   -webkit-animation-duration: 4s;
@@ -960,14 +1088,24 @@ input.has-error {
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-20 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-21 {
   -webkit-animation-duration: 4s;
@@ -984,26 +1122,41 @@ input.has-error {
 #star-23 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-24 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-26 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> 56ef73bc519eeef55a83761697a29d910261c4f4
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
@@ -1471,6 +1624,14 @@ body .nomargin-bottom {
   overflow: hidden;
   padding-top: 1em;
 }
+.input--nao [placeholder]::-webkit-input-placeholder {
+  opacity: 0;
+  color: #1b1b25;
+}
+.input--nao [placeholder]:focus::-webkit-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.5s 0.5s ease;
+}
 .input__field--nao {
   padding: 0.5em 0em 0.4em;
   width: 100%;
@@ -1516,14 +1677,6 @@ body .nomargin-bottom {
 .example-text {
   font-size: 13px;
   text-align: left;
-}
-[placeholder]::-webkit-input-placeholder {
-  opacity: 0;
-  color: #1b1b25;
-}
-[placeholder]:focus::-webkit-input-placeholder {
-  opacity: 1;
-  transition: opacity 0.5s 0.5s ease;
 }
 .alert {
   font-style: italic;
@@ -1854,9 +2007,21 @@ body .nomargin-bottom {
   }
   .claimed-popup h2 {
     font-size: 22px;
-    margin-bottom: 0px;
+    margin-bottom: 18px;
     line-height: 36px;
     margin-top: 0px;
+  }
+  .selector {
+    display: block;
+    float: none;
+    margin: 0px 0 20px 0;
+  }
+  .date-field {
+    float: none;
+    display: block;
+  }
+  .date-wrapper {
+    height: 210px;
   }
   p {
     font-size: 14px;
@@ -1944,6 +2109,7 @@ body .nomargin-bottom {
   }
   .ui-datepicker {
     width: 280px;
+    margin-left: -30px;
   }
   .ui-datepicker td a {
     padding: 12px 7px;
