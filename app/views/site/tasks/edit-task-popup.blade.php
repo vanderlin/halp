@@ -26,18 +26,7 @@
 				
 				<div class="form-field">
 					<label>When does this task need to be done?</label>	
-					<div class="date-wrapper-edit">
-						<div class="selector">
-							<a href="#"><span>Whenever!</span></a>
-						</div>
-						<div class="form-field date-field">
-							@if (isMobile())
-								<input type="date" id="edit-task-datepicker" placeholder="Pick a Date" name="task_date" autocomplete="off" value="{{$task->date->format('Y-m-d')}}">					
-							@else
-								<input type="text" placeholder="Pick a Date" name="task_date" autocomplete="off" id="edit-task-datepicker" data-default-date="{{$task->date->format('m-d-Y')}}" value="{{$task->date->format('F j, Y')}}">
-							@endif	
-						</div>
-					</div>			
+					@include('site.tasks.date-toggle', array('task'=>$task))			
 				</div>
 
 				{{--<div class="form-field">
