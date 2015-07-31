@@ -20,6 +20,7 @@ class CreateTasksTable extends Migration {
 			$table->integer('project_id');
 			$table->integer('creator_id');
 			$table->string('duration');
+			$table->boolean('does_not_expire')->default(false);
 			$table->integer('claimed_id')->nullable()->default(NULL);
 			$table->timestamp('claimed_at')->nullable()->default(NULL);
 			$table->timestamp('task_date')->nullable()->default(NULL);

@@ -14,7 +14,7 @@ class Task extends BaseModel {
 	
 	use SoftDeletingTrait;
 
-	protected $fillable  = ['title', 'project_id', 'creator_id', 'claimed_id', 'duration', 'details', 'task_date'];
+	protected $fillable  = ['title', 'project_id', 'creator_id', 'claimed_id', 'duration', 'details', 'task_date', 'does_not_expire'];
 	protected $dates     = ['deleted_at'];
 	public static $rules = ['title'=>'required', 'duration'=>'required', 'project'=>'required'];
 	
@@ -45,11 +45,13 @@ class Task extends BaseModel {
     	$n_days = Config::get('config.task_expiration_days');	
     	return DB::raw("
 			(CASE WHEN {$prefix}`task_date` IS NULL
-				THEN 
-					DATE_ADD(DATE_FORMAT({$prefix}`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
-				ELSE 
-					{$prefix}`task_date` > CURRENT_DATE
-				END)
+			THEN 
+				DATE_ADD(DATE_FORMAT({$prefix}`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
+			ELSE 
+				{$prefix}`task_date` > CURRENT_DATE
+			END)
+    		AND
+    		{$prefix}`does_not_expire` = 0
     		AS is_expired");	
     }
 
@@ -68,33 +70,66 @@ class Task extends BaseModel {
     }
 
     // ------------------------------------------------------------------------
-    public function scopeActive($query)
+    public function scopeActive($query, $prefix='')
     {	    	
+    	/*
+    	-- Task is Active --
+		SELECT * FROM `tasks` 
+		WHERE `tasks`.`deleted_at` IS NULL 
+		AND 
+			CURDATE() <= 
+			(CASE WHEN `task_date` IS NULL 
+				THEN DATE_ADD(DATE_FORMAT(`created_at`, '%Y-%m-%d'), INTERVAL 10 DAY) 
+				ELSE `task_date` 
+			END)
+		OR
+		tasks.does_not_expire = 1
+		*/
+    	if($prefix !='')$prefix = DB::getTablePrefix().$prefix.'.';
     	$n_days = Config::get('config.task_expiration_days');	
 
 		return $query->whereRaw("
-			CURDATE() <=
-			(CASE WHEN `task_date` IS NULL
-				THEN 
-					DATE_ADD(DATE_FORMAT(`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
-				ELSE 
-					`task_date`
-			END)");
-    }
-
-    // ------------------------------------------------------------------------
-    public function scopeExpired($query, $prefix='')
-    {	
-    	if($prefix !='')$prefix = DB::getTablePrefix().$prefix.'.';
-    	$n_days = Config::get('config.task_expiration_days');	
-    	return $query->whereRaw("
-    		CURDATE() >
+			(CURDATE() <=
 			(CASE WHEN {$prefix}`task_date` IS NULL
 				THEN 
 					DATE_ADD(DATE_FORMAT({$prefix}`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
 				ELSE 
 					{$prefix}`task_date`
-			END)");
+			END)
+			OR
+    		{$prefix}`does_not_expire` = 1)
+		");
+    }
+
+    // ------------------------------------------------------------------------
+    public function scopeExpired($query, $prefix='')
+    {	
+    	/*
+    	-- Task is expired --
+		SELECT * FROM `tasks` 
+		WHERE `tasks`.`deleted_at` IS NULL 
+		AND 
+			CURDATE() > 
+			(CASE WHEN `task_date` IS NULL 
+				THEN DATE_ADD(DATE_FORMAT(`created_at`, '%Y-%m-%d'), INTERVAL 10 DAY) 
+			ELSE `task_date` 
+		END)
+		AND
+		tasks.does_not_expire = 0
+		*/
+    	if($prefix !='')$prefix = DB::getTablePrefix().$prefix.'.';
+    	$n_days = Config::get('config.task_expiration_days');	
+    	return $query->whereRaw("
+    		(CURDATE() >
+			(CASE WHEN {$prefix}`task_date` IS NULL
+				THEN 
+					DATE_ADD(DATE_FORMAT({$prefix}`created_at`, '%Y-%m-%d'), INTERVAL $n_days DAY)
+				ELSE 
+					{$prefix}`task_date`
+			END)
+    		AND
+    		{$prefix}`does_not_expire` = 0)
+    	");
     }
 
     // ------------------------------------------------------------------------
@@ -146,15 +181,22 @@ class Task extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
+	public function doesNotExpire()
+	{
+		return $this->does_not_expire == 1;
+	}
+
+	// ------------------------------------------------------------------------
 	public function isExpired()
 	{
+		if($this->does_not_expire) return false;
 		return $this->getExpirationDate()->isPast();
 	}
 
 	// ------------------------------------------------------------------------
 	public function isDueSoon()
 	{
-		return $this->getExpirationInDays() <= Config::get('config.task_expiration_soon_days');
+		return $this->getExpirationInDays() <= Config::get('config.task_expiration_soon_days') && $this->does_not_expire == false;
 	}
 
 	// ------------------------------------------------------------------------

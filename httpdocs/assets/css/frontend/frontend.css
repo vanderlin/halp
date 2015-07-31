@@ -335,6 +335,9 @@
   color: #4fd2c2;
   font-style: normal;
 }
+#task-datepicker::-webkit-calendar-picker-indicator {
+  color: #404d5b;
+}
 #task-datepicker.active {
   background-color: #4FD2C2;
   color: #fff;
@@ -1022,6 +1025,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 =======
@@ -1054,6 +1058,10 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> "Due Soon" flag
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-2 {
   -webkit-animation-duration: 4s;
@@ -1126,6 +1134,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 =======
@@ -1148,10 +1157,15 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> "Due Soon" flag
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-4 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1178,6 +1192,10 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-5 {
   -webkit-animation-duration: 4s;
@@ -1264,6 +1282,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 =======
@@ -1290,10 +1309,15 @@ input.has-error {
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-8 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1332,10 +1356,15 @@ input.has-error {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-9 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1367,6 +1396,10 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-10 {
   -webkit-animation-duration: 4s;
@@ -1425,6 +1458,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 =======
@@ -1459,10 +1493,15 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-12 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1485,10 +1524,15 @@ input.has-error {
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-13 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1521,10 +1565,15 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> "Due Soon" flag
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-14 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1557,6 +1606,10 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> "Due Soon" flag
+=======
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-15 {
   -webkit-animation-duration: 4s;
@@ -1570,6 +1623,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 =======
@@ -1608,10 +1662,15 @@ input.has-error {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-16 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1644,6 +1703,10 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-17 {
   -webkit-animation-duration: 4s;
@@ -1657,6 +1720,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 =======
@@ -1695,6 +1759,10 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-18 {
   -webkit-animation-duration: 4s;
@@ -1707,6 +1775,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1741,10 +1810,15 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1772,10 +1846,15 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-20 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1803,10 +1882,15 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-21 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1844,6 +1928,10 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> "Due Soon" flag
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-22 {
   -webkit-animation-duration: 4s;
@@ -1879,8 +1967,8 @@ input.has-error {
 #star-23 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-24 {
   -webkit-animation-duration: 4s;
@@ -1894,6 +1982,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -1932,10 +2021,15 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1958,6 +2052,10 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> "Due Soon" flag
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #star-26 {
   -webkit-animation-duration: 4s;
@@ -1971,6 +2069,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 =======
@@ -2009,6 +2108,10 @@ input.has-error {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 >>>>>>> update for expiration dates and logic for "due soon"
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> time and date fuctions need to run: `art halp --reset=true`
 }
 #ripple1 {
   -webkit-animation-duration: 2s;

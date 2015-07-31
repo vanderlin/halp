@@ -234,6 +234,12 @@ class SetupSite extends Command {
 				$data['task_date'] = $faker->dateTimeBetween('-10 days', '-5 days'); 
 			}
 
+			if($faker->boolean(10))
+			{
+				$data['does_not_expire'] = true;
+				$data['task_date'] = NULL;
+			}
+
 			$task = $task_repo->store($data);
 			$this->info("$task->id Creating Task:$task->title");
 		}
