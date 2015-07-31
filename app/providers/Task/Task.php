@@ -184,6 +184,12 @@ class Task extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
+	public function hasSetDate()
+	{
+		return $this->task_date!=NULL;
+	}
+
+	// ------------------------------------------------------------------------
 	public function getDateAttribute()
 	{
 		return $this->task_date==NULL ? $this->created_at : new Carbon\Carbon($this->task_date);

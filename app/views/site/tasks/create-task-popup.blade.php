@@ -9,14 +9,8 @@
 		<input type="hidden" name="project" value="{{isset($data['project'])?$data['project']:''}}">
 		<input type="hidden" name="duration" value="{{isset($data['duration'])?$data['duration']:''}}">
 		<h2>I need it done by:</h2>	
-		<div class="date-wrapper">
-			<div class="selector">
-				<a href="#" id="date-none-button"><span>Whenever!</span></a>
-			</div>
-			<div class="form-field date-field">
-				<input type="text" id="datepicker" placeholder="Pick a Date" value="{{Input::old('task_date')}}">
-			</div>
-		</div>
+		@include('site.tasks.date-toggle')
+		
 		<div class="form-field">
 			<label for="details">Additional details (optional):</label>
 			<textarea name="details" placeholder="Skills needed? Special requests?">{{Input::old('details')}}</textarea>
