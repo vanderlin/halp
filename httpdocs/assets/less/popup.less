@@ -132,20 +132,31 @@
 }
 
 #datepicker{
-    border: 2px solid #4FD2C2;
+    border: 2px solid @mint;
     border-radius: 40px;
     width: 220px;
     height: 70px;
     background-color: #fff;
-    margin: 0px 0 50px 0;
-
-    
+    margin: 0px 0 50px 0; 
 }
+
+#edit-task-datepicker{
+    border: 2px solid @mint;
+    border-radius: 40px;
+    width: 220px;
+    height: 70px;
+    background-color: #fff;
+    margin: 0px 0 50px 0; 
+}
+
 .date-wrapper{
   height: 120px;
   [placeholder]::-webkit-input-placeholder {
       .sans-serif(14px, @mint);
       font-style: normal;
+  }
+  [placeholder]:hover::-webkit-input-placeholder {
+    
   }
 }
 
