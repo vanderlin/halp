@@ -18,6 +18,8 @@ $class = isset($class) ? $class : "";
 		<span class="date {{$task->isExpiredAndNotClaimed() ? 'expired':''}}">
 			@if($task->isExpiredAndNotClaimed()) 
 				This task expired {{$task->date->diffForHumans()}}
+			@elseif($task->doesNotExpire())
+				Due Whenever
 			@else
 				{{ $task->getExpirationDateForHumans()}}
 				{{--$task->isDueSoon() ? $task->getExpirationDate()->diffForHumans() : $task->date->format('F j, Y')--}}

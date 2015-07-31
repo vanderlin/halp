@@ -8,8 +8,8 @@ use Notification\Notification;
 Route::any('test-query', function() {
 
 
-
-	$leader = User::orderByClaimedTask();
+	
+	return Task::active()->UnClaimed()->toSql();
 		// with('claimedTasks')
 		// ->join('tasks', 'users.id', '=', 'tasks.claimed_id')
 		// select([

@@ -141,6 +141,16 @@
     transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
     .sans-serif(14px, @mint);
     font-style: normal;
+    
+
+}
+// #task-datepicker::-webkit-datetime-edit-text { color: red; padding: 0 0.3em; }
+// #task-datepicker::-webkit-datetime-edit-month-field { color: blue; }
+// #task-datepicker::-webkit-datetime-edit-day-field { color: green; }
+// #task-datepicker::-webkit-datetime-edit-year-field:focus { color: @purple; }
+
+#task-datepicker::-webkit-calendar-picker-indicator {
+  color: @purple;
 }
 #task-datepicker.active {
   background-color: #4FD2C2;

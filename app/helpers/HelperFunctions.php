@@ -27,6 +27,15 @@ function null_if_not_set($array, $key)
   return NULL;
 }
 
+function array_get_default($array, $key, $default)
+{
+  if(array_key_exists($key, $array) && $array[$key]!="")
+  {
+    return $array[$key];
+  }
+  return $default;
+}
+
 function pdf_asset($file) {
   return URL::to('assets/content/pdf/'.$file);
 }

@@ -219,14 +219,17 @@
 			                var $content = $(e.content[2]);
 
 			                var $datepicker = $("#task-datepicker");
-    						$datepicker.datepicker({
-    							showAnim:'slideDown',
-    							minDate:0,
-    							onSelect: function(dateText) {
-    								$('#date-none-button').parent().removeClass('active');
-    								$(this).addClass('active');
-    							}
-    						});
+			                if($datepicker.data('use-js-picker') == true) {
+	    						$datepicker.datepicker({
+	    							showAnim:'slideDown',
+	    							minDate:0,
+	    							onSelect: function(dateText) {
+	    								$('#date-none-button').parent().removeClass('active');
+	    								$(this).addClass('active');
+	    								$('input[name="does_not_expire"]').val(false);
+	    							}
+	    						});
+    						}
   					
 	  						self.$popup = $('.white-popup .popup-content');
 	  						self.$form = $('#create-task-form');
@@ -237,11 +240,18 @@
 	  						});
 
 	  						$('#date-none-button').click(function(e) {
-	  							e.preventDefault();
-	  							console.log("No Date set");
-	  							$datepicker.removeClass('active');
-	  							$(this).parent().addClass('active');
-	  						});
+			                	e.preventDefault();
+			                    var $expireInput = $('input[name="does_not_expire"]');
+			                    var val = !Utils.stringToBool($expireInput.val());
+			                    $expireInput.val(val);
+			                    if(val) {
+			                        $datepicker.removeClass('active');
+			                        $(this).parent().addClass('active');
+			                    }
+			                    else {
+			                        $(this).parent().removeClass('active');
+			                    }
+			                });
 			           	}
 			        });
 		    		console.log("--- Open Create Task Form ---");

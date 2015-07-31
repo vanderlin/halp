@@ -27,8 +27,8 @@ function getQueryParams(queryString) {
 var Utils = {
   stringToBool: function(string){
     switch(string.toLowerCase()){
-      case "true": case "yes": case "1": return true;
-      case "false": case "no": case "0": case null: return false;
+      case "true": case "yes": case "1": case 1: return true;
+      case "false": case "no": case "0": case null: case 0: return false;
       default: return Boolean(string);
     }
   },
@@ -247,15 +247,20 @@ var App = (function() {
                 
                 // $('#task-time').timeEntry({show24Hours: true});
                 var $datepicker = $("#task-datepicker");
-
-                // date picker
-                $datepicker.datepicker({
-                    showAnim:'slideDown',
-                    minDate:0,
-                })
-               
-                $datepicker.datepicker("setDate", new Date( $("#edit-task-datepicker").data('default-date') )); 
-                
+                if($datepicker.data('use-js-picker') == true) {
+                    // date picker
+                    $datepicker.datepicker({
+                        showAnim:'slideDown',
+                        minDate:0,
+                        onSelect: function(dateText) {
+                            $('#date-none-button').parent().removeClass('active');
+                            $('input[name="does_not_expire"]').val(false);
+                            $(this).addClass('active');
+                        }
+                    })
+                   
+                    $datepicker.datepicker("setDate", new Date( $("#edit-task-datepicker").data('default-date') )); 
+                }
                     
 
                 $("#edit-task-title").on('keydown, keyup', function(event) {
@@ -266,6 +271,19 @@ var App = (function() {
                     $('.edit-task-content h2 .task-title').html(v.trim());
                 });
                    
+                $('#date-none-button').click(function(e) {
+                    e.preventDefault();
+                    var $expireInput = $('input[name="does_not_expire"]');
+                    var val = !Utils.stringToBool($expireInput.val());
+                    $expireInput.val(val);
+                    if(val) {
+                        $datepicker.removeClass('active');
+                        $(this).parent().addClass('active');
+                    }
+                    else {
+                        $(this).parent().removeClass('active');
+                    }
+                });
                 
                 $('#edit-task-project').autocomplete({
                     source: projects,

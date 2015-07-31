@@ -46,7 +46,7 @@ class TasksRepository  {
 	public function allActiveAndClaimed()
 	{
 		Paginator::setPageName('tasks_page');
-		$tasks = Task::active()->unClaimed()->paginate(Config::get('config.active_task_per_page', 16));
+		$tasks = Task::unClaimed()->active()->paginate(Config::get('config.active_task_per_page', 16));
 
 		Paginator::setPageName('claimed_tasks_page');
 		$claimed_tasks = Task::claimed()->paginate(Config::get('config.unclaimed_task_per_page', 8));
@@ -71,7 +71,6 @@ class TasksRepository  {
 			$id = $id->id;
 		}
 		$task = Task::withTrashed()->whereId($id)->first();
-
 		
 		$ntd = new Carbon($input['task_date']);
 		if(Input::has('task_date') && $task->date->eq($ntd) == false) {
@@ -81,6 +80,14 @@ class TasksRepository  {
 		// title
 		if(Input::has('title') && $task->title != $input['title']) {
 			$task->title = $input['title'];	
+		}
+
+		// does_not_expire
+		if(Input::has('does_not_expire')) {
+			$task->does_not_expire = bool_val($input['does_not_expire']);
+			if($task->does_not_expire == true) {
+				$task->task_date = NULL;
+			}	
 		}
 
 		// projects
@@ -192,6 +199,7 @@ class TasksRepository  {
 
 		$project = Project::where('title', '=', $input['project'])->first();
 
+	
 		// if null we need to create the new project
 		if($project == NULL)
 		{
@@ -200,7 +208,15 @@ class TasksRepository  {
 		}
 	
 
-		
+		// does_not_expire
+		$does_not_expire = false;
+		if(Input::has('does_not_expire')) {
+			$does_not_expire = bool_val($input['does_not_expire']);
+		}
+		$task_date = NULL;
+		if (Input::has('task_date')) {
+			$task_date = Carbon::createFromFormat("m/d/Y", Input::get('task_date'))->startOfDay();
+		}
 
 		$data = [
 			'title'=>$input['title'], 
@@ -209,9 +225,9 @@ class TasksRepository  {
 			'project_id'=>$project->id, 
 			'creator_id'=>$creator_id,
 			'details'=>isset($input['details'])?$input['details']:NULL,
-			'task_date'=>null_if_not_set($input, 'task_date'),
+			'task_date'=>$does_not_expire ? NULL : $task_date,
+			'does_not_expire'=>$does_not_expire,
 			];
-
 		$task = new Task($data);
 		$task->save();
 		$view = NULL;
