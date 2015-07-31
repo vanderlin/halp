@@ -76,7 +76,6 @@ h5{
 h6{
 	.sans-serif(13px, @light-purple);
 	line-height: 37px;
-
 }
 .special-note{
 	line-height: 23px;
@@ -440,6 +439,32 @@ body .nomargin-bottom {
   	z-index: 3;
 }
 
+.weekly-awards{
+	margin: 0 auto;
+	overflow:hidden;
+	width: 930px;
+	padding: 70px 0;
+	hr{
+		margin: 11px auto 20px auto;
+		width: 30px;
+	}
+}
+
+.award{
+	float: left;
+	width: 33%;
+	text-align: center;
+	.headshot{
+		border-radius: 50%;
+		border: 10px solid @mint;
+		margin-bottom: 36px;
+	}
+}
+.award-image{
+	margin-left: -34px;
+    vertical-align: top;
+
+}
 
 
 
@@ -491,6 +516,8 @@ body .nomargin-bottom {
 		width: 100%;
 	}	
 }
+
+
 
 /* ------------------------------------- PROGRESS BAR ------------------------------------ */
 
@@ -595,6 +622,18 @@ body .nomargin-bottom {
 	}
 	.meter{
 		width: 350px;
+	}
+
+}
+
+@media screen and (max-width:940px){
+	.award{
+		float: none;
+		width: 100%;
+    	padding-bottom: 50px;
+	}
+	.weekly-awards{
+		width: 100%;
 	}
 }
 
@@ -707,8 +746,6 @@ body .nomargin-bottom {
 	.date-field{
 		float: none;
 		display: block;
-		.sans-serif(14px, @mint);
-		text-style: normal;
 	}
 	.date-wrapper{
 		height: 210px;
