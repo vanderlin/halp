@@ -14,7 +14,7 @@
 				<a href="#" id="date-none-button"><span>Whenever!</span></a>
 			</div>
 			<div class="form-field date-field">
-				<input type="text" id="datepicker" class="active" placeholder="Pick a Date" value="{{Input::old('task_date')}}">
+				<input type="text" id="datepicker" placeholder="Pick a Date" value="{{Input::old('task_date')}}">
 			</div>
 		</div>
 		<div class="form-field">

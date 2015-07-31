@@ -237,6 +237,7 @@
 	  						$('#date-none-button').click(function(e) {
 	  							e.preventDefault();
 	  							console.log("No Date set");
+	  							$( "#datepicker" ).removeClass('active');
 	  							$(this).parent().addClass('active');
 	  						});
 			           	}

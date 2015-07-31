@@ -140,15 +140,9 @@
     margin: 0px 0 50px 0;
     transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
 }
-#datepicker[placeholder]:hover::-webkit-input-placeholder {
-    opacity: 1;
-    transition: opacity 0.5s 0.5s ease;
-    color: white;
-}
-#datepicker[placeholder]:focus::-webkit-input-placeholder {
-    opacity: 1;
-    transition: opacity 0.5s 0.5s ease;
-    color: white;
+#datepicker.active {
+  background-color: #4FD2C2;
+  color: #fff;
 }
 #datepicker:hover{
   background-color: #4FD2C2;
@@ -172,7 +166,10 @@
       font-style: normal;
   }
   [placeholder]:hover::-webkit-input-placeholder {
-    
+    color: white;
+  }
+  [placeholder].active::-webkit-input-placeholder {
+    color: white;
   }
 }
 
