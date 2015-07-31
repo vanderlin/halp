@@ -84,7 +84,25 @@
 }
 
 .ui-datepicker{
-	width: 480px;
+	width: 400px;
+    border-radius: 20px;
+    border: 14px solid @dark-purple;
+    margin-left: -90px;
+    margin-top: 8px;
+}
+.ui-datepicker:after{
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    margin: 14px auto;
+    width: 0;
+    height: 0;
+    border-bottom: solid 6px @dark-purple;
+    border-left: solid 6px transparent;
+    border-right: solid 6px transparent;
+    display: block;
 }
 
 .ui-datepicker-current-day {

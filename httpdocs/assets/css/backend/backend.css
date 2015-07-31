@@ -8,7 +8,6 @@
   min-width: 250px;
   margin: 15px 0 10px 0;
 }
-/* Button style */
 .progress-button button {
   display: block;
   margin: 0 auto;
@@ -28,6 +27,14 @@
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
   cursor: pointer;
 }
+.progress-button button:hover {
+  background-color: #4FD2C2;
+  color: #fff;
+}
+.progress-button button:focus {
+  outline: none;
+}
+/* ---------------------------- SMALL BUTTON ---------------------------- */
 .small.progress-button {
   min-width: none;
   width: initial;
@@ -44,11 +51,39 @@
   color: #4fd2c2;
   letter-spacing: 1px;
 }
-.progress-button button:hover {
+/* ---------------------------- SELECTOR  ---------------------------- */
+.selector {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 0px 0 50px 0;
+  float: left;
+}
+.selector a {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 220px;
+  height: 70px;
+  line-height: 65px;
+  border: 2px solid #4FD2C2;
+  border-radius: 40px;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #4fd2c2;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+.selector a:hover {
   background-color: #4FD2C2;
   color: #fff;
 }
-.progress-button button:focus {
+.selector a:focus {
   outline: none;
 }
 /* Text (transition for when returning to initial state) */
