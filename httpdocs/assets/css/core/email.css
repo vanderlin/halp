@@ -166,6 +166,10 @@
 .text-right {
   text-align: right;
 }
+.img-circle {
+  border-radius: 50%;
+  overflow: hidden;
+}
 body {
   margin: 0;
   padding: 0;
@@ -173,7 +177,7 @@ body {
 table {
   background-color: #F0EFEE;
   width: 100%;
-  padding: 50px;
+  padding: 5px;
 }
 .container {
   text-align: center;
@@ -191,9 +195,13 @@ table {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.halp-friend-image {
+  max-width: 70px;
+  padding: 20px;
+}
 .email-content {
   width: 60%;
-  padding: 100px;
+  padding: 30px;
   background-color: #fff;
   margin: 40px auto;
   border-radius: 10px;
@@ -306,7 +314,6 @@ table.news-letter {
 }
 @media screen and (max-width: 460px) {
   .email-content {
-    padding: 30px 30px 10px 30px;
     margin: 20px auto;
   }
   h1 {
