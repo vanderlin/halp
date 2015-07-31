@@ -3,6 +3,9 @@ $show_button = isset($show_button) ? $show_button : true;
 $class = isset($class) ? $class : "";
 ?>
 <div class="task {{$task->isClaimed?'claimed':''}} task-card-{{$task->id}} {{$class}}">
+	
+	<div class="ribbon-wrapper"><div class="ribbon">Due Soon</div></div>
+
 	<div class="task-details">
 	
 		<span class="task-name" data-value="{{$task->title}}">{{$task->title}}</span>
