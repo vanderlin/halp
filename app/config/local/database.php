@@ -30,7 +30,7 @@ return array(
 			'password'  => 'root',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-			'prefix'    => 'app_halp_',
+			'prefix'    => '',
 		),
 
 

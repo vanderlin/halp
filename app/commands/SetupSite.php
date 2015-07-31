@@ -75,8 +75,10 @@ class SetupSite extends Command {
 			{
 
 				// first delete all assets
-				foreach (Asset::all() as $asset) {
-					$asset->delete();
+				if(Schema::hasTable('assets')) {
+					foreach (Asset::all() as $asset) {
+						$asset->delete();
+					}
 				}
 				
 				$name = $this->call('migrate');

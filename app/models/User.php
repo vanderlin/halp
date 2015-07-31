@@ -36,10 +36,22 @@ class User extends BaseModel implements ConfideUserInterface {
         return $m;
     }
 
+    // ------------------------------------------------------------------------
+    public function scopeOrderByClaimedTask($query)
+    {
+        return $query->select(array("users.*", DB::raw("COUNT(tasks.id) as total_claimed_tasks")))
+                     ->leftJoin('tasks', 'tasks.claimed_id', '=', 'users.id')
+                     ->groupBy("users.id")
+                     ->orderBy("total_claimed_tasks", 'DESC')
+                     ->orderBy("tasks.claimed_at", 'DESC');
+    }
+
+    // ------------------------------------------------------------------------
     public function scopeAdmin($query) {   
        return $query->whereHas('roles', function($q) { $q->where('roles.name', '=', 'Admin'); });
     }
 
+    // ------------------------------------------------------------------------
     public function userable() {
       return $this->morphTo();
     }

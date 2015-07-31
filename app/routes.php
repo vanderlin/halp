@@ -7,6 +7,31 @@ use Notification\Notification;
 
 Route::any('test-query', function() {
 
+	/*
+	SELECT COUNT(tasks.id) as claimed_tasks, users.id, users.username, tasks.id as task_id FROM users 
+	left join tasks
+	on tasks.claimed_id = users.id
+	GROUP BY users.id
+	ORDER BY claimed_tasks DESC, tasks.claimed_at DESC"
+	*/;
+
+
+	$leader = User::orderByClaimedTask();
+		// with('claimedTasks')
+		// ->join('tasks', 'users.id', '=', 'tasks.claimed_id')
+		// select([
+		// 	'users.*',
+		// 	DB::raw($sql)
+		// ]);
+
+	// ->sortByDesc(function($item) {
+ //        return $item->claimedTasks->count();
+ //    })->each(function($item) {
+ //        return $item->totalClaimedTasks = $item->claimedTasks->count();
+ //    })->values()->first();
+
+    // return $leader->toSql();
+    return $leader->first();
 	$q = Task::query();
 	$q->notExpired()->withIsExpired();
 	

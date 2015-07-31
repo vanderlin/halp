@@ -55,7 +55,7 @@ class UsersController extends BaseController
         })->values();
        
 
-        return View::make('site.user.index', ['users'=>$users, 'leader'=>$leader]);
+        return View::make('site.user.index', ['users'=>$users, 'leader'=>User::orderByClaimedTask()->first()]);
     }
 
     // ------------------------------------------------------------------------
