@@ -318,6 +318,13 @@
   background-color: #fff;
   margin: 0px 0 50px 0;
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #4fd2c2;
+  font-style: normal;
 }
 #task-datepicker.active {
   background-color: #4FD2C2;
@@ -968,14 +975,14 @@ input.has-error {
 #star-1 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
 }
 #star-2 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 #star-3 {
   -webkit-animation-duration: 4s;
@@ -986,8 +993,8 @@ input.has-error {
 #star-4 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-5 {
   -webkit-animation-duration: 4s;
@@ -998,104 +1005,104 @@ input.has-error {
 #star-6 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
-}
-#star-7 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-#star-8 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-#star-9 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 }
-#star-10 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
-}
-#star-11 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
-}
-#star-12 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
-}
-#star-13 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
-}
-#star-14 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
-}
-#star-15 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
-}
-#star-16 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
-#star-17 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-#star-18 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-#star-19 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-#star-20 {
+#star-7 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 }
-#star-21 {
+#star-8 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
-#star-22 {
+#star-9 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+#star-10 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
+}
+#star-11 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+#star-12 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+#star-13 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+#star-14 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+#star-15 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+#star-16 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+#star-17 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+#star-18 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+#star-19 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+#star-20 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+#star-21 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+#star-22 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-23 {
   -webkit-animation-duration: 4s;
@@ -1106,20 +1113,20 @@ input.has-error {
 #star-24 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 #star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
 }
 #star-26 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
@@ -1982,6 +1989,13 @@ body .nomargin-bottom {
   .date-field {
     float: none;
     display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #4fd2c2;
+    text-style: normal;
   }
   .date-wrapper {
     height: 210px;
