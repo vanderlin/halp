@@ -59,8 +59,7 @@
   margin: 0px 0 50px 0;
   float: left;
 }
-.selector a,
-.selector input {
+.selector a {
   display: block;
   margin: 0 auto;
   padding: 0;
@@ -320,15 +319,9 @@
   margin: 0px 0 50px 0;
   transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
 }
-#datepicker[placeholder]:hover::-webkit-input-placeholder {
-  opacity: 1;
-  transition: opacity 0.5s 0.5s ease;
-  color: white;
-}
-#datepicker[placeholder]:focus::-webkit-input-placeholder {
-  opacity: 1;
-  transition: opacity 0.5s 0.5s ease;
-  color: white;
+#datepicker.active {
+  background-color: #4FD2C2;
+  color: #fff;
 }
 #datepicker:hover {
   background-color: #4FD2C2;
@@ -345,6 +338,12 @@
   letter-spacing: 1px;
   color: #4fd2c2;
   font-style: normal;
+}
+.date-wrapper [placeholder]:hover::-webkit-input-placeholder {
+  color: white;
+}
+.date-wrapper [placeholder].active::-webkit-input-placeholder {
+  color: white;
 }
 .edit-task-content {
   transition: height 0.8s ease 1s;
@@ -950,20 +949,35 @@ input.has-error {
 #star-1 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> hover/toggles for create-task
 }
 #star-2 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> hover/toggles for create-task
 }
 #star-3 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> hover/toggles for create-task
 }
 #star-4 {
   -webkit-animation-duration: 4s;
@@ -974,14 +988,19 @@ input.has-error {
 #star-5 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-6 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> hover/toggles for create-task
 }
 #star-7 {
   -webkit-animation-duration: 4s;
@@ -992,62 +1011,102 @@ input.has-error {
 #star-8 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> hover/toggles for create-task
+}
+#star-9 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+<<<<<<< HEAD
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> hover/toggles for create-task
+}
+#star-10 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+<<<<<<< HEAD
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> hover/toggles for create-task
+}
+#star-11 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+<<<<<<< HEAD
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> hover/toggles for create-task
+}
+#star-12 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
-#star-9 {
+#star-13 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+<<<<<<< HEAD
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> hover/toggles for create-task
+}
+#star-14 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+<<<<<<< HEAD
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> hover/toggles for create-task
+}
+#star-15 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+<<<<<<< HEAD
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+=======
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> hover/toggles for create-task
+}
+#star-16 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 }
-#star-10 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
-#star-11 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
-}
-#star-12 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
-}
-#star-13 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
-#star-14 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-#star-15 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
-}
-#star-16 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
-}
 #star-17 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> hover/toggles for create-task
 }
 #star-18 {
   -webkit-animation-duration: 4s;
@@ -1058,8 +1117,8 @@ input.has-error {
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-20 {
   -webkit-animation-duration: 4s;
@@ -1070,14 +1129,19 @@ input.has-error {
 #star-21 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> hover/toggles for create-task
 }
 #star-22 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-23 {
   -webkit-animation-duration: 4s;
@@ -1088,8 +1152,13 @@ input.has-error {
 #star-24 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> hover/toggles for create-task
 }
 #star-25 {
   -webkit-animation-duration: 4s;
@@ -1100,8 +1169,13 @@ input.has-error {
 #star-26 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+>>>>>>> hover/toggles for create-task
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
