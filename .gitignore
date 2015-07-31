@@ -36,5 +36,5 @@ sub.php
 app/config/production/database.php
 app/config/local/mail.php
 app/config/production/mail.php
-
+sql/*
 

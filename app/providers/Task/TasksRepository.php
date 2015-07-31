@@ -229,6 +229,9 @@ class TasksRepository  {
 			'does_not_expire'=>$does_not_expire,
 			];
 		$task = new Task($data);
+		if(isset($input['created_at'])) {
+			$task->created_at = $task->updated_at = $input['created_at'];
+		}
 		$task->save();
 		$view = NULL;
 
