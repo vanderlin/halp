@@ -58,6 +58,43 @@ class User extends BaseModel implements ConfideUserInterface {
     }
 
     // ------------------------------------------------------------------------
+    public function scopeMostHelpfulForWeek($query, $week_of=null)
+    {
+
+        if($week_of == null) $week_of = Carbon\Carbon::now();
+        $date_str = $week_of->toDateString();
+
+        /*
+        -- Most helpful this week --
+        SELECT 
+            users.*, 
+            YEARWEEK(tasks.`created_at`) AS task_date, 
+            YEARWEEK(CURDATE()) AS cur_date,
+            DATE_FORMAT(tasks.`created_at`, '%W') AS task_date_name,
+            COUNT(tasks.`id`) AS total_claimed_this_week
+            
+        FROM `users` 
+        LEFT JOIN tasks
+        ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL AND YEARWEEK(tasks.`created_at`) = YEARWEEK(CURDATE())
+        GROUP BY users.`id`
+        ORDER BY total_claimed_this_week DESC, tasks.claimed_at DESC
+        */
+
+        return $query->select(array(
+                        "users.*", 
+                        DB::raw("COUNT(tasks.id) as total_claimed_this_week")))
+                        ->leftJoin('tasks', function($join) use($date_str) {
+                            $join->on('tasks.claimed_id', '=', 'users.id')
+                                 ->on(DB::raw("YEARWEEK(tasks.`created_at`) = YEARWEEK('{$date_str}')"), DB::raw(''), DB::raw(''))
+                                 ->whereNull('tasks.deleted_at');
+                        })
+                     ->groupBy('users.id')
+                     ->orderBy('total_claimed_this_week', 'DESC')
+                     ->orderBy('tasks.claimed_at', 'DESC');
+                     
+
+    }
+    // ------------------------------------------------------------------------
     public function scopeAdmin($query) {   
        return $query->whereHas('roles', function($q) { $q->where('roles.name', '=', 'Admin'); });
     }

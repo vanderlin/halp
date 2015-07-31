@@ -14,7 +14,7 @@ class Task extends BaseModel {
 	
 	use SoftDeletingTrait;
 
-	protected $fillable  = ['title', 'project_id', 'creator_id', 'claimed_id', 'duration', 'details', 'task_date', 'does_not_expire'];
+	protected $fillable  = ['title', 'project_id', 'creator_id', 'claimed_id', 'duration', 'details', 'task_date', 'does_not_expire', 'created_at'];
 	protected $dates     = ['deleted_at'];
 	public static $rules = ['title'=>'required', 'duration'=>'required', 'project'=>'required'];
 	

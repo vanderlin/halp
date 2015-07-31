@@ -209,30 +209,35 @@ class SetupSite extends Command {
 		
 		for ($i=0; $i < $n; $i++) { 
 			
+			$created_at = $faker->dateTimeBetween('-3 days', '3 days');
+			if($faker->boolean(80)) {
+				$created_at = $faker->dateTimeBetween('-3 months', '3 months');
+			}
+			
 			$data = ['title'=>array_random_item($task_titles),
 					 'project'=>Project::getRandom()->title,
 					 'creator_id'=>User::getRandomID(),
-					 'duration'=>array_random_item($durs)];
+					 'duration'=>array_random_item($durs),
+					 'created_at'=>$created_at
+					 ];
+
 			// dd($data);
 			if($faker->boolean(80))
 			{
 				$data['details'] = implode("\n", $faker->sentences(4));
 			}
 
-			if($faker->boolean(15))
-			{
-				$data['task_date'] = $faker->dateTimeBetween('now', '2 days'); 
-			}
+			
 
-			if($faker->boolean(10))
-			{
-				$data['task_date'] = $faker->dateTimeBetween('now', '15 days'); 
-			}
+			// if($faker->boolean(10))
+			// {
+			// 	$data['task_date'] = $faker->dateTimeBetween('now', '15 days'); 
+			// }
 
-			if($faker->boolean(10))
-			{
-				$data['task_date'] = $faker->dateTimeBetween('-10 days', '-5 days'); 
-			}
+			// if($faker->boolean($n/3))
+			// {
+			// 	$data['task_date'] = $faker->dateTimeBetween('-3 months', '3 months'); 
+			// }
 
 			if($faker->boolean(10))
 			{
@@ -241,6 +246,16 @@ class SetupSite extends Command {
 			}
 
 			$task = $task_repo->store($data);
+			// if($faker->boolean(15))
+			// {
+			// 	$data['task_date'] = $faker->dateTimeBetween('now', '2 days'); 
+			// }
+			// else {
+			// 	$task->created_at = $faker->dateTimeBetween('-3 months', '3 months');
+			// }
+			
+			// $task->save();
+
 			$this->info("$task->id Creating Task:$task->title");
 		}
 
@@ -249,7 +264,7 @@ class SetupSite extends Command {
 		// now claime some randomly
 		foreach (Task::orderByRaw("RAND()")->take(Task::count()/2)->get() as $task) {
 			$task->claimed_id = User::getRandomID([$task->creator_id]);
-			$task->claimed_at = $task->created_at->subDays($faker->randomDigit);
+			$task->claimed_at = $task->date->subDays($faker->randomDigit);
 			$task->save();
 			$this->info("$task->title Claimed at: ".$task->claimed_at->diffForHumans($task->created_at) );
 			Notification::fire($task, Notification::NOTIFICATION_TASK_CLAIMED); 

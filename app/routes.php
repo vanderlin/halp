@@ -8,8 +8,8 @@ use Notification\Notification;
 Route::any('test-query', function() {
 
 
-	
-	return Task::active()->UnClaimed()->toSql();
+	// return User::mostHelpful()->toSql();
+	return User::mostHelpfulForWeek(Carbon::create(2015, 06, 10))->get();
 		// with('claimedTasks')
 		// ->join('tasks', 'users.id', '=', 'tasks.claimed_id')
 		// select([
