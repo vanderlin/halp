@@ -39,8 +39,19 @@ class User extends BaseModel implements ConfideUserInterface {
     // ------------------------------------------------------------------------
     public function scopeOrderByClaimedTask($query)
     {
-        return $query->select(array("users.*", DB::raw("COUNT(tasks.id) as total_claimed_tasks")))
-                     ->leftJoin('tasks', 'tasks.claimed_id', '=', 'users.id')
+        /*
+        SELECT COUNT(tasks.id) as claimed_tasks, users.id, users.username, tasks.id as task_id FROM users 
+        LEFT JOIN tasks
+        ON tasks.claimed_id = users.id AND tasks.deleted_at IS NULL
+        GROUP BY users.id
+        ORDER BY claimed_tasks DESC, tasks.claimed_at DESC
+        */;
+
+        return $query->select(array("users.*", 
+                    DB::raw("COUNT(tasks.id) as total_claimed_tasks")))
+                     ->leftJoin('tasks', function($join) {
+                        $join->on('tasks.claimed_id', '=', 'users.id')->whereNull('tasks.deleted_at');
+                     })
                      ->groupBy("users.id")
                      ->orderBy("total_claimed_tasks", 'DESC')
                      ->orderBy("tasks.claimed_at", 'DESC');

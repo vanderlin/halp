@@ -244,6 +244,8 @@ class SetupSite extends Command {
 			Notification::fire($task, Notification::NOTIFICATION_TASK_CLAIMED); 
 		}
 
+		
+
 
 	}
 
