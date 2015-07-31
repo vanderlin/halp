@@ -36,6 +36,11 @@
 			$form.find('.input').addClass('input--filled');
 
 			$('#init-create-task').validateTask();
+			var validation = $form.validateTask();
+			if(validation.valid)
+			{
+				$form.openCreateTaskPopup({data:validation.data});
+			}
 		}
 		@endif
 

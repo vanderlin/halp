@@ -131,22 +131,35 @@
 
 }
 
-#datepicker{
+#task-datepicker {
     border: 2px solid @mint;
     border-radius: 40px;
     width: 220px;
     height: 70px;
     background-color: #fff;
-    margin: 0px 0 50px 0; 
-}
+    margin: 0px 0 50px 0;
+    transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+    .sans-serif(14px, @mint);
+    font-style: normal;
+    
 
-#edit-task-datepicker{
-    border: 2px solid @mint;
-    border-radius: 40px;
-    width: 220px;
-    height: 70px;
-    background-color: #fff;
-    margin: 0px 0 50px 0; 
+}
+// #task-datepicker::-webkit-datetime-edit-text { color: red; padding: 0 0.3em; }
+// #task-datepicker::-webkit-datetime-edit-month-field { color: blue; }
+// #task-datepicker::-webkit-datetime-edit-day-field { color: green; }
+// #task-datepicker::-webkit-datetime-edit-year-field:focus { color: @purple; }
+
+#task-datepicker::-webkit-calendar-picker-indicator {
+  color: @purple;
+}
+#task-datepicker.active {
+  background-color: #4FD2C2;
+  color: #fff;
+}
+#task-datepicker:hover{
+  background-color: #4FD2C2;
+  color: #fff;
+  margin: 0px 0 50px 0; 
 }
 
 .date-wrapper{
@@ -156,7 +169,24 @@
       font-style: normal;
   }
   [placeholder]:hover::-webkit-input-placeholder {
-    
+    color: white;
+  }
+  [placeholder].active::-webkit-input-placeholder {
+    color: white;
+  }
+}
+
+.date-wrapper-edit{
+  height: 90px;
+  [placeholder]::-webkit-input-placeholder {
+      .sans-serif(14px, @mint);
+      font-style: normal;
+  }
+  [placeholder]:hover::-webkit-input-placeholder {
+    color: white;
+  }
+  [placeholder].active::-webkit-input-placeholder {
+    color: white;
   }
 }
 
@@ -169,7 +199,6 @@
   transition: height 0.8s ease 1s;
   width: 100%;
 }
-
 
 
 
