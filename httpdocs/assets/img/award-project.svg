@@ -17,38 +17,6 @@
                     <use xlink:href="#path-1"></use>
                 </mask>
                 <use id="Mask" fill="#586A7E" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
-                <g id="Group" mask="url(#mask-2)">
-                    <g transform="translate(4.000000, 37.000000)">
-                        <mask id="mask-4" sketch:name="Mask" fill="white">
-                            <use xlink:href="#path-3"></use>
-                        </mask>
-                        <use id="Mask" stroke="none" fill="#52D2C3" fill-rule="evenodd" sketch:type="MSShapeGroup" xlink:href="#path-3"></use>
-                        <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSLayerGroup" mask="url(#mask-4)">
-                            <g transform="translate(-5.000000, -3.000000)" fill="#FFFFFF" sketch:type="MSShapeGroup">
-                                <rect id="Rectangle-41" x="19.1111111" y="14.5" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy" x="9.55555556" y="14.5" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-3" x="38.2222222" y="14.5" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-2" x="28.6666667" y="14.5" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-7" x="14.3333333" y="19.3333333" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-4" x="4.77777778" y="19.3333333" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-24" x="38.2222222" y="24.1666667" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-5" x="33.4444444" y="19.3333333" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-6" x="23.8888889" y="19.3333333" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-11" x="9.55555556" y="24.1666667" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-8" x="0" y="24.1666667" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-9" x="28.6666667" y="24.1666667" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-10" x="19.1111111" y="24.1666667" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-15" x="23.8888889" y="9.66666667" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-12" x="14.3333333" y="9.66666667" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-14" x="33.4444444" y="9.66666667" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-19" x="28.6666667" y="4.83333333" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-16" x="19.1111111" y="4.83333333" width="4.77777778" height="4.83333333"></rect>
-                                <rect id="Rectangle-41-Copy-20" x="23.8888889" y="0" width="4.77777778" height="4.83333333"></rect>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-                <rect id="Rectangle-40" fill="#1B1A25" sketch:type="MSShapeGroup" mask="url(#mask-2)" x="38.4787724" y="31.1304092" width="4.84691547" height="56.5867115" rx="9"></rect>
                 <g id="bunny-copy" mask="url(#mask-2)" sketch:type="MSShapeGroup">
                     <g transform="translate(97.355830, 71.064752) scale(-1, 1) rotate(-32.000000) translate(-97.355830, -71.064752) translate(45.355830, 20.064752)">
                         <path d="M57.2169708,70.7996812 C59.4499214,76.119454 59.2016269,82.6828966 65.3494689,87.2257925 C71.4973109,91.7686884 71.5704388,93.3991295 76.5261267,93.3991295 C81.4818145,93.3991295 84.2844822,89.9165205 80.4053044,87.4675246 C76.5261267,85.0185286 69.0449764,80.004255 69.0449764,75.4246825 C69.0449764,70.84511 54.9840201,65.4799085 57.2169708,70.7996812 Z" id="Path-23-Copy" fill="#389086" transform="translate(69.601156, 80.992947) rotate(58.000000) translate(-69.601156, -80.992947) "></path>
@@ -62,6 +30,36 @@
                     </g>
                 </g>
             </g>
+            <g id="Group" transform="translate(14.000000, 47.310177)">
+                <mask id="mask-4" sketch:name="Mask" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <use id="Mask" fill="#52D2C3" sketch:type="MSShapeGroup" xlink:href="#path-3"></use>
+                <g mask="url(#mask-4)" fill="#FFFFFF" sketch:type="MSShapeGroup">
+                    <g transform="translate(-5.000000, -3.000000)">
+                        <rect id="Rectangle-41" x="19.1111111" y="14.5" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy" x="9.55555556" y="14.5" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-3" x="38.2222222" y="14.5" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-2" x="28.6666667" y="14.5" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-7" x="14.3333333" y="19.3333333" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-4" x="4.77777778" y="19.3333333" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-24" x="38.2222222" y="24.1666667" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-5" x="33.4444444" y="19.3333333" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-6" x="23.8888889" y="19.3333333" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-11" x="9.55555556" y="24.1666667" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-8" x="0" y="24.1666667" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-9" x="28.6666667" y="24.1666667" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-10" x="19.1111111" y="24.1666667" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-15" x="23.8888889" y="9.66666667" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-12" x="14.3333333" y="9.66666667" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-14" x="33.4444444" y="9.66666667" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-19" x="28.6666667" y="4.83333333" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-16" x="19.1111111" y="4.83333333" width="4.77777778" height="4.83333333"></rect>
+                        <rect id="Rectangle-41-Copy-20" x="23.8888889" y="0" width="4.77777778" height="4.83333333"></rect>
+                    </g>
+                </g>
+            </g>
+            <path d="M41.1964993,45.2578125 L59.8547025,91.0097656" id="Path-97" stroke="#404D5B" stroke-width="4" stroke-linecap="round" sketch:type="MSShapeGroup"></path>
         </g>
     </g>
 </svg>
