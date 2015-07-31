@@ -219,12 +219,17 @@ class SetupSite extends Command {
 				$data['details'] = implode("\n", $faker->sentences(4));
 			}
 
-			if($faker->boolean(20))
+			if($faker->boolean(15))
+			{
+				$data['task_date'] = $faker->dateTimeBetween('now', '2 days'); 
+			}
+
+			if($faker->boolean(10))
 			{
 				$data['task_date'] = $faker->dateTimeBetween('now', '15 days'); 
 			}
 
-			if($faker->boolean(30))
+			if($faker->boolean(10))
 			{
 				$data['task_date'] = $faker->dateTimeBetween('-10 days', '-5 days'); 
 			}

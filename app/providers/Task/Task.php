@@ -29,7 +29,13 @@ class Task extends BaseModel {
     // ------------------------------------------------------------------------
     public function scopeClaimed($query)
     {
-    	return $query->whereNotNull('claimed_id')->orderBy('task_date', 'DESC');
+    	return $query->whereNotNull('claimed_id')->orderBy('created_at', 'DESC');
+    }
+
+    // ------------------------------------------------------------------------
+    public function scopeUnClaimed($query)
+    {
+    	return $query->whereNull('claimed_id')->orderBy('created_at', 'DESC');
     }
 
     // ------------------------------------------------------------------------
@@ -100,12 +106,6 @@ class Task extends BaseModel {
                      ->orderBy('claimed_count', 'DESC');
     }
 
-    // ------------------------------------------------------------------------
-    public function scopeUnClaimed($query)
-    {
-    	return $query->whereNull('claimed_id')->orderBy('task_date', 'DESC');
-    }
-
 	// ------------------------------------------------------------------------
 	public function save(array $options = array()) 
 	{
@@ -129,13 +129,40 @@ class Task extends BaseModel {
 	{
 		return Auth::check() && Auth::id() == $this->creator_id;
 	}
-	
+
 	// ------------------------------------------------------------------------
 	public function getExpirationDate()
 	{
 		// create($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $tz = null)
-		$date = Carbon\Carbon::create($this->created_at->year, $this->created_at->month, $this->created_at->day, 0, 0, 0, null);
+		$date = $this->created_at->startOfDay();
 		return $this->task_date == NULL ? $date->addDays(Config::get('config.task_expiration_days')) : new Carbon\Carbon($this->task_date);;
+	}
+
+	// ------------------------------------------------------------------------
+	public function getExpirationDateForHumans()
+	{
+		$d = $this->getExpirationDate();
+		return $d->isToday() ? "Due Today!" : $d->diffForHumans();
+	}
+
+	// ------------------------------------------------------------------------
+	public function isExpired()
+	{
+		return $this->getExpirationDate()->isPast();
+	}
+
+	// ------------------------------------------------------------------------
+	public function isDueSoon()
+	{
+		return $this->getExpirationInDays() <= Config::get('config.task_expiration_soon_days');
+	}
+
+	// ------------------------------------------------------------------------
+	public function getExpirationInDays()
+	{
+		$expiration_date = $this->getExpirationDate();
+		$today = Carbon\Carbon::now()->startOfDay();
+		return $expiration_date->diffInDays($today);
 	}
 
 	// ------------------------------------------------------------------------

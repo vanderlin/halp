@@ -4,8 +4,11 @@ $class = isset($class) ? $class : "";
 ?>
 <div class="task {{$task->isClaimed?'claimed':''}} task-card-{{$task->id}} {{$class}}">
 	
-	<div class="ribbon-wrapper"><div class="ribbon">Due Soon</div></div>
-
+	@if ($task->isDueSoon())
+		<div class="ribbon-wrapper"><div class="ribbon">Due Soon</div></div>
+	@endif
+	
+	
 	<div class="task-details">
 	
 		<span class="task-name" data-value="{{$task->title}}">{{$task->title}}</span>
@@ -16,7 +19,8 @@ $class = isset($class) ? $class : "";
 			@if($task->isExpiredAndNotClaimed()) 
 				This task expired {{$task->date->diffForHumans()}}
 			@else
-				{{$task->date->format('F j, Y')}}
+				{{ $task->getExpirationDateForHumans()}}
+				{{--$task->isDueSoon() ? $task->getExpirationDate()->diffForHumans() : $task->date->format('F j, Y')--}}
 			@endif
 		</span>
 	
