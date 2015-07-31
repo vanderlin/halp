@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="230" src="http://halp.ideo.com/assets/img/friends/turtle.png">
+  <img src="http://halp.ideo.com/assets/img/friends/turtle.png">
 </p>
 
 ## Tools you will need		
