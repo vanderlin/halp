@@ -8,7 +8,7 @@ use Mail;
 use View;
 use Event;
 use Auth;
-
+use Config;
 class Notification extends BaseModel {
 	
 	protected $fillable  = ['object_type', 'object_id', 'event'];
@@ -198,6 +198,28 @@ class Notification extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
+	public function getReplyToAddress()
+	{
+		switch ($this->event) {
+			case Notification::NOTIFICATION_NEW_TASK:
+				return $this->task->creator->email;
+				break;
+			case Notification::NOTIFICATION_TASK_CLAIMED:
+				return $this->task->claimer->email;
+				break;
+			case Notification::NOTIFICATION_TASK_DELETED:
+				return $this->task->creator->email;
+				break;
+			case Notification::NOTIFICATION_HALP_WELCOME:
+				return Config::get('mail.username');
+				break;
+			default:
+				return Config::get('mail.username');
+				break;
+		}
+	}
+
+	// ------------------------------------------------------------------------
 	public function send($debug=false)
 	{	
 
@@ -251,9 +273,11 @@ class Notification extends BaseModel {
 		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
 		$premailer = new \ScottRobertson\Premailer\Request();
 		$response = $premailer->convert($view);
-
-		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($subject, $group) {			
+		$replyTo = $this->getReplyToAddress();
+	
+		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($subject, $group, $replyTo) {			
 			$message->bcc($group, 'Halp')->subject($subject?$subject:$this->getSubject());
+			$message->replyTo($replyTo);
 		});
 		return true;
 	}
