@@ -1009,80 +1009,80 @@ input.has-error {
 #star-1 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+#star-2 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
-#star-2 {
+#star-3 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 }
-#star-3 {
+#star-4 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+#star-5 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+#star-6 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+#star-7 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+#star-8 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+#star-9 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+#star-10 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
-#star-4 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
-}
-#star-5 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
-#star-6 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
-#star-7 {
+#star-11 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 }
-#star-8 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
-}
-#star-9 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
-}
-#star-10 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
-}
-#star-11 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
 #star-12 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-13 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-14 {
   -webkit-animation-duration: 4s;
@@ -1093,20 +1093,20 @@ input.has-error {
 #star-15 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-16 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 #star-17 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-18 {
   -webkit-animation-duration: 4s;
@@ -1117,38 +1117,38 @@ input.has-error {
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
 }
 #star-20 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
-#star-21 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
-#star-22 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
-}
-#star-23 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
+#star-21 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+#star-22 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+#star-23 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
 #star-24 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-25 {
   -webkit-animation-duration: 4s;
@@ -1159,8 +1159,8 @@ input.has-error {
 #star-26 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
@@ -1775,6 +1775,30 @@ body .nomargin-bottom {
   left: -7px;
   z-index: 3;
 }
+.weekly-awards {
+  margin: 0 auto;
+  overflow: hidden;
+  width: 930px;
+  padding: 70px 0;
+}
+.weekly-awards hr {
+  margin: 11px auto 20px auto;
+  width: 30px;
+}
+.award {
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+.award .headshot {
+  border-radius: 50%;
+  border: 10px solid #4fd2c2;
+  margin-bottom: 36px;
+}
+.award-image {
+  margin-left: -34px;
+  vertical-align: top;
+}
 .bgcolor {
   background: #f9f7f6;
 }
@@ -1916,6 +1940,16 @@ body .nomargin-bottom {
     width: 350px;
   }
 }
+@media screen and (max-width: 940px) {
+  .award {
+    float: none;
+    width: 100%;
+    padding-bottom: 50px;
+  }
+  .weekly-awards {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 750px) {
   .content {
     padding: 20px;
@@ -2023,13 +2057,6 @@ body .nomargin-bottom {
   .date-field {
     float: none;
     display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 1px;
-    color: #4fd2c2;
-    text-style: normal;
   }
   .date-wrapper {
     height: 210px;
