@@ -12,15 +12,16 @@
 	});
 
 
-	Route::group(['prefix'=>'emails'], function() {
+	Route::group(['prefix'=>'tests'], function() {
 		
 		Route::get('/', function() {
-			return View::make('admin.emails.index', ['users'=>User::all(), 'active_link'=>'emails']);
+			return View::make('admin.tests.index', ['users'=>User::all(), 'active_link'=>'tests']);
 		});
 
 		Route::get('view-email', function() {
 
 			$pre_render = Input::get('pre_render', false) == "on" ? true : false;
+			
 
 			$notice = new Notification;
 			$notice->event = Input::get('event');
@@ -33,7 +34,7 @@
 			$notice->task->load('claimer');
 			$data = [
 				'task'=>$notice->task,
-				'extra'=>'<a style="position: fixed; bottom:0; text-align:center;padding:25px 0;background-color:#FF6666;width:100%;color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="/admin/emails">Back to Admin</a>'
+				'extra'=>'<a style="position: fixed; bottom:0; text-align:center;padding:25px 0;background-color:#FF6666;width:100%;color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="/admin/tests">Back to Admin</a>'
 			];
 
 			$view_name = Notification::getViewEvent(Input::get('event'));
@@ -87,8 +88,7 @@
 			});
 
 			
-			$subject = Input::has('subject') ? Input::get('subject') : Auth::user()->getName()." Halp Email Test:".$notice->event." ".uniqid();
-			
+			$subject = Input::get('subject', Auth::user()->getName()." Halp Email Test:".$notice->event." ".uniqid());
 			$status = $notice->sendEmailToGroup($emails, $subject);
 			/*
 			if($notice->event == Notification::NOTIFICATION_NEW_TASK)

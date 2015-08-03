@@ -21,6 +21,31 @@ class PageController extends \BaseController {
 		return View::make('site.admin.index');
 	}
 
+	// ------------------------------------------------------------------------
+	public function feedback()
+	{
+		return View::make('site.popup.feeback-popup');
+	}
+
+	// ------------------------------------------------------------------------
+	public function store_feedback()
+	{
+		$admins = User::admin()->lists('email');
+		$from = Auth::user();
+		return ;
+		/*
+		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
+		$premailer = new \ScottRobertson\Premailer\Request();
+		$response = $premailer->convert($view);
+		$replyTo = $this->getReplyToAddress();
+	
+		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($admins, $from) {			
+			$message->to($admins, 'Halp')->subject($subject?$subject:$this->getSubject());
+			$message->replyTo($replyTo);
+		});
+		return true;
+		*/
+	}
 
 }
 

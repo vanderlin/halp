@@ -1,3 +1,4 @@
+<?php $hide_unsubscribe = isset($hide_unsubscribe) ? $hide_unsubscribe : false ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -29,7 +30,9 @@
 						</div>
 					</div>
 					<div class="footer">
+						@if(!$hide_unsubscribe)
 						<a class="unsubscribe" href="{{URL::to('unsubscribe')}}">unsubscribe me</a>
+						@endif
 						<div class="made-at-ideo">made at</div> 
         				<a href="http://ideo.com"><img src="{{production_url('assets/img/ideo-dark.png')}}" width="70px"></a>
 					</div>
