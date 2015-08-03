@@ -20,7 +20,7 @@ class Project extends BaseModel {
     }
 
     // ------------------------------------------------------------------------
-    public function scopeOrderByTasks($query)
+    public function scopeOrderByMostTasks($query)
     {
     	/*
     	SELECT 
@@ -37,8 +37,7 @@ class Project extends BaseModel {
                 $join->on('projects.id', '=', 'tasks.project_id');
              })  
              ->groupBy("projects.id")
-             ->orderBy("total_tasks", 'DESC')
-             ->orderBy("tasks.created_at", 'DESC');
+             ->orderBy("total_tasks", 'DESC');
     }
 
 	// ------------------------------------------------------------------------

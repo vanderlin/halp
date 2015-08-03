@@ -45,12 +45,11 @@ class UsersController extends BaseController
         $users = User::orderByClaimedTask()->get();
         $leader = User::orderByClaimedTask()->first();
         $top_user_last_week = User::mostHelpfulForWeek(Carbon\Carbon::now()->subWeek())->first();
-        $top_active_project = Project::orderByTasks()->with('user')->first();
+        $top_active_project = Project::orderByMostTasks()->with('user')->first();
         $top_user_created_tasks = User::orderByCreatedTasks()->first();
         
         $data = [
             'top_user_last_week'     => $top_user_last_week,
-            'top_user_on_project'    => $top_user_on_project,
             'top_active_project'     => $top_active_project,
             'top_user_created_tasks' => $top_user_created_tasks,
             'users'                  => $users, 
