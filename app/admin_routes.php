@@ -15,7 +15,7 @@
 	Route::group(['prefix'=>'emails'], function() {
 		
 		Route::get('/', function() {
-			return View::make('admin.tests.index', ['users'=>User::all(), 'active_link'=>'tests']);
+			return View::make('admin.emails.index', ['users'=>User::all(), 'active_link'=>'emails']);
 		});
 
 		Route::get('view-email', function() {
