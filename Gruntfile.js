@@ -114,5 +114,5 @@ grunt.initConfig({
 
   // Task definition
   grunt.registerTask('default', ['watch']);
-
+  grunt.registerTask('build', ['less:core']);
 };
