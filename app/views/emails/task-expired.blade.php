@@ -1,6 +1,7 @@
 @extends('emails.layout')
 
 @section('content')
+	<img src="{{production_url('assets/img/unhappy-turtle.png')}}" />
 	<h2>{{link_to($task->creator->getProfileURL(), $task->creator->getShortName())}} your task expired {{$task->date->diffForHumans()}}:</h2>
 	<hr>
 	<h1>{{$task->title}} for {{link_to($task->project->getURL(), $task->project->title)}}</h1>
