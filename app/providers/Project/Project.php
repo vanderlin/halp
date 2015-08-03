@@ -20,7 +20,7 @@ class Project extends BaseModel {
     }
 
     // ------------------------------------------------------------------------
-    public function scopeOrderByTasks($query)
+    public function scopeOrderByMostTasks($query)
     {
     	/*
     	SELECT 
