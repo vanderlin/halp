@@ -76,7 +76,12 @@
 	<section class="tasks user-tasks claimed-task-section">
 		<div class="line-break">
 			<h2>{{$user->totalClaimed()}} Claimed Task{{$user->totalClaimed()>1?'s':''}}!</h2>
-			<h6>Pro tip: roll over a task to return it.</h6>
+			@if (Auth::check() && Auth::id() == $user->id)
+				<h6>Pro tip: roll over a task to return it.</h6>
+			@else
+				<h6>Pro tip: Roll over a task to claim it</h6>
+			@endif
+			
 		</div>
 		@forelse ($user->claimedTasks as $task)
 			@include('site.tasks.claimed-task', array('task' => $task))
