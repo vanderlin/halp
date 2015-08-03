@@ -41,6 +41,7 @@
     @if (Auth::check())
 		  <span class="username">{{link_to(Auth::user()->getProfileURL(), Auth::user()->getName())}}</span>
       <span class="logout"><a href="{{URL::to('logout')}}">Log Out</a></span>  
+      <span class="feedback"><a href="#">Feedback <i class="fa fa-comment-o"></i></a></span>
 	  @else
 	  	<span class="username"></span>
     	<span class="logout"><a href="{{URL::to('login')}}">Log in</a></span>

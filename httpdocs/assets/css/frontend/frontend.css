@@ -1009,44 +1009,44 @@ input.has-error {
 #star-1 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 #star-2 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-3 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-4 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-5 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-6 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-7 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
 }
 #star-8 {
   -webkit-animation-duration: 4s;
@@ -1057,14 +1057,14 @@ input.has-error {
 #star-9 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 #star-10 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-11 {
   -webkit-animation-duration: 4s;
@@ -1075,26 +1075,26 @@ input.has-error {
 #star-12 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-13 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
 }
 #star-14 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-15 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-16 {
   -webkit-animation-duration: 4s;
@@ -1105,62 +1105,62 @@ input.has-error {
 #star-17 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
 }
 #star-18 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 #star-19 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+#star-20 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+#star-21 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
-#star-20 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
-}
-#star-21 {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
-}
 #star-22 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-23 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #star-24 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 #star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 #star-26 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
@@ -1537,6 +1537,19 @@ hr {
   position: relative;
   bottom: 19px;
   letter-spacing: 0px;
+}
+.feedback {
+  padding-left: 20px;
+}
+.feedback a {
+  color: #a2b7cd;
+}
+.feedback a:hover {
+  color: #404d5b;
+}
+.feedback .fa {
+  font-size: 17px;
+  line-height: 0px;
 }
 /* ------------------------------------- FORM ------------------------------------ */
 .content h2 {
@@ -2012,6 +2025,15 @@ body .nomargin-bottom {
   .content {
     padding: 20px;
   }
+  .menu-wrap {
+    display: block;
+  }
+  .user {
+    display: none;
+  }
+  .open-menu {
+    display: inline;
+  }
 }
 @media screen and (max-width: 650px) {
   .user-award {
@@ -2150,13 +2172,7 @@ body .nomargin-bottom {
   .user-created-task {
     height: 338px !important;
   }
-  .user {
-    display: none;
-  }
-  .open-menu {
-    display: inline;
-  }
-  user .logo-text {
+  .logo-text {
     padding: 0px 10px 0px 10px;
     bottom: 23px;
     font-size: 25px;
@@ -2235,9 +2251,6 @@ body .nomargin-bottom {
   }
   .bird-right {
     display: none;
-  }
-  .menu-wrap {
-    display: block;
   }
 }
 @media screen and (max-width: 450px) {
