@@ -34,7 +34,8 @@ class Project extends BaseModel {
 		*/
         return $query->select(array('projects.*', DB::raw("COUNT(tasks.id) as total_tasks")))
              ->join('tasks', function($join) {
-                $join->on('projects.id', '=', 'tasks.project_id');
+                $join->on('projects.id', '=', 'tasks.project_id')
+                	 ->whereNull('tasks.deleted_at');
              })  
              ->groupBy("projects.id")
              ->orderBy("total_tasks", 'DESC')
