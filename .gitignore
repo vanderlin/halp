@@ -8,6 +8,7 @@
 /httpdocs/assets/content/users
 /httpdocs/assets/uploads/
 /httpdocs/assets/content/uploads/
+/httpdocs/assets/css/*
 /bootstrap/compiled.php
 /vendor
 composer.phar
