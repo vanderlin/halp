@@ -47,10 +47,10 @@
 		<div class="award">
 			<img class="headshot" src="{{$leader->profileImage->url('s113')}}">
 			<img src="{{asset('assets/img/award-project.svg')}}" class="award-image">
-			<h6>Most Helpful on 1 Project</h6>
+			<h6>Most Active Project</h6>
 			<hr>
-			<h4><a href="#">Person's Name</a></h4>
-			<h5>XX Tasks for <a href="#">Project Name</a></h5>
+			<h4><a href="#">Project Name</a></h4>
+			<h5>Created by <a href="#">Person Name</a></h5>
 		</div>
 		<div class="award">
 			<img class="headshot" src="{{$leader->profileImage->url('s113')}}">
