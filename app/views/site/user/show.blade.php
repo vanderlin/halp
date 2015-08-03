@@ -61,6 +61,7 @@
 		@endif
 	</section>
 
+	{{--
 	<section class="user-task-awards">
 		<div class="user-award filled">
 			<img src="{{asset('assets/img/user-award-5.svg')}}">
@@ -93,6 +94,7 @@
 			<h4>not earned</h4>
 		</div>
 	</section>
+	--}}
 
 	<section class="task-ratio">
 		<p class="progress-title">Tasks Claimed vs. Tasks Created</p>
@@ -133,7 +135,7 @@
 			<br/><h5>Go make some {{link_to('/', 'tasks')}}</h5>
 		@endforelse
 	</section>
-
+	{{--
 	<section class="user-weekly-awards">
 		<h2>Weekly Awards</h2>
 		<div class="user-weekly-award">
@@ -167,5 +169,6 @@
 			<h4>4/3/15</h4>
 		</div>
 	</section>
+	--}}
 @stop
     
