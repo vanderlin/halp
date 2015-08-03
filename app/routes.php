@@ -8,7 +8,7 @@ use Notification\Notification;
 Route::any('test-query', function() {
 
 
-	return Project::orderByTasks()->with('user')->get();
+	return Project::orderByMostTasks()->with('user')->get();
 
 	$last_week = last_week();
 	$user = User::mostHelpfulForProject()->first();
