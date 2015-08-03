@@ -68,9 +68,6 @@ h3{
 h4{
 	.serif(20px, 400, italic, @light-purple);
 }
-.small-h4{
-	font-size:14px;
-}
 
 h5{
 	.sans-serif(13px, @purple);
@@ -419,12 +416,62 @@ body .nomargin-bottom {
 	background-color: #495867;
 	overflow:hidden;
 	width: 100%;
-	padding: 70px 0;
+	padding: 50px 70px;
+	img{
+		padding-bottom: 20px;
+	}
 }
 
 .user-award{
 	float: left;
 	width: 16.6%
+}
+
+.filled{
+	h4{
+		font-size:14px;
+		line-height: 24px;
+	}
+	h6{
+		color: #fff;
+		line-height: 18px;
+	}
+}
+
+.unfilled{
+	h4{
+		color: #2F3D4C;
+		font-size:14px;
+	}
+	h6{
+		color: #2F3D4C;
+		line-height: 18px;
+	}
+}
+
+.user-weekly-awards{
+	margin: 0 auto;
+	background-color: white;
+	overflow:hidden;
+	width: 100%;
+	padding: 70px 70px;
+	img{
+		padding-bottom: 10px;
+	}
+}
+
+.user-weekly-award{
+	display: inline-block;
+	padding: 20px;
+	width: 150px;
+	h4{
+		font-size:14px;
+		line-height: 24px;
+	}
+	h6{
+		color: @purple;
+		line-height: 18px;
+	}
 }
 
 /* ------------------------------------- LEADERBOARD  ------------------------------------ */
@@ -641,6 +688,12 @@ body .nomargin-bottom {
 	.meter{
 		width: 350px;
 	}
+	.user-task-awards{
+		img{
+			width: 75%;
+			height: 75%;
+		}
+	}
 
 }
 
@@ -663,6 +716,20 @@ body .nomargin-bottom {
 
 
 @media screen and (max-width: 650px) {
+	.user-award{
+		width: 33.3%;
+		padding-bottom: 20px;	
+	}
+	.user-weekly-awards{
+		img{
+			width: 40px;
+		}
+		padding: 50px 20px;
+	}
+	.user-weekly-award{
+		padding: 10px;
+		width: 140px;
+	}
 	.input{
 		margin: 0;
 	}
@@ -713,7 +780,7 @@ body .nomargin-bottom {
 		margin: 20px 1%;
 	}
 	h2{
-		font-size: 18px;
+		font-size: 25px;
 	}
 	h3{
 		font-size: 30px;
@@ -874,3 +941,10 @@ body .nomargin-bottom {
 		display: block;
 	}
 }
+
+@media screen and (max-width: 450px) {
+	.user-task-awards {
+   		padding: 30px 20px 10px 20px;
+	}
+}
+

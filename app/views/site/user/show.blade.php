@@ -64,33 +64,33 @@
 	<section class="user-task-awards">
 		<div class="user-award filled">
 			<img src="{{asset('assets/img/user-award-5.svg')}}">
-			<p class="progress-title">5 Tasks Claimed</p>
-			<h4 class="small-h4">5/4/15</h4>
+			<h6>5 Tasks<br>Claimed</h6>
+			<h4>5/4/15</h4>
 		</div>
 		<div class="user-award filled">
-			<img src="{{asset('assets/img/user-award-5.svg')}}">
-			<p class="progress-title">5 Tasks Claimed</p>
-			<h4 class="small-h4">5/4/15</h4>
+			<img src="{{asset('assets/img/user-award-10.svg')}}">
+			<h6>10 Tasks<br>Claimed</h6>
+			<h4>5/4/15</h4>
 		</div>
 		<div class="user-award filled">
-			<img src="{{asset('assets/img/user-award-5.svg')}}">
-			<p class="progress-title">5 Tasks Claimed</p>
-			<h4 class="small-h4">5/4/15</h4>
+			<img src="{{asset('assets/img/user-award-25.svg')}}">
+			<h6>25 Tasks<br>Claimed</h6>
+			<h4>5/4/15</h4>
 		</div>
-		<div class="user-award filled">
-			<img src="{{asset('assets/img/user-award-5.svg')}}">
-			<p class="progress-title">5 Tasks Claimed</p>
-			<h4 class="small-h4">5/4/15</h4>
+		<div class="user-award unfilled">
+			<img src="{{asset('assets/img/user-award-unfilled.svg')}}">
+			<h6>50 Tasks<br>Claimed</h6>
+			<h4>not earned</h4>
 		</div>
-		<div class="user-award filled">
-			<img src="{{asset('assets/img/user-award-5.svg')}}">
-			<p class="progress-title">5 Tasks Claimed</p>
-			<h4 class="small-h4">5/4/15</h4>
+		<div class="user-award unfilled">
+			<img src="{{asset('assets/img/user-award-unfilled.svg')}}">
+			<h6>75 Tasks<br>Claimed</h6>
+			<h4>not earned</h4>
 		</div>
-		<div class="user-award filled">
-			<img src="{{asset('assets/img/user-award-5.svg')}}">
-			<p class="progress-title">5 Tasks Claimed</p>
-			<h4 class="small-h4">5/4/15</h4>
+		<div class="user-award unfilled">
+			<img src="{{asset('assets/img/user-award-unfilled.svg')}}">
+			<h6>100 Tasks<br>Claimed</h6>
+			<h4>not earned</h4>
 		</div>
 	</section>
 
@@ -132,6 +132,40 @@
 		@empty
 			<br/><h5>Go make some {{link_to('/', 'tasks')}}</h5>
 		@endforelse
+	</section>
+
+	<section class="user-weekly-awards">
+		<h2>Weekly Awards</h2>
+		<div class="user-weekly-award">
+			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
+			<h6>Most<br>Helpful</h6>
+			<h4>4/3/15</h4>
+		</div>
+		<div class="user-weekly-award">
+			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
+			<h6>Most Active<br>Project</h6>
+			<h4>4/3/15</h4>
+		</div>
+		<div class="user-weekly-award">
+			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
+			<h6>Most Tasks<br>Created</h6>
+			<h4>4/3/15</h4>
+		</div>
+		<div class="user-weekly-award">
+			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
+			<h6>Most<br>Helpful</h6>
+			<h4>4/3/15</h4>
+		</div>
+		<div class="user-weekly-award">
+			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
+			<h6>Most Active<br>Project</h6>
+			<h4>4/3/15</h4>
+		</div>
+		<div class="user-weekly-award">
+			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
+			<h6>Most Tasks<br>Created</h6>
+			<h4>4/3/15</h4>
+		</div>
 	</section>
 @stop
     
