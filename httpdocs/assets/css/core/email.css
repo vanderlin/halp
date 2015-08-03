@@ -1,0 +1,344 @@
+/* ----------------------------------- MIXINS ----------------------------------- */
+/* Button container */
+.progress-button {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 45%;
+  min-width: 250px;
+  margin: 15px 0 10px 0;
+}
+.progress-button button {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 180px;
+  height: 70px;
+  border: 2px solid #4FD2C2;
+  border-radius: 40px;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #4fd2c2;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+.progress-button button:hover {
+  background-color: #4FD2C2;
+  color: #fff;
+}
+.progress-button button:focus {
+  outline: none;
+}
+/* ---------------------------- SMALL BUTTON ---------------------------- */
+.small {
+  min-width: none;
+  width: initial;
+  min-width: initial;
+  margin-top: 30px;
+}
+.small button {
+  width: 150px;
+  height: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #4fd2c2;
+  letter-spacing: 1px;
+}
+.small button:hover {
+  background-color: #4FD2C2;
+  color: #fff;
+}
+/* ---------------------------- SELECTOR  ---------------------------- */
+.selector {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 0px 0 50px 0;
+  float: left;
+}
+.selector a {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 220px;
+  height: 70px;
+  line-height: 65px;
+  border: 2px solid #4FD2C2;
+  border-radius: 40px;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #4fd2c2;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+.selector a:hover {
+  background-color: #4FD2C2;
+  color: #fff;
+}
+.selector a:focus {
+  outline: none;
+}
+.selector.active a {
+  background-color: #4FD2C2;
+  color: #fff;
+}
+/* Text (transition for when returning to initial state) */
+.progress-button button span {
+  transition: opacity 0.3s 0.1s;
+}
+/* Common style of SVGs */
+.progress-button svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.progress-button svg path {
+  opacity: 0;
+  fill: none;
+}
+.progress-button svg.progress-circle path {
+  stroke: #4FD2C2;
+  stroke-width: 5;
+}
+.progress-button svg.checkmark path,
+.progress-button svg.cross path {
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-width: 4;
+  transition: opacity 0.1s;
+}
+/* Loading, success and error effects */
+.loading.progress-button button {
+  width: 70px;
+  /* make a circle */
+  border-width: 5px;
+  border-color: #ddd;
+  background-color: transparent;
+  color: #fff;
+}
+.loading.progress-button span {
+  transition: opacity 0.15s;
+}
+.loading.progress-button span,
+.success.progress-button span,
+.error.progress-button span {
+  opacity: 0;
+  /* keep it hidden in all states */
+}
+.success.progress-button button,
+.error.progress-button button {
+  transition: background-color 0.3s, width 0.3s, border-width 0.3s;
+}
+.success.progress-button button {
+  border-color: #4FD2C2;
+  background-color: #4FD2C2;
+}
+.error.progress-button button {
+  border-color: #FB797E;
+  background-color: #FB797E;
+}
+.loading.progress-button svg.progress-circle path,
+.success.progress-button svg.checkmark path,
+.error.progress-button svg.cross path {
+  opacity: 1;
+  transition: stroke-dashoffset 0.3s;
+}
+/* Optional elastic effect for the width of the button */
+.elastic.progress-button button {
+  transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1.6), border-width 0.3s, border-color 0.3s;
+}
+.loading.elastic.progress-button button {
+  transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.img-circle {
+  border-radius: 50%;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+table {
+  background-color: #F0EFEE;
+  width: 100%;
+  padding: 5px;
+}
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.unsubscribe {
+  margin: 25px;
+  display: block;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 12px;
+  color: #ccc;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.halp-friend-image {
+  max-width: 70px;
+  padding: 20px;
+}
+.email-content {
+  width: 60%;
+  padding: 30px;
+  background-color: #fff;
+  margin: 40px auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.footer {
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  color: #cccccc;
+  font-size: 12px;
+  padding-bottom: 100px;
+}
+h1 {
+  font-family: 'Merriweather', Georgia, serif;
+  color: #4fd2c2;
+  font-size: 45px;
+  font-weight: 300;
+  line-height: 46px;
+}
+h1.feedback {
+  font-size: 35px;
+}
+h2 {
+  font-family: 'Merriweather', Georgia, serif;
+  color: #404d5b;
+  font-style: italic;
+  font-size: 26px;
+  font-weight: 100;
+  line-height: 28px;
+}
+h3 {
+  color: #404d5b;
+  text-transform: uppercase;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 13px;
+}
+hr {
+  border: 0;
+  width: 10%;
+  border-bottom: 2px solid #404d5b;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+p {
+  font-family: 'Merriweather', Georgia, serif;
+  color: #cccccc;
+  font-size: 17px;
+  font-weight: 100;
+  line-height: 28px;
+  padding: 0px 90px;
+}
+.purple-text {
+  color: #a2b7cd;
+}
+a {
+  color: #4fd2c2;
+  text-decoration: none;
+}
+.rounded-button {
+  padding: 20px;
+  border: 2px solid #4fd2c2;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  width: 200px;
+  margin: 40px auto;
+}
+.made-at-ideo {
+  padding-bottom: 10px;
+}
+table.news-letter {
+  padding: 20px;
+}
+.news-letter p {
+  padding: 0 50px;
+}
+.news-letter .img-responsive {
+  width: 100%;
+}
+.news-letter .email-content {
+  padding: 0;
+  width: 100%;
+  background: #2A293A !important;
+}
+@media screen and (max-width: 930px) {
+  .email-content {
+    padding: 80px;
+  }
+  p {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .email-content {
+    padding: 50px;
+  }
+  h1 {
+    font-size: 35px;
+    line-height: 38px;
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  hr {
+    margin-top: 20px;
+    margin-bottom: 23px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .email-content {
+    margin: 20px auto;
+  }
+  h1 {
+    font-size: 25px;
+    margin: 20px 0px;
+    line-height: 31px;
+  }
+  .rounded-button {
+    width: 120px;
+  }
+  h3 {
+    font-size: 11px;
+  }
+  p {
+    font-size: 15px;
+  }
+}
