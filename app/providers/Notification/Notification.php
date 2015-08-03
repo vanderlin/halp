@@ -20,6 +20,7 @@ class Notification extends BaseModel {
 	const NOTIFICATION_TASK_CLAIMED = "notification.task.claimed";
 	const NOTIFICATION_TASK_DELETED = "notification.task.deleted";
 	const NOTIFICATION_TASK_EXPIRED = "notification.task.expired";
+	const NOTIFICATION_FEEDBACK 	= "notification.feedback";
 	
 	public static $eventTypes = [
 		Notification::NOTIFICATION_NEW_TASK,
@@ -28,6 +29,7 @@ class Notification extends BaseModel {
 		Notification::NOTIFICATION_TASK_DELETED,
 		Notification::NOTIFICATION_HALP_WELCOME,
 		Notification::NOTIFICATION_HALP_INVITE,
+		Notification::NOTIFICATION_FEEDBACK
 	];
 	
 	// ------------------------------------------------------------------------
@@ -53,21 +55,22 @@ class Notification extends BaseModel {
     public function contextUser()
     {
     	switch ($this->event) {
-			case Notification::NOTIFICATION_NEW_TASK:
-				return $this->task->creator;
-				break;
+			
 			case Notification::NOTIFICATION_TASK_CLAIMED:
 				return $this->task->claimer;
 				break;
+			
+			case Notification::NOTIFICATION_NEW_TASK: 
 			case Notification::NOTIFICATION_TASK_EXPIRED:
-				return $this->task->creator;
-				break;
 			case Notification::NOTIFICATION_TASK_DELETED:
 				return $this->task->creator;
 				break;
+
 			case Notification::NOTIFICATION_HALP_WELCOME:
+			case Notification::NOTIFICATION_FEEDBACK:
 				return $this->user;
 				break;
+
 			default:
 				return $this->creator;
 				break;
@@ -151,6 +154,9 @@ class Notification extends BaseModel {
 				break;
 			case Notification::NOTIFICATION_HALP_WELCOME:
 				return 'emails.welcome';
+				break;
+			case Notification::NOTIFICATION_FEEDBACK:
+				return 'emails.feedback';
 				break;
 			default:
 				return 'emails.new-task';

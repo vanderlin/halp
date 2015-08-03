@@ -56,6 +56,11 @@
 				$form.openCreateTaskPopup({data:validation.data});
 			}
 		});	
+
+		// -------------------------------------
+		App.openPopup({
+            url:'/feedback'
+        });
 	});
 </script>
 @stop

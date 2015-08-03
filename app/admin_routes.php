@@ -12,10 +12,10 @@
 	});
 
 
-	Route::group(['prefix'=>'tests'], function() {
+	Route::group(['prefix'=>'emails'], function() {
 		
 		Route::get('/', function() {
-			return View::make('admin.tests.index', ['users'=>User::all(), 'active_link'=>'tests']);
+			return View::make('admin.emails.index', ['users'=>User::all(), 'active_link'=>'tests']);
 		});
 
 		Route::get('view-email', function() {
@@ -37,6 +37,12 @@
 				'extra'=>'<a style="position: fixed; bottom:0; text-align:center;padding:25px 0;background-color:#FF6666;width:100%;color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="/admin/tests">Back to Admin</a>'
 			];
 
+			if(Input::get('event') == Notification::NOTIFICATION_FEEDBACK)
+			{
+				$data['from'] = Auth::user();
+				$data['feedback'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+			}
+
 			$view_name = Notification::getViewEvent(Input::get('event'));
 			$view = View::make($view_name, $data)->render();
 			if(!$pre_render) {
@@ -55,13 +61,6 @@
 				$message->bcc($emails, 'Halp')->subject('From '.Auth::user()->getName()." Halp Email Test ".uniqid());
 			});
 			return $emails;
-			if(Input::has('send')) {
-				Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($email) {
-					$message->to($email, 'Halp')->subject(Auth::user()->getName()."Halp Email Test ".uniqid());
-				});
-				return 'sent';
-			}
-			return $view;
 		});
 
 

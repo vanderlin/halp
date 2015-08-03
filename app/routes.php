@@ -74,6 +74,13 @@ Route::group(array('before'=>['auth']), function() {
 	// leaderboard
 	Route::get('leaderboard', ['uses'=>'UsersController@index']);
 
+	// feedback
+	Route::group(array('prefix'=>'feedback'), function() {
+		Route::get('/', ['uses'=>'PageController@feedback']);
+		Route::post('/', ['uses'=>'PageController@store_feedback', 'as'=>'feedback.store']);
+	});
+
+
 	// projects
 	Route::group(array('prefix'=>'projects'), function() {
 		Route::get('/', ['uses'=>'ProjectsController@index']);
