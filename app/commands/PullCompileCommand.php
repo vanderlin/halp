@@ -33,7 +33,7 @@ class PullCompileCommand extends Command {
 	public function fire()
 	{
 		$this->runCmd('git pull');
-		$this->runCmd('grunt build');
+		$this->runCmd('./node_modules/.bin/grunt build');
 	}
 
 	// ------------------------------------------------------------------------
