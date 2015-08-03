@@ -34,7 +34,7 @@
 			$notice->task->load('claimer');
 			$data = [
 				'task'=>$notice->task,
-				'extra'=>'<a style="position: fixed; bottom:0; text-align:center;padding:25px 0;background-color:#FF6666;width:100%;color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="/admin/tests">Back to Admin</a>'
+				'extra'=>'<a style="position: fixed; bottom:0; text-align:center;padding:25px 0;background-color:#FF6666;width:100%;color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="/admin/emails">Back to Admin</a>'
 			];
 
 			if(Input::get('event') == Notification::NOTIFICATION_FEEDBACK)
