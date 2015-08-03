@@ -8,8 +8,11 @@ use Notification\Notification;
 Route::any('test-query', function() {
 
 
-	// return User::mostHelpful()->toSql();
-	return User::mostHelpfulForWeek(Carbon::create(2015, 06, 10))->get();
+	return Project::orderByTasks()->with('user')->get();
+
+	$last_week = last_week();
+	$user = User::mostHelpfulForProject()->first();
+	return [$user, Project::find($user->most_helped_project)];
 		// with('claimedTasks')
 		// ->join('tasks', 'users.id', '=', 'tasks.claimed_id')
 		// select([

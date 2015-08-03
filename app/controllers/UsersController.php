@@ -29,12 +29,6 @@ class UsersController extends BaseController
     {
         
         
-        $leader = User::all()->sortByDesc(function($item) {
-            return $item->claimedTasks->count();
-        })->each(function($item) {
-            return $item->totalClaimedTasks = $item->claimedTasks->count();
-        })->values()->first();
-
         /*
         $users_q = User::join('tasks', 'tasks.claimed_id', '=', 'users.id')
                     ->groupBy('users.id')
@@ -49,8 +43,21 @@ class UsersController extends BaseController
         */
 
         $users = User::orderByClaimedTask()->get();
-       
-        return View::make('site.user.index', ['users'=>$users, 'leader'=>User::orderByClaimedTask()->first()]);
+        $leader = User::orderByClaimedTask()->first();
+        $top_user_last_week = User::mostHelpfulForWeek(Carbon\Carbon::now()->subWeek())->first();
+        $top_active_project = Project::orderByTasks()->with('user')->first();
+        $top_user_created_tasks = User::orderByCreatedTasks()->first();
+        
+        $data = [
+            'top_user_last_week'     => $top_user_last_week,
+            'top_user_on_project'    => $top_user_on_project,
+            'top_active_project'     => $top_active_project,
+            'top_user_created_tasks' => $top_user_created_tasks,
+            'users'                  => $users, 
+            'leader'                 => $leader
+            ];
+
+        return View::make('site.user.index', $data);
     }
 
     // ------------------------------------------------------------------------

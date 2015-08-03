@@ -36,29 +36,35 @@
 </section>
 
 <section class="weekly-awards">
+		
+		{{-- LAST WEEL --}}
 		<div class="award">
-			<img class="headshot" src="{{$leader->profileImage->url('s113')}}">
+			<img class="headshot" src="{{$top_user_last_week->profileImage->url('s113')}}">
 			<img src="{{asset('assets/img/award-last-week.svg')}}" class="award-image">
 			<h6>Most Helpful Last Week</h6>
 			<hr>
-			<h4><a href="#">Person's Name</a></h4>
-			<h5>XX Claimed Tasks</h5>
+			<h4><a href="#">{{$top_user_last_week->getName()}}</a></h4>
+			<h5>{{$top_user_last_week->total_claimed_this_week}} Claimed Tasks</h5>
 		</div>
+
+		{{-- PROJECT --}}
 		<div class="award">
-			<img class="headshot" src="{{$leader->profileImage->url('s113')}}">
+			<img class="headshot" src="{{$top_active_project->user->profileImage->url('s113')}}">
 			<img src="{{asset('assets/img/award-project.svg')}}" class="award-image">
 			<h6>Most Helpful on 1 Project</h6>
 			<hr>
-			<h4><a href="#">Person's Name</a></h4>
-			<h5>XX Tasks for <a href="#">Project Name</a></h5>
+			<h4><a href="#">{{$top_active_project->user->getName()}}</a></h4>
+			<h5>{{$top_user_on_project->total_claimed_for_project}} Tasks for <a href="{{$top_helper_project->getURL()}}">{{$top_helper_project->title}}</a></h5>
 		</div>
+
+		{{-- AWARD (most created tasks) --}}
 		<div class="award">
-			<img class="headshot" src="{{$leader->profileImage->url('s113')}}">
+			<img class="headshot" src="{{$top_user_created_tasks->profileImage->url('s113')}}">
 			<img src="{{asset('assets/img/award-most-created.svg')}}" class="award-image">
 			<h6>Most Tasks Created</h6>
 			<hr>
-			<h4><a href="#">Person's Name</a></h4>
-			<h5>XX Tasks Created</h5>
+			<h4><a href="#">{{$top_user_created_tasks->getName()}}</a></h4>
+			<h5>{{$top_user_created_tasks->total_created_tasks}} Tasks Created</h5>
 		</div>
 </section>
 

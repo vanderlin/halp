@@ -207,8 +207,10 @@ return array(
 		'Asset' 		  => 'Asset\Asset',
 		
 		'Task'		      => 'Task\Task',
+		'Project'		  => 'Project\Project',
 		'Notification'	  => 'Notification\Notification',
 		'APIClient'	      => 'APIClient\APIClient',
+
 
 	),
 
