@@ -61,6 +61,10 @@ App::error(function(Exception $exception, $code)
 | to the user if maintenance mode is in effect for the application.
 |
 */
+App::missing(function($exception)
+{
+    return Response::view('site.pages.404', array(), 404);
+});
 
 App::down(function()
 {
