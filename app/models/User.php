@@ -50,7 +50,7 @@ class User extends BaseModel implements ConfideUserInterface {
         */
         return $query->select(array('users.*', DB::raw("COUNT(tasks.id) as total_created_tasks")))
                      ->join('tasks', function($join) {
-                        $join->on('tasks.creator_id', '=', 'users.id');
+                        $join->on('tasks.creator_id', '=', 'users.id')->whereNull('tasks.deleted_at');
                      })  
                      ->groupBy("users.id")
                      ->orderBy("total_created_tasks", 'DESC')
