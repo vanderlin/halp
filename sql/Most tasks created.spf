@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>halp</string>
+			<key>host</key>
+			<string>localhost</string>
+			<key>kcid</key>
+			<string>6933633462259106936</string>
+			<key>name</key>
+			<string>localhost</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPSocketConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK8QDwcIFRYXGBkfICEoLDA0OFUkbnVs
+			bNMJCgsMEBRXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6MNDg+A
+			AoADgASjERITgAWABoAKgA5UdHlwZVRyb3dzVGtleXNfECZTZWxl
+			Y3Rpb25EZXRhaWxUeXBlUHJpbWFyeUtleWVkRGV0YWlsc9MJCgsa
+			HB6hG4AHoR2ACIAJUTEJ0iIjJCVaJGNsYXNzbmFtZVgkY2xhc3Nl
+			c18QE05TTXV0YWJsZURpY3Rpb25hcnmjJCYnXE5TRGljdGlvbmFy
+			eVhOU09iamVjdNIKCykroSqAC4AN0gstLi9ZTlMuc3RyaW5ngAxS
+			aWTSIiMxMl8QD05TTXV0YWJsZVN0cmluZ6MxMydYTlNTdHJpbmfS
+			IiM1Nl5OU011dGFibGVBcnJheaM1NydXTlNBcnJhedIiIyY5oiYn
+			XxAPTlNLZXllZEFyY2hpdmVy0Tw9VGRhdGGAAQAIABEAGgAjAC0A
+			MgA3AEkATwBWAF4AaQBwAHQAdgB4AHoAfgCAAIIAhACGAIsAkACV
+			AL4AxQDHAMkAywDNAM8A0QDSANcA4gDrAQEBBQESARsBIAEiASQB
+			JgErATUBNwE6AT8BUQFVAV4BYwFyAXYBfgGDAYYBmAGbAaAAAAAA
+			AAACAQAAAAAAAAA+AAAAAAAAAAAAAAAAAAABog==
+			</data>
+			<key>contentSortCol</key>
+			<string>creator_id</string>
+			<key>contentSortColIsAsc</key>
+			<false/>
+			<key>contentViewport</key>
+			<string>{{168.5, 0}, {1073, 627}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id, tasks.project_id, tasks.claimed_id, count(*) AS total_tasks 
+  FROM tasks
+) AS t
+ON projects.id = t.project_id AND tasks.claimed_id IS NOT NULL  </string>
+			<key>table</key>
+			<string>tasks</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>202</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id, tasks.project_id, tasks.claimed_id, count(*) AS total_tasks 
+  FROM tasks
+) AS t
+ON projects.id = tasks.project_id AND tasks.claimed_id IS NOT NULL</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id, tasks.project_id, tasks.claimed_id, count(*) AS total_tasks 
+  FROM tasks
+) AS tasks
+ON projects.id = tasks.project_id AND tasks.claimed_id IS NOT NULL</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id, tasks.project_id, tasks.claimed_id, count(tasks.*) AS total_tasks 
+  FROM tasks
+) AS tasks
+ON projects.id = tasks.project_id AND tasks.claimed_id IS NOT NULL</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id, tasks.project_id, tasks.claimed_id, count(tasks.claimed_id)
+  FROM tasks
+) AS tasks
+ON projects.id = tasks.project_id AND tasks.claimed_id IS NOT NULL</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id, tasks.project_id, tasks.claimed_id, count(tasks.claimed_id)
+  FROM tasks
+) AS tasks
+ON projects.id = tasks.project_id AND tasks.claimed_id IS NOr NULL</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id, tasks.project_id, tasks.claimed_id, count(tasks.claimed_id)
+  FROM tasks
+) AS tasks
+ON projects.id = tasks.project_id AND tasks.claimed_id IS NO NULL</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id, tasks.project_id, count(tasks.claimed_id)
+  FROM tasks
+) AS tasks
+ON projects.id = tasks.project_id AND tasks.claimed_id IS NO NULL</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id, tasks.project_id
+  FROM tasks
+) AS tasks
+ON projects.id = tasks.project_id</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id
+  FROM tasks
+) AS tasks</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id,
+  FROM tasks
+) AS tasks</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id,
+  FROM tasks
+) AS taks</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects
+LEFT JOIN (
+  SELECT tasks.id,
+  FROM tasks
+) AS s</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS projects</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS prj</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects AS p</string>
+		<string>SELECT 
+projects.id AS projcet_id,
+projects.title AS project_title
+FROM projects</string>
+		<string>SELECT 
+projects.id AS projcet_id
+projects.title AS project_title,
+FROM projects</string>
+		<string>tasks.creator_id = users.id</string>
+		<string>SELECT 
+users.id,
+users.firstname,
+count(tasks.id) AS total_created
+FROM users
+LEFT JOIN tasks ON tasks.creator_id = users.id
+GROUP BY users.id</string>
+		<string>SELECT 
+users.id,
+users.firstname
+count(tasks.id) AS total_created
+FROM users
+LEFT JOIN tasks ON tasks.creator_id = users.id
+GROUP BY users.id</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.5.42</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

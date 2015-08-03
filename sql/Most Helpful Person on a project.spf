@@ -1,0 +1,1287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>halp</string>
+			<key>host</key>
+			<string>localhost</string>
+			<key>kcid</key>
+			<string>6933633462259106936</string>
+			<key>name</key>
+			<string>localhost</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPSocketConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGNjdYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK0HCBUWFxgZHSQoLDA0VSRudWxs0wkK
+			CwwQFFdOUy5rZXlzWk5TLm9iamVjdHNWJGNsYXNzow0OD4ACgAOA
+			BKMREhOABYAGgAiADFR0eXBlVHJvd3NUa2V5c18QJlNlbGVjdGlv
+			bkRldGFpbFR5cGVQcmltYXJ5S2V5ZWREZXRhaWxz0wkKCxobHKCg
+			gAfSHh8gIVokY2xhc3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxl
+			RGljdGlvbmFyeaMgIiNcTlNEaWN0aW9uYXJ5WE5TT2JqZWN00goL
+			JSehJoAJgAvSCykqK1lOUy5zdHJpbmeAClJpZNIeHy0uXxAPTlNN
+			dXRhYmxlU3RyaW5noy0vI1hOU1N0cmluZ9IeHzEyXk5TTXV0YWJs
+			ZUFycmF5ozEzI1dOU0FycmF50h4fIjWiIiNfEA9OU0tleWVkQXJj
+			aGl2ZXLRODlUZGF0YYABAAgAEQAaACMALQAyADcARQBLAFIAWgBl
+			AGwAcAByAHQAdgB6AHwAfgCAAIIAhwCMAJEAugDBAMIAwwDFAMoA
+			1QDeAPQA+AEFAQ4BEwEVARcBGQEeASgBKgEtATIBRAFIAVEBVgFl
+			AWkBcQF2AXkBiwGOAZMAAAAAAAACAQAAAAAAAAA6AAAAAAAAAAAA
+			AAAAAAABlQ==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {1073, 627}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+-- count(tasks.claimed_id) AS total_projects,
+users.firstname
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+-- GROUP BY projects.id
+-- ORDER BY total_projects DESC 
+
+
+
+</string>
+			<key>table</key>
+			<string>projects</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>202</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+-- count(tasks.claimed_id) AS total_projects,
+users.firstname
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+-- GROUP BY projects.id
+-- ORDER BY total_projects DESC</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(tasks.claimed_id) AS total_projects,
+users.firstname
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+GROUP BY projects.id
+ORDER BY total_projects DESC</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(tasks.claimed_id) AS total_projects,
+users.firstname
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+GROUP BY projects.id
+ORDER BY total_projects</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(tasks.claimed_id) AS total_projects,
+users.firstname
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+GROUP BY projects.id</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(tasks.claimed_id) AS total_projects,
+users.email
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+GROUP BY projects.id</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(tasks.claimed_id) AS total_projects,
+users.email,
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+GROUP BY projects.id</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(tasks.claimed_id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+GROUP BY projects.id</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(tasks.claimed_id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+-- GROUP BY total_projects</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id
+count(tasks.claimed_id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+-- GROUP BY total_projects</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id
+-- count(tasks.claimed_id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+INNER JOIN users ON tasks.claimed_id = users.id
+-- GROUP BY total_projects</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id
+-- count(tasks.claimed_id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+-- GROUP BY total_projects</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(tasks.claimed_id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+-- GROUP BY total_projects</string>
+		<string>-- GROUP BY total_projects</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(tasks.claimed_id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+GROUP BY total_projects</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(tasks.claimed_id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+-- GROUP BY projects.id</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id
+count(tasks.claimed_id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+-- GROUP BY projects.id</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id
+-- count(projects.id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+-- GROUP BY projects.id</string>
+		<string>FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claim</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+-- count(projects.id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+-- GROUP BY projects.id</string>
+		<string>-- Most helpful for project --
+/*
+SELECT 
+	users.id, users.firstname, 
+	tasks.`created_at` AS task_date, 
+	COUNT(tasks.`id`) AS total_claimed_for_project,
+	tasks.project_id,
+	projects.title AS project_name
+  
+FROM `users` 
+
+LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+ 
+GROUP BY users.id
+ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+  */
+
+/*
+SELECT 
+	tasks.id, 
+	tasks.project_id, 
+	tasks.title AS task_title, 
+	projects.title AS project_title,
+	COUNT(tasks.id) AS total_tasks_for_project,
+	users.id AS user_id,
+	users.username
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL
+LEFT JOIN users ON tasks.claimed_id = users.id
+GROUP BY 	tasks.project_id
+ORDER BY total_tasks_for_project DESC
+*/
+
+
+-- this IS kinda working
+/*SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.id AS tasks_id,
+tasks.title AS task_title,
+COUNT(tasks.id) AS total_claimed_tasks,
+users.id AS user_id,
+users.firstname,
+COUNT(users.id) AS total_tasks_for_project
+FROM projects
+LEFT JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+JOIN users ON tasks.claimed_id = users.id
+GROUP BY	user_id
+ORDER BY	total_claimed_tasks DESC	
+*/
+
+SELECT 
+projects.id AS project_id,
+projects.title AS project_title,
+tasks.claimed_id,
+count(projects.id) AS total_projects
+FROM projects
+INNER JOIN tasks ON tasks.project_id = projects.id AND tasks.claimed_id IS NOT NULL	
+-- GROUP BY projects.id</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.5.42</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
