@@ -1,26 +1,62 @@
 <?php
 
+use Task\Task;
+
+/**
+ * UsersController Class
+ *
+ * Implements actions regarding user management
+ */
 class UsersController extends BaseController
 {
 
-    // ------------------------------------------------------------------------
+    /**
+     * Displays the form for account creation
+     *
+     * @return  Illuminate\Http\Response
+     */
     public function create()
     {
         return View::make('site.user.register');
     }
 
-    // ------------------------------------------------------------------------
     public function register() 
     {
         return Redirect::to('login');
     }
 
-    // ------------------------------------------------------------------------
     public function index()
     {
+        
+        
+        /*
+        $users_q = User::join('tasks', 'tasks.claimed_id', '=', 'users.id')
+                    ->groupBy('users.id')
+                    ->orderBy('total_claimed_tasks', 'DESC')
+                    ->get(['users.*', DB::raw("count(".DB::getTablePrefix()."tasks.id) as total_claimed_tasks")]);
+        
+        // Paginate users
+        $perPage = 10;
+        $currentPage = Input::get('page') - 1;
+        $pagedData = $users_q->slice($currentPage * $perPage, $perPage)->all();
+        $users = Paginator::make($pagedData, count($users_q), $perPage);
+        */
+
         $users = User::orderByClaimedTask()->get();
         $leader = User::orderByClaimedTask()->first();
-        return View::make('site.user.index', ['users'=>$users, 'leader'=>$leader]);
+        $top_user_last_week = User::mostHelpfulForWeek(Carbon\Carbon::now()->subWeek())->first();
+        $top_active_project = Project::orderByMostTasks()->with('user')->first();
+        $top_user_created_tasks = User::orderByCreatedTasks()->first();
+        
+        $data = [
+            'top_user_last_week'     => $top_user_last_week,
+            'top_active_project'     => $top_active_project,
+            'top_user_created_tasks' => $top_user_created_tasks,
+            'users'                  => $users, 
+            'leader'                 => $leader
+            ];
+            
+        return View::make('site.user.index', $data);
     }
 
     // ------------------------------------------------------------------------
@@ -220,7 +256,7 @@ class UsersController extends BaseController
             return Redirect::to('/');
         } 
         else {
-        	return View::make('site.user.login');
+            return View::make('site.user.login');
         }
     }
 

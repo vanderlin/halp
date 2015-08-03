@@ -378,7 +378,11 @@ function get_more_locations_text($locations) {
                 'html'=>$moreHTML);
 }
 
-
+// ------------------------------------------------------------------------
+function last_week()
+{
+  return Carbon\Carbon::now()->subWeek();
+}
 
 
 

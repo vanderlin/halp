@@ -37,6 +37,28 @@ class User extends BaseModel implements ConfideUserInterface {
     }
 
     // ------------------------------------------------------------------------
+    public function scopeOrderByCreatedTasks($query)
+    {
+        /*
+        SELECT 
+        users.id,
+        users.firstname,
+        count(tasks.id) AS total_created
+        FROM users
+        LEFT JOIN tasks ON tasks.creator_id = users.id
+        GROUP BY users.id
+        */
+        return $query->select(array('users.*', DB::raw("COUNT(tasks.id) as total_created_tasks")))
+                     ->join('tasks', function($join) {
+                        $join->on('tasks.creator_id', '=', 'users.id');
+                     })  
+                     ->groupBy("users.id")
+                     ->orderBy("total_created_tasks", 'DESC')
+                     ->orderBy("tasks.created_at", 'DESC');
+
+    }
+
+    // ------------------------------------------------------------------------
     public function scopeOrderByClaimedTask($query)
     {
         /*
@@ -58,27 +80,26 @@ class User extends BaseModel implements ConfideUserInterface {
     }
 
     // ------------------------------------------------------------------------
-    public function scopeMostHelpfulForWeek($query, $week_of=null)
+    /*public function scopeMostHelpfulForWeek($query, $week_of=null)
     {
-
         if($week_of == null) $week_of = Carbon\Carbon::now();
         $date_str = $week_of->toDateString();
 
-        /*
-        -- Most helpful this week --
-        SELECT 
-            users.*, 
-            YEARWEEK(tasks.`created_at`) AS task_date, 
-            YEARWEEK(CURDATE()) AS cur_date,
-            DATE_FORMAT(tasks.`created_at`, '%W') AS task_date_name,
-            COUNT(tasks.`id`) AS total_claimed_this_week
+        
+        // -- Most helpful this week --
+        // SELECT 
+        //     users.*, 
+        //     YEARWEEK(tasks.`created_at`) AS task_date, 
+        //     YEARWEEK(CURDATE()) AS cur_date,
+        //     DATE_FORMAT(tasks.`created_at`, '%W') AS task_date_name,
+        //     COUNT(tasks.`id`) AS total_claimed_this_week
             
-        FROM `users` 
-        LEFT JOIN tasks
-        ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL AND YEARWEEK(tasks.`created_at`) = YEARWEEK(CURDATE())
-        GROUP BY users.`id`
-        ORDER BY total_claimed_this_week DESC, tasks.claimed_at DESC
-        */
+        // FROM `users` 
+        // LEFT JOIN tasks
+        // ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL AND YEARWEEK(tasks.`created_at`) = YEARWEEK(CURDATE())
+        // GROUP BY users.`id`
+        // ORDER BY total_claimed_this_week DESC, tasks.claimed_at DESC
+        
 
         return $query->select(array(
                         "users.*", 
@@ -91,8 +112,52 @@ class User extends BaseModel implements ConfideUserInterface {
                      ->groupBy('users.id')
                      ->orderBy('total_claimed_this_week', 'DESC')
                      ->orderBy('tasks.claimed_at', 'DESC');
-                     
+    }*/
 
+    // ------------------------------------------------------------------------
+    public function scopeMostHelpfulForProject($query)
+    {
+        /*
+        -- Most helpful for project --
+        SELECT 
+            users.id, users.firstname, 
+            tasks.`created_at` AS task_date, 
+            COUNT(tasks.`id`) AS total_claimed_for_project,
+            tasks.project_id,
+            projects.title AS project_name
+            
+        FROM `users` 
+
+        LEFT JOIN tasks ON tasks.`claimed_id` = users.`id` AND tasks.`deleted_at` IS NULL 
+
+        RIGHT JOIN projects ON tasks.`project_id` = projects.`id`
+         
+        GROUP BY tasks.project_id
+        ORDER BY total_claimed_for_project DESC, tasks.claimed_at DESC
+        
+
+        return $query->select(array(
+                        "users.*", 
+                        "tasks.project_id as most_helped_project",
+                        DB::raw("COUNT(tasks.id) as total_claimed_for_project")))
+                        ->leftJoin('tasks', function($join) {
+                            $join->on('tasks.claimed_id', '=', 'users.id')
+                                 ->whereNull('tasks.deleted_at');
+                        })
+                        ->leftJoin('projects', function($join) {
+                            $join->on('tasks.project_id', '=', 'projects.id');
+                        })
+                     ->groupBy('tasks.project_id')
+                     ->orderBy('total_claimed_for_project', 'DESC')
+                     ->orderBy('tasks.claimed_at', 'DESC');
+    }
+
+    // ------------------------------------------------------------------------
+    public function claimedTasksForWeek($week_of=null)
+    {
+        if($week_of == null) $week_of = Carbon\Carbon::now();
+        $date_str = $week_of->toDateString();
+        return $this->claimedTasks();
     }
     // ------------------------------------------------------------------------
     public function scopeAdmin($query) {   
@@ -104,6 +169,7 @@ class User extends BaseModel implements ConfideUserInterface {
       return $this->morphTo();
     }
 
+    // ------------------------------------------------------------------------
     public static function findFromData($data) {
         return \User::where('id', '=', $data)->orWhere('username', '=', $data)->orWhere('email', '=', $data)->first();
     }

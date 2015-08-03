@@ -33,6 +33,13 @@ class Task extends BaseModel {
     }
 
     // ------------------------------------------------------------------------
+    public function scopeForWeek($query, $week_of=null)
+    {
+    	if($week_of == null) $week_of = Carbon\Carbon::now();
+        $date_str = $week_of->toDateString();
+    	return $query->whereRaw(DB::raw("YEARWEEK(tasks.`created_at`) = YEARWEEK('{$date_str}')"));
+    }
+    // ------------------------------------------------------------------------
     public function scopeUnClaimed($query)
     {
     	return $query->whereNull('claimed_id')->orderBy('created_at', 'DESC');
