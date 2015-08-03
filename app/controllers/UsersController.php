@@ -55,7 +55,7 @@ class UsersController extends BaseController
             'users'                  => $users, 
             'leader'                 => $leader
             ];
-            return $data;
+            
         return View::make('site.user.index', $data);
     }
 
