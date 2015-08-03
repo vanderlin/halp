@@ -315,12 +315,17 @@
   position: relative;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #datepicker {
   border: 2px solid #4FD2C2;
 =======
 #task-datepicker {
   border: 2px solid #4fd2c2;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+#task-datepicker {
+  border: 2px solid #4fd2c2;
+>>>>>>> ab10052ebcddf4997abfd1e43b86662a14ef1ac6
   border-radius: 40px;
   width: 220px;
   height: 70px;
@@ -346,9 +351,13 @@
   background-color: #4FD2C2;
   color: #fff;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   margin: 0px 0 50px 0;
 >>>>>>> date-toggle in a partial `site.tasks.date-toggle`
+=======
+  margin: 0px 0 50px 0;
+>>>>>>> ab10052ebcddf4997abfd1e43b86662a14ef1ac6
 }
 .date-wrapper {
   height: 120px;
@@ -1993,6 +2002,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -2039,10 +2049,39 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> stashed work
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+#star-2 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+#star-3 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+#star-4 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+#star-5 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> ab10052ebcddf4997abfd1e43b86662a14ef1ac6
 }
 #star-19 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2090,10 +2129,69 @@ input.has-error {
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 >>>>>>> stashed work
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+#star-7 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+#star-8 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+#star-9 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+#star-10 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+#star-11 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+#star-12 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+#star-13 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+#star-14 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+#star-15 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> ab10052ebcddf4997abfd1e43b86662a14ef1ac6
 }
 #star-20 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2141,10 +2239,33 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> stashed work
+=======
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+#star-17 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+#star-18 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+#star-19 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> ab10052ebcddf4997abfd1e43b86662a14ef1ac6
 }
 #star-21 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2202,10 +2323,21 @@ input.has-error {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 >>>>>>> stashed work
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+#star-21 {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+>>>>>>> ab10052ebcddf4997abfd1e43b86662a14ef1ac6
 }
 #star-22 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2248,6 +2380,10 @@ input.has-error {
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 >>>>>>> stashed work
+=======
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+>>>>>>> ab10052ebcddf4997abfd1e43b86662a14ef1ac6
 }
 #star-23 {
   -webkit-animation-duration: 4s;
@@ -2271,6 +2407,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 6s;
           animation-delay: 6s;
 =======
@@ -2325,10 +2462,15 @@ input.has-error {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 >>>>>>> stashed work
+=======
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+>>>>>>> ab10052ebcddf4997abfd1e43b86662a14ef1ac6
 }
 #star-25 {
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2366,6 +2508,10 @@ input.has-error {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 >>>>>>> stashed work
+=======
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+>>>>>>> ab10052ebcddf4997abfd1e43b86662a14ef1ac6
 }
 #star-26 {
   -webkit-animation-duration: 4s;
@@ -2383,6 +2529,7 @@ input.has-error {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 =======
@@ -2437,6 +2584,10 @@ input.has-error {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 >>>>>>> stashed work
+=======
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+>>>>>>> ab10052ebcddf4997abfd1e43b86662a14ef1ac6
 }
 #ripple1 {
   -webkit-animation-duration: 2s;
