@@ -61,6 +61,14 @@
 		@endif
 	</section>
 
+	<section class="user-task-awards">
+		<div class="user-award filled">
+			<img src="{{asset('assets/img/user-award-5.svg')}}">
+			<p class="progress-title">5 Tasks Claimed</p>
+			<h4>5/4/15</h4>
+		</div>
+	</section>
+
 	<section class="task-ratio">
 		<p class="progress-title">Tasks Claimed vs. Tasks Created</p>
 		<h4>{{$user->totalClaimed()}} Claimed <span class="slash">/</span> {{$user->totalCreated()}} Created</h4>
