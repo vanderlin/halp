@@ -28,23 +28,21 @@ class PageController extends \BaseController {
 	}
 
 	// ------------------------------------------------------------------------
+	// Clean this up at some point
+	// ------------------------------------------------------------------------
 	public function store_feedback()
 	{
-		$admins = User::admin()->lists('email');
-		$from = Auth::user();
-		return ;
-		/*
-		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
-		$premailer = new \ScottRobertson\Premailer\Request();
-		$response = $premailer->convert($view);
-		$replyTo = $this->getReplyToAddress();
-	
-		Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($admins, $from) {			
-			$message->to($admins, 'Halp')->subject($subject?$subject:$this->getSubject());
-			$message->replyTo($replyTo);
-		});
-		return true;
-		*/
+		$admins 	= User::admin()->lists('email');
+		$from 		= Auth::user();
+		$feedback 	= Input::get('feedback');
+		if(empty($feedback)) {
+			return $this->statusResponse(['notice'=>'No feedback send']);			
+		}
+		$notice = new Notification(['event'=>Notification::NOTIFICATION_FEEDBACK]);
+		$notice->user_id = Auth::id();
+		$send_status = $notice->sendEmailToGroup($admins, null, array('from'=>$from, 'feedback'=>$feedback));
+
+		return $this->statusResponse(['notice'=>'Thanks for the feedback', 'send_status'=>$send_status]);
 	}
 
 }

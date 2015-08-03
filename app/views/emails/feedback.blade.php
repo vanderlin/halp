@@ -8,7 +8,8 @@
 @stop
 
 @section('content')
-	<h1 class="feedback">Feedback from {{$from->getName()}}</h1>
+	<img class="img-circle" src="{{production_url($from->profileImage->url('s120'))}}" alt="{{$from->getName()}}">
+	<h2 class="feedback">Feedback from {{link_to($from->getProfileURL(), $from->getName())}}</h2>
 	<hr>
 
 	<p class="purple-text text-left">{{$feedback}}</p>

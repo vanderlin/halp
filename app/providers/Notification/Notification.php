@@ -197,6 +197,9 @@ class Notification extends BaseModel {
 			case Notification::NOTIFICATION_HALP_WELCOME:
 				return "Welcome to Halp";
 				break;
+			case Notification::NOTIFICATION_FEEDBACK:
+				return "New feedback from ".$this->user->getName();
+				break;
 			default:
 				return 'Halp';
 				break;
@@ -268,15 +271,14 @@ class Notification extends BaseModel {
 			$results = $this->sendEmailToUser($this->task->creator);
 		}
 
-
 		return $results;
 	}
 
 	// ------------------------------------------------------------------------
-	public function sendEmailToGroup($group, $subject=null)
+	public function sendEmailToGroup($group, $subject=null, $data=null)
 	{
-
-		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
+		$data = $data ? $data : array('task'=>$this->task);
+		$view = View::make($this->getViewPath(), $data)->render();
 		$premailer = new \ScottRobertson\Premailer\Request();
 		$response = $premailer->convert($view);
 		$replyTo = $this->getReplyToAddress();

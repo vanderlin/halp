@@ -434,6 +434,13 @@ var App = (function() {
         $.timeago.settings.cutoff = 0;
         $(".timeago").timeago();
         
+        // -------------------------------------
+        $('#feedback-button').click(function(e) {
+            e.preventDefault();
+            App.openPopup({
+                url:'/feedback'
+            });
+        });        
         // $('.halp-delete-task-button').each(function(index, el) {
         //     self.addDeleteTaskEvent($(el));
         // });
