@@ -182,6 +182,8 @@ class SetupSite extends Command {
 		}
 		Task::truncate();
 
+		Notification::truncate();
+
 		$options = $this->option();
 		$task_repo = App::make('TasksRepository');
 
@@ -204,7 +206,7 @@ class SetupSite extends Command {
 
 		$durs = ['a min', 'couple of hours', 'a day', 'few mins', "2 minutes", "an hour", "1/2 hour", "5 minutes", "20 minutes", "10 minutes"];
 
-		$n = isset($options['count']) ? min($options['count'], 1500) : 100;
+		$n = isset($options['count']) ? min($options['count'], 1500) : 50;
 		$faker = Faker\Factory::create();
 		
 		for ($i=0; $i < $n; $i++) { 
@@ -227,18 +229,6 @@ class SetupSite extends Command {
 				$data['details'] = implode("\n", $faker->sentences(4));
 			}
 
-			
-
-			// if($faker->boolean(10))
-			// {
-			// 	$data['task_date'] = $faker->dateTimeBetween('now', '15 days'); 
-			// }
-
-			// if($faker->boolean($n/3))
-			// {
-			// 	$data['task_date'] = $faker->dateTimeBetween('-3 months', '3 months'); 
-			// }
-
 			if($faker->boolean(10))
 			{
 				$data['does_not_expire'] = true;
@@ -246,20 +236,24 @@ class SetupSite extends Command {
 			}
 
 			$task = $task_repo->store($data);
-			// if($faker->boolean(15))
-			// {
-			// 	$data['task_date'] = $faker->dateTimeBetween('now', '2 days'); 
-			// }
-			// else {
-			// 	$task->created_at = $faker->dateTimeBetween('-3 months', '3 months');
-			// }
 			
-			// $task->save();
-
 			$this->info("$task->id Creating Task:$task->title");
 		}
 
-		$this->info("----- Seed Claiming -----");
+		$this->comment("----- Seed Claiming -----");
+
+		// Get a bunch for a few users
+		for ($i = 0; $i <= User::count()/2; $i++) {
+			$user_id = User::getRandomID();
+			for ($j = 0; $j <= $faker->numberBetween(5, 120); $j++) {
+				$task = Task::orderByRaw("RAND()")->where('creator_id', '<>', $user_id)->take(1)->first();
+				$task->claimed_id = $user_id;
+				$task->claimed_at = $task->date->subDays($faker->randomDigit);
+				$task->save();
+				$this->info("$task->title Claimed at: ".$task->claimed_at->diffForHumans($task->created_at) );
+				Notification::fire($task, Notification::NOTIFICATION_TASK_CLAIMED); 
+			}
+		}
 
 		// now claime some randomly
 		foreach (Task::orderByRaw("RAND()")->take(Task::count()/2)->get() as $task) {
@@ -270,6 +264,8 @@ class SetupSite extends Command {
 			Notification::fire($task, Notification::NOTIFICATION_TASK_CLAIMED); 
 		}
 
+
+		$this->call('halp:awards');
 		
 
 
@@ -303,7 +299,7 @@ class SetupSite extends Command {
 		
 		$faker = Faker\Factory::create();
 		$seeder = new LOFaker;
-		$n = 20;
+		$n = 50;
 
 		// also creat admin users (kim & I)
 		$admins = array(['username'=>'tvanderlin', 'firstname'=>'Todd', 'lastname'=>'Vanderlin', 'email'=>'tvanderlin@ideo.com'],

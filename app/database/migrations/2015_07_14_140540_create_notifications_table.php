@@ -20,6 +20,7 @@ class CreateNotificationsTable extends Migration {
 
 			$table->integer('task_id')->nullable()->default(NULL);
 			$table->integer('user_id')->nullable()->default(NULL);
+			$table->integer('award_id')->nullable()->default(NULL);
 
 
 			$table->string('event');

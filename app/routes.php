@@ -8,6 +8,8 @@ use Notification\Notification;
 Route::any('test-query', function() {
 
 
+	return Award::awardsForWeek(Award::AWARD_MOST_TASK_CREATED_WEEK, Carbon::now())->first();
+
 	return Project::orderByMostTasks()->with('user')->get();
 
 	$last_week = last_week();

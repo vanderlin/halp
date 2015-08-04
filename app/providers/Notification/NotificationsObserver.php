@@ -65,6 +65,11 @@ class NotificationObserver {
 			$notice->user_id = $notice->object_id;
 			$notice->save();
 		});
+		Event::listen(Notification::NOTIFICATION_NEW_AWARD, function($e) {
+			$notice = $this->createNotification($e);
+			$notice->award_id = $notice->object_id;
+			$notice->save();
+		});
 	}
 }
 

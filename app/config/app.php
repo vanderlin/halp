@@ -133,6 +133,7 @@ return array(
 	    'Project\ProjectsServiceProvider',
 	    'Task\TasksServiceProvider',
 	    'Notification\NotificationsServiceProvider',
+	    'Award\AwardsServiceProvider',
 	),
 
 	/*
@@ -209,6 +210,7 @@ return array(
 		'Task'		      => 'Task\Task',
 		'Project'		  => 'Project\Project',
 		'Notification'	  => 'Notification\Notification',
+		'Award'	  		  => 'Award\Award',
 		'APIClient'	      => 'APIClient\APIClient',
 
 

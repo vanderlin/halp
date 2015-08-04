@@ -9,6 +9,8 @@ use View;
 use Event;
 use Auth;
 use Config;
+use Award;
+
 class Notification extends BaseModel {
 	
 	protected $fillable  = ['object_type', 'object_id', 'event'];
@@ -21,7 +23,9 @@ class Notification extends BaseModel {
 	const NOTIFICATION_TASK_DELETED = "notification.task.deleted";
 	const NOTIFICATION_TASK_EXPIRED = "notification.task.expired";
 	const NOTIFICATION_FEEDBACK 	= "notification.feedback";
+	const NOTIFICATION_NEW_AWARD 	= "notification.new.award";
 	
+	// ------------------------------------------------------------------------
 	public static $eventTypes = [
 		Notification::NOTIFICATION_NEW_TASK,
 		Notification::NOTIFICATION_TASK_CLAIMED,
@@ -29,7 +33,8 @@ class Notification extends BaseModel {
 		Notification::NOTIFICATION_TASK_DELETED,
 		Notification::NOTIFICATION_HALP_WELCOME,
 		Notification::NOTIFICATION_HALP_INVITE,
-		Notification::NOTIFICATION_FEEDBACK
+		Notification::NOTIFICATION_FEEDBACK,
+		Notification::NOTIFICATION_NEW_AWARD,
 	];
 	
 	// ------------------------------------------------------------------------
@@ -58,6 +63,10 @@ class Notification extends BaseModel {
 			
 			case Notification::NOTIFICATION_TASK_CLAIMED:
 				return $this->task->claimer;
+				break;
+			
+			case Notification::NOTIFICATION_NEW_AWARD:
+				return $this->award->user;
 				break;
 			
 			case Notification::NOTIFICATION_NEW_TASK: 
@@ -105,25 +114,15 @@ class Notification extends BaseModel {
   		parent::save();
 	}
 
-	
-
 	// ------------------------------------------------------------------------
-	// public function task()
-	// {	
-	// 	// return $this->belongsTo('Task\Task', 'object_id')->withTrashed();
-	// 	// return $this->join('tasks', $this->object_id, '=', 'task.id');
-	// 	// return $this->object_type == 'Task\Task' ? $this->belongsTo('Task\Task', 'object_id') : null;
-	// 		// public function morphOne($related, $name, $type = null, $id = null, $localKey = null)
-
-	// 	// return $this->morphedByMany('Task\Task','object');
-	// 	// return $this->joing('Task\Task', 'object_id')->where('notification.object_type', '=', 'Task\Task')->withTrashed();
-	// 	// return $this->hasOne('Task\Task')->join('tasks', 'notification.');//where('object_type', '=', 'Task\Task')->withTrashed();
-	// }
+	public function award()
+	{
+		return $this->belongsTo('Award\Award', 'award_id');
+	}
 	public function task()
 	{
 		return $this->belongsTo('Task\Task', 'task_id')->withTrashed();
 	}
-
 	public function user()
 	{
 		return $this->belongsTo('User', 'user_id');
@@ -158,6 +157,9 @@ class Notification extends BaseModel {
 			case Notification::NOTIFICATION_FEEDBACK:
 				return 'emails.feedback';
 				break;
+			case Notification::NOTIFICATION_NEW_AWARD:
+				return 'emails.award';
+				break;
 			default:
 				return 'emails.new-task';
 				break;
@@ -176,7 +178,7 @@ class Notification extends BaseModel {
 			case Notification::NOTIFICATION_TASK_DELETED:
 				return 'Deleted';
 			default:
-				return 'unkown';
+				return 'Unkown';
 				break;
 		}
 	}
@@ -211,13 +213,11 @@ class Notification extends BaseModel {
 	{
 		switch ($this->event) {
 			case Notification::NOTIFICATION_NEW_TASK:
+			case Notification::NOTIFICATION_TASK_DELETED:
 				return $this->task->creator->email;
 				break;
 			case Notification::NOTIFICATION_TASK_CLAIMED:
 				return $this->task->claimer->email;
-				break;
-			case Notification::NOTIFICATION_TASK_DELETED:
-				return $this->task->creator->email;
 				break;
 			case Notification::NOTIFICATION_HALP_WELCOME:
 				return Config::get('mail.username');

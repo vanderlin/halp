@@ -1,0 +1,1 @@
+/Users/tvanderlin/IDEO/Dev/halp/app/views/emails/award.blade.php

@@ -14,3 +14,5 @@
 Artisan::add(new SetupSite);
 Artisan::add(new CronCommand);
 Artisan::add(new PullCompileCommand);
+Artisan::add(new CreateObjectCommand);
+Artisan::add(new AwardsCommand);

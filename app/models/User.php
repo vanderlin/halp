@@ -37,6 +37,25 @@ class User extends BaseModel implements ConfideUserInterface {
     }
 
     // ------------------------------------------------------------------------
+    public function hasAward($award_type)
+    {
+        return $this->awards()
+                    ->where('name', '=', $award_type)->count() > 0;
+
+    }
+
+    // ------------------------------------------------------------------------
+    public function getAward($award_type)
+    {
+        return $this->awards()->where('name', '=', $award_type)->first();
+    }
+
+    // ------------------------------------------------------------------------
+    public function awards()
+    {   
+        return $this->hasMany('Award\Award');
+    }
+    // ------------------------------------------------------------------------
     public function scopeOrderByCreatedTasks($query)
     {
         /*

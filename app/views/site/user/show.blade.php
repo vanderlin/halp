@@ -61,40 +61,13 @@
 		@endif
 	</section>
 
-	{{--
+	
 	<section class="user-task-awards">
-		<div class="user-award filled">
-			<img src="{{asset('assets/img/user-award-5.svg')}}">
-			<h6>5 Tasks<br>Claimed</h6>
-			<h4>5/4/15</h4>
-		</div>
-		<div class="user-award filled">
-			<img src="{{asset('assets/img/user-award-10.svg')}}">
-			<h6>10 Tasks<br>Claimed</h6>
-			<h4>5/4/15</h4>
-		</div>
-		<div class="user-award filled">
-			<img src="{{asset('assets/img/user-award-25.svg')}}">
-			<h6>25 Tasks<br>Claimed</h6>
-			<h4>5/4/15</h4>
-		</div>
-		<div class="user-award unfilled">
-			<img src="{{asset('assets/img/user-award-unfilled.svg')}}">
-			<h6>50 Tasks<br>Claimed</h6>
-			<h4>not earned</h4>
-		</div>
-		<div class="user-award unfilled">
-			<img src="{{asset('assets/img/user-award-unfilled.svg')}}">
-			<h6>75 Tasks<br>Claimed</h6>
-			<h4>not earned</h4>
-		</div>
-		<div class="user-award unfilled">
-			<img src="{{asset('assets/img/user-award-unfilled.svg')}}">
-			<h6>100 Tasks<br>Claimed</h6>
-			<h4>not earned</h4>
-		</div>
+		@foreach (Award::getOnceAwards() as $award_type)
+			@include('site.awards.once-award', array('type' => $award_type, 'award'=>$user->getAward($award_type->name)))
+		@endforeach
 	</section>
-	--}}
+	
 
 	<section class="task-ratio">
 		<p class="progress-title">Tasks Claimed vs. Tasks Created</p>
@@ -135,7 +108,7 @@
 			<br/><h5>Go make some {{link_to('/', 'tasks')}}</h5>
 		@endforelse
 	</section>
-	{{--
+
 	<section class="user-weekly-awards">
 		<h2>Weekly Awards</h2>
 		<div class="user-weekly-award">
@@ -169,6 +142,6 @@
 			<h4>4/3/15</h4>
 		</div>
 	</section>
-	--}}
+
 @stop
     
