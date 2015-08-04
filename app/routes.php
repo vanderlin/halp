@@ -8,7 +8,23 @@ use Notification\Notification;
 Route::any('test-query', function() {
 
 
-	return Award::awardsForWeek(Award::AWARD_MOST_TASK_CREATED_WEEK, Carbon::now())->first();
+	$start = Task::orderBy('created_at')->first()->created_at;
+	$end   = Carbon::now();
+	$res = [];
+	$k = 0;
+	$date = clone $start;
+	for ($i=$start->weekOfYear; $i<=$end->weekOfYear; $i++) {
+		
+		$quary_award = Award::awardsForWeek(Award::AWARD_MOST_TASK_CREATED_WEEK, $date)->first();	
+
+		array_push($res, ['i'=>$i, 'inc'=>$date->weekOfYear, $quary_award]);
+		$date->addWeek();
+	}
+		return [
+			$start->weekOfYear,
+			$end->weekOfYear,
+			$res
+		];
 
 	return Project::orderByMostTasks()->with('user')->get();
 

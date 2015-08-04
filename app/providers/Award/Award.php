@@ -120,7 +120,7 @@ class Award extends BaseModel {
         */
         if($week_of == null) $week_of = Carbon\Carbon::now();
         $date_str = $week_of->toDateString();
-
+        
         return $query->whereRaw(DB::raw("name = '$type'"))  
                      ->whereRaw(DB::raw("YEARWEEK(created_at) = YEARWEEK('$date_str')")); 
     }

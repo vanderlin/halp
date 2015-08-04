@@ -38,10 +38,11 @@ class AwardsRepository  {
 	}
 
 	// ------------------------------------------------------------------------
-	public function checkForAwards()
+	public function checkForAwards($week_of=null)
 	{
 		
-		$now = Carbon::now()->setTimeZone('America/New_York');
+		$now = $week_of ? $week_of : Carbon::now()->setTimeZone('America/New_York');
+
 		$awards = Award::getAwards();
 		foreach ($awards as $award) {
 			
@@ -52,28 +53,43 @@ class AwardsRepository  {
 				$now->dayOfWeek == Config::get('awards.award_week_day') &&
 				$now->hour >= Config::get('awards.award_week_hour')) {
 				
-				$this->log("running [$type] query...");
+				$this->log("-[$type] query...");
 				$quary_award = Award::awardsForWeek($type, $now)->first();
 
 				if($quary_award == NULL) {
 
 					$results = ['type'=>$type];
+					$new_award = NULL;
 
+					// -------------------------------------
 					if($type == Award::AWARD_MOST_TASK_CLAIMED_WEEK) {
 						$top_user_created_tasks = User::orderByCreatedTasks()->first();
-						array_push($results, $this->store(['user_id'=>$top_user_created_tasks->id, 'name'=>$type]));
+						$new_award = $this->store(['user_id'=>$top_user_created_tasks->id, 'name'=>$type], true);
+						
+						
+						array_push($results, $new_award);
 					}
 
+					// -------------------------------------
 					else if($type == Award::AWARD_MOST_TASK_CREATED_WEEK) {
 						$top_user_claimed_this_week = User::mostHelpfulForWeek()->first();
-						array_push($results, $this->store(['user_id'=>$top_user_claimed_this_week->id, 'name'=>$type]));
+						$new_award = $this->store(['user_id'=>$top_user_claimed_this_week->id, 'name'=>$type], true);
+						array_push($results, $new_award);
 					}
 
+					// -------------------------------------
 					else if($type == Award::AWARD_MOST_ACTIVE_PROJECT_WEEK) {
 						$top_active_project = Project::orderByMostTasks()->with('user')->first();
-						array_push($results, $this->store(['user_id'=>$top_active_project->user->id, 'project_id'=>$top_active_project->id, 'name'=>$type]));
+						$new_award = $this->store(['user_id'=>$top_active_project->user->id, 'project_id'=>$top_active_project->id, 'name'=>$type], true);
+						array_push($results, $new_award);
+
 					}
-					
+
+					// alter the dates
+					if($week_of != NULL && $new_award) {
+						$new_award->created_at = $new_award->updated_at = $now;
+						$new_award->save();
+					}
 							
 					$this->log($results);
 				}
@@ -109,31 +125,31 @@ class AwardsRepository  {
 				// -------------------------------------
 				if($type == Award::AWARD_CLAIMED_5 && $user->claimedTasks->count() >=5 ) 
 				{
-					array_push($results, $this->store(['user_id'=>$user->id, 'name'=>$type]));
+					array_push($results, $this->store(['user_id'=>$user->id, 'name'=>$type], true));
 				}
 
 				// -------------------------------------
 				if($type == Award::AWARD_CLAIMED_10 && $user->claimedTasks->count() >=10 ) 
 				{
-					array_push($results, $this->store(['user_id'=>$user->id, 'name'=>$type]));
+					array_push($results, $this->store(['user_id'=>$user->id, 'name'=>$type], true));
 				}
 
 				// -------------------------------------
 				if($type == Award::AWARD_CLAIMED_25 && $user->claimedTasks->count() >=25 ) 
 				{
-					array_push($results, $this->store(['user_id'=>$user->id, 'name'=>$type]));
+					array_push($results, $this->store(['user_id'=>$user->id, 'name'=>$type], true));
 				}
 
 				// -------------------------------------
 				if($type == Award::AWARD_CLAIMED_50 && $user->claimedTasks->count() >=50 ) 
 				{
-					array_push($results, $this->store(['user_id'=>$user->id, 'name'=>$type]));
+					array_push($results, $this->store(['user_id'=>$user->id, 'name'=>$type], true));
 				}
 
 				// -------------------------------------
 				if($type == Award::AWARD_CLAIMED_75 && $user->claimedTasks->count() >=75 ) 
 				{
-					array_push($results, $this->store(['user_id'=>$user->id, 'name'=>$type]));
+					array_push($results, $this->store(['user_id'=>$user->id, 'name'=>$type], true));
 				}
 
 				// -------------------------------------
@@ -169,7 +185,7 @@ class AwardsRepository  {
 	}
 
 	// ------------------------------------------------------------------------
-	public function store($input)
+	public function store($input, $return=false)
 	{		
 		$validator = Validator::make($input, Award::$rules);
 		if($validator->fails()) {
@@ -181,7 +197,7 @@ class AwardsRepository  {
 
 		Notification::fire($award, Notification::NOTIFICATION_NEW_AWARD);
 
-		return $this->listener->statusResponse(['notice'=>'Award Created', 'award'=>$award]);		
+		return $return ? $award : $this->listener->statusResponse(['notice'=>'Award Created', 'award'=>$award]);		
 	}
 
 	// ------------------------------------------------------------------------

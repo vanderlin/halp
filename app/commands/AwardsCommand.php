@@ -4,6 +4,7 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Award\AwardsRepository;
+use Carbon\Carbon;
 
 class AwardsCommand extends Command {
 
@@ -45,6 +46,8 @@ class AwardsCommand extends Command {
 	// ------------------------------------------------------------------------
 	public function fire()
 	{
+
+		$options = $this->option();	
 		$users = User::all();
 
 		
@@ -64,7 +67,23 @@ class AwardsCommand extends Command {
 		$this->comment("             Site Wide Awards           ");
 		$this->comment("// -------------------------------------");
 		// site wide awards - time based
-		$this->info($this->repository->checkForAwards());
+		
+		if(is_true($options['full'])) {
+			$start = Task::orderBy('created_at')->first()->created_at;
+			$end   = Carbon::now();
+			$date = clone $start;
+			for ($i=$start->weekOfYear; $i<=$end->weekOfYear; $i++) {
+				$this->info("Checking for week of ".$date->toDateString());
+				$this->info($this->repository->checkForAwards($date));
+				$date->addWeek();
+			}
+		}
+		else {
+			$this->info($this->repository->checkForAwards());
+		}
+		
+
+		
 
 
 
@@ -82,6 +101,7 @@ class AwardsCommand extends Command {
 	protected function getOptions()
 	{
 		return array(
+			array('full', null, InputOption::VALUE_OPTIONAL, 'run from the begining of time...', null),
 		);
 	}
 

@@ -206,7 +206,7 @@ class SetupSite extends Command {
 
 		$durs = ['a min', 'couple of hours', 'a day', 'few mins', "2 minutes", "an hour", "1/2 hour", "5 minutes", "20 minutes", "10 minutes"];
 
-		$n = isset($options['count']) ? min($options['count'], 1500) : 50;
+		$n = isset($options['count']) ? min($options['count'], 1500) : 250;
 		$faker = Faker\Factory::create();
 		
 		for ($i=0; $i < $n; $i++) { 
