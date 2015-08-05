@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="134px" height="160px" viewBox="0 0 134 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+<svg width="133px" height="160px" viewBox="0 0 133 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
     <title>award-project</title>
     <desc>Created with Sketch.</desc>
     <defs>
@@ -8,7 +8,7 @@
         <path id="path-3" d="M27.3915302,0.41380152 L0.946011067,25.7220025 L37.302667,24.6875835 L27.3915302,0.41380152 Z"></path>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="award-project" sketch:type="MSLayerGroup" transform="translate(0.119907, 0.000000)">
+        <g id="award-project" sketch:type="MSLayerGroup">
             <path d="M43.6325443,82.9305307 L70.2794208,82.9305307 L70.2794208,157.689823 L57.4793207,148.807531 L43.6325443,157.689823 L43.6325443,82.9305307 Z" id="Rectangle-32" fill="#404D5B" sketch:type="MSShapeGroup" transform="translate(56.955983, 120.310177) rotate(-345.000000) translate(-56.955983, -120.310177) "></path>
             <path d="M65.1325443,82.9305307 L91.7794208,82.9305307 L91.7794208,157.689823 L78.9793207,148.807531 L65.1325443,157.689823 L65.1325443,82.9305307 Z" id="Rectangle-32-Copy" fill="#404D5B" sketch:type="MSShapeGroup" transform="translate(78.455983, 120.310177) scale(-1, 1) rotate(-345.000000) translate(-78.455983, -120.310177) "></path>
             <circle id="Oval-23" fill="#404D5B" sketch:type="MSShapeGroup" cx="66.5" cy="66.8101769" r="66.5"></circle>
