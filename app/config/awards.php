@@ -51,19 +51,22 @@ return array(
 			// -------------------------------------
 			[
 				"name"=>"award.most.tasks.claimed.week",
-				"image"=>"assets/img/user-award-5.svg",
+				"title"=>"Most helpful this week",
+				"image"=>"assets/img/user-weekly-award.svg",
 			],
 			
 			// -------------------------------------
 			[
 				"name"=>"award.most.active.project.week",
-				"image"=>"assets/img/user-award-5.svg",
+				"title"=>"Most active project",
+				"image"=>"assets/img/user-weekly-award.svg",
 			],
 			
 			// -------------------------------------
 			[
 				"name"=>"award.most.tasks.created.week",
-				"image"=>"assets/img/user-award-5.svg",
+				"title"=>"Most tasks created",
+				"image"=>"assets/img/user-weekly-award.svg",
 			]
 		)
 		

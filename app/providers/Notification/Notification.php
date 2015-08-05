@@ -96,6 +96,7 @@ class Notification extends BaseModel {
     	}
     	return "No Title :".$this->id.":".$this->event;
     }
+    
     // ------------------------------------------------------------------------
     public function getIsSentAttribute($val)
     {

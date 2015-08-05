@@ -8,12 +8,20 @@ class User extends BaseModel implements ConfideUserInterface {
     
     use ConfideUser;
     use HasRole; 
-    protected $hidden = array('password', 'remember_token', 'confirmation_code', 'confirmed', 'google_token', 'set_password', 'notifications');
+    protected $hidden = array('password', 
+                              'remember_token', 
+                              'confirmation_code', 
+                              'confirmed', 
+                              'google_token', 
+                              'set_password', 
+                              'notifications');
 
+    // ------------------------------------------------------------------------
     public function roles() {
         return $this->belongsToMany(Config::get('entrust::role'), Config::get('entrust::assigned_roles_table'), 'user_id', 'role_id')->withTimestamps();
     }
 
+    // ------------------------------------------------------------------------
     public function toArray() {
         $array = parent::toArray();
         $array['name'] = $this->getName();
@@ -26,6 +34,7 @@ class User extends BaseModel implements ConfideUserInterface {
         return $array;
     }
 
+    // ------------------------------------------------------------------------
     public static function missingProfileImage() {
 
         $m = Asset::findFromTag('missing-user-image');

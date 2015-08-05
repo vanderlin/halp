@@ -111,36 +111,17 @@
 
 	<section class="user-weekly-awards">
 		<h2>Weekly Awards</h2>
-		<div class="user-weekly-award">
-			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
-			<h6>Most<br>Helpful</h6>
-			<h4>4/3/15</h4>
-		</div>
-		<div class="user-weekly-award">
-			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
-			<h6>Most Active<br>Project</h6>
-			<h4>4/3/15</h4>
-		</div>
-		<div class="user-weekly-award">
-			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
-			<h6>Most Tasks<br>Created</h6>
-			<h4>4/3/15</h4>
-		</div>
-		<div class="user-weekly-award">
-			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
-			<h6>Most<br>Helpful</h6>
-			<h4>4/3/15</h4>
-		</div>
-		<div class="user-weekly-award">
-			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
-			<h6>Most Active<br>Project</h6>
-			<h4>4/3/15</h4>
-		</div>
-		<div class="user-weekly-award">
-			<img src="{{asset('assets/img/user-weekly-award.svg')}}">
-			<h6>Most Tasks<br>Created</h6>
-			<h4>4/3/15</h4>
-		</div>
+		@forelse ($user->awards()->weeklyAwards()->get() as $weekly_award)
+					<div class="user-weekly-award">
+				<img src="{{asset($weekly_award->image)}}">
+				<h6>{{$weekly_award->title}}</h6>
+				<h4>{{$weekly_award->created_at->format('m/d/Y')}}</h4>
+			</div>
+			{{-- expr --}}
+		@empty
+			<br>
+			<h4>No Awards</h4>
+		@endforelse
 	</section>
 
 @stop

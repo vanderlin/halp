@@ -32,15 +32,22 @@
 
 			$notice->task->load('creator');
 			$notice->task->load('claimer');
+			dd(URL::getRequest());
+			$back_url = URL::previous()->withInput();
 			$data = [
 				'task'=>$notice->task,
-				'extra'=>'<a style="position: fixed; bottom:0; text-align:center;padding:25px 0;background-color:#FF6666;width:100%;color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="/admin/emails">Back to Admin</a>'
+				'extra'=>'<a style="position: fixed; bottom:0; text-align:center;padding:25px 0;background-color:#FF6666;width:100%;color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="'.$back_url.'">Back to Admin</a>'
 			];
 
 			if(Input::get('event') == Notification::NOTIFICATION_FEEDBACK)
 			{
 				$data['from'] = Auth::user();
 				$data['feedback'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+			}
+
+			if(Input::get('event') == Notification::NOTIFICATION_NEW_AWARD)
+			{
+				$data['award'] = Award::whereName(Input::get('award_type', Award::AWARD_CLAIMED_5))->first();
 			}
 
 			$view_name = Notification::getViewEvent(Input::get('event'));

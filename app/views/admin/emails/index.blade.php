@@ -171,12 +171,29 @@ $eventTypes = $evts;
 						</td>
 		    		</tr>
 
-    				<tr class="center aligned">
-		    			<td colspan="4">
-							<button type="submit" class="ui button">View Email</button>
-							<div class="ui checkbox">
-						     	<input type="checkbox" tabindex="0" checked name="pre_render" class="hidden">
-						      	<label>Convert to inline styles</label>
+    				<tr>
+						<td colspan="2">
+							<div class="ui small form">
+								<div class="field">
+									<b>Additional Parameters</b>
+								</div>
+								<div class="field">
+									<label for="award_type">Award Types</label>
+									<select class="ui dropdown" name="award_type">
+										@foreach (Award::getAwards() as $award)
+									   	<option value="{{$award->name}}">{{$award->name}}</option>
+									    @endforeach
+								    </select>
+							    </div>
+						    </div>
+						</td>
+		    			<td colspan="2">
+		    				<div class="ui small form">
+								<button type="submit" class="ui button">View Email</button>
+								<div class="ui checkbox">
+							     	<input type="checkbox" tabindex="0" checked name="pre_render" class="hidden">
+							      	<label>Convert to inline styles</label>
+							    </div>
 						    </div>
 					    </td>
 		    		</tr>

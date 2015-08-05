@@ -66,6 +66,7 @@ class Award extends BaseModel {
     	return stripos($type, "once") !== false;
     }
 
+
     // ------------------------------------------------------------------------
     public static function getAwardType($type)
     {
@@ -82,6 +83,11 @@ class Award extends BaseModel {
     public static function imageForType($type)
     {
     	return Award::getAwardType($type)->image;
+    }
+    // ------------------------------------------------------------------------
+    public static function titleForType($type)
+    {
+        return Award::getAwardType($type)->title;
     }
 
     // ------------------------------------------------------------------------
@@ -105,6 +111,47 @@ class Award extends BaseModel {
 		}
     }
 
+    // ------------------------------------------------------------------------
+    public function getEmailMessage()
+    {
+        $message = "";
+        switch($this->name) {
+            case Award::AWARD_CLAIMED_5:
+            case Award::AWARD_CLAIMED_10:
+            case Award::AWARD_CLAIMED_25:
+            case Award::AWARD_CLAIMED_50:
+            case Award::AWARD_CLAIMED_75:
+            case Award::AWARD_CLAIMED_100:
+            {
+                preg_match('/\d+/', $this->name, $matches);
+                $count = $matches ? $matches[0] : 0;
+                $message .= "<h3>You claimed you first $count tasks</h3>";
+                $message .= "<hr>";
+                $message .= "<p>Nice Work!</p>";
+            }
+            break;
+
+            case Award::AWARD_MOST_TASK_CLAIMED_WEEK:
+            {
+                $message .= "<h3>{$this->title}</h3>";
+                $message .= "<hr>";
+                $message .= "<p>444</p>";
+            }
+            break;
+
+
+            case Award::AWARD_MOST_ACTIVE_PROJECT_WEEK:
+            case Award::AWARD_MOST_TASK_CREATED_WEEK:
+            // return Award::AWARD_FREQ_WEEK;
+            break;
+        }
+
+        
+
+
+
+        return $message;
+    }
 
     // ------------------------------------------------------------------------
     public function scopeAwardsForWeek($query, $type, $week_of=null)
@@ -120,9 +167,19 @@ class Award extends BaseModel {
         */
         if($week_of == null) $week_of = Carbon\Carbon::now();
         $date_str = $week_of->toDateString();
-        
+
         return $query->whereRaw(DB::raw("name = '$type'"))  
                      ->whereRaw(DB::raw("YEARWEEK(created_at) = YEARWEEK('$date_str')")); 
+    }
+
+    // ------------------------------------------------------------------------
+    public function scopeWeeklyAwards($query)
+    {
+        $types = array( Award::AWARD_MOST_TASK_CLAIMED_WEEK,
+                        Award::AWARD_MOST_ACTIVE_PROJECT_WEEK,
+                        Award::AWARD_MOST_TASK_CREATED_WEEK);
+
+        return $query->whereIn('name', $types);
     }
 
     // ------------------------------------------------------------------------
@@ -144,6 +201,18 @@ class Award extends BaseModel {
 			return true;
 			break;
 		}
+    }
+
+    // ------------------------------------------------------------------------
+    public function getImageAttribute($val)
+    {
+        return Award::imageForType($this->name);
+    }
+
+    // ------------------------------------------------------------------------
+    public function getTitleAttribute($val)
+    {
+        return Award::titleForType($this->name);
     }
 
     // ------------------------------------------------------------------------

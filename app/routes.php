@@ -7,6 +7,12 @@ use Notification\Notification;
 
 Route::any('test-query', function() {
 
+	foreach (Award::getAwards() as $type) {
+		preg_match('/\d+/', $type->name, $matches);
+		if($matches) $id = $matches[0];
+		echo "$id<br>";
+	}
+	dd('');
 
 	$start = Task::orderBy('created_at')->first()->created_at;
 	$end   = Carbon::now();
