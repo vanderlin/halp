@@ -51,7 +51,7 @@ $eventTypes = $evts;
 				      	<td>
 				      		<select class="ui dropdown" name="event">
 				      		@foreach ($eventTypes as $event)
-				      			<option value="{{$event->name}}"><code>{{$event->name}}</code></option>
+				      			<option value="{{$event->name}}" {{Input::has('event')&&Input::get('event')==$event->name?'selected':''}}><code>{{$event->name}}</code></option>
 				      		@endforeach
 				      		</select>
 				      	</td>
@@ -135,12 +135,12 @@ $eventTypes = $evts;
 		<tbody>
 	
 			{{Form::open(['url'=>'admin/emails/view-email', 'method'=>'GET'])}}
-				
+					
 					<tr>
 				      	<td>
 				      		<select class="ui dropdown" name="event">
 				      		@foreach ($eventTypes as $event)
-				      			<option value="{{$event->name}}"><code>{{$event->name}}</code></option>
+				      			<option value="{{$event->name}}" {{Input::has('event')&&Input::get('event')==$event->name?'selected':''}}><code>{{$event->name}}</code></option>
 				      		@endforeach
 				      		</select>
 				      	</td>
@@ -174,14 +174,14 @@ $eventTypes = $evts;
     				<tr>
 						<td colspan="2">
 							<div class="ui small form">
-								<div class="field">
+								<div class="field center aligned">
 									<b>Additional Parameters</b>
 								</div>
 								<div class="field">
 									<label for="award_type">Award Types</label>
 									<select class="ui dropdown" name="award_type">
 										@foreach (Award::getAwards() as $award)
-									   	<option value="{{$award->name}}">{{$award->name}}</option>
+									   		<option value="{{$award->name}}" {{Input::has('award_type')&&Input::get('award_type')==$award->name?'selected':''}}>{{$award->name}}</option>
 									    @endforeach
 								    </select>
 							    </div>

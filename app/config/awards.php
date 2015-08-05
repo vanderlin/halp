@@ -54,6 +54,14 @@ return array(
 				"title"=>"Most helpful this week",
 				"image"=>"assets/img/user-weekly-award.svg",
 			],
+
+
+			// -------------------------------------
+			[
+				"name"=>"award.most.tasks.created.week",
+				"title"=>"Most tasks created",
+				"image"=>"assets/img/user-weekly-award.svg",
+			],
 			
 			// -------------------------------------
 			[
@@ -62,12 +70,6 @@ return array(
 				"image"=>"assets/img/user-weekly-award.svg",
 			],
 			
-			// -------------------------------------
-			[
-				"name"=>"award.most.tasks.created.week",
-				"title"=>"Most tasks created",
-				"image"=>"assets/img/user-weekly-award.svg",
-			]
 		)
 		
 

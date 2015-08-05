@@ -64,6 +64,11 @@ function production_url($url="")
   return Config::get('config.site_url').'/'.$url;
 }
 
+function production_link_to($url="", $title=null)
+{
+  return link_to(production_url($url), $title);
+}
+
 function bower($file) {
   return asset('bower_components/'.$file);
 }

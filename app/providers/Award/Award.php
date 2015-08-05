@@ -112,6 +112,8 @@ class Award extends BaseModel {
     }
 
     // ------------------------------------------------------------------------
+    // maybe not the best way to be doing this...
+    // ------------------------------------------------------------------------
     public function getEmailMessage()
     {
         $message = "";
@@ -133,16 +135,30 @@ class Award extends BaseModel {
 
             case Award::AWARD_MOST_TASK_CLAIMED_WEEK:
             {
+                $count = $this->user->claimedTasks()->forWeek($this->created_at)->count();
                 $message .= "<h3>{$this->title}</h3>";
                 $message .= "<hr>";
-                $message .= "<p>444</p>";
+                $message .= "<p>".($count==1 ? "$count Task Claimed" : "$count Tasks Claimed")."</p>";
+            }
+            break;
+
+            case Award::AWARD_MOST_TASK_CREATED_WEEK:
+            {
+                $count = $this->user->createdTasks()->forWeek($this->created_at)->count();
+                $message .= "<h3>{$this->title}</h3>";
+                $message .= "<hr>";
+                $message .= "<p>".($count==1 ? "$count Task Created" : "$count Tasks Created")."</p>";
             }
             break;
 
 
             case Award::AWARD_MOST_ACTIVE_PROJECT_WEEK:
-            case Award::AWARD_MOST_TASK_CREATED_WEEK:
-            // return Award::AWARD_FREQ_WEEK;
+            {
+
+                $message .= "<h3>{$this->title}</h3>";
+                $message .= "<hr>";
+                $message .= "<p>For<br>".production_link_to($this->project->getURL(), $this->project->title)."</p>";
+            }
             break;
         }
 
@@ -219,6 +235,12 @@ class Award extends BaseModel {
     public function user()
     {
         return $this->belongsTo('User');
+    }
+
+     // ------------------------------------------------------------------------
+    public function project()
+    {
+        return $this->belongsTo('Project\Project');
     }
 
 	// ------------------------------------------------------------------------

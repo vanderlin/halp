@@ -61,6 +61,6 @@ class Project extends BaseModel {
 	// ------------------------------------------------------------------------
 	public function getURL($relative=true)
 	{
-		return URL::to('projects/'.$this->id);
+		return $relative ? 'projects/'.$this->id : URL::to('projects/'.$this->id);
 	}
 }
