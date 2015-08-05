@@ -265,7 +265,7 @@ class SetupSite extends Command {
 		}
 
 
-		$this->call('halp:awards');
+		$this->call('halp:awards', array('--full' => 'true'));
 		
 
 

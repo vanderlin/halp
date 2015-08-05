@@ -83,6 +83,10 @@
 										@endif
 										
 									</div>
+								@elseif ($notice->event == Notification::NOTIFICATION_NEW_AWARD)
+									<div class="sub header">
+										{{$notice->award->name}}
+									</div>
 								@elseif ($notice->event == Notification::NOTIFICATION_TASK_DELETED)
 									<div class="sub header">
 										<small>Claimed by: {{link_to($notice->task->claimer->getProfileURL(), $notice->task->claimer->getName())}}</small>
