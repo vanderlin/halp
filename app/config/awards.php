@@ -2,8 +2,8 @@
 
 return array(
 
-		"award_week_day"=>2, // tuesday (for testing)
-		"award_week_hour"=> 12, // time of day to run cron
+		"award_week_day"=>5, 	// tuesday (for testing)
+		"award_week_hour"=> 17, // time of day to run cron
 
 		"types" => array(
 			// -------------------------------------
