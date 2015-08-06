@@ -8,7 +8,12 @@
 @section('scripts')
 <script type="text/javascript">
 jQuery(document).ready(function($) {
-$('.ui.checkbox').checkbox();
+	$('.ui.checkbox').checkbox();	
+	$('#view-email-submit').click(function(e) {
+		e.preventDefault();
+		$('#email-form input[name="view"]').val(true);
+		$('#email-form').submit();
+	});
 });
 </script>
 @stop
@@ -18,7 +23,6 @@ $('.ui.checkbox').checkbox();
 
 {{-- Content --}}
 @section('content')
-
 <?php 
 $users = User::take(20)->get();
 $tasks = Task\Task::take(20)->get();
@@ -30,9 +34,13 @@ foreach ($eventTypes as $event) {
 }
 $eventTypes = $evts;
 ?>
+
+
+
 <section class="content container text-left">
 	
 	<h3>Send Email</h3>
+	{{Form::open(['url'=>'admin/emails/send', 'method'=>'POST', 'id'=>'email-form'])}}
 	<table class="ui celled table">
 		<thead>
 			<tr>
@@ -45,8 +53,7 @@ $eventTypes = $evts;
 		</thead>
 		<tbody>
 	
-			{{Form::open(['url'=>'admin/emails/send', 'method'=>'POST'])}}
-				
+					<input type="hidden" name="view" value="false">
 					<tr>
 				      	<td>
 				      		<select class="ui dropdown" name="event">
@@ -84,20 +91,22 @@ $eventTypes = $evts;
 		    		</tr>
 
 					<tr>
-						<td colspan="2"></td>
-		    			<td colspan="2">
-							{{--<div class="ui input">
-								<div class="field">
-									<label>Email Subject</label>
-									<input type="text" name="subject" placeholder="enter a subject">
+						<td colspan="2">
+							<div class="ui small form">
+								<div class="field center aligned">
+									<b>Additional Parameters</b>
 								</div>
-							</div>
-		    				<div class="ui action input">
-		    					<input type="text" placeholder="Where to send email..." name="emails" value="{{Auth::user()->email}}">
-								<button type="submit" class="ui button">Send</button>
-							</div>
-							<div><small><b>comma separated list</b></small></div>
-							--}}
+								<div class="field">
+									<label for="award_type">Award Types</label>
+									<select class="ui dropdown" name="award_type">
+										@foreach (Award::getAwards() as $award)
+									   		<option value="{{$award->name}}" {{Input::has('award_type')&&Input::get('award_type')==$award->name?'selected':''}}>{{$award->name}}</option>
+									    @endforeach
+								    </select>
+							    </div>
+						    </div>
+						</td>
+		    			<td colspan="2">
 							<div class="ui small form">
 						    	<div class="field">
 						      		<label>Email Subject</label>
@@ -110,19 +119,20 @@ $eventTypes = $evts;
 						    	<div class="field center aligned">
 						    		<label>&nbsp;</label>
 						    		<button type="submit" class="ui button">Send Email</button>
+									<button type="submit" id="view-email-submit" class="ui button">View Email</button>
 						    	</div>
 							</div>
 					    </td>
 		    		</tr>
 				
-			{{Form::close()}}
+			
 
 		</tbody>
 	</table>
+	{{Form::close()}}
+	
+	{{--<hr>
 
-	<hr>
-
-	<h3>View Email (pre sending)</h3>
 	<table class="ui celled table">
 		<thead>
 			<tr>
@@ -202,7 +212,7 @@ $eventTypes = $evts;
 
 		</tbody>
 	</table>
-
+	--}}
 	<br>
 	
 	@include('site.partials.form-errors')

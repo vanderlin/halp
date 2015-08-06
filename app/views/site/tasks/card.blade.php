@@ -21,7 +21,7 @@ $class = isset($class) ? $class : "";
 			@elseif($task->doesNotExpire())
 				Due Whenever
 			@else
-				{{ $task->getExpirationDateForHumans()}}
+				{{ $task->getExpirationDate()->format('F j, Y') }}
 				{{--$task->isDueSoon() ? $task->getExpirationDate()->diffForHumans() : $task->date->format('F j, Y')--}}
 			@endif
 		</span>

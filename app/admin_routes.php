@@ -18,63 +18,6 @@
 			return View::make('admin.emails.index', ['users'=>User::all(), 'active_link'=>'tests']);
 		});
 
-		Route::get('view-email', function() {
-
-			$pre_render = Input::get('pre_render', false) == "on" ? true : false;
-			
-
-			$notice = new Notification;
-			$notice->event = Input::get('event');
-			$notice->task_id = Input::get('task_id');
-			$notice->load('Task');
-			$notice->task->creator_id = Input::get('creator_id');
-			$notice->task->claimed_id = Input::get('claimed_id');
-
-			$notice->task->load('creator');
-			$notice->task->load('claimer');
-			
-
-			$back_url = URL::previous().'?'.http_build_query(Request::all());
-			
-			$data = [
-				'task'=>$notice->task,
-				'extra'=>'<a style="position: fixed; bottom:0; text-align:center;padding:25px 0;background-color:#FF6666;width:100%;color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="'.$back_url.'">Back to Admin</a>'
-			];
-
-			if(Input::get('event') == Notification::NOTIFICATION_FEEDBACK)
-			{
-				$data['from'] = Auth::user();
-				$data['feedback'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
-			}
-
-			if(Input::get('event') == Notification::NOTIFICATION_NEW_AWARD)
-			{
-				$data['award'] = new Award(['user_id'=>Auth::id(),
-											'project_id'=>Project::getRandomID(),
-											'name'=>Input::get('award_type', Award::AWARD_CLAIMED_5)]);
-			}
-
-			$view_name = Notification::getViewEvent(Input::get('event'));
-			$view = View::make($view_name, $data)->render();
-			if(!$pre_render) {
-				return $view;
-			}
-			$premailer = new ScottRobertson\Premailer\Request();
-			$response = $premailer->convert($view);
-			// $email = Input::get('email', 'vanderlin@gmail.com');
-			$emails = ['vanderlin@gmail.com', 'tvanderlin@ideo.com'];
-
-			if (Input::get('view', true)==true) {
-				return $response->downloadHtml();
-			}
-
-			Mail::send('emails.render', ['html'=>$response->downloadHtml()], function($message) use($emails) {
-				$message->bcc($emails, 'Halp')->subject('From '.Auth::user()->getName()." Halp Email Test ".uniqid());
-			});
-			return $emails;
-		});
-
-
 		Route::post('send', function() {
 
 			
@@ -89,34 +32,42 @@
 			$notice->task->load('claimer');
 			$status = false;
 			
+			$back_url = URL::previous().'?'.http_build_query(Request::all());
+
+			$data = [
+				'task'=>$notice->task,
+				'extra'=>'<a style="position: fixed; bottom:0; text-align:center;padding:25px 0;background-color:#FF6666;width:100%;color:white;font-family: Montserrat, Arial, sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:1px;" href="'.$back_url.'">Back to Admin</a>'
+			];
+
+			// award info
+			if(Input::get('event') == Notification::NOTIFICATION_NEW_AWARD)
+			{
+				$data['award'] = new Award(['user_id'=>Auth::id(),
+											'project_id'=>Project::getRandomID(),
+											'name'=>Input::get('award_type', Award::AWARD_CLAIMED_5)]);
+			}
+
+			// get emails
 			$emails = explode(',', Input::get('emails', 'tvanderlin@ideo.com'));
 
+			// filter fake ones
 			$emails = array_filter($emails, function($a) {
 				if(filter_var($a, FILTER_VALIDATE_EMAIL)) {
 					return $a;
 				}
 			});
 
-			
+
+			$pre_render = Input::get('pre_render', false) == "on" ? true : false;
+
+			if(Input::get('view')) {
+				return $notice->renderEmail($data)->downloadHtml();
+			}
+
+			// get the subject
 			$subject = Input::get('subject', Auth::user()->getName()." Halp Email Test:".$notice->event." ".uniqid());
-			$status = $notice->sendEmailToGroup($emails, $subject);
-			/*
-			if($notice->event == Notification::NOTIFICATION_NEW_TASK)
-			{
-				
-			}
-			// someone deleted a task - you need to check if
-			// this task has been claimed
-			else if($notice->event == Notification::NOTIFICATION_TASK_DELETED) {
-				$status = $notice->sendEmailToUser($notice->task->claimer);
-			}
-
-
-			// someone claimed your task
-			else if($notice->event == Notification::NOTIFICATION_TASK_CLAIMED) {
-				$status = $notice->sendEmailToUser($notice->task->creator);
-			}
-			*/
+			$status = $notice->sendEmailToGroup($emails, $subject, $data);
+			
 			return [
 				'status'=>$status,
 				'notice'=>$notice,

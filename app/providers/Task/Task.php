@@ -203,7 +203,7 @@ class Task extends BaseModel {
 	// ------------------------------------------------------------------------
 	public function isDueSoon()
 	{
-		return $this->getExpirationInDays() <= Config::get('config.task_expiration_soon_days') && $this->does_not_expire == false;
+		return $this->getExpirationInDays() <= Config::get('config.task_expiration_soon_days') && $this->does_not_expire == false && $this->isClaimed == false;
 	}
 
 	// ------------------------------------------------------------------------

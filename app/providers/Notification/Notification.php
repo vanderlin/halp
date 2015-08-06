@@ -276,6 +276,18 @@ class Notification extends BaseModel {
 	}
 
 	// ------------------------------------------------------------------------
+	public function renderEmail($data=null)
+	{
+		$data = $data ? $data : array('task'=>$this->task);
+		$view = View::make($this->getViewPath(), $data)->render();
+		$premailer = new \ScottRobertson\Premailer\Request();
+		$response = $premailer->convert($view);
+		$replyTo = $this->getReplyToAddress();
+
+		return $response;
+	}
+
+	// ------------------------------------------------------------------------
 	public function sendEmailToGroup($group, $subject=null, $data=null)
 	{
 		$data = $data ? $data : array('task'=>$this->task);
