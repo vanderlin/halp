@@ -197,6 +197,9 @@ class Notification extends BaseModel {
 			case Notification::NOTIFICATION_TASK_DELETED:
 				return $this->task->creator->getShortName().' has removed a task you claimed!';
 				break;
+			case Notification::NOTIFICATION_NEW_AWARD:
+				return $this->award->user->getShortName().' You Rock!';
+				break;	
 			case Notification::NOTIFICATION_HALP_WELCOME:
 				return "Welcome to Halp";
 				break;
@@ -272,6 +275,11 @@ class Notification extends BaseModel {
 			$results = $this->sendEmailToUser($this->task->creator);
 		}
 
+		// someone claimed your task
+		else if($this->event == Notification::NOTIFICATION_NEW_AWARD) {
+			$results = $this->sendEmailToUser($this->award->user, null, ['award'=>$this->award]);
+		}
+
 		return $results;
 	}
 
@@ -303,10 +311,11 @@ class Notification extends BaseModel {
 		return true;
 	}
 	// ------------------------------------------------------------------------
-	public function sendEmailToUser($user, $subject=null)
+	public function sendEmailToUser($user, $subject=null, $data)
 	{	
 
-		$view = View::make($this->getViewPath(), array('task'=>$this->task))->render();
+		$data = $data ? $data : array('task'=>$this->task);
+		$view = View::make($this->getViewPath(), $data)->render();
 		$premailer = new \ScottRobertson\Premailer\Request();
 		$response = $premailer->convert($view);
 

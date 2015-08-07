@@ -85,6 +85,7 @@
 									</div>
 								@elseif ($notice->event == Notification::NOTIFICATION_NEW_AWARD)
 									<div class="sub header">
+										Award id: {{$notice->award->id}}
 										{{$notice->award->name}}
 									</div>
 								@elseif ($notice->event == Notification::NOTIFICATION_TASK_DELETED)
