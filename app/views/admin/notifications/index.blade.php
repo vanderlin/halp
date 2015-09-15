@@ -67,7 +67,7 @@
 							<div class="content">
 							<a class="header">
 								@if($notice->task!=NULL)
-								{{link_to($notice->task->getURL(), $notice->task->title)}}		
+								{{link_to($notice->task->getURL(), $notice->task->title)}} <small>({{$notice->task->id}})</small>		
 								@elseif($notice->user!=NULL)
 								{{link_to($notice->user->getURL(), $notice->user->getName())}}		
 								@endif						

@@ -311,7 +311,7 @@ class Notification extends BaseModel {
 		return true;
 	}
 	// ------------------------------------------------------------------------
-	public function sendEmailToUser($user, $subject=null, $data)
+	public function sendEmailToUser($user, $subject=null, $data=null)
 	{	
 
 		$data = $data ? $data : array('task'=>$this->task);
