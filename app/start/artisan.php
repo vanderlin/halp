@@ -11,7 +11,8 @@
 |
 */
 
-Artisan::add(new SetupSite);
+Artisan::add(new CreateDatabases);
+Artisan::add(new Install);
 Artisan::add(new CronCommand);
 Artisan::add(new PullCompileCommand);
 Artisan::add(new CreateObjectCommand);

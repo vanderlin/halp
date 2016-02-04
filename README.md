@@ -7,6 +7,20 @@
 <http://www.sequelpro.com/>			
 <https://www.mamp.info>			
 
+
+
+
+## Development
+
+clone the repo 		
+`repo...`
+
+Run the server   
+`php -S localhost:8000 -t httpdocs/`			
+
+
+
+
 ## Requirements
 **You need to have the following installed**			
 

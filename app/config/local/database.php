@@ -17,22 +17,13 @@ return array(
 	| choice installed on your machine before you begin development.
 	|
 	*/
-
+	'default' => 'sqlite',
 	'connections' => array(
-
-		
-		
-		'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'halp',
-			'username'  => 'root',
-			'password'  => 'root',
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
+		'sqlite' => array(
+			'driver'   => 'sqlite',
+			'database' => storage_path('local.sqlite'),
+			'prefix'   => '',
 		),
-
 
 	),
 

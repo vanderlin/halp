@@ -16,28 +16,15 @@ class SetupSite extends Command {
 	 */
 	protected $name = 'halp';
 	protected $seed_path;
-	/**
-	 * The console command description.
-	 *
-	 * @var string
-	 */
-	protected $description = 'Setup all databases.';
+	protected $description = 'Setup all Halp databases.';
 
-	/**
-	 * Create a new command instance.
-	 *
-	 * @return void
-	 */
+	// ------------------------------------------------------------------------
 	public function __construct()
 	{
 		parent::__construct();
 	}
 
-	/**
-	 * Execute the console command.
-	 *
-	 * @return mixed
-	 */
+	// ------------------------------------------------------------------------
 	public function fire()
 	{
 
@@ -87,13 +74,13 @@ class SetupSite extends Command {
 				$this->info('--- Halp has been reset ---');
 			}
 			Auth::logout();
-			$this->setupAll();
+			$this->setupDatabases();
 			return;
 		}
 
 		// -------------------------------------
 		if(is_true($options['setup'])) {
-			$this->setupAll();
+			$this->setupDatabases();
 		}
 		
 		// -------------------------------------
@@ -117,7 +104,7 @@ class SetupSite extends Command {
 	}
 
 	// ------------------------------------------------------------------------
-	public function setupAll()
+	public function setupDatabases()
 	{
 		
 		

@@ -10,7 +10,6 @@ class GoogleSessionController extends BaseController {
 		$google_creds = Config::get('config.google');
 		$env = Config::getEnvironment();
 				
-
 		$jsonfile = null;
 		if($env == 'local' && $google_creds['oauth_local_path']) {
 			$jsonfile = GoogleSessionController::loadCredentialsFile($google_creds['oauth_local_path']);

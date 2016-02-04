@@ -18,8 +18,8 @@ class CreateAssetsTable extends Migration {
 			{
 				$table->increments('id');
 				$table->string('path');
-				$table->string('name');
-				$table->integer('user_id')->unsigned();
+				// $table->string('name');
+				$table->integer('user_id')->unsigned()->nullable()->default(NULL);
 				$table->string('uid');
 				$table->string('filename');
 				$table->string('type');
@@ -29,7 +29,7 @@ class CreateAssetsTable extends Migration {
 				$table->string('source');
 
 				$table->integer('shared')->default(0)->nullable();
-				$table->string('tag');
+				$table->string('tag')->nullable()->default(NULL);
 				$table->softDeletes();
 				$table->timestamps();
 			});

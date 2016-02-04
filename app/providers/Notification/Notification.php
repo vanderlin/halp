@@ -313,7 +313,6 @@ class Notification extends BaseModel {
 	// ------------------------------------------------------------------------
 	public function sendEmailToUser($user, $subject=null, $data=null)
 	{	
-
 		$data = $data ? $data : array('task'=>$this->task);
 		$view = View::make($this->getViewPath(), $data)->render();
 		$premailer = new \ScottRobertson\Premailer\Request();
